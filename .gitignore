@@ -16,6 +16,15 @@ local.properties
 .settings/
 .loadpath
 
+
+#################
+## Spécifique pySyLiC
+#################
+ressources/
+releases/
+exemples/
+.svn/
+
 # External tool builders
 .externalToolBuilders/
 
