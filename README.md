@@ -1,5 +1,6 @@
 # pySyLiC
 Analyse graphique de Systèmes Lineaires Continus
+(py pour python - Systèmes Linéaires Continus) 
 
 *pySyLiC* permet d'analyser graphiquement les réponses harmoniques et temporelles d'un système linéaire continu et invariant.
 Il propose :
@@ -10,6 +11,10 @@ Il propose :
 *pySyLic* relève de l'*Automatique* et s'adresse principalement aux élèves et aux professeurs travaillant sur cette discipline.
 Il a été conçu de telle sorte que son utilisation soit la plus intuitive possible.
 Téléchargement
+
+pySyLiC est disponible en français et en anglais.
+
+pySyLiC est un logiciel libre publié sous licence GNU GPL V3  et écrit en langage Python 
 
 ##Téléchargements
 
