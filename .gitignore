@@ -30,7 +30,7 @@ src/build/
 *.lnk
 *log-psyco
 *.dll
-*.cfg
+
 
 
 
