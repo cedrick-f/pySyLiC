@@ -11,7 +11,7 @@ Il propose :
 Il a été conçu de telle sorte que son utilisation soit la plus intuitive possible.
 Téléchargement
 
-*pySyLic* est téléchargeable sur le site officiel : http://fauryc.free.fr/
+
 Développement
 
 *pySyLiC* est écrit en langage python et nécessite :
