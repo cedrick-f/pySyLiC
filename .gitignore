@@ -24,6 +24,15 @@ ressources/
 releases/
 exemples/
 .svn/
+gdiplus.dll
+*.manifest
+src/build/
+*.lnk
+*log-psyco
+*.dll
+
+
+
 
 # External tool builders
 .externalToolBuilders/
