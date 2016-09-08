@@ -11,8 +11,13 @@ Il propose :
 Il a été conçu de telle sorte que son utilisation soit la plus intuitive possible.
 Téléchargement
 
+##Téléchargements
 
-Développement
+* Les dernières versions sont disponibles sur la [page de téléchargement](https://github.com/cedrick-f/pySyLiC/releases).
+
+* Les versions plus anciennes sont disponibles sur [cette page](http://download.gna.org/pysylic/).
+
+##Développement
 
 *pySyLiC* est écrit en langage python et nécessite :
 
