@@ -1,0 +1,2251 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: pySyLiC\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2012-05-22 20:06+0100\n"
+"PO-Revision-Date: \n"
+"Last-Translator: Cédrick FAURY <cedrick.faury@freesbee.fr>\n"
+"Language-Team: Cédrick FAURY <cedrick.faury@freesbee.fr>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Poedit-Language: English\n"
+"X-Poedit-SourceCharset: iso-8859-1\n"
+"X-Poedit-KeywordsList: _\n"
+"X-Poedit-Basepath: D:\\Documents\\Developpement\\PySyLiC\\PySyLiC 0.31\\src\n"
+"X-Poedit-SearchPath-0: D:\\Developpement\\PySyLiC\\PySyLiC 0.31\\src\n"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:489
+msgid "Saisir la valeur "
+msgstr "Enter here the value "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:499
+#: 0.31\src/CedWidgets.py:516
+msgid "Agir ici pour augmenter/diminuer la valeur "
+msgstr "Click here to increase / decrease the value "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:1090
+#: 0.31\src/graphmpl.py:1315
+msgid "Copier comme une image"
+msgstr "Copy as an image"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:1093
+msgid "Copier comme une equation LaTeX"
+msgstr "Copy as LaTeX"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:1132
+msgid "Faire glisser pour visualiser"
+msgstr "Drag to view"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:1136
+msgid "Click droit pour copier dans le presse-papier"
+msgstr "Right click to copy into the clipboard"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:1139
+msgid "Click gauche pour choisir une autre fonction"
+msgstr "Left-click for choosing an other function"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:2070
+msgid "Erreur d'impression"
+msgstr "Printing error"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:2146
+msgid "Aperçu avant impression"
+msgstr "Print preview"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:2179
+msgid ""
+"Il y a eu un problème d'impression.\n"
+"Votre imprimante n'est probablement pas réglée correctement.\n"
+msgstr ""
+"There was a problem printing.\n"
+"Perhaps your current printer is not set correctly ?\n"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:2182
+msgid "Problème d'impression"
+msgstr "Printing problem"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:2231
+#: 0.31\src/fitting.py:188
+#: 0.31\src/Principal.py:4145
+#: 0.31\src/Principal.py:4283
+#: 0.31\src/Principal.py:5027
+#: 0.31\src/Principal.py:5176
+msgid "Fermer"
+msgstr "Close"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/CedWidgets.py:2232
+#: 0.31\src/graphmpl.py:487
+#: 0.31\src/Principal.py:3838
+msgid "Imprimer"
+msgstr "Print"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Error.py:77
+msgid ""
+"pySyLiC à rencontré une erreur et doit être fermé.\n"
+"Voulez-vous envoyer un rapport de bug ?"
+msgstr ""
+"pySyLiC encountered an error and will be closed.\n"
+"Do you want to send bug report ?"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Error.py:78
+#: 0.31\src/fitting.py:63
+msgid "Erreur"
+msgstr "Error"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Error.py:85
+msgid "pySyLiC "
+msgstr "pySyLiC"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Error.py:86
+msgid " : rapport de bug"
+msgstr " : bug report"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Error.py:88
+msgid "Le bug suivant s'est produit le "
+msgstr "Following bug occured on"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Error.py:92
+msgid "Merci de décrire ci-dessous l'opération ayant provoqué le bug :"
+msgstr "Please describe below the operation that produced the bug :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Error.py:102
+msgid "L'équipe de développement de pySyLiC vous remercie pour votre participation."
+msgstr "pySyLiC development team thanks you for your participation."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fitting.py:83
+msgid "Impossible d'ouvrir le fichier :\n"
+msgstr "Unable to open file :\n"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fitting.py:100
+#, python-format
+msgid ""
+"Le fichier %s \n"
+"n'a pas un format valide."
+msgstr ""
+"The file %s \n"
+"doesn't have a valid format."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fitting.py:156
+msgid "Ajustement de réponse indicielle"
+msgstr "Fitting from step response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fitting.py:171
+msgid "Ajustement réponse indicielle"
+msgstr "Fitting from step response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:56
+msgid "Niveau de complexité de la fonction de transfert trop élevé !!"
+msgstr "The level of complexity of the transfer function is too high !"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:57
+msgid ""
+"   Il est possible de tracer des fonctions aussi complexes\n"
+"   en modifiant l'option \"Général/Niveau de complexité\""
+msgstr ""
+"  You can plot functions as complex\n"
+"  by modifying the \"General/Level of complexity\" option"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:287
+#: 0.31\src/fonctions.py:1848
+msgid "du retard"
+msgstr "of the delay"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:430
+msgid ""
+"Saisir ici les coefficients du polynome.\n"
+"Cliquer sur le bouton \"Aide à la saisie des polynomes\"\n"
+"pour plus d'informations."
+msgstr ""
+"Enter here the coefficients of the polynomial.\n"
+"Click the Help button\n"
+"for more informations."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:540
+msgid "Constante non réelle"
+msgstr "Non-real constant"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:543
+#: 0.31\src/fonctions.py:559
+msgid "Impossible d'évaluer l'expression"
+msgstr "Unable to evaluate the expression"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:550
+msgid "'s' et 'p' sont des noms de variable réservés à la variable complexe"
+msgstr "'s' and 'p' are variable names reserved to the complex variable"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:556
+msgid "Résultat de l'évaluation non réel avec la(les) variable(s) à 1"
+msgstr "Non-real result with variable(s) equal to 1"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:566
+msgid "Syntaxe de l'expression incorrecte"
+msgstr "Expression syntax error"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:663
+msgid "Aide à la saisie des polynômes"
+msgstr "Help for how to enter polynomials"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:953
+msgid "Fichier"
+msgstr "File"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:957
+msgid "Choisir le fichier contenant les coordonnées des points"
+msgstr "Choose the file containing the points coordinates"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:964
+msgid "Automatique"
+msgstr "Automatic"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:964
+msgid "1er ordre"
+msgstr "1st order"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:964
+msgid "2ème ordre"
+msgstr "2nd order"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:967
+msgid "Ordre"
+msgstr "Order"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:973
+msgid ""
+"Choisir l'ordre le la fonction de transfert\n"
+"avec laquelle identifier les paramètres"
+msgstr ""
+"Choose the order of the transfert function\n"
+"with which to identify the parameters"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:979
+msgid "Afficher la courbe d'ajustement"
+msgstr "Show the curve fitting"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1105
+msgid "Format de définition d'un polynôme"
+msgstr "How to define a polynome"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1114
+msgid ""
+"Saisir dans la zone de texte les coefficients du polynôme\n"
+"dans l'ordre décroissant des puissances de "
+msgstr ""
+"Enter here the coefficients of the polynomial\n"
+"in descending order of powers of "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1121
+msgid "Les coefficients peuvent être de différents types :"
+msgstr "The coefficients can be of different types :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1123
+msgid "Constante : "
+msgstr "Constant :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1124
+msgid "Variable : "
+msgstr "Variable :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1125
+msgid "Expression : "
+msgstr "Mathematical expression :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1143
+msgid "Faites des essais ici :"
+msgstr "Experiment here :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1839
+msgid "du gain statique"
+msgstr "of the static gain"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1843
+msgid "de la classe"
+msgstr "of the class"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1980
+msgid "numérateur"
+msgstr "numerator"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1982
+msgid "dénominateur"
+msgstr "denominator"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1993
+msgid "Ajouter un polynôme d'ordre 1 au "
+msgstr "Add a polynomial of order 1 to the "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1994
+msgid "Ajouter un polynôme d'ordre 2 au "
+msgstr "Add a polynomial of order 2 to the "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:1995
+msgid "Supprimer le dernier polynôme ajouté au "
+msgstr "Delete the last added polynomial to the "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/fonctions.py:2087
+msgid "Forme canonique de la Fonction de Transfert"
+msgstr "Simple expression of the Transfert Function"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/globdef.py:151
+msgid "défaut"
+msgstr "Default "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:180
+msgid "Diagrammes de Bode"
+msgstr "Bode plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:181
+msgid "Diagramme de Black"
+msgstr "Nichols plot"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:182
+msgid "Diagramme de Nyquist"
+msgstr "Nyquist plot"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:487
+#: 0.31\src/Principal.py:3838
+msgid "Aperçu"
+msgstr "Print preview"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:487
+#: 0.31\src/Options.py:753
+#: 0.31\src/Principal.py:3838
+msgid "Mise en page"
+msgstr "Page setup"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:487
+#: 0.31\src/Principal.py:3838
+msgid "Options"
+msgstr "Options"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:617
+msgid "Selectionner une zone à visualiser"
+msgstr "Allows to select the area to visualize"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:618
+msgid "Adapter automatiquement la zone à visualiser"
+msgstr "Automatically adjust the area to visualize"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:619
+msgid "Activer le curseur sur les courbes"
+msgstr "Enable cursor mode"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:620
+msgid "Déplacer la zone à visualiser"
+msgstr "Allows to pan the area to visualize"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:621
+msgid "Exporter le tracé"
+msgstr "Export the plot"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:623
+msgid "Ajuster les tailles des caractère"
+msgstr "Adjust font sizes"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:624
+msgid "Modifier l'echelle"
+msgstr "Change scale"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:625
+msgid "Imprimer le tracé"
+msgstr "Print the plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:637
+msgid ""
+"Permet de sélectionner par un rectangle\n"
+"la zone à visualiser"
+msgstr "Allows to select the area to visualize with a rectangle"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:638
+msgid "Determine automatiquement la zone à visualiser"
+msgstr "Automatically adjust the area to visualize"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:639
+msgid ""
+"Passer en mode \"curseur\" :\n"
+"  déplacer la souris latéralement pour faire varier"
+msgstr ""
+"Enable cursor mode :\n"
+"  move the mouse cursor lateraly to  modifie the"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:641
+msgid "Permet de déplacer la zone à visualiser (pas de changement d'échelle)"
+msgstr "Enable pan"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:642
+msgid ""
+"Permet de sauvegarder la totalité du tracé à l'écran\n"
+"(courbes, expressions, marges, ...)\n"
+"sous divers formats de fichiers (png, pdf, svg, ...)"
+msgstr ""
+"Export the plots and all others informations\n"
+"(expressions, margins, ...)\n"
+"as various file formats (png, pdf, svg, ...)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:645
+msgid "Permet d'ajuster les tailles polices de caractère pour ce tracé"
+msgstr "Allows to adjust font sizes of this plot"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:646
+msgid ""
+"Permet de modifier l'echelle de représentation (étendue de la zone à visualiser)\n"
+"Remarque :\n"
+"  Cette fonction est également accessible directement avec la roulette de la souris"
+msgstr ""
+"Changes the scale of representation (extent of the visible area)\n"
+"Remarque :\n"
+"  This function is also available directly with the mouse wheel"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:649
+msgid "Permet d'imprimer la totalité du tracé à l'écran"
+msgstr "Allows to print the full path to the screen"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:655
+msgid "le temps"
+msgstr "time"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:657
+msgid "la pulsation"
+msgstr "pulsation"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:658
+msgid "  cliquer pour figer le curseur"
+msgstr "   click to freeze the cursor"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:696
+msgid "Ouvrir  dans une fenêtre séparée"
+msgstr "Open in a separate window"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:697
+msgid "Tracer les diagrammes Réels"
+msgstr "Draw Real plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:698
+msgid "Tracer les diagrammes Asymptotiques"
+msgstr "Draw asymptotic diagrams"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:699
+#: 0.31\src/graphmpl.py:717
+msgid "Afficher une grille"
+msgstr "Show a grid"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:700
+#: 0.31\src/graphmpl.py:718
+msgid "Afficher les isogains et les isophases"
+msgstr "Show constant gain, and constant phases contours"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:701
+msgid "Afficher Le temps de réponse"
+msgstr "Show the Rise time"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:702
+msgid "Afficher les pôles/zéros de la FTBF"
+msgstr "Show the poles/zeros of the CLTF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:703
+msgid "Afficher les expressions des FT"
+msgstr "Show mathematical expressions of the transfer functions"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:705
+msgid "Remettre dans la fenêtre principale"
+msgstr "Replace in the main window"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:706
+msgid "Masquer les diagrammes Réels"
+msgstr "Hide Real plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:707
+msgid "Masquer les diagrammes Asymptotiques"
+msgstr "Hide asymptotic diagrams"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:708
+#: 0.31\src/graphmpl.py:726
+msgid "Masquer la grille"
+msgstr "Hide the grid"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:709
+#: 0.31\src/graphmpl.py:727
+msgid "Masquer les isogains et les isophases"
+msgstr "Hide constant gain, and constant phases contours"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:710
+msgid "Masquer Le temps de réponse"
+msgstr "Hide the Rise time"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:711
+msgid "Masquer les pôles/zéros de la FTBF"
+msgstr "Hide the poles/zeros of the CLTF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:712
+msgid "Masquer les expressions des FT"
+msgstr "Hide mathematical expressions of the transfer functions"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:714
+msgid "Ouvrir le tracé dans une fenêtre séparée"
+msgstr "Open the plot in a separate window"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:715
+msgid "Tracer les diagrammes de Bode réels"
+msgstr "Draw Real Bode plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:716
+msgid "Tracer les diagrammes de Bode asymptotiques"
+msgstr "Draw asymptotic Bode diagrams"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:719
+#, python-format
+msgid "Afficher et donner la valeur du temps de réponse à %s %%"
+msgstr "Show and give the value of the %s %% Rise time"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:720
+msgid "Afficher les pôles/zéros de la FTBF dans le plan complexe"
+msgstr "Show the poles/zeros of the CLTF in the complex plane."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:721
+msgid "Afficher les expressions des fonctions de transfert directement sur les courbes"
+msgstr "Show mathematical expressions of the transfer functions, directly on plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:723
+msgid "Remettre le tracé dans la fenêtre principale"
+msgstr "Replace the plot in the main window"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:724
+msgid "Masquer les diagrammes de Bode réels"
+msgstr "Hide Real Bode plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:725
+msgid "Masquer les diagrammes de Bode asymptotiques"
+msgstr "Hide asymptotic Bode diagrams"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:728
+#, python-format
+msgid "Masquer le temps de réponse à %s %%"
+msgstr "Hide the %s %% Rise time"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:729
+msgid "Masquer les pôles/zéros de la FTBF dans le plan complexe"
+msgstr "Hide the poles/zeros of the CLTF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:730
+msgid "Masquer les expressions des fonctions de transfert"
+msgstr "Hide mathematical expressions of the transfer functions"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1198
+msgid "Masquer la barre d'outils"
+msgstr "Hide the toolbar"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1200
+msgid "Afficher la barre d'outils"
+msgstr "Show the toolbar"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1250
+#: 0.31\src/graphmpl.py:1297
+msgid "Modifier le format de cette FT"
+msgstr "Change the format of this TF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1251
+#: 0.31\src/graphmpl.py:1298
+msgid "Modifier le format (couleur, style de ligne, ...) de cette FT"
+msgstr "Change the format (line style, color and width) of this TF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1256
+#: 0.31\src/graphmpl.py:1257
+#: 0.31\src/graphmpl.py:1303
+#: 0.31\src/graphmpl.py:1304
+msgid "Masquer cette FT"
+msgstr "Hide this TF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1267
+msgid "réponse"
+msgstr "time response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1267
+msgid "réponse du système non corrigé"
+msgstr "time response of the non corrected system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1269
+msgid "Modifier le format de la "
+msgstr "Change the format of the "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1270
+msgid "Modifier le format (couleur, style de ligne, ...) de la "
+msgstr "Change the format (line style, color and width) of the "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1309
+msgid "Modifier la taille"
+msgstr "Change the size"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1310
+msgid "Modifier la taille de caractère des expressions"
+msgstr "Change the font size for the mathematical expressions"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1316
+msgid ""
+"Copier cette expression dans le presse-papier\n"
+"sous la forme d'une image"
+msgstr ""
+"Copy this expression in the clipboard\n"
+"as an image"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1322
+msgid "Copier comme une expression LaTeX"
+msgstr "Copy as LaTeX"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1323
+msgid ""
+"Copier cette expression dans le presse-papier\n"
+"sous la forme d'une expression LaTeX"
+msgstr ""
+"Copy this expression in the clipboard\n"
+"as LaTeX"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1346
+msgid "Modifier la taille des informations contextuelles"
+msgstr "Change the font size of the informations"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1347
+msgid "Modifier la taille de caractère des isoGains et isoPhases"
+msgstr "Change the font size for the constant gain, and constant phases contours"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1353
+msgid "isoGains"
+msgstr "constant gain contours"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1356
+msgid "isoPhases"
+msgstr "constant phase contours"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1357
+msgid "Modifier le format des lignes "
+msgstr "Change the format of the "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1368
+msgid "Modifier la taille des titres"
+msgstr "Change the font size of the titles"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1369
+msgid "Modifier la taille de caractère des titres des axes"
+msgstr "Change the font size for the axes titles"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1374
+msgid "Modifier la taille des valeurs"
+msgstr "Change the font size of the values"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1375
+msgid "Modifier la taille de caractère des valeurs des graduations"
+msgstr "Change the font size for tick labels"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1380
+msgid "Modifier le format de la grille"
+msgstr "Change the format of the grid"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1391
+#: 0.31\src/graphmpl.py:1392
+msgid "Modifier la taille de caractère"
+msgstr "Change the font size"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1397
+msgid "Modifier la couleur du point critique"
+msgstr "Change the color of the critical point"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1408
+msgid "Modifier la couleur des pôles"
+msgstr "Change the color of poles"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1894
+msgid "Scalable Vector Graphics (.svg)|*.svg|Portable Document Format (.pdf)|*.pdf|Portable Network Graphics (.png)|*.png|PostScript (.ps)|*.ps|Encapsulated PostScript (.eps)|*.eps|Microsoft Excel (.xls)|*.xls"
+msgstr "Scalable Vector Graphics (.svg)|*.svg|Portable Document Format (.pdf)|*.pdf|Portable Network Graphics (.png)|*.png|PostScript (.ps)|*.ps|Encapsulated PostScript (.eps)|*.eps|Microsoft Excel (.xls)|*.xls"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:1903
+msgid "Exporter le tracé courant sous ..."
+msgstr "Export the current plot as ..."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2302
+msgid "Tailles de caractères"
+msgstr "Font sizes"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2344
+msgid "Expressions des FT"
+msgstr "Mathematical expressions"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2345
+msgid "Valeurs des graduations"
+msgstr "Tick labels"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2346
+msgid "Titres des axes"
+msgstr "Axis labels"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2347
+msgid "Informations contextuelles"
+msgstr "Contextual Informations"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2348
+msgid "Valeurs du curseur"
+msgstr "Cursor Values"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2559
+#: 0.31\src/graphmpl.py:3816
+msgid "Gain (dB)"
+msgstr "Magnitude (dB)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2560
+#: 0.31\src/graphmpl.py:3817
+msgid "Phase (deg)"
+msgstr "Phase (deg)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:2561
+#: 0.31\src/Principal.py:4894
+msgid "Pulsation (rad/s)"
+msgstr "Frequency (rad/s)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:4234
+#: 0.31\src/graphmpl.py:5557
+msgid "Point critique"
+msgstr "Critical Point"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:4236
+msgid "Limite"
+msgstr "limit "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:6212
+msgid ""
+"Cette Fonction de Transfert\n"
+"ne peut pas représenter\n"
+"un système physique réel.\n"
+"Impossible de tracer une réponse temporelle."
+msgstr ""
+"This transfer function can not represent a real physical system.\n"
+"Unable to draw a time response."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:6433
+msgid "E"
+msgstr "I"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:6437
+msgid "S"
+msgstr "O"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:6441
+msgid "S_{nc}"
+msgstr "O_{nc}"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:7301
+msgid "Réponse ajustée"
+msgstr "Fitting response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/graphmpl.py:7305
+msgid "Réponse approximative"
+msgstr "Approximative response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:157
+msgid "Format de ligne"
+msgstr "Line style"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:161
+msgid "ligne continue"
+msgstr "solid line style"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:162
+msgid "pointillés"
+msgstr "dashed line style"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:163
+msgid "mixte"
+msgstr "dash-dot line style"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:164
+msgid "points"
+msgstr "dotted line style"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:172
+msgid "Style de ligne :"
+msgstr "Line style :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:175
+msgid "Modifier le style de la ligne"
+msgstr "Change the line style"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:181
+msgid "Epaisseur :"
+msgstr "Width :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:188
+msgid "Modifier l'épaisseur de la ligne"
+msgstr "Change line width"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:195
+msgid "Couleur :"
+msgstr "Color :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/LineFormat.py:197
+msgid "Modifier la couleur de la ligne"
+msgstr "Change the line color"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:263
+msgid "Options de pySyLiC"
+msgstr "pySyLiC Options"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:274
+msgid "Général"
+msgstr "General"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:275
+#: 0.31\src/Principal.py:3069
+msgid "Affichage"
+msgstr "Display"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:276
+msgid "Calcul"
+msgstr "Calculation"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:277
+msgid "Impression"
+msgstr "Printing"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:278
+msgid "Formats de ligne"
+msgstr "Line formats"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:293
+msgid "Valider les changements apportés aux options"
+msgstr "Validate changes"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:300
+msgid "Annuler les changements et garder les options comme auparavant"
+msgstr "Cancel changes and keep the options as before"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:306
+msgid "Défaut"
+msgstr "Default"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:307
+msgid "Rétablir les options par défaut"
+msgstr "Restore the default options"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:357
+msgid "Langage"
+msgstr "Language"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:366
+msgid ""
+"Choisir le langage utilisé par pySyLiC\n"
+"\n"
+"  Nécessite un redémarrage de pySyLiC"
+msgstr ""
+"Choose the language used by pySyLiC\n"
+"\n"
+"  Requires a restart of pySyLiC"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:376
+msgid "Dossier de sauvegarde par défaut"
+msgstr "Default saving folder"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:380
+msgid ""
+"Permet de selectionner le dossier\n"
+"dans lequel seront sauvegardés les fichiers *.syl\n"
+"après le lancement de pySyLic.\n"
+"Par la suite, le dossier de sauvegarde proposé\n"
+"est le dernier dossier utilisé pour un enregistrement."
+msgstr ""
+"Allows to select the folder\n"
+"where files are saved *.syl\n"
+"after launching pySyLic.\n"
+"Subsequently, the proposed saving folder\n"
+"is the last folder used for saving."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:392
+msgid "Type de selecteur de fonction"
+msgstr "Type of function selector"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:393
+msgid "polynômes factorisés"
+msgstr "factored polynomials"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:393
+msgid "polynômes développés"
+msgstr "developed polynomials"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:393
+msgid "identification à partir d'une courbe"
+msgstr "identification from curve fitting"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:396
+msgid ""
+"Choisir la forme sous laquelle vous souhaitez saisir\n"
+"les polynômes des fonctions de transfert :\n"
+" - \"polynômes factorisés\" : fonction de transfert sous forme canonique\n"
+" - \"polynômes développés\" : saisie de chaque coefficient réel indépendamment\n"
+" - \"ajustement sur courbe\" : identification des paramètres à partir d'une courbe expérimentale"
+msgstr ""
+"Choose the format in which you want to enter\n"
+"polynomials of transfer functions :\n"
+" - \"factored polynomials \" : transfer function in canonical form \n"
+" - \"developed polynomials \" : each real coefficient choosed independently  - \"curve fitting\" : identification of parameters from experimental step response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:407
+msgid "Apparence et Comportement"
+msgstr "Appearance and Behavior"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:412
+msgid "Lettre pour la variable complexe :"
+msgstr "Letter of the complex variable"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:417
+msgid "Choisir la lettre utilisée pour désigner la variable complexe."
+msgstr "Letter for the complex variable."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:426
+msgid "Mise à jour automatique des tracés"
+msgstr "AutoUpdate plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:427
+msgid ""
+"Si cette case est cochée, les tracés sont mis à jour automatiquement\n"
+"à chaque modification de la Fonction de Transfert"
+msgstr ""
+"If this box is checked, the plots are updated automatically\n"
+"with each change of the Transfer Function"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:436
+msgid "Ajouter la fonction \"retard\""
+msgstr "Add a delay"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:437
+msgid ""
+"Si cette case est cochée, il est possible d'ajouter la fonction \"retard\"\n"
+"à la Fonction de Transfert du processus"
+msgstr ""
+"If this box is checked, it will be possible to add a delay\n"
+"to the Transfer Function"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:449
+msgid "Niveau de complexité"
+msgstr "Complexity level"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:451
+msgid ""
+"Nombre maximum de\n"
+"sous Fonctions de Transfert"
+msgstr ""
+"Maximum number\n"
+"of transfer functions"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:455
+msgid ""
+"Nombre maximum de sous fonctions de transfert\n"
+"que peut avoir la fonction de transfert H\n"
+"!! Nécessite un redémarrage de pySyLiC !!"
+msgstr "Maximum number of transfer functions"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:530
+#: 0.31\src/Principal.py:4254
+msgid "Réponse temporelle"
+msgstr "Time response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:532
+msgid ""
+"Nombre de periodes affichées\n"
+"en mode \"échelle automatique\""
+msgstr "Number of periods displayed in mode \"autoscale\""
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:536
+msgid ""
+"En mode \"échelle automatique\",\n"
+"pour les consignes périodiques,\n"
+"pySyLiC règle l'echelle du temps\n"
+"sur le nombre de périodes défini ici."
+msgstr ""
+"In mode \"autoscale\",\n"
+"for periodic signals\n"
+"pySyLiC adjusts the time scale \n"
+"on the number of periods defined here."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:543
+msgid "Niveau d'évaluation du temps de réponse"
+msgstr "Level Assessment of the Rise time"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:564
+msgid "Nombre de points de calcul pour la réponse temporelle"
+msgstr "Number of calculation points for the time response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:568
+msgid ""
+"Ajuster le nombre de points\n"
+"pour le calcul de la réponse temporelle.\n"
+"(en principe, il est inutile de modifier cette valeur)"
+msgstr ""
+"Adjust the number of points \n"
+"for calculating the time response.\n"
+"(In principle, there is no need to change this value)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:640
+msgid "Performances"
+msgstr "Performances"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:644
+msgid "Lisser les courbes (antialiasing)"
+msgstr "Antialiasing"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:645
+msgid "En décochant cette case, l'affichage devrait être plus rapide"
+msgstr "By unchecking this box, the display should be faster"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:653
+msgid "Type de Police de caractère"
+msgstr "Font type"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:755
+msgid "Garder les proportions de l'écran"
+msgstr "Keep proportions as at screen"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:756
+msgid ""
+"Si cette case est cochée, les tracés imprimés\n"
+"auront les mêmes proportions (largeur/hauteur) qu'à l'écran."
+msgstr ""
+"If this box is checked, the print proportions (height/width)\n"
+"will be the same as those of screen"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:766
+msgid "Eléments à imprimer"
+msgstr "Items to print"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:768
+msgid "En décochant cette case, vous pouvez choisir un texte personnalisé"
+msgstr "By unchecking this box, you can choose a custom text"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:769
+msgid "Nom du fichier système"
+msgstr "Name of the system file"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:771
+msgid "Nom de fichier sous lequel le système actuel est sauvegardé"
+msgstr "File name used for saving the current system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:773
+msgid "Nom de l'utilisateur"
+msgstr "User name"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:775
+msgid "Nom de l'utilisateur de l'ordinateur"
+msgstr "User name"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:784
+msgid "Qualité de l'impression"
+msgstr "Quality of Printing"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:787
+msgid "Résolution de l'impression :"
+msgstr " Printing resolution :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:791
+msgid ""
+"Ajuster la résolution de l'impression.\n"
+"Attention, une résolution trop élevée peut augmenter\n"
+"significativement la durée de l'impression."
+msgstr ""
+"Adjust the printing resolution.\n"
+"Beware, a too high resolution may increase \n"
+"significantly the duration of printing."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:824
+msgid "En haut à gauche"
+msgstr "Top left"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:824
+msgid "En haut au centre"
+msgstr "Top center"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:824
+msgid "En haut à droite"
+msgstr "Top right"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:825
+msgid "En bas à gauche"
+msgstr "Bottom left"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:825
+msgid "En bas au centre"
+msgstr "Bottom center"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:825
+msgid "En bas à droite"
+msgstr "Bottom right"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:854
+msgid "position"
+msgstr "position"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:865
+msgid "Choisir ici la position du texte par rapport aux tracés"
+msgstr "Select here the position of text relative to plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1027
+msgid "Marge de stabilité \"valide\""
+msgstr " \"valid\" stability margin"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1028
+msgid "Marge de stabilité \"non valide\""
+msgstr " \"invalid\" stability margin"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1029
+msgid "Pôles"
+msgstr "Poles"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1030
+msgid "Point critique et Courbe \"lambda\""
+msgstr "Critical Point and \"lambda\" plot"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1033
+msgid "Grille"
+msgstr "Grid"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1034
+msgid "Courbe \"isogain\""
+msgstr "constant gain contours"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1035
+msgid "Courbe \"isophase\""
+msgstr "constant phases contours"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1043
+msgid "Modifier la couleur de l'élément"
+msgstr "Change the line color of"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1056
+msgid "Modifier le format de ligne de l'élément"
+msgstr "Change the line format of"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Options.py:1148
+msgid "Choisir un dossier"
+msgstr "Choose a directory"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:283
+msgid "Définition du Système"
+msgstr "Definition of the System"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:671
+#: 0.31\src/Principal.py:674
+#: 0.31\src/Principal.py:5161
+#: 0.31\src/Principal.py:5162
+msgid "FTBO"
+msgstr "OLTF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:691
+#: 0.31\src/Principal.py:693
+#: 0.31\src/Principal.py:5154
+#: 0.31\src/Principal.py:5156
+msgid "FTBF"
+msgstr "CLTF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:715
+msgid "FTBF_{nc}"
+msgstr "CLTF_{nc}"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1253
+msgid "Merci de redémarrer PySyLiC pour que le changement de langue opère"
+msgstr "Thank you to restart PySyLiC so that the change of language operates"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1254
+msgid "Changement de langue"
+msgstr "Language change"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1294
+msgid "Système pySyLiC (.syl)|*.syl|Tous les fichiers|*.*'"
+msgstr "pySyLiC System (.syl)|*.syl|All files|*.*"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1299
+#: 0.31\src/Principal.py:3826
+msgid "Ouvrir un système"
+msgstr "Open a system file"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1438
+msgid "Impossible de lire le fichier"
+msgstr "Unable to read file"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1442
+msgid "Erreur ouverture"
+msgstr "Opening error"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1645
+msgid "Système (.syl)|*.syl|Tous les fichiers|*.*'"
+msgstr "System (.syl)|*.syl|All files|*.*"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1648
+msgid "Enregistrer le système sous ..."
+msgstr "Save the system as ..."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1664
+msgid "'Oui' pour enregistrer le système dans le fichier\n"
+msgstr "'Yes' to save the System in file\n"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1667
+msgid "'Non' pour enregistrer le système dans un autre fichier."
+msgstr "'No' to save the System in an other file."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1670
+msgid "Enregistrement"
+msgstr "Saving"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1783
+msgid ""
+"Le Système a été modifié.\n"
+"Voulez vous enregistrer les changements ?"
+msgstr ""
+"The system has been modified.\n"
+"Would you save the changes ?"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1788
+msgid "Confirmation"
+msgstr "Confirmation"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1833
+msgid "Système composé d'une simple transmittance : H(p)"
+msgstr "Open-loop controller : H"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1834
+msgid ""
+"Système bouclé composé :\n"
+" - d'un processus de fonction de transfert H(p)\n"
+" - d'un correcteur de fonction de transfert C(p)"
+msgstr ""
+"closed-loop control system with :\n"
+" - a system : transfert function H(p)\n"
+" - a controler : transfert function C(p)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1888
+msgid "Représentation du système sous forme de schéma-bloc."
+msgstr "System representation in the form of block diagram."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1961
+msgid ""
+"Saisie et paramètres d'affichage\n"
+"de la Fonction de Transfert H"
+msgstr ""
+"Capture and display settings\n"
+"of the transfer function H"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1963
+msgid ""
+"Saisie et paramètres d'affichage\n"
+"de la Fonction de Transfert du correcteur C"
+msgstr ""
+"Capture and display settings\n"
+"of the controler transfer function C"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:1965
+msgid ""
+"Paramètres d'affichage de la réponse harmonique du système\n"
+"en boucles ouverte et fermée"
+msgstr ""
+"Display settings of the frequency response of the system\n"
+"(open-loop and closed-loop)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2178
+#: 0.31\src/Principal.py:2762
+#: 0.31\src/Principal.py:2909
+msgid "Paramètres"
+msgstr "Parameters"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2178
+msgid "Variables"
+msgstr "Variables"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2189
+#: 0.31\src/Principal.py:2782
+#: 0.31\src/Principal.py:2920
+msgid "Décomposition"
+msgstr "Decomposition"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2285
+msgid ""
+"La fonction H(p) n'est pas factorisable\n"
+"de manière satisfaisante !\n"
+"Elle sera réinitialisée..."
+msgstr ""
+"The function H is not factorizable\n"
+"satisfactorily !\n"
+"It will reset ..."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2289
+msgid "Factorisation impossible"
+msgstr "Factorization impossible"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2543
+msgid ""
+"Correcteur à action Proportionnelle\n"
+"sous la forme :\n"
+"  C(p) = K"
+msgstr ""
+"Proportional controller\n"
+"as :\n"
+"  C(p) = K"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2547
+msgid ""
+"Correcteur à action Proportionnelle et Intégrale\n"
+"sous la forme :\n"
+"              1 + Tp\n"
+"  C(p) = K --------\n"
+"              1 + aTp\n"
+"avec a>=1"
+msgstr ""
+"Proportional and Integral controller\n"
+"as :\n"
+"              1 + Tp\n"
+"  C(p) = K --------\n"
+"              1 + aTp\n"
+"with a>=1"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2554
+msgid ""
+"Correcteur à action Proportionnelle et Intégrale\n"
+"sous la forme :\n"
+"              1 + Tp\n"
+"  C(p) = K --------\n"
+"                Tp"
+msgstr ""
+"Proportional and Integral controller\n"
+"as :\n"
+"              1 + Tp\n"
+"  C(p) = K --------\n"
+"                Tp"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2560
+msgid ""
+"Correcteur à action Proportionnelle et Dérivée\n"
+"sous la forme :\n"
+"              1 + aTp\n"
+"  C(p) = K --------\n"
+"              1 + Tp\n"
+"avec a>=1"
+msgstr ""
+"Proportional and Derivative controller\n"
+"as :\n"
+"              1 + aTp\n"
+"  C(p) = K --------\n"
+"              1 + Tp\n"
+"with a>=1"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2567
+msgid ""
+"Correcteur à action Proportionnelle et Dérivée\n"
+"sous la forme :\n"
+"  C(p) = K (1 + Tp)\n"
+msgstr ""
+"Proportional and Derivative controller\n"
+"as :\n"
+"  C(p) = K (1 + Tp)\n"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:2571
+msgid "Correcteur personnalisé"
+msgstr "Custom controller"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3057
+msgid "Paramètres du Correcteur"
+msgstr "Controller parameters"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3080
+#: 0.31\src/Principal.py:3092
+#: 0.31\src/Principal.py:3296
+#: 0.31\src/Principal.py:3313
+#: 0.31\src/Principal.py:3331
+#: 0.31\src/Principal.py:3424
+#: 0.31\src/Principal.py:3443
+#: 0.31\src/Principal.py:3735
+msgid "Modifier le format du tracé de cette FT"
+msgstr "Change the line style, color and width"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3084
+#: 0.31\src/Principal.py:3325
+msgid ""
+"Si coché, trace le lieu de la Fonction de Transfert\n"
+" du système en Boucle Ouverte"
+msgstr ""
+"If checked, plots the frequency response of the transfer function\n"
+"as an open-loop system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3096
+msgid ""
+"Si coché, trace le lieu de la Fonction de Transfert\n"
+" du système en Boucle Fermée"
+msgstr ""
+"If checked, plots the frequency response of the transfer function\n"
+"as an closed-loop system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3291
+#: 0.31\src/Principal.py:3421
+msgid "Si coché, trace le lieu de la Fonction de Transfert "
+msgstr "If checked, plots the frequency response of the transfer function"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3308
+msgid "Si coché, trace le lieu de la Fonction de Transfert du correcteur "
+msgstr "If checked, plots the frequency response of the controller transfer function"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3440
+msgid "Si coché, trace le lieu de ce produit de Fonctions de Transfert"
+msgstr "If checked, plots the frequency response of this product of transfer functions"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3732
+msgid "Si coché, trace le lieu de cette sous Fonction de Transfert de "
+msgstr "If checked, plots the frequency response of this sub-transfer function"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3801
+msgid ""
+"Afficher des informations (Version, Licence, Auteurs)\n"
+"à propos de pySyLiC"
+msgstr "Display informations (Version, License, Authors) about pySyLiC"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3803
+msgid "Afficher la réponse temporelle du système"
+msgstr "Show time responses of the system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3804
+msgid ""
+"Afficher les marges de stabilité du système\n"
+"  Remarque :\n"
+"  Cet outil n'est disponible que pour les systèmes bouclés\n"
+"  et en mode d'édition du correcteur"
+msgstr ""
+"Show the stability margins of the system\n"
+"  Remarque :\n"
+"  This tool is only available for systems with feedback loop\n"
+"  and in \"controller editing\" mode"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3809
+msgid "Ouvrir un fichier \"système\" (.syl)"
+msgstr "Open a \"system\" file (.syl)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3810
+msgid ""
+"Enregistrer les paramètres du système (fonctions de transfert, ...)\n"
+"dans un fichier \"système\" (.syl)"
+msgstr ""
+"Save the parameters of the system (transfert functions, ...)\n"
+"in a \"système\" file (.syl)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3812
+msgid ""
+"Créer un nouveau système\n"
+"  ATTENTION :\n"
+"  Le système courant sera ecrasé !"
+msgstr ""
+"Create a new system\n"
+"  ATTENTION :\n"
+"  The current system will be overwritten !"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3815
+msgid ""
+"Afficher une décomposition en éléments simples\n"
+"des Fonctions de Transfert du système"
+msgstr ""
+"Show a partial fraction decomposition\n"
+"of the transfer functions of the system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3817
+msgid "Permet de régler les différents options de pySyLiC"
+msgstr "Allows to set various options of pySyLiC"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3818
+#: 0.31\src/Principal.py:3831
+msgid "Mettre à jour le tracé"
+msgstr "Update plot"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3819
+msgid "Afficher le panneau de gestion de l'impression"
+msgstr "Display print management panel "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3820
+msgid "Afficher les pôles de la FTBF dans le plan complexe"
+msgstr "Show the poles of the CLTF in the complex plane."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3823
+#: 0.31\src/Principal.py:5340
+msgid "A propos de "
+msgstr "About "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3824
+msgid "Réponse temporelle du système"
+msgstr "Time response of the system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3825
+msgid "Marges de stabilité du système"
+msgstr "Stability margins"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3827
+msgid "Enregistrer le système"
+msgstr "Save the system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3828
+msgid "Créer un nouveau système"
+msgstr "Create a new system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3829
+msgid "Décomposition en éléments simples des FT"
+msgstr "Partial fraction decomposition"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3830
+msgid "Réglage des options de pySyLiC"
+msgstr "Set options of pySyLiC"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3832
+msgid "Imprimer les tracés"
+msgstr "Print the plots"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:3833
+msgid "Pôles de la FT"
+msgstr "Poles of the TF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4070
+msgid "Voulez-vous vraiment effacer le système en cours d'étude ?"
+msgstr "Are you sure you want to delete the system under study ?"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4071
+msgid "Confirmation effacement"
+msgstr "Confirm delete"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4097
+msgid "Marges de stabilité"
+msgstr "Stability margins"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4101
+msgid "Marges de stabilité selon la règle du revers."
+msgstr "Stability margins"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4107
+msgid "Marge de phase"
+msgstr "Phase margin"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4118
+msgid "Marge de gain"
+msgstr "Gain margin"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4133
+msgid "Surtension"
+msgstr "Surtension"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4240
+msgid "Réponse Temporelle du Système"
+msgstr "Time response of the system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4640
+msgid "Impulsion"
+msgstr "Impulse"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4640
+msgid "Echelon"
+msgstr "Step"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4640
+msgid "Rampe"
+msgstr "Ramp"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4641
+msgid "Série d'Impulsions"
+msgstr "Serie of Impulses"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4642
+msgid "Carré"
+msgstr "Square"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4642
+msgid "Triangle"
+msgstr "Triangle"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4642
+msgid "Sinusoïdal"
+msgstr "Sine"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4643
+msgid "Personnalisé"
+msgstr "Custom"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4707
+msgid "Signal impulsion"
+msgstr "Impulse signal"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4709
+msgid "Paramètres de l'impulsion"
+msgstr "Impulse settings"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4730
+#: 0.31\src/Principal.py:4757
+msgid "Signal échelon"
+msgstr "Step signal"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4732
+#: 0.31\src/Principal.py:4759
+msgid "Paramètres de l'échelon"
+msgstr "Step settings"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4734
+#: 0.31\src/Principal.py:4819
+#: 0.31\src/Principal.py:4889
+msgid "Amplitude"
+msgstr "Magnitude"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4761
+#: 0.31\src/Principal.py:4854
+msgid "Pente"
+msgstr "Slope"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4784
+msgid "Signal série d'impulsions"
+msgstr "Serie of Impulses signal"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4786
+msgid "Paramètres du signal série d'impulsions"
+msgstr "Serie of Impulses settings"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4791
+#: 0.31\src/Principal.py:4823
+#: 0.31\src/Principal.py:4858
+msgid "Période (s)"
+msgstr "Period (s)"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4814
+msgid "Signal carré"
+msgstr "Square signal"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4816
+msgid "Paramètres du signal carré"
+msgstr "Square signal settings"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4827
+#: 0.31\src/Principal.py:4862
+#: 0.31\src/Principal.py:4913
+msgid "Décalage"
+msgstr "Offset"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4849
+msgid "Signal triangulaire"
+msgstr "Triangle signal"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4851
+msgid "Paramètres du signal triangulaire"
+msgstr "Triangle signal settings"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4884
+msgid "Signal sinusoïdal"
+msgstr "Sine signal"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4886
+msgid "Paramètres du signal sinusoïdal"
+msgstr "Sine signal settings"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4902
+msgid "Synchroniser sur le curseur de la réponse harmonique"
+msgstr "Synchronize with the cursor on the frequency response"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4939
+msgid "du système en boucle fermée"
+msgstr "of the closed-loop system"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4940
+msgid ""
+"En choisissant cette option, la valeur de la pulsation sera la même\n"
+"que celle du curseur de la fonction de transfert "
+msgstr ""
+"By choosing this option, the value of the frequency\n"
+"will be the same as the cursor of the transfer function "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4951
+msgid "Signal personnalisé"
+msgstr "Custom signal"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4953
+msgid "Paramètres du signal personnalisé"
+msgstr "Custom signal settings"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4956
+msgid "Personnalisation de la consigne :"
+msgstr "Customizing the custom signal :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4957
+msgid "  Déplacer un point de contrôle :"
+msgstr "  To move a vertex :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4958
+msgid "bouton gauche + déplacer"
+msgstr "left-click + drag"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4959
+msgid "  Ajouter un point de contrôle :"
+msgstr "  To add a vertex :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4960
+msgid "bouton droit sur un segment"
+msgstr "rigth-click on a segment"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4961
+msgid "  Supprimer un point de contrôle :"
+msgstr "  To delete a vertex :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4962
+msgid "bouton droit sur un point"
+msgstr "rigth-click on a vertex"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4963
+msgid "  Modifier la pente du dernier segment :"
+msgstr "  To change the slpo of the last segment :"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:4964
+msgid "bouton gauche sur le segment + déplacer"
+msgstr "left-click on the segment + drag"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5096
+msgid "Pôles/Zéros de la FTBF"
+msgstr "Poles/zeros of the TF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5098
+msgid "Pôles/Zéros de la Fonction de Transfert"
+msgstr "Poles/zeros of the Transfert Function"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5150
+msgid "Décomposition en éléments simples"
+msgstr "Partial fraction decomposition"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5157
+#: 0.31\src/Principal.py:5158
+msgid "Affiche la décomposition en éléments simples de la FTBF"
+msgstr "Show the partial fraction decomposition of the CLTF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5163
+#: 0.31\src/Principal.py:5164
+msgid "Affiche la décomposition en éléments simples de la FTBO"
+msgstr "Show the partial fraction decomposition of the OLTF"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5349
+msgid "Version : "
+msgstr "Version : "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5370
+msgid "Développement : "
+msgstr "Development : "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5371
+msgid "Remerciements : "
+msgstr "Thanks to : "
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5371
+msgid ""
+"Marc BATTILANA\n"
+"    pour la définitions des IsoGains et IsoPhases,\n"
+"    ainsi que pour son soutien ..."
+msgstr ""
+"Marc BATTILANA\n"
+"    for the definitions of constant gain,\n"
+"    and constant phases contours, and for his support ..."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5372
+msgid ""
+"Bruno CAUSSE\n"
+"    pour ses rapports de bug\n"
+"    et ses suggestions pertinentes ..."
+msgstr ""
+"Bruno CAUSSE\n"
+"    for bug reports\n"
+"    and his relevant suggestions ..."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5373
+msgid ""
+"Vincent CRESPEL\n"
+"    pour son aide\n"
+"    lors de l'ajout du déphasage"
+msgstr ""
+"Vincent CRESPEL\n"
+"    for his help"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5374
+msgid "Et tous ceux qui m'ont encouragé !"
+msgstr "And all those who encouraged me !"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5399
+msgid ""
+"Le fichier gpl.txt est introuvable !\n"
+"Veuillez réinstaller pySyLiC !"
+msgstr ""
+"The file gpl.txt is not found !\n"
+"Please reinstall pySyLiC."
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5402
+msgid "Licence introuvable"
+msgstr "License not found"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5418
+msgid ""
+"pySyLiC (py pour python - Systèmes Linéaires Continus) \n"
+"permet d'analyser graphiquement les réponses harmoniques et temporelles de Systèmes Linéaires Continus et Invariants.\n"
+"\n"
+"Il propose :\n"
+" - un tracé des lieux de Bode, de Black et de Nyquist des Fonctions de Transfert caractéristiques du système (décomposition en 'sous fonctions' de transfert, tracé des asymptotes, ...)\n"
+" - d'utiliser des variables dans les définitions des FT : les tracés sont automatiquement modifiés\n"
+" - de placer un correcteur dans la chaine directe et d'observer ses effets sur la FTBO\n"
+" - de tracer les réponses temporelles et harmoniques du système en boucle fermée\n"
+"\n"
+"pySyLic relève de l'Automatique et s'adresse principalement aux élèves et aux professeurs travaillant sur cette discipline.\n"
+"Il a été conçu de telle sorte que son utilisation soit la plus intuitive possible."
+msgstr ""
+"pySyLiC (py for python - Systèmes Linéaires Continus) \n"
+"can analyze graphically the frequency an time responses ofLinear, Time-Invariant and Continuous-time Systems.\n"
+"\n"
+"Featuring :\n"
+" - Bode plots, Nichols plot and Nyquist plot of transfer functions\n"
+" - Transfert functions defined with variable parameters (with autoUptade plots)\n"
+" - Definition of a controller\n"
+" - Times responses of various signals"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5432
+msgid "Description"
+msgstr "Description"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5433
+msgid "Auteurs"
+msgstr "Authors"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5434
+msgid "Licence"
+msgstr "License"
+
+#: D:\Developpement\PySyLiC\PySyLiC
+#: 0.31\src/Principal.py:5436
+msgid "Informations et téléchargement : http://www.cemanted.fr/pySyLiC/"
+msgstr "Informations and Download : http://www.cemanted.fr/pySyLiC/"
+
+#~ msgid "Modifier la couleur des "
+#~ msgstr "Change the color of the "
+#~ msgid "Modifier la couleur de la grille"
+#~ msgstr "Change the color of the grid"
+#~ msgid "Couleurs"
+#~ msgstr "Colors"
+#~ msgid "Copier"
+#~ msgstr "Copy"
+#~ msgid "Agir ici pour augmenter/diminuer la valeur de la variable "
+#~ msgstr "Click here to increase / decrease the value of the variable"
+#~ msgid "Limite \"lambda\""
+#~ msgstr "\"lambda\" limit"
+#~ msgid "donne"
+#~ msgstr "give"
+#~ msgid "Saisir"
+#~ msgstr "Type"
+#~ msgid "pour"
+#~ msgstr "for"
+#~ msgid ""
+#~ "Forme canonique de la Fonction de Transfert\n"
+#~ "  Faire glisser pour visualiser"
+#~ msgstr ""
+#~ "Canonical Form of the Transfer Function\n"
+#~ "  Drag to visualize"
+#~ msgid "Tracer les marges de stabilité et afficher leurs valeurs"
+#~ msgstr "Show stability margins and values"
+#~ msgid "Permet de modifier les paramètres d'affichage de ce tracé"
+#~ msgstr "Allows to change the display settings for this plot"
+#~ msgid "Tracer les courbes d'isogain et d'isophase"
+#~ msgstr "Show constant gain, and constant phases contours"
+#~ msgid "Régler les paramètres d'affichage"
+#~ msgstr "Change display settings"
+#~ msgid "Paramètres "
+#~ msgstr "Settings"
+#~ msgid "Marge gauche"
+#~ msgstr "Left margin"
+#~ msgid "Marge droite"
+#~ msgstr "Right margin"
+#~ msgid "Marge bas"
+#~ msgstr "Bottom margin"
+#~ msgid "Marge haut"
+#~ msgstr "Top margin"
+#~ msgid "Ecart horizontal"
+#~ msgstr "Horizontal space"
+#~ msgid "Enregistrer les changements"
+#~ msgstr "Save changes"
+#~ msgid "Annuler les changements"
+#~ msgstr "Cancel changes"
+#~ msgid ""
+#~ "séparés par des espaces.\n"
+#~ "\n"
+#~ "   par exemple :\n"
+#~ "      '3 2.4 a'\n"
+#~ "\n"
+#~ "   donne le polynôme :\n"
+#~ msgstr ""
+#~ "separated by spaces.\n"
+#~ "\n"
+#~ "   for example :\n"
+#~ "      '3 2.4 a'\n"
+#~ "\n"
+#~ "   gives the polynomial :\n"
+#~ msgid "   ( 'a' étant une variable modifiable )"
+#~ msgstr "   ( 'a' being an editable variable )"
+#~ msgid "Marges"
+#~ msgstr "Margins"
+#~ msgid ""
+#~ "Choisir la forme sous laquelle vous souhaitez saisir les polynômes des "
+#~ "fonctions de transfert"
+#~ msgstr ""
+#~ "Choose the format in which you want to enter the polynomials of transfer "
+#~ "functions"
+

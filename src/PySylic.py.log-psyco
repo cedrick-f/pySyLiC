@@ -1,0 +1,963 @@
+17:53:29.77  Logging started, 04/03/11                  %%%%%%%%%%%%%%%%%%%%
+17:53:29.77  ActivePassiveProfiler: starting                           %%%%%
+17:53:29.82   ______
+        #1   |89.9 %|  active_start              ...psyco\profiler.py:273
+        #2   | 1.3 %|  findfont                  ...b\font_manager.py:1171
+        #3   | 0.4 %|  score_stretch             ...b\font_manager.py:1111
+        #4   | 0.4 %|  _parse                    ...\lib\sre_parse.py:385
+        #5   | 0.4 %|  _optimize_charset         ...ib\sre_compile.py:213
+        #6   | 0.4 %|  oneOf                     ...tlib\pyparsing.py:3129
+        #7   | 0.4 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #8   | 0.4 %|  _parseCache               ...tlib\pyparsing.py:972
+        #9   | 0.4 %|  score_family              ...b\font_manager.py:1057
+        #10  | 0.3 %|  findfont                  ...b\font_manager.py:1341
+17:53:29.88  tag function: matplotlib.pyparsing.oneOf                      %
+17:53:29.93  tag function: matplotlib.pyparsing.<lambda>                   %
+17:53:29.94  tag function: matplotlib.pyparsing.oneOf                      %
+17:53:30.00  tag function: matplotlib.pyparsing.oneOf                      %
+17:53:30.02  tag function: matplotlib.pyparsing.<lambda>                   %
+17:53:30.07   ______
+        #1   |37.0 %|  active_start              ...psyco\profiler.py:273
+        #2   | 6.8 %|  oneOf                     ...tlib\pyparsing.py:3129
+        #3   | 6.6 %|  __init__                  ...otlib\mathtext.py:2132
+        #4   | 3.5 %|  _optimize_unicode         ...ib\sre_compile.py:307
+        #5   | 3.2 %|  <lambda>                  ...tlib\pyparsing.py:3147
+        #6   | 1.6 %|  parse                     ...otlib\mathtext.py:2902
+        #7   | 1.2 %|  <lambda>                  ...tlib\pyparsing.py:3146
+        #8   | 0.5 %|  findfont                  ...b\font_manager.py:1171
+        #9   | 0.4 %|  mathtext_to_wxbitmap      ...src\CedWidgets.py:1183
+        #10  | 0.3 %|  _mk_bitmap                ...ib\sre_compile.py:264
+17:53:30.09  tag function: matplotlib.pyparsing.oneOf                      %
+17:53:30.27   ______
+        #1   |25.6 %|  active_start              ...psyco\profiler.py:273
+        #2   | 5.6 %|  __init__                  ...otlib\mathtext.py:2132
+        #3   | 3.1 %|  <lambda>                  ...tlib\pyparsing.py:3147
+        #4   | 2.9 %|  _parse                    ...\lib\sre_parse.py:385
+        #5   | 2.5 %|  _compile                  ...ib\sre_compile.py:38
+        #6   | 2.5 %|  __next                    ...\lib\sre_parse.py:188
+        #7   | 2.4 %|  _optimize_unicode         ...ib\sre_compile.py:307
+        #8   | 2.4 %|  oneOf                     ...tlib\pyparsing.py:3129
+        #9   | 2.2 %|  getwidth                  ...\lib\sre_parse.py:146
+        #10  | 1.7 %|  <lambda>                  ...tlib\pyparsing.py:3146
+17:53:30.47   ______
+        #1   |21.1 %|  active_start              ...psyco\profiler.py:273
+        #2   | 4.6 %|  __init__                  ...otlib\mathtext.py:2132
+        #3   | 3.1 %|  _parseCache               ...tlib\pyparsing.py:972
+        #4   | 2.9 %|  GrayOut                   ...c\NotebookCtrl.py:324
+        #5   | 2.7 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #6   | 2.6 %|  <lambda>                  ...tlib\pyparsing.py:3147
+        #7   | 2.4 %|  _parse                    ...\lib\sre_parse.py:385
+        #8   | 2.1 %|  _compile                  ...ib\sre_compile.py:38
+        #9   | 2.1 %|  __next                    ...\lib\sre_parse.py:188
+        #10  | 2.0 %|  _optimize_unicode         ...ib\sre_compile.py:307
+17:53:30.62   ______
+        #1   |17.4 %|  active_start              ...psyco\profiler.py:273
+        #2   | 6.0 %|  _parseCache               ...tlib\pyparsing.py:972
+        #3   | 5.3 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #4   | 3.8 %|  __init__                  ...otlib\mathtext.py:2132
+        #5   | 3.0 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #6   | 2.4 %|  __init__                  ...otlib\mathtext.py:569
+        #7   | 2.4 %|  GrayOut                   ...c\NotebookCtrl.py:324
+        #8   | 2.3 %|  __init__                  ...tlib\pyparsing.py:263
+        #9   | 2.1 %|  <lambda>                  ...tlib\pyparsing.py:3147
+        #10  | 2.0 %|  _parse                    ...\lib\sre_parse.py:385
+17:53:30.82   ______
+        #1   |13.8 %|  active_start              ...psyco\profiler.py:273
+        #2   | 8.4 %|  _parseCache               ...tlib\pyparsing.py:972
+        #3   | 7.4 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #4   | 4.0 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #5   | 3.5 %|  __init__                  ...otlib\mathtext.py:569
+        #6   | 3.2 %|  __init__                  ...tlib\pyparsing.py:263
+        #7   | 3.0 %|  __init__                  ...otlib\mathtext.py:2132
+        #8   | 2.6 %|  copy                      ...tlib\pyparsing.py:459
+        #9   | 1.9 %|  GrayOut                   ...c\NotebookCtrl.py:324
+        #10  | 1.8 %|  parseImpl                 ...tlib\pyparsing.py:2290
+17:53:30.87  tag function: matplotlib.pyparsing.ParserElement._parseCache  %
+17:53:31.02   ______
+        #1   |11.9 %|  active_start              ...psyco\profiler.py:273
+        #2   | 7.4 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #3   | 5.9 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #4   | 4.4 %|  __init__                  ...tlib\pyparsing.py:263
+        #5   | 4.2 %|  __init__                  ...otlib\mathtext.py:569
+        #6   | 2.6 %|  __init__                  ...otlib\mathtext.py:2132
+        #7   | 2.6 %|  copy                      ...tlib\pyparsing.py:459
+        #8   | 2.3 %|  __new__                   ...tlib\pyparsing.py:254
+        #9   | 1.8 %|  parseImpl                 ...tlib\pyparsing.py:2290
+        #10  | 1.6 %|  GrayOut                   ...c\NotebookCtrl.py:324
+17:53:31.22   ______
+        #1   |10.5 %|  active_start              ...psyco\profiler.py:273
+        #2   | 7.0 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #3   | 6.5 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #4   | 5.9 %|  __init__                  ...otlib\mathtext.py:569
+        #5   | 5.7 %|  __init__                  ...tlib\pyparsing.py:263
+        #6   | 3.4 %|  _parseCache               ...tlib\pyparsing.py:972
+        #7   | 2.8 %|  __new__                   ...tlib\pyparsing.py:254
+        #8   | 2.3 %|  __init__                  ...otlib\mathtext.py:2132
+        #9   | 2.3 %|  copy                      ...tlib\pyparsing.py:459
+        #10  | 1.6 %|  parseImpl                 ...tlib\pyparsing.py:2290
+17:53:31.33  tag function: wx.lib.agw.aui.aui_utilities.MakeDisabledBitmap %
+17:53:31.33  unsupported ** argument in call to ConvertToImage           % %
+17:53:31.33  unsupported ** argument in call to HasMask                  % %
+17:53:31.33  unsupported ** argument in call to GetMaskRed               % %
+17:53:31.33  unsupported ** argument in call to GetMaskGreen             % %
+17:53:31.33  unsupported ** argument in call to GetMaskBlue              % %
+17:53:31.33  unsupported ** argument in call to GetData                  % %
+17:53:31.33  unsupported ** argument in call to GetData                  % %
+17:53:31.33  unsupported free or cell vars in MakeGray                   % %
+17:53:31.33  unsupported ** argument in call to SetData                  % %
+17:53:31.33  unsupported ** argument in call to ConvertToBitmap          % %
+17:53:31.35  tag function: wx.lib.agw.aui.aui_utilities.<lambda>           %
+17:53:31.35  unsupported opcode 136 at <lambda>:10                       % %
+17:53:31.42   ______
+        #1   | 7.2 %|  MakeGray                  ...\aui_utilities.py:224
+        #2   | 6.9 %|  active_start              ...psyco\profiler.py:273
+        #3   | 4.6 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #4   | 4.3 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #5   | 3.9 %|  __init__                  ...otlib\mathtext.py:569
+        #6   | 3.7 %|  __init__                  ...tlib\pyparsing.py:263
+        #7   | 2.6 %|  <lambda>                  ...\aui_utilities.py:236
+        #8   | 2.3 %|  _parseCache               ...tlib\pyparsing.py:972
+        #9   | 2.2 %|  AddTool                   ...agw\aui\auibar.py:1779
+        #10  | 1.9 %|  __new__                   ...tlib\pyparsing.py:254
+17:53:31.59  unsupported free or cell vars in MakeGray                   % %
+17:53:31.59  unsupported free or cell vars in MakeGray                   % %
+17:53:31.59  unsupported ** argument in call to SetData                  % %
+17:53:31.59  unsupported ** argument in call to ConvertToBitmap          % %
+17:53:31.62   ______
+        #1   | 7.4 %|  MakeGray                  ...\aui_utilities.py:224
+        #2   | 5.8 %|  <lambda>                  ...\aui_utilities.py:236
+        #3   | 4.6 %|  active_start              ...psyco\profiler.py:273
+        #4   | 4.3 %|  get_aliases               ...plotlib\artist.py:796
+        #5   | 3.1 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #6   | 2.9 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #7   | 2.6 %|  __init__                  ...otlib\mathtext.py:569
+        #8   | 2.5 %|  __init__                  ...tlib\pyparsing.py:263
+        #9   | 1.7 %|  __init__                  ...tplotlib\lines.py:163
+        #10  | 1.6 %|  AddTool                   ...agw\aui\auibar.py:1779
+17:53:31.64  tag function: wx.lib.agw.aui.aui_utilities.MakeGray           %
+17:53:31.64  unsupported opcode 135 at MakeGray:31                       % %
+17:53:31.64  tag function: wx.lib.agw.aui.aui_utilities.<lambda>           %
+17:53:31.82   ______
+        #1   | 4.6 %|  get_aliases               ...plotlib\artist.py:796
+        #2   | 3.5 %|  active_start              ...psyco\profiler.py:273
+        #3   | 2.3 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #4   | 2.2 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #5   | 2.0 %|  __init__                  ...otlib\mathtext.py:569
+        #6   | 1.9 %|  __init__                  ...tplotlib\lines.py:163
+        #7   | 1.9 %|  __init__                  ...tlib\pyparsing.py:263
+        #8   | 1.8 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #9   | 1.6 %|  <lambda>                  ...\aui_utilities.py:236
+        #10  | 1.5 %|  AddTool                   ...agw\aui\auibar.py:1779
+17:53:32.02   ______
+        #1   | 4.7 %|  getIsoPhase               ...1\src\graphmpl.py:7725
+        #2   | 4.0 %|  get_aliases               ...plotlib\artist.py:796
+        #3   | 3.0 %|  active_start              ...psyco\profiler.py:273
+        #4   | 2.0 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #5   | 1.9 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #6   | 1.7 %|  _fix_real_lt_zero         ...py\lib\scimath.py:91
+        #7   | 1.7 %|  __init__                  ...otlib\mathtext.py:569
+        #8   | 1.7 %|  __init__                  ...tplotlib\lines.py:163
+        #9   | 1.6 %|  __init__                  ...tlib\pyparsing.py:263
+        #10  | 1.6 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+17:53:32.21  tag function: graphmpl.getIsoPhase                            %
+17:53:32.21  unsupported opcode 81 at getIsoPhase:336                    % %
+17:53:32.22   ______
+        #1   | 3.7 %|  log10                     ...py\lib\scimath.py:257
+        #2   | 3.4 %|  get_aliases               ...plotlib\artist.py:796
+        #3   | 3.3 %|  _fix_real_lt_zero         ...py\lib\scimath.py:91
+        #4   | 2.5 %|  active_start              ...psyco\profiler.py:273
+        #5   | 2.3 %|  getIsoPhases              ...1\src\graphmpl.py:7713
+        #6   | 1.7 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #7   | 1.6 %|  _parseNoCache             ...tlib\pyparsing.py:892
+        #8   | 1.4 %|  __init__                  ...otlib\mathtext.py:569
+        #9   | 1.4 %|  __init__                  ...tplotlib\lines.py:163
+        #10  | 1.4 %|  __init__                  ...tlib\pyparsing.py:263
+17:53:32.42   ______
+        #1   | 6.8 %|  <lambda>                  ...\aui_utilities.py:236
+        #2   | 4.5 %|  MakeGray                  ...\aui_utilities.py:224
+        #3   | 3.7 %|  getIsoPhase               ...1\src\graphmpl.py:7725
+        #4   | 3.6 %|  _fix_real_lt_zero         ...py\lib\scimath.py:91
+        #5   | 3.5 %|  log10                     ...py\lib\scimath.py:257
+        #6   | 3.3 %|  get_aliases               ...plotlib\artist.py:796
+        #7   | 2.4 %|  getIsoPhases              ...1\src\graphmpl.py:7713
+        #8   | 1.9 %|  active_start              ...psyco\profiler.py:273
+        #9   | 1.9 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #10  | 1.5 %|  isreal                    ...lib\type_check.py:205
+17:53:32.44  tag function: wx.lib.agw.aui.aui_utilities.<lambda>           %
+17:53:32.62   ______
+        #1   | 6.8 %|  MakeGray                  ...\aui_utilities.py:224
+        #2   | 4.7 %|  get_aliases               ...plotlib\artist.py:796
+        #3   | 3.0 %|  <lambda>                  ...\aui_utilities.py:236
+        #4   | 2.9 %|  getIsoPhase               ...1\src\graphmpl.py:7725
+        #5   | 2.8 %|  _fix_real_lt_zero         ...py\lib\scimath.py:91
+        #6   | 2.7 %|  log10                     ...py\lib\scimath.py:257
+        #7   | 2.2 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #8   | 1.9 %|  getIsoPhases              ...1\src\graphmpl.py:7713
+        #9   | 1.6 %|  __init__                  ...tplotlib\lines.py:163
+        #10  | 1.5 %|  active_start              ...psyco\profiler.py:273
+17:53:32.67  tag function: wx.lib.agw.aui.aui_utilities.MakeGray           %
+17:53:32.68  tag function: wx.lib.agw.aui.aui_utilities.<lambda>           %
+17:53:32.84   ______
+        #1   | 3.6 %|  get_aliases               ...plotlib\artist.py:796
+        #2   | 3.2 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #3   | 3.1 %|  MakeGray                  ...\aui_utilities.py:224
+        #4   | 2.8 %|  <lambda>                  ...\aui_utilities.py:236
+        #5   | 2.2 %|  getIsoPhase               ...1\src\graphmpl.py:7725
+        #6   | 2.1 %|  _fix_real_lt_zero         ...py\lib\scimath.py:91
+        #7   | 2.0 %|  log10                     ...py\lib\scimath.py:257
+        #8   | 1.9 %|  __init__                  ...tplotlib\lines.py:163
+        #9   | 1.4 %|  getIsoPhases              ...1\src\graphmpl.py:7713
+        #10  | 1.2 %|  __init__                  ...plotlib\artist.py:74
+17:53:33.04   ______
+        #1   | 6.7 %|  get_aliases               ...plotlib\artist.py:796
+        #2   | 5.4 %|  <lambda>                  ...\aui_utilities.py:236
+        #3   | 4.4 %|  MakeGray                  ...\aui_utilities.py:224
+        #4   | 2.8 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #5   | 2.3 %|  __init__                  ...tplotlib\lines.py:163
+        #6   | 1.6 %|  __init__                  ...plotlib\artist.py:779
+        #7   | 1.6 %|  getIsoPhase               ...1\src\graphmpl.py:7725
+        #8   | 1.5 %|  _fix_real_lt_zero         ...py\lib\scimath.py:91
+        #9   | 1.5 %|  log10                     ...py\lib\scimath.py:257
+        #10  | 1.4 %|  __init__                  ...plotlib\artist.py:74
+17:53:33.11  tag function: wx.lib.agw.aui.aui_utilities.<lambda>           %
+17:53:33.13  tag function: wx.lib.agw.aui.aui_utilities.MakeGray           %
+17:53:33.24   ______
+        #1   | 7.4 %|  <lambda>                  ...\aui_utilities.py:236
+        #2   | 5.0 %|  get_aliases               ...plotlib\artist.py:796
+        #3   | 3.9 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #4   | 2.0 %|  MakeGray                  ...\aui_utilities.py:224
+        #5   | 1.7 %|  __init__                  ...tplotlib\lines.py:163
+        #6   | 1.3 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #7   | 1.3 %|  __init__                  ...tlib\pyparsing.py:263
+        #8   | 1.2 %|  AddTool                   ...agw\aui\auibar.py:1779
+        #9   | 1.2 %|  __init__                  ...plotlib\artist.py:779
+        #10  | 1.2 %|  _parseCache               ...tlib\pyparsing.py:972
+17:53:33.45   ______
+        #1   | 6.4 %|  <lambda>                  ...\aui_utilities.py:236
+        #2   | 4.3 %|  get_aliases               ...plotlib\artist.py:796
+        #3   | 3.7 %|  _parseCache               ...tlib\pyparsing.py:972
+        #4   | 3.4 %|  __init__                  ...otlib\mathtext.py:569
+        #5   | 3.3 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #6   | 3.2 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #7   | 2.7 %|  __init__                  ...tlib\pyparsing.py:263
+        #8   | 1.7 %|  MakeGray                  ...\aui_utilities.py:224
+        #9   | 1.5 %|  __init__                  ...tplotlib\lines.py:163
+        #10  | 1.4 %|  __new__                   ...tlib\pyparsing.py:254
+17:53:33.58  tag function: matplotlib.artist.ArtistInspector.get_aliases   %
+17:53:33.65   ______
+        #1   | 5.2 %|  <lambda>                  ...\aui_utilities.py:236
+        #2   | 3.7 %|  _parseCache               ...tlib\pyparsing.py:972
+        #3   | 3.4 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #4   | 2.9 %|  __init__                  ...tlib\pyparsing.py:263
+        #5   | 2.8 %|  __init__                  ...otlib\mathtext.py:569
+        #6   | 2.7 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #7   | 2.0 %|  __init__                  ...plotlib\artist.py:779
+        #8   | 1.7 %|  is_alias                  ...plotlib\artist.py:877
+        #9   | 1.5 %|  __new__                   ...tlib\pyparsing.py:254
+        #10  | 1.4 %|  MakeGray                  ...\aui_utilities.py:224
+17:53:33.84   ______
+        #1   | 4.0 %|  <lambda>                  ...\aui_utilities.py:236
+        #2   | 3.7 %|  _parseCache               ...tlib\pyparsing.py:972
+        #3   | 3.7 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #4   | 3.2 %|  __init__                  ...tlib\pyparsing.py:263
+        #5   | 2.2 %|  __init__                  ...otlib\mathtext.py:569
+        #6   | 2.1 %|  MakeDisabledBitmap        ...\aui_utilities.py:193
+        #7   | 1.7 %|  __new__                   ...tlib\pyparsing.py:254
+        #8   | 1.6 %|  _update_from              ...\numpy\ma\core.py:2753
+        #9   | 1.6 %|  __init__                  ...plotlib\artist.py:779
+        #10  | 1.5 %|  transform                 ...lib\transforms.py:1731
+17:53:34.04   ______
+        #1   | 3.6 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 2.9 %|  <lambda>                  ...\aui_utilities.py:236
+        #3   | 2.9 %|  transform                 ...lib\transforms.py:1731
+        #4   | 2.7 %|  _parseCache               ...tlib\pyparsing.py:972
+        #5   | 2.7 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #6   | 2.4 %|  __init__                  ...tlib\pyparsing.py:263
+        #7   | 2.1 %|  draw                      ...tplotlib\lines.py:497
+        #8   | 1.7 %|  __init__                  ...otlib\mathtext.py:569
+        #9   | 1.6 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  recache                   ...tplotlib\lines.py:420
+17:53:34.25   ______
+        #1   | 5.0 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 3.7 %|  transform                 ...lib\transforms.py:1731
+        #3   | 2.4 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.3 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.3 %|  invalidate                ...lib\transforms.py:99
+        #6   | 2.2 %|  <lambda>                  ...\aui_utilities.py:236
+        #7   | 2.0 %|  _parseCache               ...tlib\pyparsing.py:972
+        #8   | 2.0 %|  __hash__                  ...tlib\pyparsing.py:1396
+        #9   | 1.9 %|  __init__                  ...atplotlib\path.py:83
+        #10  | 1.8 %|  __init__                  ...tlib\pyparsing.py:263
+17:53:34.45   ______
+        #1   | 6.1 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.4 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.1 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.0 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.8 %|  invalidate                ...lib\transforms.py:99
+        #8   | 1.7 %|  <lambda>                  ...\aui_utilities.py:236
+        #9   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #10  | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+17:53:34.65   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.3 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:34.85   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.3 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:35.05   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.3 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:35.25   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.3 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:35.45   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.3 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:35.65   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.3 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:35.85   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.3 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:36.05   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:36.25   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:36.45   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.3 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:36.65   ______
+        #1   | 6.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.2 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:36.85   ______
+        #1   | 6.2 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.2 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.1 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.7 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.6 %|  transform                 ...lib\transforms.py:1415
+17:53:37.05   ______
+        #1   | 6.2 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.5 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.2 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.0 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #8   | 1.7 %|  concatenate               ...\numpy\ma\core.py:6136
+        #9   | 1.6 %|  invalidate                ...lib\transforms.py:99
+        #10  | 1.5 %|  transform                 ...lib\transforms.py:1415
+17:53:37.25   ______
+        #1   | 6.2 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.4 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.2 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.8 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #6   | 2.0 %|  recache                   ...tplotlib\lines.py:420
+        #7   | 2.0 %|  dumpcharges               ...s\psyco\logger.py:62
+        #8   | 1.7 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.6 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.6 %|  invalidate                ...lib\transforms.py:99
+17:53:37.45   ______
+        #1   | 6.1 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.4 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.2 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 2.8 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 2.8 %|  dumpcharges               ...s\psyco\logger.py:62
+        #6   | 2.2 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 2.0 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.6 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.6 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.6 %|  invalidate                ...lib\transforms.py:99
+17:53:37.65   ______
+        #1   | 6.0 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.3 %|  transform                 ...lib\transforms.py:1731
+        #3   | 3.4 %|  dumpcharges               ...s\psyco\logger.py:62
+        #4   | 3.1 %|  draw                      ...tplotlib\lines.py:497
+        #5   | 2.8 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #6   | 2.1 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 2.0 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.8 %|  do_profile                ...psyco\profiler.py:314
+        #9   | 1.6 %|  draw_wrapper              ...plotlib\artist.py:53
+        #10  | 1.6 %|  concatenate               ...\numpy\ma\core.py:6136
+17:53:37.85   ______
+        #1   | 5.9 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 4.3 %|  transform                 ...lib\transforms.py:1731
+        #3   | 4.2 %|  dumpcharges               ...s\psyco\logger.py:62
+        #4   | 3.1 %|  draw                      ...tplotlib\lines.py:497
+        #5   | 2.7 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #6   | 2.2 %|  do_profile                ...psyco\profiler.py:314
+        #7   | 2.1 %|  __init__                  ...atplotlib\path.py:83
+        #8   | 2.0 %|  recache                   ...tplotlib\lines.py:420
+        #9   | 1.6 %|  draw_wrapper              ...plotlib\artist.py:53
+        #10  | 1.6 %|  concatenate               ...\numpy\ma\core.py:6136
+17:53:38.05   ______
+        #1   | 5.8 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 5.3 %|  dumpcharges               ...s\psyco\logger.py:62
+        #3   | 4.2 %|  transform                 ...lib\transforms.py:1731
+        #4   | 3.4 %|  do_profile                ...psyco\profiler.py:314
+        #5   | 3.0 %|  draw                      ...tplotlib\lines.py:497
+        #6   | 2.7 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #7   | 2.1 %|  __init__                  ...atplotlib\path.py:83
+        #8   | 1.9 %|  recache                   ...tplotlib\lines.py:420
+        #9   | 1.6 %|  draw_wrapper              ...plotlib\artist.py:53
+        #10  | 1.5 %|  concatenate               ...\numpy\ma\core.py:6136
+17:53:38.25   ______
+        #1   | 6.5 %|  dumpcharges               ...s\psyco\logger.py:62
+        #2   | 5.6 %|  _update_from              ...\numpy\ma\core.py:2753
+        #3   | 4.9 %|  do_profile                ...psyco\profiler.py:314
+        #4   | 4.0 %|  transform                 ...lib\transforms.py:1731
+        #5   | 2.9 %|  draw                      ...tplotlib\lines.py:497
+        #6   | 2.6 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #7   | 2.0 %|  __init__                  ...atplotlib\path.py:83
+        #8   | 1.9 %|  recache                   ...tplotlib\lines.py:420
+        #9   | 1.5 %|  draw_wrapper              ...plotlib\artist.py:53
+        #10  | 1.5 %|  concatenate               ...\numpy\ma\core.py:6136
+17:53:38.30  tag function: psyco.logger.dumpcharges                        %
+17:53:38.45   ______
+        #1   | 7.7 %|  do_profile                ...psyco\profiler.py:314
+        #2   | 5.3 %|  _update_from              ...\numpy\ma\core.py:2753
+        #3   | 3.8 %|  transform                 ...lib\transforms.py:1731
+        #4   | 2.7 %|  draw                      ...tplotlib\lines.py:497
+        #5   | 2.4 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #6   | 1.9 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 1.7 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.4 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.4 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.4 %|  invalidate                ...lib\transforms.py:99
+17:53:38.65   ______
+        #1   | 8.9 %|  do_profile                ...psyco\profiler.py:314
+        #2   | 5.2 %|  _update_from              ...\numpy\ma\core.py:2753
+        #3   | 3.7 %|  transform                 ...lib\transforms.py:1731
+        #4   | 2.7 %|  draw                      ...tplotlib\lines.py:497
+        #5   | 2.4 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #6   | 1.9 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 1.7 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.4 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.4 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.4 %|  invalidate                ...lib\transforms.py:99
+17:53:38.80  tag function: psyco.profiler.buildfncache                     %
+17:53:38.81  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:38.86   ______
+        #1   | 4.0 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 2.9 %|  transform                 ...lib\transforms.py:1731
+        #3   | 2.1 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 1.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 1.5 %|  tag                       ...psyco\profiler.py:109
+        #6   | 1.4 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 1.3 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.1 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.1 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.1 %|  invalidate                ...lib\transforms.py:99
+17:53:39.06   ______
+        #1   | 4.0 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 2.9 %|  transform                 ...lib\transforms.py:1731
+        #3   | 2.1 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 1.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 1.5 %|  tag                       ...psyco\profiler.py:109
+        #6   | 1.4 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 1.3 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.1 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.1 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.1 %|  invalidate                ...lib\transforms.py:99
+17:53:39.26   ______
+        #1   | 4.0 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 2.9 %|  transform                 ...lib\transforms.py:1731
+        #3   | 2.1 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 1.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 1.5 %|  tag                       ...psyco\profiler.py:109
+        #6   | 1.4 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 1.3 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.1 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.1 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.1 %|  invalidate                ...lib\transforms.py:99
+17:53:39.46   ______
+        #1   | 4.0 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 2.9 %|  transform                 ...lib\transforms.py:1731
+        #3   | 2.1 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 1.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 1.5 %|  tag                       ...psyco\profiler.py:109
+        #6   | 1.4 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 1.3 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.1 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.1 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.1 %|  invalidate                ...lib\transforms.py:99
+17:53:39.66   ______
+        #1   | 4.0 %|  _update_from              ...\numpy\ma\core.py:2753
+        #2   | 2.9 %|  transform                 ...lib\transforms.py:1731
+        #3   | 2.1 %|  draw                      ...tplotlib\lines.py:497
+        #4   | 1.9 %|  __array_finalize__        ...\numpy\ma\core.py:2778
+        #5   | 1.5 %|  tag                       ...psyco\profiler.py:109
+        #6   | 1.4 %|  __init__                  ...atplotlib\path.py:83
+        #7   | 1.3 %|  recache                   ...tplotlib\lines.py:420
+        #8   | 1.1 %|  draw_wrapper              ...plotlib\artist.py:53
+        #9   | 1.1 %|  concatenate               ...\numpy\ma\core.py:6136
+        #10  | 1.1 %|  invalidate                ...lib\transforms.py:99
+17:53:39.70  tag function: wx.lib.agw.aui.auibar.AuiToolBar.DoIdleUpdate   %
+17:53:39.71  tag function: psyco.profiler.buildfncache                     %
+17:53:39.73  tag function: wx._core.UpdateUIEvent.__init__                 %
+17:53:39.73  tag function: wx.lib.agw.aui.auibar.AuiToolBar.DoIdleUpdate   %
+17:53:39.73  unsupported ** argument in call to GetEventHandler          % %
+17:53:39.73  unsupported ** argument in call to __init__                 % %
+17:53:39.73  unsupported ** argument in call to SetEventObject           % %
+17:53:39.73  unsupported ** argument in call to ProcessEvent             % %
+17:53:39.73  unsupported ** argument in call to GetSetEnabled            % %
+17:53:39.73  unsupported ** argument in call to __init__                 % %
+17:53:39.73  unsupported ** argument in call to SetEventObject           % %
+17:53:39.73  unsupported ** argument in call to ProcessEvent             % %
+17:53:39.73  unsupported ** argument in call to GetSetEnabled            % %
+17:53:39.73  unsupported ** argument in call to GetEventHandler          % %
+17:53:39.73  unsupported ** argument in call to __init__                 % %
+17:53:39.73  unsupported ** argument in call to SetEventObject           % %
+17:53:39.73  unsupported ** argument in call to ProcessEvent             % %
+17:53:39.73  unsupported ** argument in call to GetSetEnabled            % %
+17:53:39.73  unsupported ** argument in call to __init__                 % %
+17:53:39.73  unsupported ** argument in call to SetEventObject           % %
+17:53:39.73  unsupported ** argument in call to ProcessEvent             % %
+17:53:39.73  unsupported ** argument in call to GetSetEnabled            % %
+17:53:39.86   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:40.06   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:40.26   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:40.46   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:40.66   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:40.86   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:41.06   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:41.26   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:41.46   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:41.66   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:41.86   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:42.06   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:42.26   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:42.46   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:42.66   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:42.86   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:43.06   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:43.26   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:43.46   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:43.61  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:43.66   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:43.86   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:44.06   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:44.26   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:44.46   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:44.66   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:44.86   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:45.06   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:45.26   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:45.47   ______
+        #1   | 0.2 %|  ProcessEvent              ...icode\wx\_core.py:3861
+        #2   | 0.2 %|  psycowrite                ...s\psyco\logger.py:34
+        #3   | 0.1 %|  SetEventObject            ...icode\wx\_core.py:4396
+        #4   | 0.1 %|  DoIdleUpdate              ...agw\aui\auibar.py:3215
+        #5   | 0.1 %|  OnIdle                    ...agw\aui\auibar.py:3363
+17:53:45.61  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:47.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:49.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:51.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:53.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:55.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:57.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:53:59.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:01.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:03.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:05.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:07.62  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:08.51  tag function: wx._core.EvtHandler.ProcessEvent                %
+17:54:08.51  tag function: wx._core.Event.SetEventObject                   %
+17:54:08.51  tag function: matplotlib.backend_bases.FigureCanvasBase.idle_event%
+17:54:08.51  tag function: matplotlib.backend_bases.Event.__init__         %
+17:54:08.51  unsupported ** argument in call to process                  % %
+17:54:08.62   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:08.82   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:09.02   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:09.22   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:09.42   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:09.62   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:09.82   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:10.02   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:10.22   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:10.42   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:10.62   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:10.82   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:11.02   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:11.22   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:11.42   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:11.62   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:11.82   ______
+        #1   | 3.6 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 2.7 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 1.8 %|  __init__                  ...\backend_bases.py:1024
+17:54:11.97  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:12.02   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:12.22   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:12.42   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:12.62   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:12.82   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:13.02   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:13.22   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:13.43   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:13.63   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:13.83   ______
+        #1   | 1.1 %|  <lambda>                  ...icode\wx\_core.py:4369
+        #2   | 0.8 %|  idle_event                ...\backend_bases.py:1614
+        #3   | 0.5 %|  __init__                  ...\backend_bases.py:1024
+17:54:13.98  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:15.98  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:17.98  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:19.98  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:21.98  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:23.98  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:25.98  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:27.98  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:29.84  ActivePassiveProfiler: resetting stats                        %
+17:54:29.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:31.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:33.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:35.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:37.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:39.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:41.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:43.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:45.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:47.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:49.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:51.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:53.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:55.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:57.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:54:59.99  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:02.00  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:04.00  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:06.00  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:08.00  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:10.00  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:12.02  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:14.02  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:16.02  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:18.02  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:20.02  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:22.02  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:24.02  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:26.18  tag function: psyco.profiler.PassiveProfiler.do_profile       %
+17:55:26.78  tag function: wx.lib.agw.aui.framemanager.AuiManager.ActivatePane%
+17:55:26.78  tag function: wx.lib.agw.aui.framemanager.AuiManager.OnChildFocus%
+17:55:26.78  unsupported ** argument in call to GetWindow                % %
+17:55:26.78  unsupported ** argument in call to Skip                     % %
+17:55:26.78  unsupported ** argument in call to GetParent                % %
+17:55:26.78  unsupported ** argument in call to Skip                     % %
+17:55:26.78  unsupported ** argument in call to GetParent                % %
+17:55:26.78  unsupported ** argument in call to Skip                     % %
+17:55:26.78  unsupported ** argument in call to GetParent                % %
+17:55:26.78  unsupported ** argument in call to Skip                     % %
+17:55:26.78  memory usage: 2349+ kb                                        %
+17:55:26.78  program exit, 04/03/11                     %%%%%%%%%%%%%%%%%%%%
