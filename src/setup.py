@@ -43,7 +43,7 @@ shutil.rmtree("build", ignore_errors=True)
 # Inculsion des fichiers de données
 #################################################################################################
 includefiles = [#('D:/Developpement/Microsoft.VC90.CRT', "Microsoft.VC90.CRT"),
-                '../LICENSE.txt',
+                ('../LICENSE.txt','../LICENSE.txt'),
                 ('../locale', '../locale'), 
                 ( matplotlib.get_data_path(),"mpl-data")
                                           ]
@@ -56,12 +56,13 @@ includefiles = [#('D:/Developpement/Microsoft.VC90.CRT', "Microsoft.VC90.CRT"),
 
 # Dependencies are automatically detected, but it might need fine tuning.
 build_exe_options = {'build_exe': 'build/bin',
-                     "packages": ["os", 'pytz', 'scipy'],
+                     "packages": ["os", 'pytz'],#, 'scipy'],
                      "includes": ["encodings.ascii",
-                                  'scipy.special._ufuncs_cxx', 
-                                  'scipy.integrate.vode', 
-                                  "scipy.integrate.lsoda",
-                                  "scipy.sparse.csgraph._validation",
+#                                   "scipy",
+                                'scipy.special._ufuncs_cxx', 
+                                'scipy.integrate.vode', 
+                                "scipy.integrate.lsoda",
+                                "scipy.sparse.csgraph._validation",
                                   "numpy.lib.format", ],
                 
                      "optimize" : 0,
@@ -78,6 +79,7 @@ build_exe_options = {'build_exe': 'build/bin',
                                   "PyQt4", "PyQt4.QtGui","PyQt4._qt",
                                   "PyQt5", "PyQt5.QtGui","PyQt5._qt",
                                   'PIL','_ssl', '_hashlib',
+                                  'collections.abc',
                                   # Modules Matplotlib à enlever pour alléger : (à la main !!)
 
 #                                  'scipy.lib.lapack.flapack', 
@@ -105,7 +107,7 @@ if not "beta" in __version__:
     if sys.platform == "win32":
         base = "Win32GUI"
 
-icon = "D:\\Developpement\\PySyLic\\PySyLiC 0.31\\Images\\icone.ico"
+icon = "C:/Users/Cedrick/Documents/Developp/pySyLiC/Images/icone.ico"
 cible = Executable(
     script = "PySylic.py",
     targetName="pySyLiC.exe",
@@ -141,7 +143,10 @@ A_enlever = ['scipy.lib.lapack.flapack.pyd',
 for f in A_enlever:
     f = os.path.join("build", "bin", f)
     print "Suppression de", f
-    os.remove(f)
+    try:
+        os.remove(f)
+    except:
+        print "   pas trouvé"
 
 
 

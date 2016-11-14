@@ -5411,12 +5411,14 @@ class A_propos(wx.Dialog):
         licence = wx.Panel(nb, -1)
         s = wx.BoxSizer(wx.VERTICAL)
         try:
-            txt = open(os.path.join(globdef.PATH, "LICENSE.txt"))
+            f = os.path.join(globdef.PATH, "LICENSE.txt")
+            txt = open(f)
             lictext = txt.read()
             txt.close()
         except:
-            lictext = _(u"Le fichier LICENSE.txt est introuvable !\n" \
-                        u"Veuillez réinstaller pySyLiC !")
+            lictext = _(u"Le fichier licence est introuvable !\n\n" \
+                        u"%s\n"
+                        u"Veuillez réinstaller pySyLiC !" %f)
             dlg = wx.MessageDialog(self, lictext,
                                _('Licence introuvable'),
                                wx.OK | wx.ICON_ERROR
