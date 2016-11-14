@@ -37,7 +37,7 @@ Copyright (C) 2015
 
 __appname__= "pySyLiC"
 __author__ = u"Cédrick FAURY"
-__version__ = "0.38"
+__version__ = "0.39"
 print __version__
 
 

@@ -5354,12 +5354,12 @@ class WinDecompose(wx.MiniFrame):
 #############################################################################################################
 class A_propos(wx.Dialog):
     def __init__(self, parent):
-        wx.Dialog.__init__(self, parent, -1, _(u"A propos de ")+globdef.APP_NAME)
+        wx.Dialog.__init__(self, parent, -1, _(u"A propos de ")+version.__appname__)
         
         self.app = parent
         
         sizer = wx.BoxSizer(wx.VERTICAL)
-        titre = wx.StaticText(self, -1, globdef.APP_NAME)
+        titre = wx.StaticText(self, -1, version.__appname__)
         titre.SetFont(wx.Font(14, wx.DEFAULT, wx.NORMAL, wx.BOLD, False))
         titre.SetForegroundColour(wx.NamedColour("BROWN"))
         sizer.Add(titre, border = 10)
@@ -5388,6 +5388,7 @@ class A_propos(wx.Dialog):
                       (_(u"Remerciements : "),(_(u"Marc BATTILANA\n    pour la définitions des IsoGains et IsoPhases,\n    ainsi que pour son soutien ..."),
                                                _(u"Bruno CAUSSE\n    pour ses rapports de bug\n    et ses suggestions pertinentes ..."),
                                                _(u"Vincent CRESPEL\n    pour son aide\n    lors de l'ajout du déphasage"),
+                                               _(u"Philippe TRENTY\n    remarquable chasseur de bugs"),
                                                _(u"Et tous ceux qui m'ont encouragé !"))))#, 
 
 
@@ -5408,12 +5409,13 @@ class A_propos(wx.Dialog):
         # licence
         #---------
         licence = wx.Panel(nb, -1)
+        s = wx.BoxSizer(wx.VERTICAL)
         try:
-            txt = open(os.path.join(globdef.PATH, "gpl.txt"))
+            txt = open(os.path.join(globdef.PATH, "LICENSE.txt"))
             lictext = txt.read()
             txt.close()
         except:
-            lictext = _(u"Le fichier gpl.txt est introuvable !\n" \
+            lictext = _(u"Le fichier LICENSE.txt est introuvable !\n" \
                         u"Veuillez réinstaller pySyLiC !")
             dlg = wx.MessageDialog(self, lictext,
                                _('Licence introuvable'),
@@ -5424,15 +5426,18 @@ class A_propos(wx.Dialog):
             dlg.Destroy()
             
             
-        wx.TextCtrl(licence, -1, lictext, size = (400, -1), 
-                    style = wx.TE_READONLY|wx.TE_MULTILINE|wx.BORDER_NONE )
         
-
+        
+        s.Add(wx.TextCtrl(licence, -1, lictext, size = (400, -1), 
+                    style = wx.TE_READONLY|wx.TE_MULTILINE|wx.BORDER_NONE ),
+              1, flag = wx.EXPAND)
+        licence.SetSizer(s)
         
         # Description
         #-------------
         descrip = wx.Panel(nb, -1)
-        wx.TextCtrl(descrip, -1, wordwrap(_(u"pySyLiC (py pour python - Systèmes Linéaires Continus) \n"
+        s = wx.BoxSizer(wx.VERTICAL)
+        s.Add(wx.TextCtrl(descrip, -1, wordwrap(_(u"pySyLiC (py pour python - Systèmes Linéaires Continus) \n"
                                             u"permet d'analyser graphiquement les réponses harmoniques et temporelles de Systèmes Linéaires Continus et Invariants.\n\n"
                                             u"Il propose :\n"
                                             u" - un tracé des lieux de Bode, de Black et de Nyquist des Fonctions de Transfert caractéristiques du système (décomposition en 'sous fonctions' de transfert, tracé des asymptotes, ...)\n"
@@ -5444,14 +5449,20 @@ class A_propos(wx.Dialog):
                                             u"Il a été conçu de telle sorte que son utilisation soit la plus intuitive possible."),
                                             500, wx.ClientDC(self)),
                         size = (400, -1),
-                        style = wx.TE_READONLY|wx.TE_MULTILINE|wx.BORDER_NONE) 
+                        style = wx.TE_READONLY|wx.TE_MULTILINE|wx.BORDER_NONE),
+              1,  flag = wx.EXPAND)
+        descrip.SetSizer(s)
+        
+        
+        
+        
         
         nb.AddPage(descrip, _(u"Description"))
         nb.AddPage(auteurs, _(u"Auteurs"))
         nb.AddPage(licence, _(u"Licence"))
         
-        sizer.Add(hl.HyperLinkCtrl(self, wx.ID_ANY, _(u"Informations et téléchargement : http://www.cemanted.fr/pySyLiC/"),
-                                   URL="http://www.cemanted.fr/pySyLiC/"),  
+        sizer.Add(hl.HyperLinkCtrl(self, wx.ID_ANY, _(u"Informations et téléchargement : https://github.com/cedrick-f/pySyLiC"),
+                                   URL="https://github.com/cedrick-f/pySyLiC"),  
                   flag = wx.ALIGN_RIGHT|wx.ALL, border = 5)
         sizer.Add(nb)
         
