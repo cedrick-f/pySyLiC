@@ -6,6 +6,9 @@
 #    Script pour générer un pack avec executable :
 #    c:\python27\python setup.py build
 #
+#    Liens utiles en cas de problème :
+#        http://stackoverflow.com/questions/32432887/cx-freeze-importerror-no-module-named-scipy (!! IMPORTANT !!)
+#
 ##################################################################################################
 
 import sys, os
