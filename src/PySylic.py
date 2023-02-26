@@ -45,7 +45,7 @@ else:
     reload(sys)  # Reload does the trick!
     sys.setdefaultencoding('utf-8')
     
-print sys.getdefaultencoding()
+print(sys.getdefaultencoding())
 
 try:
     from agw import advancedsplash as AdvancedSplash 
@@ -172,7 +172,7 @@ if __name__ == "__main__":
 # On crée d'abord la variable d'environnement HOME qui peut être nécessaire à matplotlib
 import user
 os.environ['HOME'] = globdef.APP_DATA_PATH
-print "user.home", user.home
+print("user.home", user.home)
 import Principal
 
 
@@ -189,7 +189,7 @@ if __name__ == "__main__":
         if HAVE_PSYCO:
 #            import psyco ; psyco.jit() 
 #            from psyco.classes import *
-            print "Psyco !!!"
+            print("Psyco !!!")
             
             if globdef.DEBUG: 
                 PSYCO_LOG = os.path.join(globdef.APP_DATA_PATH, sys.argv[0]+'.log-psyco')

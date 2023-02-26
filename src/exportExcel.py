@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2012 Cédrick FAURY
+## Copyright (C) 2009-2012 CÃ©drick FAURY
 
 #    pySyLiC is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -38,9 +38,9 @@ def createBook(nomFichier, graph):
 #    elif isinstance(graph, ZoneGraphNyquist):
 #        nom = 'Nyquist'
 #    elif isinstance(graph, ZoneGraphReponse):
-#        nom = 'Réponse'
+#        nom = 'RÃ©ponse'
 #    elif isinstance(graph, ZoneGraphPoles):
-#        nom = 'Pôles'
+#        nom = 'PÃ´les'
     contenu, images = graph.getContenuExport()
     print nomFichier
     createSheet(book, nom, contenu, images)

@@ -12,8 +12,8 @@ class Target:
         self.__dict__.update(kw)
         # for the versioninfo resources
         self.version = "0.32.2"
-        self.company_name = u"Cédrick FAURY"
-        self.copyright = u"copyright (c) 2009-2011 Cédrick FAURY"
+        self.company_name = u"CÃ©drick FAURY"
+        self.copyright = u"copyright (c) 2009-2011 CÃ©drick FAURY"
         self.name = "pySyLiC"
 
 

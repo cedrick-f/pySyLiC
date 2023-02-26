@@ -14,7 +14,7 @@ shutil.rmtree("dist", ignore_errors=True)
 
 from glob import glob
 
-# Inculsion des fichiers de données
+# Inculsion des fichiers de donnÃ©es
 #################################################################################################
 # Fichiers MSVC
 data_files = [("Microsoft.VC90.CRT", glob(r'msvcr90.dll')), 

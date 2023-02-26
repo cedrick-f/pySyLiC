@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2012 Cédrick FAURY
+## Copyright (C) 2009-2012 Cï¿½drick FAURY
 
 #    pySyLiC is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -37,31 +37,31 @@ import getpass
 
 #
 # Les deuxlignes suivantes permettent de lancer le script pysylic.py depuis n'importe
-# quel répertoire (par exemple : C:\python .\0.3\pysylic.py) sans que l'utilisation de chemins
-# relatifs ne soit perturbée
+# quel rï¿½pertoire (par exemple : C:\python .\0.3\pysylic.py) sans que l'utilisation de chemins
+# relatifs ne soit perturbï¿½e
 #
 PATH = os.path.dirname(os.path.abspath(sys.argv[0]))
 PATH = os.path.split(PATH)[0]
 os.chdir(PATH)
 sys.path.append(PATH)
-print "Dossier de l'application :",PATH
+print("Dossier de l'application :",PATH)
 
 # 
-# On récupère là le dossier "Application data" 
-# où devra être enregistré le fichier .cfg de pysylic
+# On rï¿½cupï¿½re lï¿½ le dossier "Application data" 
+# oï¿½ devra ï¿½tre enregistrï¿½ le fichier .cfg de pysylic
 #
 if sys.platform == 'win32':
     import _winreg
 #    import win32api
 #    import win32con
-    # On récupère le répertoire d'installation de pySyLiC
+    # On rï¿½cupï¿½re le rï¿½pertoire d'installation de pySyLiC
     try:
         regkey = _winreg.OpenKey( _winreg.HKEY_CLASSES_ROOT, 'pySyLiC.system\DefaultIcon', 0, _winreg.KEY_READ )
         (value,keytype) = _winreg.QueryValueEx(regkey , '') 
         INSTALL_PATH = os.path.dirname(value)
         print "INSTALL_PATH", INSTALL_PATH
     except:
-        INSTALL_PATH = None # Pas installé sur cet ordi
+        INSTALL_PATH = None # Pas installï¿½ sur cet ordi
         
     PORTABLE = INSTALL_PATH != os.path.join(PATH , "images")
 
@@ -80,7 +80,7 @@ if sys.platform == 'win32':
             
         except:
             import wx
-            dlg = wx.MessageDialog(None, u"L'installation de pySyLiC est incorrecte !\nVeuillez désinstaller pySequence puis le réinstaller." ,
+            dlg = wx.MessageDialog(None, u"L'installation de pySyLiC est incorrecte !\nVeuillez dï¿½sinstaller pySequence puis le rï¿½installer." ,
                                    u"Installation incorrecte",
                                    wx.OK | wx.ICON_WARNING
                                    #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
@@ -106,7 +106,7 @@ else:
 #    os.environ['MPLCONFIGDIR'] = os.path.join(PATH, 'bin', 'mpl-data')
 
 # Ce qui suit renvoie : C:\Users\Cedrick\AppData\Roaming\pySyLiC
-# Permission refusée d'y enregistrer les options !!
+# Permission refusï¿½e d'y enregistrer les options !!
 #APP_DATA_PATH = os.path.join(os.environ[u'appdata'], u'pySyLiC')
 
 print "Dossier des donnees", APP_DATA_PATH
@@ -122,7 +122,7 @@ print "Dossier Locale", LOCALEDIR
 LANG = "" # "" = langage par defaut
 #print "  defaultlocale", locale.getdefaultlocale()[0][:2]
 
-# On déclare le nom _
+# On dï¿½clare le nom _
 #__builtins__._ = lambda text:text
 gettext.install("pysylic", LOCALEDIR)
 
@@ -138,37 +138,37 @@ def SetInternationalization():
         #locale.setlocale(locale.LC_ALL,'en')
         cur_lang.install()
     except IOError:
-        # Si la langue locale n'est pas supportée, on définit tout de même _()
-        # On le fait dans les __builtins__ pour que la fonction soit définie dans
-        # les modules importés (c'est ce que fait gettext.install()).
-        print "Langue", LANG, "non suportée !"
+        # Si la langue locale n'est pas supportï¿½e, on dï¿½finit tout de mï¿½me _()
+        # On le fait dans les __builtins__ pour que la fonction soit dï¿½finie dans
+        # les modules importï¿½s (c'est ce que fait gettext.install()).
+        print "Langue", LANG, "non suportï¿½e !"
 
-listLang = {"fr" : u"Français",
+listLang = {"fr" : u"Franï¿½ais",
             "en" : u"English",
-            ""   : _(u"défaut")}
+            ""   : _(u"dï¿½faut")}
 
 def GetInstalledLang():
 #    from babel import Locale, core
     langs = ["fr", ""]
 
-#    # Tester la localisation en vigueur sur ce système
+#    # Tester la localisation en vigueur sur ce systï¿½me
 #    lc, encoding = locale.getdefaultlocale()
 #    if (lc):
-#            # Si une localisation par défaut existe,
+#            # Si une localisation par dï¿½faut existe,
 #            # la mettre en premier dans la liste
 #            langs += [lc]
 #    print langs
-#    # Maintenant, récupérer la liste des langages du système
+#    # Maintenant, rï¿½cupï¿½rer la liste des langages du systï¿½me
 #    language = os.environ.get('LANGUAGE', None)
 #    if (language):
-#            # language contient une chaîne du style en_CA:en_US:en_GB:en
-#            # pour un system Linux, sur Windows c'est vide. Il faut découper
-#            # la chaîne en une liste
+#            # language contient une chaï¿½ne du style en_CA:en_US:en_GB:en
+#            # pour un system Linux, sur Windows c'est vide. Il faut dï¿½couper
+#            # la chaï¿½ne en une liste
 #            langs += language.split(":")
     
     langs += os.listdir(LOCALEDIR)
     
-    # Ajouter les traductions installées
+    # Ajouter les traductions installï¿½es
     noms = {}
     for n in langs:
         l = n.split("_")[0]
@@ -195,7 +195,7 @@ print "Langues installees :",INSTALLED_LANG
 #    print locale.normalize(n)
 
 
-# Test des langues installées
+# Test des langues installï¿½es
 #languages = []
 #for envar in ('LANGUAGE', 'LC_ALL', 'LC_MESSAGES', 'LANG'):
 #    print envar,
@@ -220,7 +220,7 @@ FONT_TYPE = 2
 
 ##########################################################################################################
 #
-# Constantes utilisées en OPTIONS de pySyLiC
+# Constantes utilisï¿½es en OPTIONS de pySyLiC
 #
 ##########################################################################################################
 
@@ -268,14 +268,14 @@ def DefOptionsDefaut():
     from LineFormat import LineFormat
     
     #
-    # Options générales
+    # Options gï¿½nï¿½rales
     #
     SELECTEUR_FT = 0
     DOSSIER_EXEMPLES = os.path.join(PATH,"Exemples")
     VAR_COMPLEXE = u"p"   # Nom de la variable complexe
-    MAJ_AUTO = True  # Mise à jour automatique des tracés
-    NB_PERIODES_REP_TEMPO = 5   # Nombre de périodes affichées en cas d'echelle automatique
-    TEMPS_REPONSE = 0.05    # % du temps de réponse calculé
+    MAJ_AUTO = True  # Mise ï¿½ jour automatique des tracï¿½s
+    NB_PERIODES_REP_TEMPO = 5   # Nombre de pï¿½riodes affichï¿½es en cas d'echelle automatique
+    TEMPS_REPONSE = 0.05    # % du temps de rï¿½ponse calculï¿½
     DEPHASAGE = False
     
     #
@@ -290,12 +290,12 @@ def DefOptionsDefaut():
     #
     PRINT_PROPORTION = True
     IMPRIMER_NOM = True
-    TEXTE_NOM = ""    # NOM par défaut (NOM)
+    TEXTE_NOM = ""    # NOM par dï¿½faut (NOM)
     POSITION_NOM = "BL" # "TL","BL","TC","BC","TR","BR"
     IMPRIMER_TITRE = True
-    TEXTE_TITRE = ""  # TITRE par défaut (Fichier Courant)
+    TEXTE_TITRE = ""  # TITRE par dï¿½faut (Fichier Courant)
     POSITION_TITRE = "BR" # "TL","BL","TC","BC","TR","BR" 
-    MAX_PRINTER_DPI = 200 # Définition largement suffisante (600 est le maximum sous peine de provoquer une erreur sous MPL)
+    MAX_PRINTER_DPI = 200 # Dï¿½finition largement suffisante (600 est le maximum sous peine de provoquer une erreur sous MPL)
 
     #
     # Options de couleurs
@@ -330,7 +330,7 @@ SYMBOLE_MULT = r"\cdot "
 USE_MATPLOTLIB = True
 
 # Type de selecteur de FT
-TYPE_SELECTEUR_TF = 0 # 0 : FT Factorisée   1 : FT Développée                                # en option
+TYPE_SELECTEUR_TF = 0 # 0 : FT Factorisï¿½e   1 : FT Dï¿½veloppï¿½e                                # en option
 
 # Nombre de chiffres significtatifs
 NB_CHIFFRES = 4
@@ -338,18 +338,18 @@ NB_CHIFFRES = 4
 # Nombre de sous FT
 #NBR_MAXI_SSFT = 30
 
-# Précision calcul de racines
+# Prï¿½cision calcul de racines
 PRECISION = 0.001
 EPSILON = 1E-6
 
-# Densité d'isos (nbr d'iso visibles)
+# Densitï¿½ d'isos (nbr d'iso visibles)
 DENSITE_ISOS = 20
 
-# Methode de décomposition en sous-fonction
+# Methode de dï¿½composition en sous-fonction
 DECOMP_2ND_ORDRE = True
 
 #
-# Style des fenêtres "enfant"
+# Style des fenï¿½tres "enfant"
 #
 STYLE_FENETRE = wx.SYSTEM_MENU | wx.MAXIMIZE_BOX | wx.CAPTION | wx.MINIMIZE_BOX | \
                 wx.RESIZE_BORDER | wx.CLOSE_BOX | wx.FRAME_FLOAT_ON_PARENT
@@ -411,7 +411,7 @@ COUL_LIGNE_TR = wx.Colour(10,100,10).GetAsString(wx.C2S_HTML_SYNTAX)
 EP_MARGES = 3
 
 #
-# Options de tracé par défaut (modifiable par les outils)
+# Options de tracï¿½ par dï¿½faut (modifiable par les outils)
 #
 TRACER_GRILLE = True
 TRACER_ISO = True
@@ -422,7 +422,7 @@ DIVISION_ORDRE2_MINI = 6 # espace mini (en pixel) entre 2 graduations
 
 
 #
-# Options pour l'optimisation de la rapidité d'affichage
+# Options pour l'optimisation de la rapiditï¿½ d'affichage
 #
 TRACER_SPLINE = True # pas utile avec mpl
 NBR_PTS_ISOGAIN = 150
@@ -434,13 +434,13 @@ USE_AGG = True # Ca marche pas en WX :(
 USE_THREAD = False # Ca ne marche pas avec les threads ...
 
 #
-# Options pour le calcul de la réponse temporelle
+# Options pour le calcul de la rï¿½ponse temporelle
 #
 #NBR_PTS_REPONSE = 200 # C'est un minimum pour avoir des valeurs correctes !                 # en option
 INTERPOLATION = 0 # linear (1) or zero-order hold (0)
-LSIM_SOLVER = 1 # normal (0) ODE solver (1) ... résultats parfois incohérents avec "0" !
+LSIM_SOLVER = 1 # normal (0) ODE solver (1) ... rï¿½sultats parfois incohï¿½rents avec "0" !
 LSIM_TOLERANCE = 1.49012e-8
-#NB_PERIODES_REP_TEMPO = 3   # Nombre de périodes affichées en cas d'echelle automatique  # en option
+#NB_PERIODES_REP_TEMPO = 3   # Nombre de pï¿½riodes affichï¿½es en cas d'echelle automatique  # en option
 #TEMPS_REPONSE = 0.05    # en option
 
 #
@@ -469,15 +469,15 @@ PRINT_PAPIER_DEFAUT = wx.PAPER_A4
 PRINT_MODE_DEFAUT = wx.PRINT_MODE_PRINTER
 
 #IMPRIMER_NOM = True
-#TEXTE_NOM = ""    # NOM par défaut (NOM)
+#TEXTE_NOM = ""    # NOM par dï¿½faut (NOM)
 #POSITION_NOM = "BL" # "TL","BL","TC","BC","TR","BR"                
 NOM = unicode(getpass.getuser(),'cp1252')
 
 #IMPRIMER_TITRE = True
-#TEXTE_TITRE = ""  # TITRE par défaut (Fichier Courant)
+#TEXTE_TITRE = ""  # TITRE par dï¿½faut (Fichier Courant)
 #POSITION_TITRE = "BR" # "TL","BL","TC","BC","TR","BR" 
 
-#MAX_PRINTER_DPI = 200 # Définition largement suffisante (600 est le maximum sous peine de provoquer une erreur sous MPL)
+#MAX_PRINTER_DPI = 200 # Dï¿½finition largement suffisante (600 est le maximum sous peine de provoquer une erreur sous MPL)
 
 
 
@@ -497,7 +497,7 @@ FONT_SIZE_VARIABLE = 100
 FONT_SIZE_FT_HD = 300
 
 #
-# Propriétés de la flèche sur diagrammes de Black et Nyquist
+# Propriï¿½tï¿½s de la flï¿½che sur diagrammes de Black et Nyquist
 #
 FLECHE_TANA = 0.4
 FLECHE_LONG = 10

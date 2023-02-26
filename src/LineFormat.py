@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2010 Cédrick FAURY
+## Copyright (C) 2009-2010 CÃ©drick FAURY
 
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -40,7 +40,7 @@ class LineFormat():
         Arguments :
         coul  : couleur (format wx)
         styl  : style de ligne (format mpl)
-        epais : épaisseur
+        epais : Ã©paisseur
         
     """
     
@@ -152,7 +152,7 @@ except ImportError: # if it's not there locally, try the wxPython lib.
     
 class LineFormatSelector(wx.Dialog):
     """ Dialog de selection d'un format de ligne
-        <format> = liste : [couleur, style, épaisseur]
+        <format> = liste : [couleur, style, Ã©paisseur]
     """
     def __init__(self, parent, format):
         wx.Dialog.__init__(self, parent, -1, _(u"Format de ligne"))
@@ -160,7 +160,7 @@ class LineFormatSelector(wx.Dialog):
         self.format = format
         
         self.lineStyle = [_(u"ligne continue"), #solid line style
-                          _(u"pointillés"), #dashed line style
+                          _(u"pointillÃ©s"), #dashed line style
                           _(u"mixte"), #dash-dot line style
                           _(u"points"), #dotted line style
                           ]
@@ -186,7 +186,7 @@ class LineFormatSelector(wx.Dialog):
         selWidth.SetFormat("%f")
         selWidth.SetDigits(2)
         
-        selWidth.SetToolTipString(_(u"Modifier l'épaisseur de la ligne"))
+        selWidth.SetToolTipString(_(u"Modifier l'Ã©paisseur de la ligne"))
 #        selWidth.SetRange(1,6)
         selWidth.SetValue(format.epais)
         
@@ -231,7 +231,7 @@ class LineFormatSelector(wx.Dialog):
         self.SetSizerAndFit(sizer)
         
         #
-        # Les évenements
+        # Les Ã©venements
         # 
         self.Bind(wx.EVT_BUTTON, self.OnClick, selColor)
         self.Bind(wx.EVT_COMBOBOX, self.OnCombo, selStyle)

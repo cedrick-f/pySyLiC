@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2010 Cédrick FAURY
+## Copyright (C) 2009-2010 CÃ©drick FAURY
 
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -34,7 +34,7 @@ import csv
 
 import wx
 
-# Fonctions de référence
+# Fonctions de rÃ©fÃ©rence
 def rep1(t, K, T):
     return K*(1.-scipy.exp(-t/T))
 
@@ -101,7 +101,7 @@ def getPointsMesure(fichierCSV):
     return None, None
 
 
-# Paramètres initiaux
+# ParamÃ¨tres initiaux
 p0 = [[1,1],
       [1, 2, 1],
       [1, 0.5, 1]]
@@ -145,7 +145,7 @@ class WinAjustement(wx.MiniFrame, PrintHandler):
         
     
         
-        # Variable de l'état d'affichage : complet = tous les widgets
+        # Variable de l'Ã©tat d'affichage : complet = tous les widgets
         self.AffComplet = True
         
         self.FT = None
@@ -153,7 +153,7 @@ class WinAjustement(wx.MiniFrame, PrintHandler):
         self.Mesure = None
         
         size = (414,550)
-        wx.MiniFrame.__init__(self, parent, -1, _(u"Ajustement de réponse indicielle"), pos, size, style)
+        wx.MiniFrame.__init__(self, parent, -1, _(u"Ajustement de rÃ©ponse indicielle"), pos, size, style)
       
 #        self.SetMinSize(size)
         
@@ -164,11 +164,11 @@ class WinAjustement(wx.MiniFrame, PrintHandler):
         self.initPrintHandler(PrintoutWx, parent, globdef.PRINT_PAPIER_DEFAUT, globdef.PRINT_MODE_DEFAUT)
         
         #
-        # Zone de tracé
+        # Zone de tracÃ©
         #
         outils = ["BGrille", "", "BZoomA", "BZoomP", "BDepla", "BEchel", "", "BCurse", 'BImpri', "", "BExpor",'BParam']
         self.ZoneAjustement = graph.ZoneGraphOutils(self, parent, 3, outils, tempo = True)
-        self.ZoneAjustement.Add(graph.ZoneGraphAjustement(self.ZoneAjustement, self.ZoneAjustement, _(u"Ajustement réponse indicielle")))
+        self.ZoneAjustement.Add(graph.ZoneGraphAjustement(self.ZoneAjustement, self.ZoneAjustement, _(u"Ajustement rÃ©ponse indicielle")))
 #        self.zoneReponse = graph.ZoneGraphReponse(self, parent)
 
         #

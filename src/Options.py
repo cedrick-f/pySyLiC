@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2012 Cédrick FAURY
+## Copyright (C) 2009-2012 CÃ©drick FAURY
 
 #    pySyLiC is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -41,11 +41,11 @@ import Images
 #      Options     #
 ##############################################################################
 class Options:
-    """ Définit les options de PySyLic """
+    """ DÃ©finit les options de PySyLic """
     def __init__(self, options = None):
         #
         # Toutes les options ...
-        # Avec leurs valeurs par défaut.
+        # Avec leurs valeurs par dÃ©faut.
         #
         self.optAffichage = {}
         self.optCouleurs = {}
@@ -56,9 +56,9 @@ class Options:
         if options == None:
             self.defaut()
           
-#        self.listeOptions = [u"Général", u"Affichage", u"Couleurs", u"Impression"] 
+#        self.listeOptions = [u"GÃ©nÃ©ral", u"Affichage", u"Couleurs", u"Impression"] 
          
-        self.typesOptions = {u"Général" : self.optGenerales,
+        self.typesOptions = {u"GÃ©nÃ©ral" : self.optGenerales,
                              u"Affichage" : self.optAffichage,
                              u"Calcul" : self.optCalcul,
                              u"Formats de ligne" : self.optCouleurs,
@@ -66,7 +66,7 @@ class Options:
                              }
         
         
-        # Le fichier où seront sauvées les options
+        # Le fichier oÃ¹ seront sauvÃ©es les options
         self.fichierOpt = os.path.join(globdef.APP_DATA_PATH, "PySyLiC.cfg")
 
     #########################################################################################################
@@ -86,7 +86,7 @@ class Options:
     
     #########################################################################################################
     def fichierExiste(self):
-        """ Vérifie si le fichier 'options' existe
+        """ VÃ©rifie si le fichier 'options' existe
         """
 #        PATH=os.path.dirname(os.path.abspath(sys.argv[0]))
 #        os.chdir(globdef.PATH)
@@ -155,7 +155,7 @@ class Options:
                     opt.readConfig(config, titreUtf, titreopt)
                     
                 
-                # pour un passage correct de la version 2.5 à 2.6
+                # pour un passage correct de la version 2.5 Ã  2.6
                 try:
                     v = eval(opt)
                     if type(v) == tuple:
@@ -255,10 +255,10 @@ class Options:
         
         
 ##############################################################################
-#     Fenêtre Options     #
+#     FenÃªtre Options     #
 ##############################################################################
 class FenOptions(wx.Dialog):
-#   "Fenêtre des options"      
+#   "FenÃªtre des options"      
     def __init__(self, parent, options):
         wx.Dialog.__init__(self, parent, -1, _(u"Options de pySyLiC"))#, style = wx.RESIZE_BORDER)
         
@@ -271,7 +271,7 @@ class FenOptions(wx.Dialog):
         # Le book ...
         #
         nb = wx.Notebook(self, -1)
-        nb.AddPage(pnlGenerales(nb, options.optGenerales), _(u"Général"))
+        nb.AddPage(pnlGenerales(nb, options.optGenerales), _(u"GÃ©nÃ©ral"))
         nb.AddPage(pnlAffichage(nb, options.optAffichage), _(u"Affichage"))
         nb.AddPage(pnlCalcul(nb, options.optCalcul), _(u"Calcul"))
         nb.AddPage(pnlImpression(nb, options.optImpression), _(u"Impression"))
@@ -290,7 +290,7 @@ class FenOptions(wx.Dialog):
             btnsizer.AddButton(btn)
         
         btn = wx.Button(self, wx.ID_OK)
-        help = _(u"Valider les changements apportés aux options")
+        help = _(u"Valider les changements apportÃ©s aux options")
         btn.SetToolTip(wx.ToolTip(help))
         btn.SetHelpText(help)
         btn.SetDefault()
@@ -303,8 +303,8 @@ class FenOptions(wx.Dialog):
         btnsizer.AddButton(btn)
         btnsizer.Realize()
         
-        btn = wx.Button(self, -1, _(u"Défaut"))
-        help = _(u"Rétablir les options par défaut")
+        btn = wx.Button(self, -1, _(u"DÃ©faut"))
+        help = _(u"RÃ©tablir les options par dÃ©faut")
         btn.SetToolTip(wx.ToolTip(help))
         btn.SetHelpText(help)
         self.Bind(wx.EVT_BUTTON, self.OnClick, btn)
@@ -363,25 +363,25 @@ class pnlGenerales(wx.Panel):
                          choices = self.nom_langues[1],
                          style = wx.CB_DROPDOWN|wx.CB_READONLY ,
                          name = "LANG")
-        cb.SetToolTip(wx.ToolTip(_(u"Choisir le langage utilisé par pySyLiC\n\n" \
-                                   u"  Nécessite un redémarrage de pySyLiC")))
+        cb.SetToolTip(wx.ToolTip(_(u"Choisir le langage utilisÃ© par pySyLiC\n\n" \
+                                   u"  NÃ©cessite un redÃ©marrage de pySyLiC")))
         sbs0.Add(cb, flag = wx.EXPAND|wx.ALL, border = 5)
         self.Bind(wx.EVT_COMBOBOX, self.EvtComboBox, cb)
         self.ns.Add(sbs0, flag = wx.EXPAND|wx.ALL)
         
         
         #
-        # Choix du dossier de sauvegarde par défaut
+        # Choix du dossier de sauvegarde par dÃ©faut
         #
-        sb1 = wx.StaticBox(self, -1, _(u"Dossier de sauvegarde par défaut"), size = (200,-1))
+        sb1 = wx.StaticBox(self, -1, _(u"Dossier de sauvegarde par dÃ©faut"), size = (200,-1))
         sbs1 = wx.StaticBoxSizer(sb1,wx.VERTICAL)
         fs = DirSelectorCombo(self, -1)
         fs.SetValueWithEvent(self.opt["RepCourant"])
         fs.SetToolTip(wx.ToolTip(_(u"Permet de selectionner le dossier\n" \
-                                   u"dans lequel seront sauvegardés les fichiers *.syl\n"\
-                                   u"après le lancement de pySyLic.\n"\
-                                   u"Par la suite, le dossier de sauvegarde proposé\n"\
-                                   u"est le dernier dossier utilisé pour un enregistrement.")))
+                                   u"dans lequel seront sauvegardÃ©s les fichiers *.syl\n"\
+                                   u"aprÃ¨s le lancement de pySyLic.\n"\
+                                   u"Par la suite, le dossier de sauvegarde proposÃ©\n"\
+                                   u"est le dernier dossier utilisÃ© pour un enregistrement.")))
         sbs1.Add(fs, flag = wx.EXPAND|wx.ALL, border = 5)
         fs.Bind(wx.EVT_TEXT, self.EvtComboCtrl)
         self.ns.Add(sbs1, flag = wx.EXPAND|wx.ALL)
@@ -390,14 +390,14 @@ class pnlGenerales(wx.Panel):
         # Option "Type de selecteur de fonction"
         #
         rb1 = wx.RadioBox(self, -1, _(u"Type de selecteur de fonction"), wx.DefaultPosition, wx.DefaultSize,
-                          [_(u"polynômes factorisés"),_(u"polynômes développés"), _(u"identification à partir d'une courbe")], 
+                          [_(u"polynÃ´mes factorisÃ©s"),_(u"polynÃ´mes dÃ©veloppÃ©s"), _(u"identification Ã  partir d'une courbe")], 
                           1, wx.RA_SPECIFY_COLS)
         rb1.SetSelection(self.opt["TypeSelecteur"])
         rb1.SetToolTip(wx.ToolTip(_(u"Choisir la forme sous laquelle vous souhaitez saisir\n"\
-                                    u"les polynômes des fonctions de transfert :\n"\
-                                    u" - \"polynômes factorisés\" : fonction de transfert sous forme canonique\n"\
-                                    u" - \"polynômes développés\" : saisie de chaque coefficient réel indépendamment\n"\
-                                    u" - \"ajustement sur courbe\" : identification des paramètres à partir d'une courbe expérimentale")))
+                                    u"les polynÃ´mes des fonctions de transfert :\n"\
+                                    u" - \"polynÃ´mes factorisÃ©s\" : fonction de transfert sous forme canonique\n"\
+                                    u" - \"polynÃ´mes dÃ©veloppÃ©s\" : saisie de chaque coefficient rÃ©el indÃ©pendamment\n"\
+                                    u" - \"ajustement sur courbe\" : identification des paramÃ¨tres Ã  partir d'une courbe expÃ©rimentale")))
         self.Bind(wx.EVT_RADIOBOX, self.EvtRadioBox, rb1)
         self.ns.Add(rb1, flag = wx.EXPAND|wx.ALL)
         
@@ -414,7 +414,7 @@ class pnlGenerales(wx.Panel):
                          choices = ['p', 's'],
                          style = wx.CB_DROPDOWN|wx.CB_READONLY ,
                          name = "VAR_COMPLEXE")
-        help = _(u"Choisir la lettre utilisée pour désigner la variable complexe.")
+        help = _(u"Choisir la lettre utilisÃ©e pour dÃ©signer la variable complexe.")
         cb.SetToolTipString(help)
         ttr.SetToolTipString(help)
         self.Bind(wx.EVT_COMBOBOX, self.EvtComboBox, cb)
@@ -423,9 +423,9 @@ class pnlGenerales(wx.Panel):
         sbs3.Add(hs, flag = wx.EXPAND|wx.ALL, border = 5)
         
         # MAJ_AUTO
-        cb2 = wx.CheckBox(self, -1, _(u"Mise à jour automatique des tracés"))
-        cb2.SetToolTip(wx.ToolTip(_(u"Si cette case est cochée, les tracés sont mis à jour automatiquement\n"\
-                                    u"à chaque modification de la Fonction de Transfert")))
+        cb2 = wx.CheckBox(self, -1, _(u"Mise Ã  jour automatique des tracÃ©s"))
+        cb2.SetToolTip(wx.ToolTip(_(u"Si cette case est cochÃ©e, les tracÃ©s sont mis Ã  jour automatiquement\n"\
+                                    u"Ã  chaque modification de la Fonction de Transfert")))
         cb2.SetValue(self.opt["MAJ_AUTO"])
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBoxM, cb2)
         
@@ -434,8 +434,8 @@ class pnlGenerales(wx.Panel):
         
         # DEPHASAGE
         cb3 = wx.CheckBox(self, -1, _(u'Ajouter la fonction "retard"'))
-        cb3.SetToolTip(wx.ToolTip(_(u"Si cette case est cochée, il est possible d'ajouter la fonction \"retard\"\n"\
-                                    u"à la Fonction de Transfert du processus")))
+        cb3.SetToolTip(wx.ToolTip(_(u"Si cette case est cochÃ©e, il est possible d'ajouter la fonction \"retard\"\n"\
+                                    u"Ã  la Fonction de Transfert du processus")))
         cb3.SetValue(self.opt["DEPHASAGE"])
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBoxD, cb3)
         
@@ -446,7 +446,7 @@ class pnlGenerales(wx.Panel):
         #
         # Nombre de SousFT maxi
         #
-        sb3 = wx.StaticBox(self, -1, _(u"Niveau de complexité"), size = (200,-1))
+        sb3 = wx.StaticBox(self, -1, _(u"Niveau de complexitÃ©"), size = (200,-1))
         sbs3 = wx.StaticBoxSizer(sb3,wx.VERTICAL)
         self.ncp = Variable(_(u'Nombre maximum de\nsous Fonctions de Transfert'), 
                             lstVal = self.opt["NBR_MAXI_PLOT"], 
@@ -454,7 +454,7 @@ class pnlGenerales(wx.Panel):
         vc2 = VariableCtrl(self, self.ncp, coef = 1, labelMPL = False, signeEgal = False,
                           help = _(u"Nombre maximum de sous fonctions de transfert\n"\
                                    u"que peut avoir la fonction de transfert H\n"\
-                                   u"!! Nécessite un redémarrage de pySyLiC !!"))
+                                   u"!! NÃ©cessite un redÃ©marrage de pySyLiC !!"))
         self.Bind(EVT_VAR_CTRL, self.EvtVariableNpc, vc2)
         
         sbs3.Add(vc2, flag = wx.EXPAND|wx.ALL, border = 5)
@@ -495,7 +495,7 @@ class pnlGenerales(wx.Panel):
         self.opt["NBR_MAXI_PLOT"] = event.GetVar().v[0]
 
 #    def EvtCheckBoxOnglet(self, event):
-#        dlg = wx.MessageDialog(self, u"L'option ne sera effective qu'au redémarrage de l'application",
+#        dlg = wx.MessageDialog(self, u"L'option ne sera effective qu'au redÃ©marrage de l'application",
 #                               u'Option "Arbre de structure"',
 #                               wx.OK | wx.ICON_INFORMATION
 #                               #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
@@ -527,20 +527,20 @@ class pnlCalcul(wx.Panel):
         #
         # NB_PERIODES_REP_TEMPO
         #
-        sb2 = wx.StaticBox(self, -1, _(u"Réponse temporelle"), size = (200,-1))
+        sb2 = wx.StaticBox(self, -1, _(u"RÃ©ponse temporelle"), size = (200,-1))
         sbs2 = wx.StaticBoxSizer(sb2,wx.VERTICAL)
-        self.npr = Variable(_(u'Nombre de periodes affichées\nen mode "échelle automatique"'), 
+        self.npr = Variable(_(u'Nombre de periodes affichÃ©es\nen mode "Ã©chelle automatique"'), 
                             lstVal = self.opt["NB_PERIODES_REP_TEMPO"], 
                             typ = VAR_ENTIER_POS, bornes = [2,20])
         vc1 = VariableCtrl(self, self.npr, coef = 1, labelMPL = False, signeEgal = False,
-                          help = _(u"En mode \"échelle automatique\",\n"\
-                                   u"pour les consignes périodiques,\n"\
-                                   u"pySyLiC règle l'echelle du temps\n"\
-                                   u"sur le nombre de périodes défini ici."))
+                          help = _(u"En mode \"Ã©chelle automatique\",\n"\
+                                   u"pour les consignes pÃ©riodiques,\n"\
+                                   u"pySyLiC rÃ¨gle l'echelle du temps\n"\
+                                   u"sur le nombre de pÃ©riodes dÃ©fini ici."))
         self.Bind(EVT_VAR_CTRL, self.EvtVariableNpr, vc1)
         
         hs = wx.BoxSizer(wx.HORIZONTAL)
-        txt = wx.StaticText(self, -1, _(u"Niveau d'évaluation du temps de réponse"))
+        txt = wx.StaticText(self, -1, _(u"Niveau d'Ã©valuation du temps de rÃ©ponse"))
         cb = wx.ComboBox(self, -1, str(int(self.opt["TEMPS_REPONSE"]*100))+"%", (90, 50), 
                          (60, -1), ['1%', '2%', '3%', '5%', '8%', '10%', '15%'],
                          wx.CB_DROPDOWN|wx.CB_READONLY,
@@ -561,12 +561,12 @@ class pnlCalcul(wx.Panel):
         
         
         # NBR_PTS_REPONSE
-        self.npr = Variable(_(u"Nombre de points de calcul pour la réponse temporelle"), 
+        self.npr = Variable(_(u"Nombre de points de calcul pour la rÃ©ponse temporelle"), 
                             lstVal = self.opt["NBR_PTS_REPONSE"], 
                             typ = VAR_ENTIER_POS, bornes = [50,500])
         vc = VariableCtrl(self, self.npr, coef = 10, labelMPL = False, signeEgal = False,
                           help = _(u"Ajuster le nombre de points\n"\
-                                   u"pour le calcul de la réponse temporelle.\n"\
+                                   u"pour le calcul de la rÃ©ponse temporelle.\n"\
                                    u"(en principe, il est inutile de modifier cette valeur)"))
         sbs2.Add(vc, flag = wx.EXPAND|wx.ALL, border = 5)
         
@@ -604,7 +604,7 @@ class pnlCalcul(wx.Panel):
         self.opt["NBR_MAXI_PLOT"] = event.GetVar().v[0]
 
 #    def EvtCheckBoxOnglet(self, event):
-#        dlg = wx.MessageDialog(self, u"L'option ne sera effective qu'au redémarrage de l'application",
+#        dlg = wx.MessageDialog(self, u"L'option ne sera effective qu'au redÃ©marrage de l'application",
 #                               u'Option "Arbre de structure"',
 #                               wx.OK | wx.ICON_INFORMATION
 #                               #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
@@ -642,15 +642,15 @@ class pnlAffichage(wx.Panel):
         
         # ANTIALIASED
         cb2 = wx.CheckBox(self, -1, _(u"Lisser les courbes (antialiasing)"))
-        cb2.SetToolTip(wx.ToolTip(_(u"En décochant cette case, l'affichage devrait être plus rapide")))
+        cb2.SetToolTip(wx.ToolTip(_(u"En dÃ©cochant cette case, l'affichage devrait Ãªtre plus rapide")))
         cb2.SetValue(self.opt["ANTIALIASED"])
         
         sbs3.Add(cb2, flag = wx.EXPAND|wx.ALL, border = 5)
             
         # 
-        # Polices de caractère
+        # Polices de caractÃ¨re
         #
-        sb2 = wx.StaticBox(self, -1, _(u"Type de Police de caractère"))
+        sb2 = wx.StaticBox(self, -1, _(u"Type de Police de caractÃ¨re"))
         sbs2 = wx.StaticBoxSizer(sb2, wx.VERTICAL)
         
         lstBmp = [Images.TypeFont0.GetBitmap(), 
@@ -752,23 +752,23 @@ class pnlImpression(wx.Panel):
         #
         sb1 = wx.StaticBox(self, -1, _(u"Mise en page"), size = (200,-1))
         sbs1 = wx.StaticBoxSizer(sb1,wx.VERTICAL)
-        cb2 = wx.CheckBox(self, -1, _(u"Garder les proportions de l'écran"))
-        cb2.SetToolTip(wx.ToolTip(_(u"Si cette case est cochée, les tracés imprimés\n"\
-                                    u"auront les mêmes proportions (largeur/hauteur) qu'à l'écran.")))
+        cb2 = wx.CheckBox(self, -1, _(u"Garder les proportions de l'Ã©cran"))
+        cb2.SetToolTip(wx.ToolTip(_(u"Si cette case est cochÃ©e, les tracÃ©s imprimÃ©s\n"\
+                                    u"auront les mÃªmes proportions (largeur/hauteur) qu'Ã  l'Ã©cran.")))
         cb2.SetValue(self.opt["PRINT_PROPORTION"])
         sbs1.Add(cb2, flag = wx.EXPAND|wx.ALL, border = 5)
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, cb2)
         self.ns.Add(sbs1, flag = wx.EXPAND|wx.ALL)
         
         #
-        # Elements à imprimer
+        # Elements Ã  imprimer
         #
-        sb2 = wx.StaticBox(self, -1, _(u"Eléments à imprimer"), size = (200,-1))
+        sb2 = wx.StaticBox(self, -1, _(u"ElÃ©ments Ã  imprimer"), size = (200,-1))
         sbs2 = wx.StaticBoxSizer(sb2,wx.VERTICAL)
-        sup = u"\n"+_(u"En décochant cette case, vous pouvez choisir un texte personnalisé")
-        selTitre = selecteurTexteEtPosition(self, _(u"Nom du fichier système"),
+        sup = u"\n"+_(u"En dÃ©cochant cette case, vous pouvez choisir un texte personnalisÃ©")
+        selTitre = selecteurTexteEtPosition(self, _(u"Nom du fichier systÃ¨me"),
                                             self.Parent.Parent.Parent.fichierCourant,
-                                            _(u"Nom de fichier sous lequel le système actuel est sauvegardé")+sup,
+                                            _(u"Nom de fichier sous lequel le systÃ¨me actuel est sauvegardÃ©")+sup,
                                             "IMPRIMER_TITRE", "POSITION_TITRE", "TEXTE_TITRE")
         selNom = selecteurTexteEtPosition(self, _(u"Nom de l'utilisateur"),
                                             globdef.NOM,
@@ -779,18 +779,18 @@ class pnlImpression(wx.Panel):
         self.ns.Add(sbs2, flag = wx.EXPAND|wx.ALL)
         
         #
-        # Qualité de l'impression
+        # QualitÃ© de l'impression
         #
-        sb3 = wx.StaticBox(self, -1, _(u"Qualité de l'impression"), size = (200,-1))
+        sb3 = wx.StaticBox(self, -1, _(u"QualitÃ© de l'impression"), size = (200,-1))
         sbs3 = wx.StaticBoxSizer(sb3,wx.VERTICAL)
         hs = wx.BoxSizer(wx.HORIZONTAL)
-        ttr = wx.StaticText(self, -1, _(u"Résolution de l'impression :"))
+        ttr = wx.StaticText(self, -1, _(u"RÃ©solution de l'impression :"))
         cb = wx.ComboBox(self, -1, str(self.opt["MAX_PRINTER_DPI"]), size = (80, -1), 
                          choices = ['100', '200', '300', '400', '500', '600'],
                          style = wx.CB_DROPDOWN|wx.CB_READONLY)
-        help = _(u"Ajuster la résolution de l'impression.\n"\
-                 u"Attention, une résolution trop élevée peut augmenter\n"\
-                 u"significativement la durée de l'impression.")
+        help = _(u"Ajuster la rÃ©solution de l'impression.\n"\
+                 u"Attention, une rÃ©solution trop Ã©levÃ©e peut augmenter\n"\
+                 u"significativement la durÃ©e de l'impression.")
         cb.SetToolTipString(help)
         ttr.SetToolTipString(help)
         self.Bind(wx.EVT_COMBOBOX, self.EvtComboBox, cb)
@@ -821,8 +821,8 @@ class selecteurTexteEtPosition(wx.Panel):
         self.textedefaut = textedefaut
         
         self.lstPos = ["TL","TC","TR","BL","BC","BR"]
-        tooltips = [_(u"En haut à gauche"), _(u"En haut au centre"), _(u"En haut à droite"),
-                   _(u"En bas à gauche"), _(u"En bas au centre"), _(u"En bas à droite")]
+        tooltips = [_(u"En haut Ã  gauche"), _(u"En haut au centre"), _(u"En haut Ã  droite"),
+                   _(u"En bas Ã  gauche"), _(u"En bas au centre"), _(u"En bas Ã  droite")]
         #
         # Le titre
         #
@@ -832,7 +832,7 @@ class selecteurTexteEtPosition(wx.Panel):
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.titre)
         
         #
-        # Le texte à afficher
+        # Le texte Ã  afficher
         #
         if not self.Parent.opt[self.impoption]:
             txt = self.Parent.opt[self.txtoption]
@@ -862,7 +862,7 @@ class selecteurTexteEtPosition(wx.Panel):
         box1.Add(grid1)
         
         img = wx.StaticBitmap(self, -1, Images.Zone_Impression.GetBitmap())
-        img.SetToolTip(wx.ToolTip(_(u"Choisir ici la position du texte par rapport aux tracés")))
+        img.SetToolTip(wx.ToolTip(_(u"Choisir ici la position du texte par rapport aux tracÃ©s")))
         box1.Add(img)
         
         grid2 = wx.BoxSizer(wx.HORIZONTAL)
@@ -957,7 +957,7 @@ class selecteurTexteEtPosition(wx.Panel):
 #        
 ##        print tree.GetVirtualSize()[1], tree.GetBestSize()[1]
 #        
-#        cb2 = wx.CheckBox(self, -1, u"Demander ce qu'il faut inclure à chaque création de rapport")
+#        cb2 = wx.CheckBox(self, -1, u"Demander ce qu'il faut inclure Ã  chaque crÃ©ation de rapport")
 #        cb2.SetValue(self.opt["DemanderImpr"])
 #        
 #        sbs1.Add(cb2, flag = wx.EXPAND|wx.ALL, border = 5)
@@ -982,9 +982,9 @@ class selecteurTexteEtPosition(wx.Panel):
 #        sb1 = wx.StaticBox(self, -1, u"Outils visuels d'analyse")
 #        sbs1 = wx.StaticBoxSizer(sb1,wx.VERTICAL)
 #        
-#        label = {"AnimMontage"  : u"Proposer l'animation du démontage/remontage",
-#                 "AnimArrets"   : u"Proposer l'animation du manque d'arrêt axial",
-#                 "ChaineAction" : u"Proposer le tracé des chaînes d'action"}
+#        label = {"AnimMontage"  : u"Proposer l'animation du dÃ©montage/remontage",
+#                 "AnimArrets"   : u"Proposer l'animation du manque d'arrÃªt axial",
+#                 "ChaineAction" : u"Proposer le tracÃ© des chaÃ®nes d'action"}
 #
 #        self.cb = {}
 #        for titre, opt in options.items():
@@ -1003,7 +1003,7 @@ class selecteurTexteEtPosition(wx.Panel):
         
 class pnlCouleurs(wx.Panel):
     """ Dialog de selection d'un format de ligne
-        <format> = liste : [couleur, style, épaisseur]
+        <format> = liste : [couleur, style, Ã©paisseur]
     """
     def __init__(self, parent, opt):
         wx.Panel.__init__(self, parent, -1)
@@ -1024,9 +1024,9 @@ class pnlCouleurs(wx.Panel):
     def CreatePanel(self):
         self.sizer = wx.BoxSizer(wx.VERTICAL)
         
-        nomCouleurs = {"COUL_MARGE_OK"      : _(u'Marge de stabilité "valide"'),
-                       "COUL_MARGE_NO"      : _(u'Marge de stabilité "non valide"'),
-                       "COUL_POLES"         : _(u'Pôles'),
+        nomCouleurs = {"COUL_MARGE_OK"      : _(u'Marge de stabilitÃ© "valide"'),
+                       "COUL_MARGE_NO"      : _(u'Marge de stabilitÃ© "non valide"'),
+                       "COUL_POLES"         : _(u'PÃ´les'),
                        "COUL_PT_CRITIQUE"   : _(u'Point critique et Courbe "lambda"')
                         }
         
@@ -1040,7 +1040,7 @@ class pnlCouleurs(wx.Panel):
             sizerH = wx.BoxSizer(wx.HORIZONTAL)
             txtColor = wx.StaticText(self, i+100, nomCouleurs[k])
             selColor = wx.Button(self, i, "", size = (80,22))
-            selColor.SetToolTipString(_(u"Modifier la couleur de l'élément") + " :\n" + nomCouleurs[k])
+            selColor.SetToolTipString(_(u"Modifier la couleur de l'Ã©lÃ©ment") + " :\n" + nomCouleurs[k])
             selColor.SetBackgroundColour(self.opt[k])
             
             sizerH.Add(txtColor, flag = wx.ALIGN_RIGHT|wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
@@ -1054,7 +1054,7 @@ class pnlCouleurs(wx.Panel):
             sizerH = wx.BoxSizer(wx.HORIZONTAL)
             txtColor = wx.StaticText(self, i+100, nomFormatLigne[k])
             selColor = SelecteurFormatLigne(self, i+len(self.lstIDCoul), self.opt[k], 
-                                            _(u"Modifier le format de ligne de l'élément") + " :\n" + nomFormatLigne[k],
+                                            _(u"Modifier le format de ligne de l'Ã©lÃ©ment") + " :\n" + nomFormatLigne[k],
                                             size = (80,22))
             
             sizerH.Add(txtColor, flag = wx.ALIGN_RIGHT|wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
@@ -1100,7 +1100,7 @@ class pnlCouleurs(wx.Panel):
 #    def __init__(self, parent, options):
 #        wx.Notebook.__init__(self, parent, -1)
 #        
-#        self.AddPage(pnlGenerales(self, options.optGenerales), _(u"Général"))
+#        self.AddPage(pnlGenerales(self, options.optGenerales), _(u"GÃ©nÃ©ral"))
 #        self.AddPage(pnlAffichage(self, options.optAffichage), _(u"Affichage"))
 ##        self.AddPage(pnlImpression(self, options.optImpression), u"Rapport")
 ##        self.AddPage(pnlAnalyse(self, options.optAnalyse), u"Analyse")
@@ -1144,7 +1144,7 @@ class DirSelectorCombo(wx.combo.ComboCtrl):
     # Overridden from ComboCtrl, called when the combo button is clicked
     def OnButtonClick(self):
         # In this case we include a "New directory" button. 
-#        dlg = wx.FileDialog(self, "Choisir un fichier modèle", path, name,
+#        dlg = wx.FileDialog(self, "Choisir un fichier modÃ¨le", path, name,
 #                            "Rich Text Format (*.rtf)|*.rtf", wx.FD_OPEN)
         dlg = wx.DirDialog(self, _("Choisir un dossier"),
                            defaultPath = globdef.DOSSIER_EXEMPLES,

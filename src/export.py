@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009 Cédrick FAURY
+## Copyright (C) 2009 CÃ©drick FAURY
 
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -52,7 +52,7 @@ class WinExport(wx.Frame):
     
             
         #
-        # Séparation des contenus "Gain" et "Phase"
+        # SÃ©paration des contenus "Gain" et "Phase"
         #
         if "diagReel" in zoneGraph.contenu.keys():
             lR = zoneGraph.contenu["diagReel"]
@@ -78,7 +78,7 @@ class WinExport(wx.Frame):
             contenuPhas["marges"] = None
             
         #
-        # Tracé
+        # TracÃ©
         #
         
         self.figure1 = Figure()

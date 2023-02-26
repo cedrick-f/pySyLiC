@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2012 Cédrick FAURY
+## Copyright (C) 2009-2012 CÃ©drick FAURY
 
 #    pySyLiC is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -46,16 +46,16 @@ import xml.etree.ElementTree as ET
 #
 #########################################################################################################  
 
-# Modification d'un polynôme ...
+# Modification d'un polynÃ´me ...
 #############################################################################################################
 myEVT_POLY_MODIFIED = wx.NewEventType()
 EVT_POLY_MODIFIED = wx.PyEventBinder(myEVT_POLY_MODIFIED, 1)
 
 #----------------------------------------------------------------------
 
-msgFTtropComplexe =  _(u"Niveau de complexité de la fonction de transfert trop élevé !!") + u"\n\n" \
+msgFTtropComplexe =  _(u"Niveau de complexitÃ© de la fonction de transfert trop Ã©levÃ© !!") + u"\n\n" \
                    + _(u"   Il est possible de tracer des fonctions aussi complexes\n"\
-                       u"   en modifiant l'option \"Général/Niveau de complexité\"")
+                       u"   en modifiant l'option \"GÃ©nÃ©ral/Niveau de complexitÃ©\"")
                                      
 class SelPolyEvent(wx.PyCommandEvent):
     def __init__(self, evtType, id):
@@ -70,11 +70,11 @@ class SelPolyEvent(wx.PyCommandEvent):
         return self.poly
     
     def SetDiff(self, diff):
-        """ Type de modification apportée à self.poly
-            0 : aucune différence
-            1 : nom(s) de variable modifié ou variable ajoutée/enlevée
-            2 : valeur(s) modifiée(s)
-            4 : ordre modifié
+        """ Type de modification apportÃ©e Ã  self.poly
+            0 : aucune diffÃ©rence
+            1 : nom(s) de variable modifiÃ© ou variable ajoutÃ©e/enlevÃ©e
+            2 : valeur(s) modifiÃ©e(s)
+            4 : ordre modifiÃ©
         """
         self.diff = diff
     
@@ -112,7 +112,7 @@ class SelFTEvent(wx.PyCommandEvent):
 
 #########################################################################################################
 #
-#  Fonction de Transfert (sous forme développée)
+#  Fonction de Transfert (sous forme dÃ©veloppÃ©e)
 #
 #########################################################################################################  
 class FonctionTransfertDev:
@@ -127,7 +127,7 @@ class FonctionTransfertDev:
         # Les variables
         self.variables = {}
         
-        # La fonction de transfert sous forme numérique (type calcul.FonctionTransfertNum)
+        # La fonction de transfert sous forme numÃ©rique (type calcul.FonctionTransfertNum)
         self.FTNum = []
         
         # La liste de sous fonctions de transfert (type calcul.FonctionTransfertNum)
@@ -199,7 +199,7 @@ class FonctionTransfertDev:
             
     #########################################################################################################
     def detFTNum(self):
-        """ Renvoie la version numérique de la FT
+        """ Renvoie la version numÃ©rique de la FT
                 (avec les valeurs actuelles des variables)
         """
 #        print "Determination de FTNum"
@@ -233,14 +233,14 @@ class FonctionTransfertDev:
     
     
 #    def detLstFTNum(self):
-#        """ Détermine la liste des sous FT 
+#        """ DÃ©termine la liste des sous FT 
 #        """
 #        self.detFTNum()
 #        self.lstFTNum = self.FTNum.decomposition()
     
     #########################################################################################################
     def detLstFTNum(self):
-        """ Détermine la liste des sous FT 
+        """ DÃ©termine la liste des sous FT 
         """
 #        print "detLstFtNum :"
         self.miseAJourCoef()
@@ -271,7 +271,7 @@ class FonctionTransfertDev:
                         cc = r""+"\\"+c
                     else:
                         cc = c
-                    self.variables[c] = Variable(cc, lstVal = [1.0], typ = VAR_REEL) # valeur par défaut de la variable
+                    self.variables[c] = Variable(cc, lstVal = [1.0], typ = VAR_REEL) # valeur par dÃ©faut de la variable
                 
                 elif isinstance(c, Expression):
 #                    print c.vari
@@ -409,7 +409,7 @@ class FonctionTransfertDev:
     
     #########################################################################################################
     def getComplexite(self):
-        """ Renvoie le niveau de "compléxité" de la FT
+        """ Renvoie le niveau de "complÃ©xitÃ©" de la FT
             (le nombre maximum de sous fonctions de transfert 
              qu'elle est succeptible d'avoir)
         """
@@ -421,14 +421,14 @@ class FonctionTransfertDev:
     
 ##########################################################################################################
 class SelecteurPolynome(wx.TextCtrl):
-    """ Zone de saisie des polynômes
+    """ Zone de saisie des polynÃ´mes
     """
     def __init__(self, parent, id, poly):
         wx.TextCtrl.__init__(self, parent, id, polyToTxt(poly))
         self.poly = poly
 
         self.toolTip =  _(u'Saisir ici les coefficients du polynome.\n'\
-                          u'Cliquer sur le bouton "Aide à la saisie des polynomes"\n'\
+                          u'Cliquer sur le bouton "Aide Ã  la saisie des polynomes"\n'\
                           u"pour plus d'informations.")
         self.SetToolTipString(self.toolTip)                      
         
@@ -476,11 +476,11 @@ class SelecteurPolynome(wx.TextCtrl):
     
     #########################################################################################################
     def GetDifference(self, lst):
-        """ Renvoie le type de différence entre <lst> et self.poly
-            0 : aucune différence
-            1 : nom(s) de variable modifié ou variable ajoutée/enlevée
-            2 : valeur(s) modifiée(s)
-            4 : ordre modifié
+        """ Renvoie le type de diffÃ©rence entre <lst> et self.poly
+            0 : aucune diffÃ©rence
+            1 : nom(s) de variable modifiÃ© ou variable ajoutÃ©e/enlevÃ©e
+            2 : valeur(s) modifiÃ©e(s)
+            4 : ordre modifiÃ©
         """
         if len(lst) != len(self.poly):
             return 4
@@ -516,7 +516,7 @@ def polyToTxt(poly, num = True):
         
 #############################################################################################################
 def textToPoly(txt):
-    """ Renvoie une liste représentant un polynôme et un booleen attestant de la validité :
+    """ Renvoie une liste reprÃ©sentant un polynÃ´me et un booleen attestant de la validitÃ© :
         La liste peut contenir :
          - des nombres (constantes)
          - des textes (variables)
@@ -537,26 +537,26 @@ def textToPoly(txt):
             
             if v == None:
                 valid = False
-                erreur = _(u"Constante non réelle")
+                erreur = _(u"Constante non rÃ©elle")
             elif v == False and type(v) == bool:
                 valid = False
-                erreur = _(u"Impossible d'évaluer l'expression")
+                erreur = _(u"Impossible d'Ã©valuer l'expression")
             else:
                 lst2.append(v)
             
         else:
             if expr.vari.has_key('s') or expr.vari.has_key('p'):
                 valid = False
-                erreur = _(u"'s' et 'p' sont des noms de variable réservés à la variable complexe")
+                erreur = _(u"'s' et 'p' sont des noms de variable rÃ©servÃ©s Ã  la variable complexe")
             
             else:
                 vv = expr.evaluer()
                 if vv == None:
                     valid = False
-                    erreur = _(u"Résultat de l'évaluation non réel avec la(les) variable(s) à 1")
+                    erreur = _(u"RÃ©sultat de l'Ã©valuation non rÃ©el avec la(les) variable(s) Ã  1")
                 elif vv == False:
                     valid = False
-                    erreur = _(u"Impossible d'évaluer l'expression")
+                    erreur = _(u"Impossible d'Ã©valuer l'expression")
                 
                 lst2.append(expr)
          
@@ -571,7 +571,7 @@ def textToPoly(txt):
 
 ##############################################################################################################
 #def textToPoly2(txt):
-#    """ Renvoie une liste représentant un polynôme et un booleen attestant de la validité :
+#    """ Renvoie une liste reprÃ©sentant un polynÃ´me et un booleen attestant de la validitÃ© :
 #        La liste peut contenir :
 #         - des nombres (constantes)
 #         - des textes (variables)
@@ -588,16 +588,16 @@ def textToPoly(txt):
 #        except:
 #            v = c
 #        
-#        # Détection d'un nombre --> CONSTANTE
+#        # DÃ©tection d'un nombre --> CONSTANTE
 #        if type(v) == int or type(v) == float:
 #            pass
 #            
-#        # Détection d'une chaine ...
+#        # DÃ©tection d'une chaine ...
 #        elif type(v) == str or type(v) == unicode:
 #            vari, expr = getVariables(v)
 ##            print vari, expr
 #            
-#            # Détection d'une exression 'simple' --> VARIABLE
+#            # DÃ©tection d'une exression 'simple' --> VARIABLE
 #            if len(vari) == 1 and vari.keys()[0] == v:
 ##                print "--> variable"
 #                if v[0].isalpha() and not v in ['s','p']:
@@ -660,7 +660,7 @@ class SelecteurFTDev(wx.Panel):
 #        self.mouseInfo = None
         
         btn = wx.BitmapButton(self, -1, Images.Bouton_Aide.GetBitmap())
-        btn.SetToolTipString(_("Aide à la saisie des polynômes"))
+        btn.SetToolTipString(_("Aide Ã  la saisie des polynÃ´mes"))
         self.Bind(wx.EVT_BUTTON, self.OnAide)
         #
         # Mise en place
@@ -682,7 +682,7 @@ class SelecteurFTDev(wx.Panel):
 #        self.bgh = gbsizer.GetSize()[1]
         
         #
-        # La zone de l'équation ...
+        # La zone de l'Ã©quation ...
         #
 #        self.scroll = wx.ScrolledWindow(self, -1)#, style = wx.BORDER_SIMPLE | wx.HSCROLL)
 #        self.scroll.SetScrollRate(1,0)
@@ -833,7 +833,7 @@ class SelecteurFTDev(wx.Panel):
     #########################################################################################################
     def initFT(self, FT):
         """ Initialisation du selecteur
-            après une ouverture
+            aprÃ¨s une ouverture
         """
 #        print "initFT..."
         self.FT = FT
@@ -850,8 +850,8 @@ class SelecteurFTDev(wx.Panel):
         
     #########################################################################################################
     def MiseAJourBmp(self):
-        """ Modifie l'expression factorisée de la FT
-            quand on a ajouté/supprimé un polynôme
+        """ Modifie l'expression factorisÃ©e de la FT
+            quand on a ajoutÃ©/supprimÃ© un polynÃ´me
         """
         self.sb.SetBitmap(self.FT.getBitmap("H"), self.GetBmpHD, self.GetTeX)
         self.miseAJourBmpRetard()
@@ -917,7 +917,7 @@ class SelecteurFTDev(wx.Panel):
         self.FT.detLstFTNum()
 #        print self.FT.FTNum
         
-        if event.GetDiff() == 1: # Seul le nom d'une variable a été modifié ...
+        if event.GetDiff() == 1: # Seul le nom d'une variable a Ã©tÃ© modifiÃ© ...
             self.parent.OnNomVariableModified()
         else:
             self.parent.OnFTModified()
@@ -940,7 +940,7 @@ class SelecteurFTFit(wx.Panel):
         
         self.SetAutoLayout(True)
         
-#        typesMesure = [_(u"Réponse indicielle")]
+#        typesMesure = [_(u"RÃ©ponse indicielle")]
 #        cb = wx.ComboBox(self, 500, _(u"Type de mesure"), 
 #                         choices = typesMesure,
 #                         style = wx.CB_DROPDOWN)
@@ -954,14 +954,14 @@ class SelecteurFTFit(wx.Panel):
                                                            buttonText ="...",
                                                            fileMask = filemask,
                                                            fileMode = wx.OPEN,
-                                                           toolTip=_(u"Choisir le fichier contenant les coordonnées des points"),
+                                                           toolTip=_(u"Choisir le fichier contenant les coordonnÃ©es des points"),
                                                            changeCallback = self.fbbhCallback)
         
         self.fbbh.callCallback = False
         self.fbbh.SetHistory([], 4)
 
         
-        typesAjust = [_(u"Automatique"), _(u'1er ordre'), _(u'2ème ordre')]
+        typesAjust = [_(u"Automatique"), _(u'1er ordre'), _(u'2Ã¨me ordre')]
         sizer = wx.BoxSizer(wx.VERTICAL)
         rb = wx.RadioBox(
                 self, -1, _(u"Ordre"), wx.DefaultPosition, wx.DefaultSize,
@@ -971,7 +971,7 @@ class SelecteurFTFit(wx.Panel):
         self.Bind(wx.EVT_RADIOBOX, self.EvtRadioBox, rb)
         #rb.SetBackgroundColour(wx.BLUE)
         rb.SetToolTip(wx.ToolTip(_(u"Choisir l'ordre le la fonction de transfert\n"\
-                                   u"avec laquelle identifier les paramètres")))
+                                   u"avec laquelle identifier les paramÃ¨tres")))
         
         self.sb = ScrolledBitmap(self, -1, self.FT.getBitmap("H"))
         
@@ -1052,7 +1052,7 @@ class SelecteurFTFit(wx.Panel):
     #########################################################################################################
     def initFT(self, FT):
         """ Initialisation du selecteur
-            après une ouverture
+            aprÃ¨s une ouverture
         """
 #        print "initFT..."
         self.FT = FT
@@ -1067,8 +1067,8 @@ class SelecteurFTFit(wx.Panel):
         
     #########################################################################################################
     def MiseAJourBmp(self):
-        """ Modifie l'expression factorisée de la FT
-            quand on a ajouté/supprimé un polynôme
+        """ Modifie l'expression factorisÃ©e de la FT
+            quand on a ajoutÃ©/supprimÃ© un polynÃ´me
         """
         self.sb.SetBitmap(self.FT.getBitmap("H"), self.GetBmpHD, self.GetTeX)
         self.sb.FitInside()
@@ -1102,7 +1102,7 @@ class SelecteurFTFit(wx.Panel):
 class AideDialog(wx.Dialog):
     def __init__(self, parent):
         
-        wx.Dialog.__init__(self, None, -1, _(u"Format de définition d'un polynôme"), 
+        wx.Dialog.__init__(self, None, -1, _(u"Format de dÃ©finition d'un polynÃ´me"), 
                            style=wx.DEFAULT_DIALOG_STYLE)
         
         font = wx.Font(18, wx.SWISS, wx.NORMAL, wx.NORMAL)
@@ -1111,14 +1111,14 @@ class AideDialog(wx.Dialog):
             return mathtext_to_wxbitmap(Expression(str).getMplText())
         
 
-        label1 = wx.StaticText(self, -1, _(u"Saisir dans la zone de texte les coefficients du polynôme\n" 
-                                           u"dans l'ordre décroissant des puissances de ") + globdef.VAR_COMPLEXE + " :")
+        label1 = wx.StaticText(self, -1, _(u"Saisir dans la zone de texte les coefficients du polynÃ´me\n" 
+                                           u"dans l'ordre dÃ©croissant des puissances de ") + globdef.VAR_COMPLEXE + " :")
         
         label11 =  wx.TextCtrl(self, -1, "4.3 a 1", style = wx.TE_READONLY) 
         label12 =  wx.StaticText(self, -1, u"--->")
         mplP = wx.StaticBitmap(self, -1, mathtext_to_wxbitmap(r"4.3" + globdef.VAR_COMPLEXE +"^2 + a"+ globdef.VAR_COMPLEXE+" + 1"))  
         
-        label2 = wx.StaticText(self, -1, _(u"Les coefficients peuvent être de différents types :"))
+        label2 = wx.StaticText(self, -1, _(u"Les coefficients peuvent Ãªtre de diffÃ©rents types :"))
         
         labelC = wx.StaticText(self, -1, _(u"Constante : ")) 
         labelV = wx.StaticText(self, -1, _(u"Variable : ")) 
@@ -1234,14 +1234,14 @@ class AideDialog(wx.Dialog):
 #########################################################################################################
 
 class FonctionTransfertCorrec:
-    """ Classe définissant la fonction de transfert d'un correcteur
+    """ Classe dÃ©finissant la fonction de transfert d'un correcteur
         type :
           "P"  : C(p) = K
           "PI" : C(p) = K (1+Tp)/(1+aTp))
           "PI2" : C(p) = K(1+Tp)/Tp
           "PD" : C(p) = K (1+aTp)/(1+Tp))
           "PD2" : C(p) = K (1+Tp)
-          "PID" ! C(p) = K (1+aTp)/(1+Tp))... à faire !!
+          "PID" ! C(p) = K (1+aTp)/(1+Tp))... Ã  faire !!
     """
     def __init__(self, type = "P"):
         self.classe = 0
@@ -1253,13 +1253,13 @@ class FonctionTransfertCorrec:
         # Constante de temps
         self.T = [1.0]
         
-        # Paramètre de "position"
+        # ParamÃ¨tre de "position"
         self.a = [2.0]
         
         # Les variables
         self.variables = {}
         
-        # La fonction de transfert sous forme numérique (type calcul.FonctionTransfertNum)
+        # La fonction de transfert sous forme numÃ©rique (type calcul.FonctionTransfertNum)
         self.FTNum = []
         
         # La liste de sous fonctions de transfert (type calcul.FonctionTransfertNum)
@@ -1345,7 +1345,7 @@ class FonctionTransfertCorrec:
 #        return polyNumer, polyDenom
         
     def detFTNum(self):
-        """ Determine la version numérique de la FT
+        """ Determine la version numÃ©rique de la FT
                 (avec les valeurs actuelles des variables)
         """
         self.FTNum = []
@@ -1365,7 +1365,7 @@ class FonctionTransfertCorrec:
             self.T = self.variables[u'T'].v
     
     def detLstFTNum(self):
-        """ Détermine la liste des sous FT 
+        """ DÃ©termine la liste des sous FT 
         """
 #        print "detLstFtNum :"
         self.miseAJourCoef()
@@ -1463,7 +1463,7 @@ class FonctionTransfertCorrec:
       
 #########################################################################################################
 #
-#  Fonction de Transfert (sous forme factorisée)
+#  Fonction de Transfert (sous forme factorisÃ©e)
 #
 #########################################################################################################  
 class FonctionTransfertFact:
@@ -1485,7 +1485,7 @@ class FonctionTransfertFact:
         self.classeNulle = classeNulle
         
         # Les deux polynomes factorises
-        # On est obligé de procéder ainsi depuis py26 car [] passe sous un même id à chaque instanciation d'une FT !!
+        # On est obligÃ© de procÃ©der ainsi depuis py26 car [] passe sous un mÃªme id Ã  chaque instanciation d'une FT !!
         if lstPolyN == None:
             self.lstPolyN =[]
         else:
@@ -1500,7 +1500,7 @@ class FonctionTransfertFact:
         # Les variables
         self.variables = {}
         
-        # La fonction de transfert sous forme numérique (type calcul.FonctionTransfertNum)
+        # La fonction de transfert sous forme numÃ©rique (type calcul.FonctionTransfertNum)
         self.FTNum = []
         
         # La liste de sous fonctions de transfert (type calcul.FonctionTransfertNum)
@@ -1631,7 +1631,7 @@ class FonctionTransfertFact:
     
     
     def detFTNum(self):
-        """ Determine la version numérique de la FT
+        """ Determine la version numÃ©rique de la FT
                 (avec les valeurs actuelles des variables)
         """
         
@@ -1746,7 +1746,7 @@ class FonctionTransfertFact:
     
     
     def detLstFTNum(self):
-        """ Détermine la liste des sous FT 
+        """ DÃ©termine la liste des sous FT 
         """
 #        print "detLstFtNum :"
 #        print self
@@ -1921,7 +1921,7 @@ class FonctionTransfertFact:
             mult = r""
         
         #
-        # Quotien des polynômes
+        # Quotien des polynÃ´mes
         #
         if self.lstPolyD == []:
             if self.lstPolyN == []:
@@ -1946,7 +1946,7 @@ class FonctionTransfertFact:
     
     #########################################################################################################
     def getComplexite(self):
-        """ Renvoie le niveau de "compléxité" de la FT
+        """ Renvoie le niveau de "complÃ©xitÃ©" de la FT
             (le nombre maximum de sous fonctions de transfert 
              qu'elle est succeptible d'avoir)
         """
@@ -1977,9 +1977,9 @@ class SelecteurPolynomeFact(wx.Panel):
         
 #        self.txt = wx.StaticText(self, -1, self.lstPolyToTxt(lstPoly))
         if id == 10:
-            nd = _(u"numérateur")
+            nd = _(u"numÃ©rateur")
         else:
-            nd = _(u"dénominateur")
+            nd = _(u"dÃ©nominateur")
             
         im1 = Images.Bouton_Select1er.GetBitmap()
         im2 = Images.Bouton_Select2nd.GetBitmap()
@@ -1989,10 +1989,10 @@ class SelecteurPolynomeFact(wx.Panel):
         b2 = wx.BitmapButton(self, 12, im2)
         bE = wx.BitmapButton(self, 13, imE)
         
-#        SetSuperToolTip(b1, _(u"Ajouter un polynôme d'ordre 1 au ")+nd)
-        b1.SetToolTipString(_(u"Ajouter un polynôme d'ordre 1 au ")+nd)
-        b2.SetToolTipString(_(u"Ajouter un polynôme d'ordre 2 au ")+nd)
-        bE.SetToolTipString(_(u"Supprimer le dernier polynôme ajouté au ")+nd)
+#        SetSuperToolTip(b1, _(u"Ajouter un polynÃ´me d'ordre 1 au ")+nd)
+        b1.SetToolTipString(_(u"Ajouter un polynÃ´me d'ordre 1 au ")+nd)
+        b2.SetToolTipString(_(u"Ajouter un polynÃ´me d'ordre 2 au ")+nd)
+        bE.SetToolTipString(_(u"Supprimer le dernier polynÃ´me ajoutÃ© au ")+nd)
         
         self.Bind(wx.EVT_BUTTON, self.OnSpinUp, b1)
         self.Bind(wx.EVT_BUTTON, self.OnSpinUp, b2)
@@ -2021,7 +2021,7 @@ class SelecteurPolynomeFact(wx.Panel):
             self.modifier()
     
     def modifier(self):
-#        print "Poly modifié :", self.lstPoly
+#        print "Poly modifiÃ© :", self.lstPoly
         self.Parent.OnPolyModified(self.lstPoly)
         
 ##########################################################################################################
@@ -2060,8 +2060,8 @@ class SelecteurPolynomeFact(wx.Panel):
 #########################################################################################################
 class SelecteurFTFact(wx.Panel):
     """ Panel contenant l'expression canonique de la FT
-        (sous forme factorisée canonique)
-        et les boutons pour ajouter/enveler des polynômes
+        (sous forme factorisÃ©e canonique)
+        et les boutons pour ajouter/enveler des polynÃ´mes
     """
     def __init__(self, parent, FT, nom = "H", retard = True):
         wx.Panel.__init__(self, parent, -1)#, style = wx.BORDER_SIMPLE)
@@ -2088,7 +2088,7 @@ class SelecteurFTFact(wx.Panel):
         
         
         #
-        # Les boutons d'ajout/enlèvement de polynômes
+        # Les boutons d'ajout/enlÃ¨vement de polynÃ´mes
         #
         sizerCtrl = wx.BoxSizer(wx.VERTICAL)
         sN = SelecteurPolynomeFact(self, 10, self.FT.lstPolyN)
@@ -2110,8 +2110,8 @@ class SelecteurFTFact(wx.Panel):
 
     ######################################################################################################    
     def MiseAJourBmp(self):
-        """ Modifie l'expression factorisée de la FT
-            quand on a ajouté/supprimé un polynôme
+        """ Modifie l'expression factorisÃ©e de la FT
+            quand on a ajoutÃ©/supprimÃ© un polynÃ´me
         """
         # On modifie l'image
         self.sb.SetBitmap(self.FT.getBitmap(self.nom, retard = self.retard), 
@@ -2305,7 +2305,7 @@ class poly2:
     
     def __repr__(self):
         p = self.getPolyNum()[0]
-        return "("+strSc(p[0])+"p²+"+strSc(p[1])+"p+1)"
+        return "("+strSc(p[0])+"pÂ²+"+strSc(p[1])+"p+1)"
     
     def getPoly(self):
         i = self.getStrId()
@@ -2344,16 +2344,16 @@ class poly2:
     
     
     def getDecomposition(self):
-        """ Décompose le polynôme du 2nd ordre en deux polynômes d'ordre 1
+        """ DÃ©compose le polynÃ´me du 2nd ordre en deux polynÃ´mes d'ordre 1
             (si possible !)
             Pas de prise en compte des variables multiples !
         """
-        # Polynôme sous la forme d'une liste
+        # PolynÃ´me sous la forme d'une liste
         p = self.getPolyNum()[0]
         
         # Recherche des racines
         pn = scipy.poly1d(p)
-        if abs(scipy.imag(pn.r[0])) < globdef.EPSILON: # Racines réelles
+        if abs(scipy.imag(pn.r[0])) < globdef.EPSILON: # Racines rÃ©elles
             return [[-1.0/scipy.real(pn.r[0]), 1.0] , [-1.0/scipy.real(pn.r[1]), 1.0]]
         else:
             return [p]
