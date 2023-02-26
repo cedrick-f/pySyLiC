@@ -75,15 +75,16 @@ def SendBugReport():
     #
     import webbrowser, datetime
 
-    message=_(u"pySyLiC a rencontré une erreur et doit être fermé.\nVoulez-vous envoyer un rapport de bug ?")
+    message=_(u"pySyLiC a rencontré une erreur et doit être fermé.\n\nVoulez-vous envoyer un rapport de bug ?")
     dlg=wx.MessageDialog(None,message,_("Erreur"), wx.YES_NO| wx.ICON_ERROR).ShowModal()
     if dlg==5103:#YES, on envoie le mail
         #
         # Définition du mail
         #
+        import version
         e_mail="cedrick.faury@freesbee.fr"
         now = str(datetime.datetime.now())
-        subject=_(u"pySyLiC ") + globdef.VERSION
+        subject=_(u"pySyLiC ") + version.__version__
         subject+= _(u" : rapport de bug") + now
 #        body="<HTML><BODY><P>"
         body =_(u"Le bug suivant s'est produit le ") + now
