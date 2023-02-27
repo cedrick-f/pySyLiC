@@ -247,7 +247,7 @@ class FonctionTransfertNum:
             while True : r.remove(0.0)
         except:
             pass
-        if r <> []:
+        if r != []:
             mini = decade(r[0]) - 1
             maxi = decade(r[-1]) + 2
             return [mini, maxi]
@@ -364,7 +364,7 @@ class FonctionTransfertNum:
     
     #######################################################################################
     def est2ndOrdre(self):
-        return self.getOrdre() == 2 and self.polyN.o == 0 and self.polyD.c[2] <> 0.0
+        return self.getOrdre() == 2 and self.polyN.o == 0 and self.polyD.c[2] != 0.0
     
     #######################################################################################
     def est1erOrdre(self):
@@ -372,7 +372,7 @@ class FonctionTransfertNum:
     
     #######################################################################################
     def estInv2ndOrdre(self):
-        return self.getOrdre() == 0 and self.polyN.o == 2 and self.polyN.c[2] <> 0.0
+        return self.getOrdre() == 0 and self.polyN.o == 2 and self.polyN.c[2] != 0.0
     
     #######################################################################################
     def estInv1erOrdre(self):
@@ -569,7 +569,7 @@ class FonctionTransfertNum:
                 return lti(self.polyN,self.polyD)
             except ValueError:
                 pass
-                print "Improper transfer function"
+                print ("Improper transfer function")
             
     ###################################################################################################
     def getAutoRange(self, N = 100):
@@ -908,7 +908,7 @@ class FonctionTransfertNum:
                         Phi = insert(Phi, [i+1], self.Phi(w[i+1]))
                         c += 1
                     else:
-                        if c >= 20: print "! PLANTAGE LisserReponse !"
+                        if c >= 20: print ("! PLANTAGE LisserReponse !")
                         i += 1
                         c = 0
                 else:
@@ -1774,7 +1774,7 @@ class FonctionTransfertNum:
         return s
     
 if HAVE_PSYCO:
-    print "Psyco !!!!!"
+    print ("Psyco !!!!!")
     psyco.bind(FonctionTransfertNum.getReponse)
     psyco.bind(lsim2)
     
@@ -1903,7 +1903,7 @@ class DiagAsympGain(DiagAsympBase):
         self.KdB = KdB
         
     def __repr__(self):
-        print self.HdB_1, self.Asymp
+        print (self.HdB_1, self.Asymp)
         return ""
     
     def getCassures(self):
@@ -1994,7 +1994,7 @@ class DiagAsympPhase(DiagAsympBase):
         
         
     def __repr__(self):
-        print self.HdB_1, self.Asymp
+        print (self.HdB_1, self.Asymp)
         return ""
     
     def __add__(self, diag):
@@ -2049,7 +2049,7 @@ class AsympGain:
         self.ordor = 0.0
         
     def __repr__(self):
-        print self.omega, self.pente,
+        print (self.omega, self.pente,)
         return ""
     
 #########################################################################################################
@@ -2059,7 +2059,7 @@ class AsympPhase:
         self.phi = phi
         
     def __repr__(self):
-        print self.omega, self.phi,
+        print (self.omega, self.phi,)
         return ""
 
 ##########################################################################################################

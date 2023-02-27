@@ -27,14 +27,14 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
-import ConfigParser
+import configparser
 import os.path
 #import wx
 
 import globdef
 from CedWidgets import changeEchelle, VariableCtrl, Variable, VAR_ENTIER_POS, EVT_VAR_CTRL
 from LineFormat import LineFormat, SelecteurFormatLigne, EVT_FORMAT_MODIFIED
-import wx.combo
+import wx
 import Images
 
 ##############################################################################
@@ -99,7 +99,7 @@ class Options:
         """" Enregistre les options dans un fichier
         """
 #        print "Enregistrement",self
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
 
         for titre,dicopt in self.typesOptions.items():
             titre = titre.encode('utf-8')
@@ -132,9 +132,9 @@ class Options:
     def ouvrir(self):
         """ Ouvre un fichier d'options 
         """
-        config = ConfigParser.ConfigParser()
+        config = configparser.ConfigParser()
         config.read(self.fichierOpt)
-        print "ouverture :",self.fichierOpt
+        print ("ouverture :",self.fichierOpt)
         for titre in self.typesOptions.keys():
             titreUtf = titre.encode('utf-8')
             for titreopt in self.typesOptions[titre].keys():
@@ -192,7 +192,7 @@ class Options:
         
     ############################################################################
     def defaut(self):
-        print "defaut"
+        print ("defaut")
         globdef.DefOptionsDefaut()
         
         self.optGenerales["TypeSelecteur"] = globdef.SELECTEUR_FT
@@ -1111,9 +1111,9 @@ class pnlCouleurs(wx.Panel):
 #  DirSelectorCombo
 #
 ##########################################################################################################
-class DirSelectorCombo(wx.combo.ComboCtrl):
+class DirSelectorCombo(wx.ComboCtrl):
     def __init__(self, *args, **kw):
-        wx.combo.ComboCtrl.__init__(self, *args, **kw)
+        wx.ComboCtrl.__init__(self, *args, **kw)
 
         # make a custom bitmap showing "..."
         bw, bh = 14, 16

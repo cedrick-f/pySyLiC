@@ -46,12 +46,12 @@ from matplotlib.ticker import Formatter
 #    matplotlib.set_configdir(os.path.join(globdef.INSTALL_PATH, 'bin', 'mpl-data'))
 #print matplotlib.get_configdir()
 
-
+from numpy import errstate, array, arange, meshgrid, pi, absolute, cos, sin, log10, arctan2
 import scipy.interpolate
 
 from CedWidgets import chronometrer, strScCx, strSc, mathText, setToggled, \
                         mathtext_to_wxbitmap, CopierBitmap, CopierTeX, \
-                        mathtext_parser, _min, _max, _m
+                        _min, _max, _m
 
 # On zappe les warnings
 import warnings
@@ -64,10 +64,12 @@ import tempfile
 #
 # Type de police
 #
+from matplotlib.mathtext import MathTextParser
+mathtext_parser = MathTextParser("path")
 def AppliquerTypeFont():
 #    print "AppliquerTypeFont", globdef.FONT_TYPE
-    global mathtext_parser
-    mathtext_parser.__init__("Bitmap")
+    #global mathtext_parser
+    #mathtext_parser.__init__("path")
     if globdef.FONT_TYPE == 0:
         matplotlib.rcParams['mathtext.default'] = 'regular'
         matplotlib.rcParams['mathtext.fontset'] = 'cm'
@@ -177,9 +179,9 @@ class ZoneGraph(aui.AuiNotebook):
         self.tracer = fctTracer
         self.fenetreDiagramme = [None] * 3
         
-        self.nomsPages = [_(u"Diagrammes de Bode"), 
-                          _(u"Diagramme de Black"),
-                          _(u"Diagramme de Nyquist")]
+        self.nomsPages = [_("Diagrammes de Bode"), 
+                          _("Diagramme de Black"),
+                          _("Diagramme de Nyquist")]
         
         if outilsBode == None:
             outilsBode = ["BReel", "BAsymp", "", "BGrille", "BExpre", "", "BZoomA", "BZoomP", "BDepla", "BEchel", "", "BCurse", "", "BExpor", 'BParam', "", "BFenet"]
@@ -488,7 +490,7 @@ class ZoneGraphOutils(wx.Panel):
     def CreateMenu(self):
         self.menu = wx.Menu()
         id = 101
-        for i in [_(u"Imprimer"), _(u"Aperçu"), _(u"Mise en page"), _(u"Options")]:
+        for i in [_("Imprimer"), _("Aperç"), _("Mise en page"), _("Options")]:
             self.menu.Append(id, i)
             self.Bind(wx.EVT_MENU, self.OnMenu, id = id)
             id += 1
@@ -618,15 +620,15 @@ class ZoneGraphOutils(wx.Panel):
                       'BGrille' :"",
 #                      'BMarges' :,
                       'BIsoGP'  :"", 
-                      'BZoomP'  :_(u"Selectionner une zone à visualiser"),
-                      'BZoomA'  :_(u"Adapter automatiquement la zone à visualiser"),
-                      'BCurse'  :_(u"Activer le curseur sur les courbes"),
-                      'BDepla'  :_(u"Déplacer la zone à visualiser"),
-                      'BExpor'  :_(u"Exporter le Tracé"),
+                      'BZoomP'  :_("Selectionner une zone à visualiser"),
+                      'BZoomA'  :_("Adapter automatiquement la zone à visualiser"),
+                      'BCurse'  :_("Activer le curseur sur les courbes"),
+                      'BDepla'  :_("Déplacer la zone à visualiser"),
+                      'BExpor'  :_("Exporter le Tracé"),
                       'BExpre'  :"",
-                      'BParam'  :_(u"Ajuster les tailles des caractère"),
-                      'BEchel'  :_(u"Modifier l'echelle"),
-                      'BImpri'  :_(u"Imprimer le Tracé"),
+                      'BParam'  :_("Ajuster les tailles des caractère"),
+                      'BEchel'  :_("Modifier l'echelle"),
+                      'BImpri'  :_("Imprimer le Tracé"),
                       'BTRepo'  :"",
                       'BPoles'  :"",
                       'BFenet'  :""
@@ -642,24 +644,24 @@ class ZoneGraphOutils(wx.Panel):
                       'BZoomA'  :_(u'Determine automatiquement la zone à visualiser'),
                       'BCurse'  :_(u'Passer en mode "curseur" :\n'\
                                    u'  déplacer la souris latéralement pour faire varier'),
-                      'BDepla'  :_(u"Permet de déplacer la zone à visualiser (pas de changement d'échelle)"),
-                      'BExpor'  :_(u"Permet de sauvegarder la totalité du Tracé à l'écran\n(courbes, expressions, marges, ...)\n"\
-                                   u"sous divers formats de fichiers (png, pdf, svg, ...)"),
+                      'BDepla'  :_("Permet de déplacer la zone à visualiser (pas de changement d'échelle)"),
+                      'BExpor'  :_("Permet de sauvegarder la totalité du Tracé à l'écran\n(courbes, expressions, marges, ...)\n"\
+                                   "sous divers formats de fichiers (png, pdf, svg, ...)"),
                       'BExpre'  :"",
-                      'BParam'  :_(u"Permet d'ajuster les tailles polices de caractère pour ce Tracé"),
-                      'BEchel'  :_(u"Permet de modifier l'echelle de représentation (étendue de la zone à visualiser)\n"
+                      'BParam'  :_("Permet d'ajuster les tailles polices de caractère pour ce Tracé"),
+                      'BEchel'  :_("Permet de modifier l'echelle de représentation (étendue de la zone à visualiser)\n"
                                    u'Remarque :\n'\
                                    u'  Cette fonction est également accessible directement avec la roulette de la souris'),
-                      'BImpri'  :_(u"Permet d'imprimer la totalité du Tracé à l'écran"),
+                      'BImpri'  :_("Permet d'imprimer la totalité du Tracé à l'écran"),
                       'BTRepo'  :"",
                       'BPoles'  :"",
                       'BFenet'  :""
                       }
         if self.tempo:
-            lstToolTip["BCurse"] += u" "+_(u'le temps')
+            lstToolTip["BCurse"] += " "+_(u'le temps')
         else:
-            lstToolTip["BCurse"] += u" "+_(u"la pulsation")
-        lstToolTip["BCurse"] += u"\n"+_(u'  cliquer pour figer le curseur')
+            lstToolTip["BCurse"] += " "+_("la pulsation")
+        lstToolTip["BCurse"] += "\n"+_(u'  cliquer pour figer le curseur')
         self.lstToolTip = lstToolTip
         
         lstID =      {'BReel'   :10,
@@ -697,40 +699,40 @@ class ZoneGraphOutils(wx.Panel):
                       'BFenet'  :False
                       }
         
-        self.labelF = {'BFenet'  :_(u"Ouvrir  dans une fenêtre séparée"),
-                       'BReel'   :_(u"Tracer les diagrammes Réels"),
-                       'BAsymp'  :_(u"Tracer les diagrammes Asymptotiques"),
+        self.labelF = {'BFenet'  :_("Ouvrir  dans une fenêtre séparée"),
+                       'BReel'   :_("Tracer les diagrammes Réels"),
+                       'BAsymp'  :_("Tracer les diagrammes Asymptotiques"),
                        'BGrille' :_(u'Afficher une grille'),
                        'BIsoGP'  :_(u'Afficher les isogains et les isophases'),
-                       'BTRepo'  :_(u"Afficher Le temps de réponse"),
-                       'BPoles'  :_(u"Afficher les Pôles/Zéros de la FTBF"),
-                       'BExpre'  :_(u"Afficher les expressions des FT"),
+                       'BTRepo'  :_("Afficher Le temps de réponse"),
+                       'BPoles'  :_("Afficher les Pôles/Zéros de la FTBF"),
+                       'BExpre'  :_("Afficher les expressions des FT"),
                       }
-        self.labelP = {'BFenet'  :_(u"Remettre dans la fenêtre principale"),
+        self.labelP = {'BFenet'  :_("Remettre dans la fenêtre principale"),
                        'BReel'   :_(u'Masquer les diagrammes Réels'),
-                       'BAsymp'  :_(u"Masquer les diagrammes Asymptotiques"),
+                       'BAsymp'  :_("Masquer les diagrammes Asymptotiques"),
                        'BGrille' :_(u'Masquer la grille'),
                        'BIsoGP'  :_(u'Masquer les isogains et les isophases'),
-                       'BTRepo'  :_(u"Masquer Le temps de réponse"),
-                       'BPoles'  :_(u"Masquer les Pôles/Zéros de la FTBF"),
-                       'BExpre'  :_(u"Masquer les expressions des FT"),
+                       'BTRepo'  :_("Masquer Le temps de réponse"),
+                       'BPoles'  :_("Masquer les Pôles/Zéros de la FTBF"),
+                       'BExpre'  :_("Masquer les expressions des FT"),
                       }
-        self.tipF =   {'BFenet'  :_(u"Ouvrir le Tracé dans une fenêtre séparée"),
+        self.tipF =   {'BFenet'  :_("Ouvrir le Tracé dans une fenêtre séparée"),
                        'BReel'   :_(u'Tracer les diagrammes de Bode réels'),
                        'BAsymp'  :_(u'Tracer les diagrammes de Bode asymptotiques'),
                        'BGrille' :_(u'Afficher une grille'),
                        'BIsoGP'  :_(u'Afficher les isogains et les isophases'),
-                       'BTRepo'  :_(u"Afficher et donner la valeur du temps de réponse à %s %%") %(int(globdef.TEMPS_REPONSE*100),),
-                       'BPoles'  :_(u"Afficher les Pôles/Zéros de la FTBF dans le plan complexe"),
+                       'BTRepo'  :_("Afficher et donner la valeur du temps de réponse à %s %%") %(int(globdef.TEMPS_REPONSE*100),),
+                       'BPoles'  :_("Afficher les Pôles/Zéros de la FTBF dans le plan complexe"),
                        'BExpre'  :_(u'Afficher les expressions des fonctions de transfert directement sur les courbes'),
                       }
-        self.tipP =   {'BFenet'  :_(u"Remettre le Tracé dans la fenêtre principale"),
+        self.tipP =   {'BFenet'  :_("Remettre le Tracé dans la fenêtre principale"),
                        'BReel'   :_(u'Masquer les diagrammes de Bode réels'),
                        'BAsymp'  :_(u'Masquer les diagrammes de Bode asymptotiques'),
                        'BGrille' :_(u'Masquer la grille'),
                        'BIsoGP'  :_(u'Masquer les isogains et les isophases'),
-                       'BTRepo'  :_(u"Masquer le temps de réponse à %s %%") %(int(globdef.TEMPS_REPONSE*100),),
-                       'BPoles'  :_(u"Masquer les Pôles/Zéros de la FTBF dans le plan complexe"),
+                       'BTRepo'  :_("Masquer le temps de réponse à %s %%") %(int(globdef.TEMPS_REPONSE*100),),
+                       'BPoles'  :_("Masquer les Pôles/Zéros de la FTBF dans le plan complexe"),
                        'BExpre'  :_(u'Masquer les expressions des fonctions de transfert'),
                       }
                 
@@ -1199,9 +1201,9 @@ class ZoneGraphBase(wx.Panel):
         #
         itemMasquerBarre = wx.MenuItem(menu, 0,"a")
         if self.parent.AffComplet:
-            itemMasquerBarre.SetItemLabel(_(u"Masquer la barre d'outils"))
+            itemMasquerBarre.SetItemLabel(_("Masquer la barre d'outils"))
         else:
-            itemMasquerBarre.SetItemLabel(_(u"Afficher la barre d'outils"))
+            itemMasquerBarre.SetItemLabel(_("Afficher la barre d'outils"))
         menu.AppendItem(itemMasquerBarre)
         self.Bind(wx.EVT_MENU, self.OnMasquerBarre, id=0)
         
@@ -1251,14 +1253,14 @@ class ZoneGraphBase(wx.Panel):
             menu.AppendSeparator()
             self.num = eval(self.context[1])
             id = 100
-            label = _(u"Modifier le format de cette FT")
-            toolTip = _(u"Modifier le format (couleur, style de ligne, ...) de cette FT")
+            label = _("Modifier le format de cette FT")
+            toolTip = _("Modifier le format (couleur, style de ligne, ...) de cette FT")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
 
             id = 101
-            label = _(u"Masquer cette FT")
-            toolTip = _(u"Masquer cette FT")
+            label = _("Masquer cette FT")
+            toolTip = _("Masquer cette FT")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
@@ -1268,16 +1270,16 @@ class ZoneGraphBase(wx.Panel):
         elif self.context[0] == "R":
             menu.AppendSeparator()
             self.num = eval(self.context[1])
-            text = [(u"consigne"), _(u"réponse"), _(u"réponse du système non corrigé")]
+            text = [("consigne"), _("réponse"), _("réponse du système non corrigé")]
             id = 102
-            label = _(u"Modifier le format de la ") + text[self.num]
-            toolTip = _(u"Modifier le format (couleur, style de ligne, ...) de la ") + text[self.num]
+            label = _("Modifier le format de la ") + text[self.num]
+            toolTip = _("Modifier le format (couleur, style de ligne, ...) de la ") + text[self.num]
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
 
 #            id = 101
-#            label = _(u"Masquer cette FT")
-#            toolTip = _(u"Masquer cette FT")
+#            label = _("Masquer cette FT")
+#            toolTip = _("Masquer cette FT")
 #            item = menu.Append(id, label, toolTip)
 #            self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
@@ -1298,34 +1300,34 @@ class ZoneGraphBase(wx.Panel):
             menu.AppendSeparator()
             self.num = eval(self.context[1])
             id = 100
-            label = _(u"Modifier le format de cette FT")
-            toolTip = _(u"Modifier le format (couleur, style de ligne, ...) de cette FT")
+            label = _("Modifier le format de cette FT")
+            toolTip = _("Modifier le format (couleur, style de ligne, ...) de cette FT")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
 
             id = 101
-            label = _(u"Masquer cette FT")
-            toolTip = _(u"Masquer cette FT")
+            label = _("Masquer cette FT")
+            toolTip = _("Masquer cette FT")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
 
             id = 110
-            label = _(u"Modifier la taille")
-            toolTip = _(u"Modifier la taille de caractère des expressions")
+            label = _("Modifier la taille")
+            toolTip = _("Modifier la taille de caractère des expressions")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
             id = 130
-            label = _(u"Copier comme une image")
-            toolTip = _(u"Copier cette expression dans le presse-papier\n"\
-                        u"sous la forme d'une image")
+            label = _("Copier comme une image")
+            toolTip = _("Copier cette expression dans le presse-papier\n"\
+                        "sous la forme d'une image")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
             id = 131
-            label = _(u"Copier comme une expression LaTeX")
-            toolTip = _(u"Copier cette expression dans le presse-papier\n"\
-                        u"sous la forme d'une expression LaTeX")
+            label = _("Copier comme une expression LaTeX")
+            toolTip = _("Copier cette expression dans le presse-papier\n"\
+                        "sous la forme d'une expression LaTeX")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
@@ -1347,18 +1349,18 @@ class ZoneGraphBase(wx.Panel):
             menu.AppendSeparator()
             self.num = eval(self.context[1])
             id = 113
-            label = _(u"Modifier la taille des informations contextuelles")
-            toolTip = _(u"Modifier la taille de caractère des isoGains et isoPhases")
+            label = _("Modifier la taille des informations contextuelles")
+            toolTip = _("Modifier la taille de caractère des isoGains et isoPhases")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
             if self.context[0] == "G":
                 id = 121
-                typ = _(u"isoGains")
+                typ = _("isoGains")
             else:
                 id = 122
-                typ = _(u"isoPhases")
-            label = _(u"Modifier le format des lignes ")+typ
+                typ = _("isoPhases")
+            label = _("Modifier le format des lignes ")+typ
             toolTip = label
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
@@ -1369,19 +1371,19 @@ class ZoneGraphBase(wx.Panel):
         elif self.context[0] == "A":
             menu.AppendSeparator()
             id = 112
-            label = _(u"Modifier la taille des titres")
-            toolTip = _(u"Modifier la taille de caractère des titres des axes")
+            label = _("Modifier la taille des titres")
+            toolTip = _("Modifier la taille de caractère des titres des axes")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
             id = 111
-            label = _(u"Modifier la taille des valeurs")
-            toolTip = _(u"Modifier la taille de caractère des valeurs des graduations")
+            label = _("Modifier la taille des valeurs")
+            toolTip = _("Modifier la taille de caractère des valeurs des graduations")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
             id = 120
-            label = _(u"Modifier le format de la grille")
+            label = _("Modifier le format de la grille")
             toolTip = label
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
@@ -1392,13 +1394,13 @@ class ZoneGraphBase(wx.Panel):
         elif self.context[0] == "C":
             menu.AppendSeparator()
             id = 113
-            label = _(u"Modifier la taille de caractère")
-            toolTip = _(u"Modifier la taille de caractère")
+            label = _("Modifier la taille de caractère")
+            toolTip = _("Modifier la taille de caractère")
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
             
             id = 124
-            label = _(u"Modifier la couleur du point critique")
+            label = _("Modifier la couleur du point critique")
             toolTip = label
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
@@ -1409,7 +1411,7 @@ class ZoneGraphBase(wx.Panel):
         elif self.context[0] == "Z":
             menu.AppendSeparator()
             id = 123
-            label = _(u"Modifier la couleur des Pôles")
+            label = _("Modifier la couleur des Pôles")
             toolTip = label
             item = menu.Append(id, label, toolTip)
             self.Bind(wx.EVT_MENU, self.OnClick, id = id)
@@ -1431,7 +1433,7 @@ class ZoneGraphBase(wx.Panel):
     
     def OnClick(self, event):
         id = event.GetId()
-        if hasattr(self.zoneOutils, "menu") and  event.GetEventObject() == self.zoneOutils.menu:
+        if hasattr(self.zoneOutils, "men") and  event.GetEventObject() == self.zoneOutils.menu:
             event.Skip()
         else:
             self.zoneOutils.tbar.ToggleTool(id, not self.zoneOutils.tbar.GetToolToggled(id))
@@ -1534,7 +1536,8 @@ class ZoneGraphBase(wx.Panel):
             bbox = label.get_window_extent()
             # the figure transform goes from relative coords->pixels and we
             # want the inverse of that
-            bboxi = bbox.inverse_transformed(self.figure.transFigure)
+            #bboxi = bbox.inverse_transformed(self.figure.transFigure)
+            bboxi = bbox.transformed(self.figure.transFigure.inverted())
             bboxesx.append(bboxi)
             
         bboxesy = []        
@@ -1542,7 +1545,8 @@ class ZoneGraphBase(wx.Panel):
             bbox = label.get_window_extent()
             # the figure transform goes from relative coords->pixels and we
             # want the inverse of that
-            bboxi = bbox.inverse_transformed(self.figure.transFigure)
+            #bboxi = bbox.inverse_transformed(self.figure.transFigure)
+            bboxi = bbox.transformed(self.figure.transFigure.inverted())
             bboxesy.append(bboxi)
 
         # this is the bbox that bounds all the bboxes, again in relative
@@ -1642,7 +1646,7 @@ class ZoneGraphBase(wx.Panel):
                 self.mouseInfo = (_x, _y, self.getXYlim())
                 
         elif evt.button == 2:
-            print "roulette"
+            print ("roulette")
 #            self.ntb.pan()
         
 #            self.SetAffComplet()
@@ -1905,7 +1909,7 @@ class ZoneGraphBase(wx.Panel):
                        )
         
         dlg = wx.FileDialog(
-            self, message=_(u"Exporter le Tracé courant sous ..."), 
+            self, message=_("Exporter le Tracé courant sous ..."), 
                             defaultDir = self.zoneOutils.app.DossierSauvegarde , 
                             defaultFile="", wildcard=mesFormats, style=wx.SAVE|wx.OVERWRITE_PROMPT|wx.CHANGE_DIR
                             )
@@ -1921,8 +1925,8 @@ class ZoneGraphBase(wx.Panel):
                 try:
                     self.figure.savefig(path, dpi = globdef.DPI_EXPORT)
                 except IOError:
-                    dlge = wx.MessageDialog(self, _(u"Permission d'enregistrer reffusée !"),
-                                                   _(u"Erreur d''enregistrement"),
+                    dlge = wx.MessageDialog(self, _("Permission d'enregistrer reffusée !"),
+                                                   _("Erreur d''enregistrement"),
                                                    wx.OK | wx.ICON_ERROR
                                                    )
                     dlge.ShowModal()
@@ -2312,8 +2316,8 @@ class ParamZoneGraph(wx.MiniFrame):
     def __init__(self, parent, zoneGraph, nom, double = False):
         self.zoneGraph = zoneGraph
         
-#        print "init ParamZoneGraph", _(u"paramètres ")+nom
-        wx.MiniFrame.__init__(self, parent.app, -1, _(u"Tailles de caractères")+" - "+nom, 
+#        print "init ParamZoneGraph", _("paramètres ")+nom
+        wx.MiniFrame.__init__(self, parent.app, -1, _("Tailles de caractères")+" - "+nom, 
                               style = wx.DEFAULT_FRAME_STYLE|wx.CLIP_CHILDREN#|wx.STAY_ON_TOP
                               )
         
@@ -2331,11 +2335,11 @@ class ParamZoneGraph(wx.MiniFrame):
 #        self.subplotParam = self.zoneGraph.figure.subplotpars
 #        self.echelle = 200 # Pour résolution des sliders
         
-#        self.param = {0: [_(u"Marge gauche") , "left"],
-#                      1: [_(u"Marge droite") , "right"],
-#                      2: [_(u"Marge bas") , "bottom"],
-#                      3: [_(u"Marge haut") , "top"],
-#                      4: [_(u"Ecart horizontal") , "hspace"],
+#        self.param = {0: [_("Marge gauche") , "left"],
+#                      1: [_("Marge droite") , "right"],
+#                      2: [_("Marge bas") , "bottom"],
+#                      3: [_("Marge haut") , "top"],
+#                      4: [_("Ecart horizontal") , "hspace"],
 #                      }
 #        if not double:
 #            del(self.param[4])
@@ -2355,11 +2359,11 @@ class ParamZoneGraph(wx.MiniFrame):
         #
         # Tailles de polices
         #
-        self.paramSize = {0: [_(u"Expressions des FT")         , "FONT_SIZE_EXPR"],
-                          1: [_(u"Valeurs des graduations")   , "FONT_SIZE_GRAD"],
-                          2: [_(u"Titres des axes")          , "FONT_SIZE_LABEL_AXE"],
-                          3: [_(u"Informations contextuelles") , "FONT_SIZE_LABEL"],
-                          4: [_(u"Valeurs du curseur")         , "FONT_SIZE_CURSEUR"],
+        self.paramSize = {0: [_("Expressions des FT")         , "FONT_SIZE_EXPR"],
+                          1: [_("Valeurs des graduations")   , "FONT_SIZE_GRAD"],
+                          2: [_("Titres des axes")          , "FONT_SIZE_LABEL_AXE"],
+                          3: [_("Informations contextuelles") , "FONT_SIZE_LABEL"],
+                          4: [_("Valeurs du curseur")         , "FONT_SIZE_CURSEUR"],
                           }
         
         self.panel2 = wx.Panel(self, -1, style = wx.BORDER_SIMPLE )
@@ -2471,7 +2475,7 @@ class ParamZoneGraph(wx.MiniFrame):
                              style = wx.SP_VERTICAL|wx.TE_READONLY#|wx.SP_ARROW_KEYS|wx.SP_WRAP| 
                              )
   
-        bsizer.Add(txt, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.ALL, 3)
+        bsizer.Add(txt, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 3)
         bsizer.Add(slider, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_LEFT|wx.ALL, 3)
         
         return bsizer, slider, txt
@@ -2554,8 +2558,8 @@ class ZoneGraphBode(ZoneGraphBase):
             sub.grid(globdef.TRACER_GRILLE, 
                      color = globdef.FORM_GRILLE.get_coul_str(), zorder = 0, 
                      lw = globdef.FORM_GRILLE.epais, 
-                     ls = globdef.FORM_GRILLE.styl,
-                     visible = globdef.TRACER_GRILLE)
+                     ls = globdef.FORM_GRILLE.styl)#,
+                     #visible = globdef.TRACER_GRILLE)
             sub.get_xaxis().grid(which = 'both', 
                                  lw = globdef.FORM_GRILLE.epais,
                                  ls = globdef.FORM_GRILLE.styl,
@@ -2570,9 +2574,9 @@ class ZoneGraphBode(ZoneGraphBase):
         #
         # Définition des deux "axes"
         #
-        self.subplot1.set_ylabel(_(u"Gain (dB)"))
-        self.subplot2.set_ylabel(_(u"Phase (deg)"))
-        self.subplot2.set_xlabel(_(u"Pulsation (rad/s)"))
+        self.subplot1.set_ylabel(_("Gain (dB)"))
+        self.subplot2.set_ylabel(_("Phase (deg)"))
+        self.subplot2.set_xlabel(_("Pulsation (rad/s)"))
 #        self.subplot1.autoscale_view(tight=True, scalex=False, scaley=True)
 #        self.subplot2.autoscale_view(tight=True, scalex=False, scaley=True)
         self.subplot1.set_xscale('log')
@@ -3814,14 +3818,14 @@ class ZoneGraphBlack(ZoneGraphBase):
         coul = globdef.FORM_GRILLE.get_coul_str()
         self.subplot.grid(globdef.TRACER_GRILLE, color = coul, zorder = 0, 
                           lw = globdef.FORM_GRILLE.epais, 
-                          ls = globdef.FORM_GRILLE.styl, visible = globdef.TRACER_GRILLE)
+                          ls = globdef.FORM_GRILLE.styl)#, visible = globdef.TRACER_GRILLE)
         
         
         #
         # Définition des deux "axes"
         #
-        self.subplot.set_ylabel(_(u"Gain (dB)"))
-        self.subplot.set_xlabel(_(u"Phase (deg)"))
+        self.subplot.set_ylabel(_("Gain (dB)"))
+        self.subplot.set_xlabel(_("Phase (deg)"))
         self.subplot.autoscale_view(tight=True, scalex=False, scaley=True)
         
         self.subplot.xaxis.set_major_formatter(DegreeFormatter())
@@ -4240,7 +4244,7 @@ class ZoneGraphBlack(ZoneGraphBase):
 
             elif detect["IP"] != None:
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
-                setp(self.labelIsoPhase, text = u" " + str(self.listeIsoPhasesVisibles[detect["IP"]]) + u" °",
+                setp(self.labelIsoPhase, text = " " + str(self.listeIsoPhasesVisibles[detect["IP"]]) + " °",
                      x = _xdata, y = _ydata, visible = True)
                 self.draw_artists([self.labelIsoPhase])
                 self.context = "P"+str(detect["IP"])
@@ -4248,7 +4252,7 @@ class ZoneGraphBlack(ZoneGraphBase):
             elif detect["PC"] != None:
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
                 if detect["PC"] == 1:
-                    text = _(u"Point critique")
+                    text = _("Point critique")
                 else:
                     text = r"$"+_(u'Limite')+ r"\/\lambda$"
                 setp(self.labelptCritique, text = text,
@@ -4440,7 +4444,7 @@ class ZoneGraphBlack(ZoneGraphBase):
                 va, ha, s1, s2 = getAlignment(dHdP, _y < ymoy)
                 setp(self.txtCursGP[i], x = _x , y = _y ,
                      horizontalalignment = ha, verticalalignment = va, zorder = globdef.ZORDER_MAXI-i+1,
-                     text = s1+r"$\varphi="+fonctions.strSc(_x)+u" à $"+"\n"+r"$H_{dB}"+fonctions.strSc(_y)+u" dB$"+s2, visible = True)
+                     text = s1+r"$\varphi="+fonctions.strSc(_x)+" à $"+"\n"+r"$H_{dB}"+fonctions.strSc(_y)+" dB$"+s2, visible = True)
                 self.subplot.draw_artist(self.txtCursGP[i])
             
             
@@ -4533,7 +4537,7 @@ class ZoneGraphBlack(ZoneGraphBase):
 #                va, ha, s1, s2 = getAlignment(dHdP, _y < ymoy)
 #                setp(self.txtCursGP[i], x = _x , y = _y ,
 #                     horizontalalignment = ha, verticalalignment = va, zorder = ZORDER_MAXI-i+1,
-#                     text = s1+fonctions.strSc(_x)+u" à "+"\n"+fonctions.strSc(_y)+u" dB "+s2, visible = True)
+#                     text = s1+fonctions.strSc(_x)+" à "+"\n"+fonctions.strSc(_y)+" dB "+s2, visible = True)
 #                self.subplot.draw_artist(self.txtCursGP[i])
 #                
 #                # Les isoPhases et isoGains ...
@@ -4683,7 +4687,7 @@ class ZoneGraphBlack(ZoneGraphBase):
 #
 #                elif numIsoP != None:
 #                    self.canvas.SetCursor(wx.StockCursor(CURSEUR_ISO))
-#                    setp(self.labelIsoPhase, text = u" " + str(listeIsoPhases[numIsoP]) + u" °",
+#                    setp(self.labelIsoPhase, text = " " + str(listeIsoPhases[numIsoP]) + " °",
 #                         x = _xdata, y = _ydata, visible = True)
 #                    self.draw_artists([self.labelIsoPhase])
 #
@@ -4968,7 +4972,7 @@ class ZoneGraphBlack(ZoneGraphBase):
                                 and (rangeY == [] or (y1 == rangeY[0] and y2 == rangeY[1])))
     
             
-            if rangeX <> [] and rangeX is not None: # Est-ce encore utile ???
+            if rangeX != [] and rangeX is not None: # Est-ce encore utile ???
                 self.subplot.set_xlim(rangeX)
                 self.subplot.set_ylim(rangeY)
         
@@ -5220,7 +5224,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
         coul = globdef.FORM_GRILLE.get_coul_str()
         self.subplot.grid(globdef.TRACER_GRILLE, color = coul, 
                           lw = globdef.FORM_GRILLE.epais, 
-                          ls = globdef.FORM_GRILLE.styl, zorder = 0, visible = globdef.TRACER_GRILLE)
+                          ls = globdef.FORM_GRILLE.styl, zorder = 0)#, visible = globdef.TRACER_GRILLE)
         
         
         #
@@ -5569,7 +5573,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
                 
             elif detect["PC"] != None:
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
-                text = _(u"Point critique")
+                text = _("Point critique")
                 setp(self.labelptCritique, text = text,
                      x = _xdata, y = _ydata, visible = True)
                 self.draw_artists([self.labelptCritique])
@@ -5659,7 +5663,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
                 va, ha, s1, s2 = getAlignment(dHdP, _y < ymoy)
                 setp(self.txtCursGP[i], x = _x , y = _y ,
                      horizontalalignment = ha, verticalalignment = va, zorder = globdef.ZORDER_MAXI-i+1,
-                     text = s1+r"$\Re="+fonctions.strSc(_x)+r"$"+u"\n"+"$\Im="+fonctions.strSc(_y)+r"$"+s2, visible = True)
+                     text = s1+r"$\Re="+fonctions.strSc(_x)+r"$"+"\n"+"$\Im="+fonctions.strSc(_y)+r"$"+s2, visible = True)
                 self.subplot.draw_artist(self.txtCursGP[i])
             
             
@@ -5687,7 +5691,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
 #        logOm = (log10(self.rangeOm[1]) - log10(self.rangeOm[0]))*pc + log10(self.rangeOm[0])
 #        Om = 10**logOm
 #        setp(self.txtCurs, position = (_xdata, _ydata),
-#             text = r"$\omega="+fonctions.strSc(Om)+r" rad/s$"+u"\n", visible = True)
+#             text = r"$\omega="+fonctions.strSc(Om)+r" rad/s$"+"\n", visible = True)
 #        
 #        
 #            
@@ -5714,7 +5718,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
 #            
 #            setp(self.txtCursGP[i], x = _x , y = _y ,
 #                 horizontalalignment = ha, verticalalignment = va, zorder = globdef.ZORDER_MAXI-i+1,
-#                 text = s1+r"$\Re="+fonctions.strSc(_x)+r"$"+u"\n"+"$\Im="+fonctions.strSc(_y)+r"$"+s2, visible = True)
+#                 text = s1+r"$\Re="+fonctions.strSc(_x)+r"$"+"\n"+"$\Im="+fonctions.strSc(_y)+r"$"+s2, visible = True)
 #            self.subplot.draw_artist(self.txtCursGP[i])
 #            
 #        
@@ -5933,7 +5937,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
                                (    (rangeX == [] or (x1 == rangeX[0] and x2 == rangeX[1])) \
                                 and (rangeY == [] or (y1 == rangeY[0] and y2 == rangeY[1])))
             
-            if rangeX <> [] and rangeX is not None: # Est-ce encore utile ???
+            if rangeX != [] and rangeX is not None: # Est-ce encore utile ???
                 self.subplot.set_xlim(rangeX)
                 self.subplot.set_ylim(rangeY)
         
@@ -6210,14 +6214,14 @@ class ZoneGraphReponse(ZoneGraphBase):
         coul = globdef.FORM_GRILLE.get_coul_str()
         self.subplot.grid(globdef.TRACER_GRILLE, color = coul, 
                           ls = globdef.FORM_GRILLE.styl,
-                          lw = globdef.FORM_GRILLE.epais, zorder = 0, visible = globdef.TRACER_GRILLE)
+                          lw = globdef.FORM_GRILLE.epais, zorder = 0)#, visible = globdef.TRACER_GRILLE)
         
         #
         # Définition des deux "axes"
         #
 #        self.subplot1.set_title("Click and drag waveforms to change frequency and amplitude", fontsize=12)
-#        self.subplot.set_ylabel(u"E/S")
-        self.subplot.set_xlabel(u"t (s)")
+#        self.subplot.set_ylabel("E/S")
+        self.subplot.set_xlabel("t (s)")
         self.subplot.autoscale_view(tight=True, scalex=False, scaley=True)
         
         #
@@ -6232,10 +6236,10 @@ class ZoneGraphReponse(ZoneGraphBase):
         
         
         # Information
-        t = _(u"Cette Fonction de Transfert\n"\
-              u"ne peut pas représenter\n" \
-              u"un système physique réel.\n" \
-              u"Impossible de tracer une réponse temporelle.")
+        t = _("Cette Fonction de Transfert\n"\
+              "ne peut pas représenter\n" \
+              "un système physique réel.\n" \
+              "Impossible de tracer une réponse temporelle.")
         self.info = self.figure.text(0.5, 0.5, t, visible = False, ha = 'center', va = 'center', color = 'r')
         
 #        #
@@ -6261,7 +6265,7 @@ class ZoneGraphReponse(ZoneGraphBase):
         for i in range(2):
             self.limites.append(self.subplot.axhspan(0, 0, edgecolor = coul, facecolor = "g", alpha = 0.3, \
                                                      visible = False, transform = self.subplot.transData))
-            self.tick.append(XTick(self.subplot, 0.5, '', gridOn = True))
+            self.tick.append(XTick(self.subplot, 0.5, gridOn = True))
             
         for t in self.tick:
             t.gridline.set_color(coul)
@@ -6453,7 +6457,7 @@ class ZoneGraphReponse(ZoneGraphBase):
             self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
             if detect["FT"] == 0:
                 coul = self.lstCoul[0].get_coul_str()
-                text = mathText(_(u"E"))
+                text = mathText(_("E"))
                      
             elif detect["FT"] == 1:
                 coul = self.lstCoul[1].get_coul_str()
@@ -7025,16 +7029,16 @@ class ZoneGraphReponse(ZoneGraphBase):
         #
         
         if self.reponse != None:
-            contenu.append((u"réponse Temp", self.reponse[0]))
-            contenu.append((u"réponse", self.reponse[1]))
+            contenu.append(("réponse Temp", self.reponse[0]))
+            contenu.append(("réponse", self.reponse[1]))
 
         
         #
         # réponse NON corrigée
         #
         if self.reponsenc != None:
-            contenu.append((u"réponse Temp", self.reponsenc[0]))
-            contenu.append((u"réponse", self.reponsenc[1]))
+            contenu.append(("réponse Temp", self.reponsenc[0]))
+            contenu.append(("réponse", self.reponsenc[1]))
 
         return contenu, images
     
@@ -7148,7 +7152,7 @@ class ZoneGraphAjustement(ZoneGraphBase):
         #
         # Définition des deux "axes"
         #
-        self.subplot.set_xlabel(u"t (s)")
+        self.subplot.set_xlabel("t (s)")
         self.subplot.autoscale_view(tight=True, scalex=False, scaley=True)
         
         #
@@ -7318,11 +7322,11 @@ class ZoneGraphAjustement(ZoneGraphBase):
             self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
             if detect["FT"] == 0:
                 coul = self.lstCoul[0].get_coul_str()
-                text = _(u"réponse ajustée")
+                text = _("réponse ajustée")
                      
             elif detect["FT"] == 1:
                 coul = self.lstCoul[1].get_coul_str()
-                text = _(u"réponse approximative")
+                text = _("réponse approximative")
             
                 
             setp(self.labelFT, text = text,
@@ -7585,7 +7589,7 @@ class ZoneGraphAjustement(ZoneGraphBase):
 class ZoneGraphPoles(ZoneGraphBase):
     def __init__(self, parent, zoneOutils, nom):
 #        self.reponse = None
-        self.nom = u"Pôles"
+        self.nom = "Pôles"
         ZoneGraphBase.__init__(self, parent, zoneOutils, nom)
         
         self.ajusterMarges(left = 0.11, right = 0.98, top = 0.93, bottom = 0.16)
@@ -7612,7 +7616,7 @@ class ZoneGraphPoles(ZoneGraphBase):
         coul = globdef.FORM_GRILLE.get_coul_str()
         self.subplot.grid(globdef.TRACER_GRILLE, color = coul, 
                           ls = globdef.FORM_GRILLE.styl,
-                          lw = globdef.FORM_GRILLE.epais, zorder = 0, visible = globdef.TRACER_GRILLE)
+                          lw = globdef.FORM_GRILLE.epais, zorder = 0)#, visible = globdef.TRACER_GRILLE)
         
         #
         # Définition des deux "axes"
@@ -8557,7 +8561,7 @@ class PlotInteractor:
 class DegreeFormatter(Formatter):
     def __call__(self, x, pos=None):
         # \u00b0 : degree symbol
-        return u"%d\u00b0" % x
+        return "%d\u00b0" % x
 
 
 ###########################################################################""

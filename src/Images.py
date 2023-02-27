@@ -1,6 +1,6 @@
 from wx import ImageFromStream, BitmapFromImage, EmptyIcon, \
                  Image, BITMAP_TYPE_ICO,BITMAP_TYPE_XPM,IconBundle
-import cStringIO
+#import cStringIO
 import zlib
 from wx.lib.embeddedimage import PyEmbeddedImage 
 

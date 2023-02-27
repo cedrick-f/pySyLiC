@@ -483,10 +483,10 @@ class VariableCtrl(wx.Panel):
         #
         self.text = wx.TextCtrl(self, -1, self.lstToText(self.variable.v), size = (-1, sizeh))#,
         if self.variable.nn == "":
-            txtn = u"de la variable "+self.variable.n
+            txtn = "de la variable "+self.variable.n
         else:
             txtn = self.variable.nn
-        self.text.SetToolTipString(_(u"Saisir la valeur ")+txtn)
+        self.text.SetToolTipString(_("Saisir la valeur ")+txtn)
         
         self.Bind(wx.EVT_TEXT, self.OnChar, self.text)
 #        self.Bind(wx.EVT_CHAR, self.OnChar, self.text)
@@ -496,13 +496,13 @@ class VariableCtrl(wx.Panel):
         
         self.spin.SetRange(-100, 100)
         self.spin.SetValue(0)
-        self.spin.SetToolTipString(_(u"Agir ici pour augmenter/diminuer la valeur ")+txtn)
+        self.spin.SetToolTipString(_("Agir ici pour augmenter/diminuer la valeur ")+txtn)
 
         self.Bind(wx.EVT_SPIN_UP, self.OnSpinUp, self.spin)
         self.Bind(wx.EVT_SPIN_DOWN, self.OnSpinDown, self.spin)
         
         vs = wx.BoxSizer( wx.HORIZONTAL)
-        vs.Add( txtnom, 0, wx.ALIGN_CENTRE_VERTICAL|wx.ALIGN_RIGHT|wx.LEFT, 4 )
+        vs.Add( txtnom, 0, wx.ALIGN_CENTRE_VERTICAL|wx.LEFT, 4 )
         vs.Add(self.text, 1, wx.ALIGN_CENTRE|wx.LEFT|wx.RIGHT, 5 )
         vs.Add(self.spin, 0, wx.ALIGN_CENTRE|wx.LEFT|wx.RIGHT, 5 )
         
@@ -513,7 +513,7 @@ class VariableCtrl(wx.Panel):
             self.sli = wx.Slider(self, -1, 0, -100, 100, 
                                  size = (self.text.GetSize()[0] + self.spin.GetSize()[0] + 20, 20),
                                  style = wx.SL_TOP)
-            self.sli.SetToolTipString(_(u"Agir ici pour augmenter/diminuer la valeur ")+txtn)
+            self.sli.SetToolTipString(_("Agir ici pour augmenter/diminuer la valeur ")+txtn)
 
 #            self.Bind(wx.EVT_LEAVE_WINDOW, self.OnLeave)
             self.Bind(wx.EVT_SCROLL_CHANGED, self.OnScroll, self.sli)
@@ -744,7 +744,7 @@ class VariableCtrl(wx.Panel):
 #        if len(help) > 0:
 #            self.text.SetToolTipString(help)
 #        else:
-#            self.text.SetToolTipString(_(u"Saisir la valeur"))
+#            self.text.SetToolTipString(_("Saisir la valeur"))
 #        
 #        self.Bind(wx.EVT_TEXT, self.OnChar, self.text)
 ##        self.Bind(wx.EVT_CHAR, self.OnChar, self.text)
@@ -754,7 +754,7 @@ class VariableCtrl(wx.Panel):
 #        
 #        self.spin.SetRange(-100, 100)
 #        self.spin.SetValue(0)
-#        self.spin.SetToolTipString(_(u"Agir ici pour augmenter/diminuer la valeur"))
+#        self.spin.SetToolTipString(_("Agir ici pour augmenter/diminuer la valeur"))
 #
 #        self.Bind(wx.EVT_SPIN_UP, self.OnSpinUp, self.spin)
 #        self.Bind(wx.EVT_SPIN_DOWN, self.OnSpinDown, self.spin)
@@ -950,7 +950,7 @@ class BmpEvent(wx.PyCommandEvent):
     
 class ScrolledBitmap(wx.ScrolledWindow):
     def __init__(self, parent, id, lstBmp = [], event = True, synchroAvec = []):
-        self.tip = u""
+        self.tip = ""
         self.num = 0
         self.event = event
         self.synchroAvec = synchroAvec
@@ -1031,7 +1031,7 @@ class ScrolledBitmap(wx.ScrolledWindow):
             
             # Check who the event is targetting
             evtObject = event.GetEventObject()
-            print "...targetting '%s'" % evtObject
+            print ("...targetting '%s'" % evtObject)
             
             # We only care about passing up events that were aimed at our
             # descendants, not us, so only search if it wasn't aimed at us.
@@ -1039,7 +1039,7 @@ class ScrolledBitmap(wx.ScrolledWindow):
                 toTest = evtObject.GetParent()
                 while toTest:
                     if toTest == self:
-                        print "...detected that we are ancestor"
+                        print ("...detected that we are ancestor")
                         
                         # We are the "EventObject"'s ancestor, so we'll take
                         # the event and pass it to our event handler.  Note:
@@ -1054,7 +1054,7 @@ class ScrolledBitmap(wx.ScrolledWindow):
                     toTest = toTest.GetParent()
             self._processingEvents = False
         else:
-            print "...recursive mousewheel event"
+            print ("...recursive mousewheel event")
         
         # Usually, we skip the event and let others handle it, unless it's a
         # mouse event from our descendant...
@@ -1087,10 +1087,10 @@ class ScrolledBitmap(wx.ScrolledWindow):
             CopierTeX(tex)
             
         menu = wx.Menu()
-        itemImg = wx.MenuItem(menu, 0,_(u"Copier comme une image"))
+        itemImg = wx.MenuItem(menu, 0,_("Copier comme une image"))
         menu.AppendItem(itemImg)
         self.Bind(wx.EVT_MENU, copierImg, id=0)
-        itemTeX = wx.MenuItem(menu, 1,_(u"Copier comme une equation LaTeX"))
+        itemTeX = wx.MenuItem(menu, 1,_("Copier comme une equation LaTeX"))
         menu.AppendItem(itemTeX)
         self.Bind(wx.EVT_MENU, copierTeX, id=1)
         
@@ -1130,17 +1130,17 @@ class ScrolledBitmap(wx.ScrolledWindow):
     ######################################################################################################    
     def SetToolTipStringComplet(self):
         if self.GetScrollThumb(wx.HORIZONTAL) > 0:
-            t = _(u"Faire glisser pour visualiser")+u"\n"
+            t = _("Faire glisser pour visualiser")+"\n"
         else:
-            t = u""
+            t = ""
             
-        t += _(u"Click droit pour copier dans le presse-papier")
+        t += _("Click droit pour copier dans le presse-papier")
         
         if len(self.lstBmp) > 1:
-            t += "\n" + _(u"Click gauche pour choisir une autre fonction")
+            t += "\n" + _("Click gauche pour choisir une autre fonction")
         
         if self.tip != "":
-            t = self.tip + "\n\n("+ t + u")"
+            t = self.tip + "\n\n("+ t + ")"
 
         self.sb.SetToolTipString(t)
         
@@ -1427,17 +1427,35 @@ def chronometrer(fct, *args, **kargs):
 
 #############################################################################################################
 ############################################################
+from io import BytesIO
+from matplotlib.figure import Figure
+import numpy as np
+def mathtext_to_wxbitmap(s, taille = 100, color =  None):
+    # We draw the text at position (0, 0) but then rely on
+    # ``facecolor="none"`` and ``bbox_inches="tight", pad_inches=0`` to get a
+    # transparent mask that is then loaded into a wx.Bitmap.
+    fig = Figure(facecolor="none")
+    text_color = (
+        np.array(wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOWTEXT)) / 255)
+    fig.text(0, 0, s, fontsize=10, color=text_color)
+    buf = BytesIO()
+    fig.savefig(buf, format="png", dpi=taille, bbox_inches="tight", pad_inches=0)
+    s = buf.getvalue()
+    return wx.Bitmap.NewFromPNGData(s, len(s))
+
+
+
 # This is where the "magic" happens.
 from matplotlib.mathtext import MathTextParser
 #import matplotlib
-mathtext_parser = MathTextParser("Bitmap")
-def mathtext_to_wxbitmap(s, taille = 100, color =  None):
+#mathtext_parser = MathTextParser("Bitmap") # "Bitmap" n'est plus accepté !!
+def mathtext_to_wxbitmap_old(s, taille = 100, color =  None):
 #    print s
     global mathtext_parser
     if s == "":
         return wx.NullBitmap
     
-    if s[0] <> r"$":
+    if s[0] != r"$":
         s = mathText(s)
 #    print s
 #    s.encode('utf-8')
@@ -1448,7 +1466,7 @@ def mathtext_to_wxbitmap(s, taille = 100, color =  None):
 #    print color, 
 #    matplotlib.rcParams['text.color'] ='r'
 #    print matplotlib.rcParams['text.color']
-    ftimage, depth = mathtext_parser.parse(s, taille)
+    ftimage = mathtext_parser.parse(s, taille)
 #    ftimage, depth = mathtext_parser.to_rgba(s, 'r')
 #    print ftimage
 #    matplotlib.rc('text', color=color)
@@ -1476,57 +1494,25 @@ def mathtext_to_wxbitmap(s, taille = 100, color =  None):
         bmp = wx.BitmapFromBufferRGBA(
             ftimage.get_width(), ftimage.get_height(),
             rgba.tostring())
-#        bmpmask = bmp.ConvertToImage().ConvertToGreyscale().ConvertToBitmap()
-#        mask = wx.Mask(bmpmask)
-#        bmp.SetMask(mask)
-#        bmp = bmp.ConvertToImage().AdjustChannels(1.0, 0.0, 0.0, 1.0).ConvertToBitmap()
         
     else:
         bmp = wx.BitmapFromBufferRGBA(
             ftimage.get_width(), ftimage.get_height(),
             ftimage.as_rgba_str())
-    
-#    print bmp.GetDepth()
-#    bmp2 = wx.EmptyBitmap(bmp.GetWidth(), bmp.GetHeight())
-#    mdc2 = wx.MemoryDC()
-#    mdc2.SelectObject(bmp2)
-#    mdc2.SetBackgroundMode(wx.SOLID)
-#    mdc2.SetBackground(wx.BLACK_BRUSH)
-#    mdc2.Clear()
-#    
-##    bmp3 = wx.EmptyBitmap(bmp.GetWidth(), bmp.GetHeight())
-##    mask = wx.Mask(bmp3)
-##    bmp.SetMask(mask)
-#    
-#    mdc = wx.MemoryDC()
-#    mdc.SelectObject(bmp)
-##    mdc.SetBackground(wx.WHITE_BRUSH)
-##    mdc.Clear()
-##    mdc.DrawBitmap(bmp, 0,0)
-#    
-##    print bmp.GetMask()
-#    mdc2.Blit(0,0, bmp.GetWidth(), bmp.GetHeight(), mdc, 0,0, wx.SRC_INVERT)
-#    
-#    mdc.SelectObject(wx.NullBitmap)
-#    mdc2.SelectObject(wx.NullBitmap)
-#    bmp = bmp.ConvertToImage().AdjustChannels(1.0, 0.1, 0.1, 1.0).ConvertToBitmap()
-#    img = bmp.ConvertToImage()
-#    img = not img
-#    img = img.AdjustChannels(1.0, 0.1, 0.1, 1.0)
-#    bmp = img.ConvertToBitmap()
+
     return bmp
     
 
 def tester_mathtext_to_wxbitmap(s):
     if len(s) == 0:
         return False
-    if s[0] <> r"$":
+    if s[0] != r"$":
         s = mathText(s)
     try:    
         ftimage, depth = mathtext_parser.parse(s)
         return True
     except:
-        print "Erreur MathText", s
+        print ("Erreur MathText", s)
         return False
 
 
@@ -1554,8 +1540,8 @@ def getMathTextArray(p, varComplexe = "p"):
             if c > 0:
                 s += '+'
         
-        if c <> 0.0:
-            if c <> 1.0  or o == i or o == 0:
+        if c != 0.0:
+            if c != 1.0  or o == i or o == 0:
                 s += strSc(c)
             
             if o-i != 0:
@@ -1575,8 +1561,8 @@ def getMathTextList(p, varComplexe = "p"):
             if c > 0:
                 s += '+'
         
-        if c <> 0.0:
-            if c <> 1.0  or o == i or o == 0:
+        if c != 0.0:
+            if c != 1.0  or o == i or o == 0:
                 if type(c) == str or type(c) == unicode:
                     if c in GREEK:
                         c = r""+"\\"+c
@@ -1877,7 +1863,7 @@ class PrintoutWx(wx.Printout):
         return (1, 1, 1, 1)
 
     def OnPrintPage(self, page):
-        print "PrintPage", self.lstCanvas
+        print ("PrintPage", self.lstCanvas)
 
         # On récupère le DC
         dc = self.GetDC()
@@ -2075,11 +2061,11 @@ class PrintoutWx(wx.Printout):
         try:
             zoneGraph.drawCanvas()
         except:
-            t = u"Informations sur l'impression :\n"
-            t += u"  PageSizePixel : "+str(self.GetPageSizePixels()[0])+"  "+str(self.GetPageSizePixels()[1])+"\n"
-            t += u"  CanvasDPI : "+str(zoneGraph.canvas.figure.dpi)+"\n"
-            t += u"  CanvasSize : "+str(zoneGraph.canvas.bitmap.GetWidth())+"  "+str(zoneGraph.canvas.bitmap.GetHeight())
-            dlg = wx.MessageDialog(self.app, t, _(u"Erreur d'impression"),
+            t = "Informations sur l'impression :\n"
+            t += "  PageSizePixel : "+str(self.GetPageSizePixels()[0])+"  "+str(self.GetPageSizePixels()[1])+"\n"
+            t += "  CanvasDPI : "+str(zoneGraph.canvas.figure.dpi)+"\n"
+            t += "  CanvasSize : "+str(zoneGraph.canvas.bitmap.GetWidth())+"  "+str(zoneGraph.canvas.bitmap.GetHeight())
+            dlg = wx.MessageDialog(self.app, t, _("Erreur d'impression"),
                                    wx.OK | wx.ICON_ERROR
                                #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
                                )
@@ -2155,7 +2141,7 @@ class PrintHandler():
         if not self.preview.Ok():
             return
         
-        pfrm = MyPreviewFrame(self.preview, self, title = _(u"Aperçu avant impression"))
+        pfrm = MyPreviewFrame(self.preview, self, title = _("Aperçu avant impression"))
 #        print "6",
         pfrm.Initialize()
 #        print "7",
@@ -2188,10 +2174,10 @@ class PrintHandler():
             if err > 1: # Annulé par l'utilisateur
 #            self.printData = printer.GetPrintDialogData().GetPrintData()
 #            self.printData = wx.PrintData( printer.GetPrintDialogData().GetPrintData() )
-                wx.MessageBox(_(u"Il y a eu un problème d'impression.\n"
-                                u"Votre imprimante n'est probablement pas réglée correctement.\n") \
+                wx.MessageBox(_("Il y a eu un problème d'impression.\n"
+                                "Votre imprimante n'est probablement pas réglée correctement.\n") \
                                 + str(err),
-                                _(u"Problème d'impression"), wx.OK)
+                                _("Problème d'impression"), wx.OK)
 #        else:
 #            
         printout.Destroy()
@@ -2240,8 +2226,8 @@ class MyPreviewFrame(wx.PreviewFrame):
         
     def PersonaliserControlBar(self):
         buttons = self.GetControlBar().GetChildren()
-        buttons[0].SetLabel(_(u"Fermer"))
-        buttons[1].SetLabel(_(u"Imprimer"))
+        buttons[0].SetLabel(_("Fermer"))
+        buttons[1].SetLabel(_("Imprimer"))
         buttons[6].Destroy()
         buttons[5].Destroy()
         buttons[4].Destroy()

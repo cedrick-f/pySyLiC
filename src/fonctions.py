@@ -53,9 +53,9 @@ EVT_POLY_MODIFIED = wx.PyEventBinder(myEVT_POLY_MODIFIED, 1)
 
 #----------------------------------------------------------------------
 
-msgFTtropComplexe =  _(u"Niveau de complexité de la fonction de transfert trop élevé !!") + u"\n\n" \
-                   + _(u"   Il est possible de tracer des fonctions aussi complexes\n"\
-                       u"   en modifiant l'option \"Général/Niveau de complexité\"")
+msgFTtropComplexe =  _("Niveau de complexité de la fonction de transfert trop élevé !!") + "\n\n" \
+                   + _("   Il est possible de tracer des fonctions aussi complexes\n"\
+                       "   en modifiant l'option \"Général/Niveau de complexité\"")
                                      
 class SelPolyEvent(wx.PyCommandEvent):
     def __init__(self, evtType, id):
@@ -135,9 +135,9 @@ class FonctionTransfertDev:
         
     #########################################################################################################
     def __repr__(self):
-        print self.polyN
-        print"------------------ r =", self.retard
-        print self.polyD
+        print (self.polyN)
+        print("------------------ r =", self.retard)
+        print (self.polyD)
         return ""
 
     ######################################################################################  
@@ -363,7 +363,7 @@ class FonctionTransfertDev:
                 pass
     
             else:
-                print "FT non factorisable !"
+                print ("FT non factorisable !")
                 return None
                 
 #            if f.polyN.o > 0 or f.polyN.c[0] <> 1.0:
@@ -429,7 +429,7 @@ class SelecteurPolynome(wx.TextCtrl):
 
         self.toolTip =  _(u'Saisir ici les coefficients du polynome.\n'\
                           u'Cliquer sur le bouton "Aide à la saisie des polynomes"\n'\
-                          u"pour plus d'informations.")
+                          "pour plus d'informations.")
         self.SetToolTipString(self.toolTip)                      
         
         self.Bind(wx.EVT_TEXT, self.EvtText, self)
@@ -537,33 +537,33 @@ def textToPoly(txt):
             
             if v == None:
                 valid = False
-                erreur = _(u"Constante non réelle")
+                erreur = _("Constante non réelle")
             elif v == False and type(v) == bool:
                 valid = False
-                erreur = _(u"Impossible d'évaluer l'expression")
+                erreur = _("Impossible d'évaluer l'expression")
             else:
                 lst2.append(v)
             
         else:
             if expr.vari.has_key('s') or expr.vari.has_key('p'):
                 valid = False
-                erreur = _(u"'s' et 'p' sont des noms de variable réservés à la variable complexe")
+                erreur = _("'s' et 'p' sont des noms de variable réservés à la variable complexe")
             
             else:
                 vv = expr.evaluer()
                 if vv == None:
                     valid = False
-                    erreur = _(u"Résultat de l'évaluation non réel avec la(les) variable(s) à 1")
+                    erreur = _("Résultat de l'évaluation non réel avec la(les) variable(s) à 1")
                 elif vv == False:
                     valid = False
-                    erreur = _(u"Impossible d'évaluer l'expression")
+                    erreur = _("Impossible d'évaluer l'expression")
                 
                 lst2.append(expr)
          
     if valid:
         s = getMathTextPoly(lst2, globdef.VAR_COMPLEXE)
         valid = tester_mathtext_to_wxbitmap(s)
-        erreur = _(u"Syntaxe de l'expression incorrecte")
+        erreur = _("Syntaxe de l'expression incorrecte")
     
 #    print "fin textToPoly", valid, lst2, erreur
     return valid, lst2, erreur
@@ -940,38 +940,38 @@ class SelecteurFTFit(wx.Panel):
         
         self.SetAutoLayout(True)
         
-#        typesMesure = [_(u"Réponse indicielle")]
-#        cb = wx.ComboBox(self, 500, _(u"Type de mesure"), 
+#        typesMesure = [_("Réponse indicielle")]
+#        cb = wx.ComboBox(self, 500, _("Type de mesure"), 
 #                         choices = typesMesure,
 #                         style = wx.CB_DROPDOWN)
         
         
-#        box = wx.StaticBox(self, -1, _(u"Fichier de points"))
+#        box = wx.StaticBox(self, -1, _("Fichier de points"))
 #        bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
         filemask = "Fichiers CSV (.csv)|*.csv|" \
                    "Fichiers texte (.txt)|*.txt"
-        self.fbbh = filebrowse.FileBrowseButtonWithHistory(self, -1, labelText =_(u"Fichier"),
+        self.fbbh = filebrowse.FileBrowseButtonWithHistory(self, -1, labelText =_("Fichier"),
                                                            buttonText ="...",
                                                            fileMask = filemask,
                                                            fileMode = wx.OPEN,
-                                                           toolTip=_(u"Choisir le fichier contenant les coordonnées des points"),
+                                                           toolTip=_("Choisir le fichier contenant les coordonnées des points"),
                                                            changeCallback = self.fbbhCallback)
         
         self.fbbh.callCallback = False
         self.fbbh.SetHistory([], 4)
 
         
-        typesAjust = [_(u"Automatique"), _(u'1er ordre'), _(u'2ème ordre')]
+        typesAjust = [_("Automatique"), _(u'1er ordre'), _(u'2ème ordre')]
         sizer = wx.BoxSizer(wx.VERTICAL)
         rb = wx.RadioBox(
-                self, -1, _(u"Ordre"), wx.DefaultPosition, wx.DefaultSize,
+                self, -1, _("Ordre"), wx.DefaultPosition, wx.DefaultSize,
                 typesAjust, 1, wx.RA_SPECIFY_COLS
                 )
         self.mode = 0
         self.Bind(wx.EVT_RADIOBOX, self.EvtRadioBox, rb)
         #rb.SetBackgroundColour(wx.BLUE)
-        rb.SetToolTip(wx.ToolTip(_(u"Choisir l'ordre le la fonction de transfert\n"\
-                                   u"avec laquelle identifier les paramètres")))
+        rb.SetToolTip(wx.ToolTip(_("Choisir l'ordre le la fonction de transfert\n"\
+                                   "avec laquelle identifier les paramètres")))
         
         self.sb = ScrolledBitmap(self, -1, self.FT.getBitmap("H"))
         
@@ -1102,7 +1102,7 @@ class SelecteurFTFit(wx.Panel):
 class AideDialog(wx.Dialog):
     def __init__(self, parent):
         
-        wx.Dialog.__init__(self, None, -1, _(u"Format de définition d'un polynôme"), 
+        wx.Dialog.__init__(self, None, -1, _("Format de définition d'un polynôme"), 
                            style=wx.DEFAULT_DIALOG_STYLE)
         
         font = wx.Font(18, wx.SWISS, wx.NORMAL, wx.NORMAL)
@@ -1111,40 +1111,40 @@ class AideDialog(wx.Dialog):
             return mathtext_to_wxbitmap(Expression(str).getMplText())
         
 
-        label1 = wx.StaticText(self, -1, _(u"Saisir dans la zone de texte les coefficients du polynôme\n" 
-                                           u"dans l'ordre décroissant des puissances de ") + globdef.VAR_COMPLEXE + " :")
+        label1 = wx.StaticText(self, -1, _("Saisir dans la zone de texte les coefficients du polynôme\n" 
+                                           "dans l'ordre décroissant des puissances de ") + globdef.VAR_COMPLEXE + " :")
         
         label11 =  wx.TextCtrl(self, -1, "4.3 a 1", style = wx.TE_READONLY) 
-        label12 =  wx.StaticText(self, -1, u"--->")
+        label12 =  wx.StaticText(self, -1, "--->")
         mplP = wx.StaticBitmap(self, -1, mathtext_to_wxbitmap(r"4.3" + globdef.VAR_COMPLEXE +"^2 + a"+ globdef.VAR_COMPLEXE+" + 1"))  
         
-        label2 = wx.StaticText(self, -1, _(u"Les coefficients peuvent être de différents types :"))
+        label2 = wx.StaticText(self, -1, _("Les coefficients peuvent être de différents types :"))
         
-        labelC = wx.StaticText(self, -1, _(u"Constante : ")) 
-        labelV = wx.StaticText(self, -1, _(u"Variable : ")) 
-        labelE = wx.StaticText(self, -1, _(u"Expression : "))  
+        labelC = wx.StaticText(self, -1, _("Constante : ")) 
+        labelV = wx.StaticText(self, -1, _("Variable : ")) 
+        labelE = wx.StaticText(self, -1, _("Expression : "))  
               
-        lstExemples = [u"1.56", "",
-                       u"a", 
-                       u"beta_6", "",
-                       u"2/(a+1)", 
-                       u"3*sqrt(b)*cos(2*pi)"]
+        lstExemples = ["1.56", "",
+                       "a", 
+                       "beta_6", "",
+                       "2/(a+1)", 
+                       "3*sqrt(b)*cos(2*pi)"]
         
         exe = []
         mpl = []
         for e in lstExemples:
-            if e <> "":
+            if e != "":
                 exe.append(wx.TextCtrl(self, -1, e, style = wx.TE_READONLY))
                 mpl.append(wx.StaticBitmap(self, -1, expr(e)))
             else:
                 exe.append(None)
                 mpl.append(None)
         
-        box = wx.StaticBox(self, -1, _(u"Faites des essais ici :"))
+        box = wx.StaticBox(self, -1, _("Faites des essais ici :"))
         bsizer = wx.StaticBoxSizer(box, wx.HORIZONTAL)
         
         label31 =  SelecteurPolynome(self, -1, []) 
-        label32 =  wx.StaticText(self, -1, u"--->")
+        label32 =  wx.StaticText(self, -1, "--->")
         bsizer.Add(label31, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.ALL, border = 5)
         bsizer.Add(label32, 0, wx.ALIGN_CENTER|wx.ALL, border = 5)
         self.mplPe = ScrolledBitmap(self, -1, expr(label31.GetValue()))  
@@ -1180,7 +1180,7 @@ class AideDialog(wx.Dialog):
         for i, exe1, mpl1 in zip(range(len(exe)),exe, mpl):
             if exe1 != None:
                 sizer.Add(exe1,  (6+i,1), (1,1), wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.ALL, border = 5)
-                sizer.Add(wx.StaticText(self, -1, u"--->"),  (6+i,2), (1,1), wx.ALIGN_CENTER|wx.ALL, border = 5)
+                sizer.Add(wx.StaticText(self, -1, "--->"),  (6+i,2), (1,1), wx.ALIGN_CENTER|wx.ALL, border = 5)
                 sizer.Add(mpl1,  (6+i,3), (1,2), wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_LEFT|wx.ALL, border = 5)
             else:
                 sizer.Add(wx.StaticLine(self, -1), (6+i, 0), (1,5), wx.EXPAND)
@@ -1269,9 +1269,9 @@ class FonctionTransfertCorrec:
         self.detLstFTNum()
         
     def __repr__(self):
-        print "   1+",self.T, globdef.VAR_COMPLEXE
-        print self.K,"------------------   "
-        print "   1+",self.T, globdef.VAR_COMPLEXE
+        print ("   1+",self.T, globdef.VAR_COMPLEXE)
+        print (self.K,"------------------   ")
+        print ("   1+",self.T, globdef.VAR_COMPLEXE)
         return ""
 
     def getBranche(self, nom = ""):
@@ -1508,9 +1508,9 @@ class FonctionTransfertFact:
         
     ######################################################################################  
     def __repr__(self):
-        print "    ",self.lstPolyN#, id(self.lstPolyN)
-        print self.K,"--------------------        classe =", self.classe, "r = ", self.retard
-        print "    ",self.lstPolyD#, id(self.lstPolyD)
+        print ("    ",self.lstPolyN)#, id(self.lstPolyN))
+        print (self.K,"--------------------        classe =", self.classe, "r = ", self.retard)
+        print ("    ",self.lstPolyD)#, id(self.lstPolyD))
         return ""
 
 
@@ -1977,9 +1977,9 @@ class SelecteurPolynomeFact(wx.Panel):
         
 #        self.txt = wx.StaticText(self, -1, self.lstPolyToTxt(lstPoly))
         if id == 10:
-            nd = _(u"numérateur")
+            nd = _("numérateur")
         else:
-            nd = _(u"dénominateur")
+            nd = _("dénominateur")
             
         im1 = Images.Bouton_Select1er.GetBitmap()
         im2 = Images.Bouton_Select2nd.GetBitmap()
@@ -1989,19 +1989,19 @@ class SelecteurPolynomeFact(wx.Panel):
         b2 = wx.BitmapButton(self, 12, im2)
         bE = wx.BitmapButton(self, 13, imE)
         
-#        SetSuperToolTip(b1, _(u"Ajouter un polynôme d'ordre 1 au ")+nd)
-        b1.SetToolTipString(_(u"Ajouter un polynôme d'ordre 1 au ")+nd)
-        b2.SetToolTipString(_(u"Ajouter un polynôme d'ordre 2 au ")+nd)
-        bE.SetToolTipString(_(u"Supprimer le dernier polynôme ajouté au ")+nd)
+#        SetSuperToolTip(b1, _("Ajouter un polynôme d'ordre 1 au ")+nd)
+        b1.SetToolTipString(_("Ajouter un polynôme d'ordre 1 au ")+nd)
+        b2.SetToolTipString(_("Ajouter un polynôme d'ordre 2 au ")+nd)
+        bE.SetToolTipString(_("Supprimer le dernier polynôme ajouté au ")+nd)
         
         self.Bind(wx.EVT_BUTTON, self.OnSpinUp, b1)
         self.Bind(wx.EVT_BUTTON, self.OnSpinUp, b2)
         self.Bind(wx.EVT_BUTTON, self.OnSpinDown, bE)
         
 #        sizer.Add(self.txt, wx.ALIGN_RIGHT|wx.LEFT|wx.RIGHT|wx.TOP, 5 )
-        sizer.Add(b1, flag = wx.ALIGN_RIGHT|wx.LEFT|wx.RIGHT|wx.TOP, border = 2 )
-        sizer.Add(b2, flag = wx.ALIGN_RIGHT|wx.LEFT|wx.RIGHT|wx.TOP, border = 2 )
-        sizer.Add(bE, flag = wx.ALIGN_RIGHT|wx.LEFT|wx.RIGHT|wx.TOP, border = 2 )
+        sizer.Add(b1, flag = wx.LEFT|wx.RIGHT|wx.TOP, border = 2 )
+        sizer.Add(b2, flag = wx.LEFT|wx.RIGHT|wx.TOP, border = 2 )
+        sizer.Add(bE, flag = wx.LEFT|wx.RIGHT|wx.TOP, border = 2 )
         
         self.SetSizerAndFit(sizer)
         
@@ -2084,7 +2084,7 @@ class SelecteurFTFact(wx.Panel):
         #
         self.sb = ScrolledBitmap(self, -1)
         self.sb.SetBitmap(FT.getBitmap(self.nom, retard = self.retard), self.GetBmpHD, self.GetTeX)
-        self.sb.SetToolTipString(_(u"Forme canonique de la Fonction de Transfert"))
+        self.sb.SetToolTipString(_("Forme canonique de la Fonction de Transfert"))
         
         
         #
@@ -2103,8 +2103,8 @@ class SelecteurFTFact(wx.Panel):
         # Mise en place
         #
         sizer = wx.BoxSizer(wx.HORIZONTAL)
-        sizer.Add(self.sb, 1, flag = wx.ALIGN_CENTER_VERTICAL | wx.ALIGN_LEFT | wx.EXPAND)
-        sizer.Add(sizerCtrl, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_RIGHT|wx.ALL, 5 )
+        sizer.Add(self.sb, 1, flag = wx.ALIGN_LEFT | wx.EXPAND)
+        sizer.Add(sizerCtrl, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
         self.SetSizer(sizer)
         self.sizer = sizer
 
@@ -2227,9 +2227,9 @@ class poly1:
     
     def getStrId(self): 
         if self.id == -1:
-            return u""
+            return ""
         else:
-            return unicode(self.id)
+            return self.id
     
     def __repr__(self):
         return "("+strSc(self.getPolyNum()[0][0])+"p+1)"
@@ -2299,9 +2299,9 @@ class poly2:
         
     def getStrId(self): 
         if self.id == -1:
-            return u""
+            return ""
         else:
-            return unicode(self.id)    
+            return self.id
     
     def __repr__(self):
         p = self.getPolyNum()[0]

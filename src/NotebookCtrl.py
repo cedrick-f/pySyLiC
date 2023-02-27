@@ -140,8 +140,9 @@ import wx
 from wx.lib.buttons import GenBitmapButton as BitmapButton
 import wx.xrc  as  xrc
 
-import cStringIO, zlib
-import cPickle
+from io import StringIO
+import zlib
+import pickle
 import weakref
 
 # HitTest Results 
@@ -316,7 +317,7 @@ def GetMenuButtonBitmap():
 
 def GetMenuButtonImage():
 
-    stream = cStringIO.StringIO(GetMenuButtonData())
+    stream = StringIO(GetMenuButtonData())
     return wx.ImageFromStream(stream)
 
 # ---------------------------------------------------------------------------- #
@@ -349,16 +350,16 @@ def GrayOut(anImage):
     return anImage
 
 
-def MakeGray((r,g,b), factor, maskColor):
+def MakeGray(rgb, factor, maskColor):
     """
     Make A Pixel Grayed-Out. If The Pixel Matches The MaskColor, It Won't Be
     Changed.
     """
     
-    if (r,g,b) != maskColor:
-        return map(lambda x: int((230 - x) * factor) + x, (r,g,b))
+    if rgb != maskColor:
+        return map(lambda x: int((230 - x) * factor) + x, rgb)
     else:
-        return (r,g,b)
+        return rgb
 
 def GetDefaultTabStyle():
     tabstyle = ThemeStyle()
@@ -493,7 +494,7 @@ class NCDropTarget(wx.DropTarget):
             return wx.DragNone
 
         draginfo = self._dataobject.GetData()
-        drginfo = cPickle.loads(draginfo)
+        drginfo = pickle.loads(draginfo)
         
         return self._parent.OnDropTarget(x, y, drginfo.GetPageIndex(), drginfo.GetContainer())
 
@@ -529,9 +530,9 @@ class ThemeStyle:
         self._silver = False
         self._gradient = False
         self._firstcolour = wx.WHITE
-        self._secondcolour = wx.SystemSettings_GetColour(wx.SYS_COLOUR_BTNFACE)
+        self._secondcolour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_BTNFACE)
         self._firstcolourselected = wx.WHITE
-        self._secondcolourselected = wx.SystemSettings_GetColour(wx.SYS_COLOUR_BTNFACE)
+        self._secondcolourselected = wx.SystemSettings.GetColour(wx.SYS_COLOUR_BTNFACE)
 
 
     def EnableMacTheme(self, enable=True, style=1):
@@ -943,7 +944,7 @@ class TabCtrl(wx.PyControl):
         self._xrefreshed = False
         self._imageconverted = False
         self._convertimage = False
-        self._disabledcolour = wx.SystemSettings_GetColour(wx.SYS_COLOUR_GRAYTEXT)
+        self._disabledcolour = wx.SystemSettings.GetColour(wx.SYS_COLOUR_GRAYTEXT)
 
         self._hover = False
         self._parent = parent
@@ -972,8 +973,8 @@ class TabCtrl(wx.PyControl):
         self._tipwindow = None
         self._tiptimer = wx.PyTimer(self.OnShowToolTip)
         self._backtooltip = wx.Colour(255, 255, 230)
-        self._xvideo = wx.SystemSettings_GetMetric(wx.SYS_SCREEN_X)
-        self._yvideo = wx.SystemSettings_GetMetric(wx.SYS_SCREEN_Y)
+        self._xvideo = wx.SystemSettings.GetMetric(wx.SYS_SCREEN_X)
+        self._yvideo = wx.SystemSettings.GetMetric(wx.SYS_SCREEN_Y)
 
         self._selectedtabs = []        
 

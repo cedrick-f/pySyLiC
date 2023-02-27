@@ -55,9 +55,9 @@ class LineFormat():
         
     ###############################################################################################
     def __repr__(self):
-        print self.coul
-        print self.epais
-        print self.styl
+        print (self.coul)
+        print (self.epais)
+        print (self.styl)
         return ""
     
     
@@ -275,8 +275,8 @@ class LineFormatSelector(wx.Dialog):
      
      
     
-import wx.combo
-class PenStyleComboBox(wx.combo.OwnerDrawnComboBox):
+import wx.adv
+class PenStyleComboBox(wx.adv.OwnerDrawnComboBox):
 
     # Overridden from OwnerDrawnComboBox, called to draw each
     # item in the list
@@ -299,7 +299,7 @@ class PenStyleComboBox(wx.combo.OwnerDrawnComboBox):
         pen = wx.Pen(self.Parent.format.coul, max(1,int(self.Parent.format.epais)), wxLineStyle[item])
         dc.SetPen(pen)
 
-        if flags & wx.combo.ODCB_PAINTING_CONTROL:
+        if flags & wx.adv.ODCB_PAINTING_CONTROL:
             # for painting the control itself
             dc.DrawLine( r.x+5, r.y+r.height/2, r.x+r.width - 5, r.y+r.height/2 )
 
@@ -317,9 +317,9 @@ class PenStyleComboBox(wx.combo.OwnerDrawnComboBox):
     def OnDrawBackground(self, dc, rect, item, flags):
         # If the item is selected, or its item # iseven, or we are painting the
         # combo control itself, then use the default rendering.
-        if (item & 1 == 0 or flags & (wx.combo.ODCB_PAINTING_CONTROL |
-                                      wx.combo.ODCB_PAINTING_SELECTED)):
-            wx.combo.OwnerDrawnComboBox.OnDrawBackground(self, dc, rect, item, flags)
+        if (item & 1 == 0 or flags & (wx.adv.ODCB_PAINTING_CONTROL |
+                                      wx.adv.ODCB_PAINTING_SELECTED)):
+            wx.adv.OwnerDrawnComboBox.OnDrawBackground(self, dc, rect, item, flags)
             return
 
         # Otherwise, draw every other background with different colour.

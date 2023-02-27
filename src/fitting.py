@@ -207,7 +207,7 @@ class WinAjustement(wx.MiniFrame, PrintHandler):
         self.SetAutoLayout(False)
 
     def OnCloseWindow(self, event):
-        print "OnCloseWindow"
+        print ("OnCloseWindow")
         self.Parent.win = None
         self.Destroy()
         return

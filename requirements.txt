@@ -1,3 +1,4 @@
 wxpython
 scipy
 matplotlib
+xlwt

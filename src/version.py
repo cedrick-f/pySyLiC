@@ -29,16 +29,16 @@
 """
 version.py
 
-Copyright (C) 2015
+Copyright (C) 2015-2023
 @author: Cedrick FAURY
 
 """
 
 
 __appname__= "pySyLiC"
-__author__ = u"Cédrick FAURY"
-__version__ = "0.39"
-print __version__
+__author__ = "Cédrick FAURY"
+__version__ = "1.0"
+print (__version__)
 
 
 ###############################################################################################

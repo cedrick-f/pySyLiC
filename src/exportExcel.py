@@ -42,11 +42,11 @@ def createBook(nomFichier, graph):
 #    elif isinstance(graph, ZoneGraphPoles):
 #        nom = 'Pôles'
     contenu, images = graph.getContenuExport()
-    print nomFichier
+    print (nomFichier)
     createSheet(book, nom, contenu, images)
-    print nom
-    print contenu
-    print images
+    print (nom)
+    print (contenu)
+    print (images)
     book.save(nomFichier)
 
 

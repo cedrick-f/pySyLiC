@@ -39,11 +39,11 @@ import wx
 import version
 
 
-if hasattr(sys, 'setdefaultencoding'):
-    sys.setdefaultencoding('utf8')
-else:
-    reload(sys)  # Reload does the trick!
-    sys.setdefaultencoding('utf-8')
+# if hasattr(sys, 'setdefaultencoding'):
+#     sys.setdefaultencoding('utf8')
+# else:
+#     reload(sys)  # Reload does the trick!
+#     sys.setdefaultencoding('utf-8')
     
 print(sys.getdefaultencoding())
 
@@ -102,7 +102,7 @@ class PySylicApp(wx.App):
         except:
             self.auteur = ""
         
-        wx.SystemOptions.SetOptionInt("mac.window-plain-transition", 1)
+        #wx.SystemOptions.SetOptionInt("mac.window-plain-transition", 1)
         self.SetAppName(version.__appname__)
         
         
@@ -170,9 +170,9 @@ if __name__ == "__main__":
 # Imports (on les fait pendant le splash
 ##########################################################################################################
 # On crée d'abord la variable d'environnement HOME qui peut être nécessaire à matplotlib
-import user
+#import user
 os.environ['HOME'] = globdef.APP_DATA_PATH
-print("user.home", user.home)
+#print("user.home", user.home)
 import Principal
 
 

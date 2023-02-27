@@ -38,7 +38,8 @@ except ImportError:
 import sys
 import Images
 
-import wx.lib.hyperlink as hl
+#import wx.lib.hyperlink as hl
+import wx.adv
 #import wx.lib.agw.foldpanelbar as fpb
 
 #import wx.lib.agw.floatspin as fs
@@ -77,7 +78,7 @@ import xml.etree.ElementTree as ET
 #if globdef.USE_THREAD:
 #    import threading
 
-import NotebookCtrl as NB
+#import NotebookCtrl as NB
 #try:
 #    import agw.flatnotebook as NB
 #except ImportError: # if it's not there locally, try the wxPython lib.
@@ -195,7 +196,7 @@ class wxPySylic(wx.Frame, PrintHandler):
             try :
                 options.ouvrir()
             except:
-                print "Fichier d'options corrompus ou inexistant !! Initialisation ..."
+                print ("Fichier d'options corrompus ou inexistant !! Initialisation ...")
                 options.defaut()
 
         
@@ -236,7 +237,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #        tps1 = time.clock()
         self.zoneGraph = graph.ZoneGraph(pnl, self, self.tracer)
 #        tps2 = time.clock()    
-#        print u"Création zoneGraph :", tps2 - tps1
+#        print "Création zoneGraph :", tps2 - tps1
         
 #        tps1 = time.clock()
         self.winReponse = WinReponse(self, self.getNum, self.setNum, self.getFTBF, self.getFTBFnc)
@@ -244,7 +245,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         self.winPoles = WinPoles(self, self.getNum, self.getFTBF)
         self.winDecompose = WinDecompose(self, self.getNum, self.getFTBF, self.getFTBO)
 #        tps2 = time.clock()    
-#        print u"Création Fenêtres :", tps2 - tps1
+#        print "Création Fenêtres :", tps2 - tps1
 
 
         #############################################################################################
@@ -253,7 +254,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         self.mgr.AddPane(self.zoneGraph, 
                          aui.AuiPaneInfo().
                          CenterPane().
-#                         Caption(u"Bode").
+#                         Caption("Bode").
                          PaneBorder(False).
                          Floatable(False).
                          CloseButton(False)
@@ -288,7 +289,7 @@ class wxPySylic(wx.Frame, PrintHandler):
                          aui.AuiPaneInfo().
                          Left().Layer(2).BestSize((264, -1)).
                          MinSize((262, -1)).
-                         Caption(_(u"Définition du Systéme")).
+                         Caption(_("Définition du Systéme")).
 #                         CaptionVisible(False).
                          GripperTop().
                          Floatable(True).FloatingSize((264, 700)).
@@ -345,13 +346,13 @@ class wxPySylic(wx.Frame, PrintHandler):
         # Maintenant que tout est en place, on applique les options
         
         wx.CallAfter(self.AppliquerOptions, tracer = False)
-        if globdef.DEBUG: print "Appliquer options : fini"
+        if globdef.DEBUG: print ("Appliquer options : fini")
 #        self.OnFTModified(forcerMaJ = True)
         wx.CallAfter(self.OnFTModified, forcerMaJ = True)
-        if globdef.DEBUG: print "Premier tracé : fini"
+        if globdef.DEBUG: print ("Premier tracé : fini")
         
 
-        print "Init pySyLiC : fini"
+        print ("Init pySyLiC : fini")
 #        wx.CallAfter(self.Thaw)
         
         
@@ -368,7 +369,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         
     #########################################################################################################
     def OnBitmapChanged(self, event):
-        print "OnBitmapChanged"
+        print ("OnBitmapChanged")
         self.num = event.GetNum()
         
     #########################################################################################################
@@ -681,10 +682,10 @@ class wxPySylic(wx.Frame, PrintHandler):
                     self.FTBO.append(self.FT_H.FTNum[0] * FT_C)
 #                    if not self.FTBO != None:
                 if len(self.FTBO) == 1:
-                    self.FTBO[0].nom = _(u"FTBO")
+                    self.FTBO[0].nom = _("FTBO")
                 else:
                     for i,FTBO in enumerate(self.FTBO):
-                        FTBO.nom = r""+_(u"FTBO")+"_{"+str(i+1)+r"}"
+                        FTBO.nom = r""+_("FTBO")+"_{"+str(i+1)+r"}"
                 
 #            print self.FTBO
         return self.FTBO
@@ -808,14 +809,14 @@ class wxPySylic(wx.Frame, PrintHandler):
             lstCoul.append(self.formats["H"])
             for d in lstPosE.keys():
                 lstPosE[d].append(self.positionsExpr["H_"+d])
-            self.FT_H.FTNum[0].nom = u"H"
+            self.FT_H.FTNum[0].nom = "H"
             lstFTNum.extend(self.FT_H.FTNum)
         
         if self.CorTracerC:
             lstCoul.extend([self.formats["C"]] * len(self.FT_C.FTNum))
             for d in lstPosE.keys():
                 lstPosE[d].extend([self.positionsExpr["C_"+d]] * len(self.FT_C.FTNum))
-#            self.FT_C.FTNum.nom = u"C"
+#            self.FT_C.FTNum.nom = "C"
             lstFTNum.extend(self.FT_C.FTNum)
             
         if self.TracerMarges and self.CorTracerCH:
@@ -968,7 +969,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #            print "Houston, we have a problem..."
 #            return
 #
-#        pfrm = wx.PreviewFrame(self.preview, self, _(u"Aperçu avant impression"))
+#        pfrm = wx.PreviewFrame(self.preview, self, _("Aperçu avant impression"))
 #
 #        print dir(pfrm)
 #        pfrm.Initialize()
@@ -1081,7 +1082,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #        fichierAideHtml = os.path.join(globdef.HELPPATH,"html","index.html")
 #        
 #        def aideAbsente():
-#            dlg = wx.MessageDialog(self, u"Le fichier d'aide est absent !",
+#            dlg = wx.MessageDialog(self, "Le fichier d'aide est absent !",
 #                                       'Fichier absent',
 #                                       wx.OK | wx.ICON_ERROR
 #                                       #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
@@ -1104,7 +1105,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #                aideAbsente()
 #
 #        
-##        dlg = wx.MessageDialog(self, u"Cette fonctionnalité n'est pas encore disponible ...",
+##        dlg = wx.MessageDialog(self, "Cette fonctionnalité n'est pas encore disponible ...",
 ##                               'Aide de PyVot',
 ##                               wx.OK | wx.ICON_INFORMATION
 ##                               #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
@@ -1310,7 +1311,7 @@ class wxPySylic(wx.Frame, PrintHandler):
   
         if nomFichier == None:
             dlg = wx.FileDialog(
-                                self, message=_(u"Ouvrir un système"),
+                                self, message=_("Ouvrir un système"),
                                 defaultDir = self.DossierSauvegarde, 
                                 defaultFile = "",
                                 wildcard = mesFormats,
@@ -1659,7 +1660,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         mesFormats = _("Système (.syl)|*.syl|" \
                      "Tous les fichiers|*.*'")
         dlg = wx.FileDialog(
-            self, message=_(u"Enregistrer le système sous ..."), defaultDir=self.DossierSauvegarde , 
+            self, message=_("Enregistrer le système sous ..."), defaultDir=self.DossierSauvegarde , 
             defaultFile="", wildcard=mesFormats, style=wx.SAVE|wx.OVERWRITE_PROMPT|wx.CHANGE_DIR
             )
         dlg.SetFilterIndex(0)
@@ -1675,10 +1676,10 @@ class wxPySylic(wx.Frame, PrintHandler):
     def commandeEnregistrer(self):
 #        print "fichier courant :",self.fichierCourant
         if self.fichierCourant != '':
-            s = _(u"'Oui' pour enregistrer le système dans le fichier\n")
+            s = _("'Oui' pour enregistrer le système dans le fichier\n")
             s += self.fichierCourant
             s += ".\n\n"
-            s += _(u"'Non' pour enregistrer le système dans un autre fichier.")
+            s += _("'Non' pour enregistrer le système dans un autre fichier.")
             
             dlg = wx.MessageDialog(self, s,
                                    _(u'Enregistrement'),
@@ -1760,18 +1761,18 @@ class wxPySylic(wx.Frame, PrintHandler):
 #
 #            # make the image into a cursor
 #            cursor = wx.CursorFromImage(image)
-#            texte = u"Choisir un emplacement pour cet élément sur le montage ..."
+#            texte = "Choisir un emplacement pour cet élément sur le montage ..."
 #            
 #        else:
 #            cursor = wx.StockCursor(curs)
 #            if curs == globdef.CURSEUR_DEFAUT:
-#                texte = u""
+#                texte = ""
 #            elif curs == globdef.CURSEUR_INTERDIT:
-#                texte = u"Impossible de placer l'élément sélectionné ici ..."
+#                texte = "Impossible de placer l'élément sélectionné ici ..."
 #            elif curs == globdef.CURSEUR_ORIENTATION:
-#                texte = u"Déplacer la souris pour choisir l'orientation du roulement ... puis cliquer ..."
+#                texte = "Déplacer la souris pour choisir l'orientation du roulement ... puis cliquer ..."
 #            elif curs == globdef.CURSEUR_OK:
-#                texte = u"Cliquer pour placer l'élément sélectionné ici ..."      
+#                texte = "Cliquer pour placer l'élément sélectionné ici ..."      
 #        
 #        self.SetCursor(cursor)
 #        self.statusBar.SetStatusText(texte, 0)
@@ -1781,25 +1782,25 @@ class wxPySylic(wx.Frame, PrintHandler):
         
     #############################################################################
     def quitterPySyLiC(self, event = None):
-        if globdef.DEBUG: print "Quitter...",
+        if globdef.DEBUG: print ("Quitter...",)
         try:
             self.options.enregistrer()
         except IOError:
-            print "   Permission d'enregistrer les options refusée...",
+            print ("   Permission d'enregistrer les options refusée...",)
         except:
-            print "   Erreur enregistrement options...",
+            print ("   Erreur enregistrement options...",)
             
 #        event.Skip()
         if not self.fichierCourantModifie:
             self.fermerPySyLic()
             return
         
-        texte = _(u"Le Système a été modifié.\nVoulez vous enregistrer les changements ?")
+        texte = _("Le Système a été modifié.\nVoulez vous enregistrer les changements ?")
         if self.fichierCourant != '':
             texte += "\n\n\t"+self.fichierCourant+"\n"
             
         dialog = wx.MessageDialog(self, texte, 
-                                  _(u"Confirmation"), wx.YES_NO | wx.CANCEL | wx.ICON_WARNING)
+                                  _("Confirmation"), wx.YES_NO | wx.CANCEL | wx.ICON_WARNING)
         retCode = dialog.ShowModal()
         if retCode == wx.ID_YES:
             self.commandeEnregistrer()
@@ -1814,7 +1815,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #            self.options.enregistrer()
 #        except:
 #            print "Erreur enregistrement options"
-        if globdef.DEBUG: print "Ok"
+        if globdef.DEBUG: print ("Ok")
         self.Destroy()
         sys.exit()
 
@@ -1844,10 +1845,10 @@ class NbSysteme(wx.Toolbook):
             il.Add(bmp)
         self.AssignImageList(il)
         
-        lstToolTip = [_(u"Système composé d'une simple transmittance : H(p)"),
-                      _(u"Système bouclé composé :\n"\
-                        u" - d'un processus de fonction de transfert H(p)\n"\
-                        u" - d'un correcteur de fonction de transfert C(p)")]
+        lstToolTip = [_("Système composé d'une simple transmittance : H(p)"),
+                      _("Système bouclé composé :\n"\
+                        " - d'un processus de fonction de transfert H(p)\n"\
+                        " - d'un correcteur de fonction de transfert C(p)")]
         
         # Now make a bunch of panels for the list book
         first = True
@@ -1899,7 +1900,7 @@ class NbSysteme(wx.Toolbook):
 class SchemaBloc(wx.Panel):
     def __init__(self, parent, bmp_p, bmp_s):
         wx.Panel.__init__(self, parent, -1)#, style = wx.BORDER_SIMPLE)
-        self.SetToolTipString(_(u"Représentation du système sous forme de schéma-bloc."
+        self.SetToolTipString(_("Représentation du système sous forme de schéma-bloc."
                                 ))
         self.bmp = {'p' : bmp_p,
                     's' : bmp_s}
@@ -1972,12 +1973,12 @@ class NbGauche(wx.Panel):
         for i in lstBmp:
             self.imageList.Add(wx.BitmapFromImage(wx.ImageFromBitmap(i).Scale(size[0], size[1], wx.IMAGE_QUALITY_HIGH)))
 
-        lstToolTip = [_(u"Saisie et paramêtres d'affichage\n"\
-                        u"de la Fonction de Transfert H"),
-                      _(u"Saisie et paramêtres d'affichage\n"\
-                        u"de la Fonction de Transfert du correcteur C"),
-                      _(u"Paramètres d'affichage de la réponse harmonique du système\n"\
-                        u"en boucles ouverte et fermée"),]
+        lstToolTip = [_("Saisie et paramêtres d'affichage\n"\
+                        "de la Fonction de Transfert H"),
+                      _("Saisie et paramêtres d'affichage\n"\
+                        "de la Fonction de Transfert du correcteur C"),
+                      _("Paramètres d'affichage de la réponse harmonique du système\n"\
+                        "en boucles ouverte et fermée"),]
         
         # Schéma bloc
         #----------------
@@ -1985,7 +1986,7 @@ class NbGauche(wx.Panel):
         
         # Book des  FT
         #-----------------
-        if sys.platform == 'darwin':
+        if True:#sys.platform == 'darwin':
             self.book = wx.Notebook(self, -1, size = (20,20))
         else:
 #            self.book = NB.FlatNotebook(self, -1, size = (20,20))#, style=wx.CLIP_CHILDREN|wx.BORDER_NONE)
@@ -2038,10 +2039,10 @@ class NbGauche(wx.Panel):
         self.sizer.Add(self.book, 1, flag = wx.EXPAND)
         self.SetSizer(self.sizer)
         
-        self.book.Bind(NB.EVT_NOTEBOOKCTRL_PAGE_CHANGED, self.OnPageChanged)
+        self.book.Bind(wx.EVT_NOTEBOOK_PAGE_CHANGED, self.OnPageChanged)
 #        self.book.Bind(wx.EVT_NOTEBOOK_PAGE_CHANGED, self.OnPageChanged)
         self.Bind(wx.EVT_SIZE, self.OnSize)
-        self.Bind(wx.EVT_CALCULATE_LAYOUT, self.OnPaint)
+        #self.Bind(wx.EVT_CALCULATE_LAYOUT, self.OnPaint)
         
     ######################################################################################################
     def getLstScrolledBitmap(self):
@@ -2127,7 +2128,7 @@ class NbGauche(wx.Panel):
         
     #########################################################################################################
     def OnPageChanged(self, event = None, page = 0):
-        print "OnPageChanged"
+        print ("OnPageChanged")
         if self.pasEventBook:
             return
         
@@ -2192,7 +2193,7 @@ class PageH(VerticalScrolledPanel):
         #
         # ... Variables ...
         #
-        self.labelVari = [_(u"Paramètres"), _(u"Variables"), _(u"Paramètres")]
+        self.labelVari = [_("Paramètres"), _("Variables"), _("Paramètres")]
         sbVari = wx.StaticBox(self, -1, self.labelVari[globdef.TYPE_SELECTEUR_TF])
         self.sbVari = sbVari
         sbsVari = wx.StaticBoxSizer(sbVari, wx.VERTICAL)
@@ -2203,7 +2204,7 @@ class PageH(VerticalScrolledPanel):
         #
         # Decomposition en sous FT
         #
-        sbDecomp = wx.StaticBox(self, -1, _(u"Décomposition"))
+        sbDecomp = wx.StaticBox(self, -1, _("Décomposition"))
         sbsDecomp = wx.StaticBoxSizer(sbDecomp, wx.VERTICAL)
         self.selAffichFT = SelecteurAffichFT(self, app)
         sbsDecomp.Add(self.selAffichFT, 1, flag = wx.EXPAND)
@@ -2299,9 +2300,9 @@ class PageH(VerticalScrolledPanel):
                     if FT != None:
                         self.setFT_H(FT)
                     else:
-                        text = _(u"La fonction H(p) n'est pas factorisable\n" \
-                                 u"de manière satisfaisante !\n" \
-                                 u"Elle sera réinitialisée...")
+                        text = _("La fonction H(p) n'est pas factorisable\n" \
+                                 "de manière satisfaisante !\n" \
+                                 "Elle sera réinitialisée...")
                         dlg = wx.MessageDialog(self, text,
                                _('Factorisation impossible'),
                                wx.OK | wx.ICON_INFORMATION
@@ -2316,7 +2317,7 @@ class PageH(VerticalScrolledPanel):
                 else: 
                     # La FT n'a pas été changée : on restaure l'ancienne
                     if FT_H.getOrdre() == 0: 
-                        print "La FT a été changée"
+                        print ("La FT a été changée")
                         if self.FT_sauv == None:
                             self.setFT_H(self.getFT_H())
                         else:
@@ -2484,7 +2485,7 @@ class VariablesPanel(wx.Panel):
         horsTri = [r'\alpha', r'K', r'a', r'T', r'\tau']
         lst = []
         for n in horsTri:
-            if variables.has_key(n):
+            if n in variables:
                 lst.append(n)
             
         def getId(nom):
@@ -2506,7 +2507,7 @@ class VariablesPanel(wx.Panel):
             l.sort()
             
         # On met les Id dans l'ordre
-        listId = lstPoly.keys()
+        listId = list(lstPoly.keys())
         listId.sort()
         
         # On rajout tout ça à la liste
@@ -2557,35 +2558,35 @@ class PageC(VerticalScrolledPanel):
                            "PD2",
                            "Perso"]
         
-        self.lstHelp = [_(u"Correcteur à action Proportionnelle\n"\
-                          u"sous la forme :\n"\
-                          u"  C(p) = K"),
+        self.lstHelp = [_("Correcteur à action Proportionnelle\n"\
+                          "sous la forme :\n"\
+                          "  C(p) = K"),
                           
-                        _(u"Correcteur à action Proportionnelle et Intégrale\n"\
-                          u"sous la forme :\n"\
-                          u"              1 + Tp\n"\
-                          u"  C(p) = K --------\n"\
-                          u"              1 + aTp\n"\
-                          u"avec a>=1"),
+                        _("Correcteur à action Proportionnelle et Intégrale\n"\
+                          "sous la forme :\n"\
+                          "              1 + Tp\n"\
+                          "  C(p) = K --------\n"\
+                          "              1 + aTp\n"\
+                          "avec a>=1"),
                           
-                        _(u"Correcteur à action Proportionnelle et Intégrale\n"\
-                          u"sous la forme :\n"\
-                          u"              1 + Tp\n"\
-                          u"  C(p) = K --------\n"\
-                          u"                Tp"),
+                        _("Correcteur à action Proportionnelle et Intégrale\n"\
+                          "sous la forme :\n"\
+                          "              1 + Tp\n"\
+                          "  C(p) = K --------\n"\
+                          "                Tp"),
                           
-                        _(u"Correcteur à action Proportionnelle et Dérivée\n"\
-                          u"sous la forme :\n"\
-                          u"              1 + aTp\n"\
-                          u"  C(p) = K --------\n"\
-                          u"              1 + Tp\n"\
-                          u"avec a>=1"),
+                        _("Correcteur à action Proportionnelle et Dérivée\n"\
+                          "sous la forme :\n"\
+                          "              1 + aTp\n"\
+                          "  C(p) = K --------\n"\
+                          "              1 + Tp\n"\
+                          "avec a>=1"),
                           
-                        _(u"Correcteur à action Proportionnelle et Dérivée\n"\
-                          u"sous la forme :\n"\
-                          u"  C(p) = K (1 + Tp)\n"),
+                        _("Correcteur à action Proportionnelle et Dérivée\n"\
+                          "sous la forme :\n"\
+                          "  C(p) = K (1 + Tp)\n"),
                           
-                        _(u"Correcteur personnalisé")]
+                        _("Correcteur personnalisé")]
         
         
         
@@ -2776,7 +2777,7 @@ class SelecteurCorrecteur(wx.Panel):
         #
         # ... paramêtres ...
         #
-        sbVari = wx.StaticBox(self, -1, _(u"Paramètres"))
+        sbVari = wx.StaticBox(self, -1, _("Paramètres"))
         self.sbVari = sbVari
         sbsVari = wx.StaticBoxSizer(sbVari, wx.VERTICAL)
         self.panelVariables = VariablesPanel(self, self, app)
@@ -2784,7 +2785,7 @@ class SelecteurCorrecteur(wx.Panel):
         sbsVari.Add(self.panelVariables, 1, flag = wx.EXPAND)
         
 ##        print "Variables correcteur :",FT_C.variables
-#        item = self._pnl.AddFoldPanel(_(u"Paramètres"), collapsed=True,
+#        item = self._pnl.AddFoldPanel(_("Paramètres"), collapsed=True,
 #                                      foldIcons=Images)
 #        self.panelVariables = VariablesPanel(item, self)
 #        self.panelVariables.OnListeVariableModified(self.FT.variables)
@@ -2796,12 +2797,12 @@ class SelecteurCorrecteur(wx.Panel):
         #
         # ... selection affichage ...
         #
-        sbDecomp = wx.StaticBox(self, -1, _(u"Décomposition"))
+        sbDecomp = wx.StaticBox(self, -1, _("Décomposition"))
         sbsDecomp = wx.StaticBoxSizer(sbDecomp, wx.VERTICAL)
         self.panelAffiche = SelecteurAffichCor(self, app, maitre)
         sbsDecomp.Add(self.panelAffiche, 1, flag = wx.EXPAND)
         
-#        item = self._pnl.AddFoldPanel(_(u"Affichage"), collapsed=True,
+#        item = self._pnl.AddFoldPanel(_("Affichage"), collapsed=True,
 #                                      foldIcons=Images)
 #        self.panelAffiche = SelecteurAffichCor(item, app, maitre)
 #        self._pnl.AddFoldPanelWindow(item, self.panelAffiche,
@@ -2809,7 +2810,7 @@ class SelecteurCorrecteur(wx.Panel):
 #        self._pnl.Expand(item)
         
         sizer = wx.BoxSizer(wx.VERTICAL)
-        sizer.Add(self.ft, 0, wx.ALIGN_CENTRE|wx.EXPAND)
+        sizer.Add(self.ft, 0, wx.EXPAND)
         sizer.Add(sbsVari, 0, wx.EXPAND)
         sizer.Add(sbsDecomp, 0, wx.EXPAND)
         self.SetSizer(sizer)
@@ -2923,7 +2924,7 @@ class SelecteurCorrecteurPerso(wx.Panel):
         #
         # ... paramêtres ...
         #
-        sbVari = wx.StaticBox(self, -1, _(u"Paramètres"))
+        sbVari = wx.StaticBox(self, -1, _("Paramètres"))
         self.sbVari = sbVari
         sbsVari = wx.StaticBoxSizer(sbVari, wx.VERTICAL)
         self.panelVariables = VariablesPanel(self, self, app)
@@ -2934,12 +2935,12 @@ class SelecteurCorrecteurPerso(wx.Panel):
         #
         # ... selection affichage ...
         #
-        sbDecomp = wx.StaticBox(self, -1, _(u"Décomposition"))
+        sbDecomp = wx.StaticBox(self, -1, _("Décomposition"))
         sbsDecomp = wx.StaticBoxSizer(sbDecomp, wx.VERTICAL)
         self.panelAffiche = SelecteurAffichCor(self, app, maitre)
         sbsDecomp.Add(self.panelAffiche, 1, flag = wx.EXPAND)
 ##        print "Variables correcteur :",FT_C.variables
-#        item = self._pnl.AddFoldPanel(_(u"Paramètres"), collapsed=True,
+#        item = self._pnl.AddFoldPanel(_("Paramètres"), collapsed=True,
 #                                      foldIcons=Images)
 #        self.panelVariables = VariablesPanel(item, self)
 #        self.panelVariables.OnListeVariableModified(self.FT.variables)
@@ -2951,12 +2952,12 @@ class SelecteurCorrecteurPerso(wx.Panel):
 #        #
 #        # ... selection affichage ...
 #        #
-#        sbDecomp = wx.StaticBox(self, -1, _(u"Décomposition"))
+#        sbDecomp = wx.StaticBox(self, -1, _("Décomposition"))
 #        sbsDecomp = wx.StaticBoxSizer(sbDecomp, wx.VERTICAL)
 #        self.panelAffiche = SelecteurAffichCor(self, app, maitre)
 #        sbsDecomp.Add(self.panelAffiche, 1, flag = wx.EXPAND)
         
-#        item = self._pnl.AddFoldPanel(_(u"Affichage"), collapsed=True,
+#        item = self._pnl.AddFoldPanel(_("Affichage"), collapsed=True,
 #                                      foldIcons=Images)
 #        self.panelAffiche = SelecteurAffichCor(item, app, maitre)
 #        self._pnl.AddFoldPanelWindow(item, self.panelAffiche,
@@ -2964,8 +2965,8 @@ class SelecteurCorrecteurPerso(wx.Panel):
 #        self._pnl.Expand(item)
         
         sizer = wx.BoxSizer(wx.VERTICAL)
-        sizer.Add(self.sel, 0, wx.ALIGN_CENTRE|wx.EXPAND)
-        sizer.Add(self.ft, 0, wx.ALIGN_CENTRE|wx.EXPAND)
+        sizer.Add(self.sel, 0, wx.EXPAND)
+        sizer.Add(self.ft, 0, wx.EXPAND)
         sizer.Add(sbsVari, 0, wx.EXPAND)
         sizer.Add(sbsDecomp, 0, wx.EXPAND)
         self.SetSizer(sizer)
@@ -3071,7 +3072,7 @@ class PageFT(VerticalScrolledPanel):
         #
         # ... paramêtres ...
         #
-        sbParam = wx.StaticBox(self, -1, _(u"Paramètres du Correcteur"))
+        sbParam = wx.StaticBox(self, -1, _("Paramètres du Correcteur"))
         sbsParam = wx.StaticBoxSizer(sbParam, wx.VERTICAL)
 
         self.panelVariables = VariablesPanel(self, self, app)
@@ -3083,7 +3084,7 @@ class PageFT(VerticalScrolledPanel):
         #
         # ... selection affichage ...
         #
-        sbAffich = wx.StaticBox(self, -1,_(u"Affichage"))
+        sbAffich = wx.StaticBox(self, -1,_("Affichage"))
         sbsAffich = wx.StaticBoxSizer(sbAffich, wx.VERTICAL)
         
         self.panelAffiche = wx.Panel(self, -1)#, style = wx.BORDER_SIMPLE)
@@ -3094,24 +3095,24 @@ class PageFT(VerticalScrolledPanel):
         
         self.ftbo = ScrolledBitmap(self.panelAffiche, -1, wx.NullBitmap)
         self.cbftbo = wx.CheckBox(self.panelAffiche, -1, "", style = wx.ALIGN_RIGHT)
-        selFormat = SelecteurFormatLigne(self.panelAffiche, 0, self.app.formats["HC"], _(u"Modifier le format du tracé de cette FT"))
+        selFormat = SelecteurFormatLigne(self.panelAffiche, 0, self.app.formats["HC"], _("Modifier le format du tracé de cette FT"))
         
         self.selFormatHC = selFormat
         self.cbftbo.SetValue(self.app.tracerFTBO)
-        self.cbftbo.SetToolTipString(_(u"Si coché, trace le lieu de la Fonction de Transfert\n"\
-                                   u" du système en Boucle Ouverte"))
+        self.cbftbo.SetToolTipString(_("Si coché, trace le lieu de la Fonction de Transfert\n"\
+                                   " du système en Boucle Ouverte"))
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox_O, self.cbftbo)
         
         #       
         # Selection de FTBF
         self.ftbf = ScrolledBitmap(self.panelAffiche, -1, wx.NullBitmap)
         self.cbftbf = wx.CheckBox(self.panelAffiche, -1, "", style = wx.ALIGN_RIGHT)
-        selFormat = SelecteurFormatLigne(self.panelAffiche, 0, self.app.formats["FTBF"], _(u"Modifier le format du tracé de cette FT"))
+        selFormat = SelecteurFormatLigne(self.panelAffiche, 0, self.app.formats["FTBF"], _("Modifier le format du tracé de cette FT"))
         
         self.selFormatFTBF = selFormat
         self.cbftbf.SetValue(self.app.tracerFTBF)
-        self.cbftbf.SetToolTipString(_(u"Si coché, trace le lieu de la Fonction de Transfert\n"\
-                                   u" du système en Boucle Fermée"))
+        self.cbftbf.SetToolTipString(_("Si coché, trace le lieu de la Fonction de Transfert\n"\
+                                   " du système en Boucle Fermée"))
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox_F, self.cbftbf)
         
         #
@@ -3305,12 +3306,12 @@ class SelecteurAffichCor(wx.Panel):
         sizerH = wx.BoxSizer(wx.HORIZONTAL)
         
         self.cb = wx.CheckBox(self, -1, "H("+globdef.VAR_COMPLEXE+")", style = wx.ALIGN_RIGHT)
-        self.cb.SetToolTipString(_(u"Si coché, trace le lieu de la Fonction de Transfert ")+"H("+globdef.VAR_COMPLEXE+")")
+        self.cb.SetToolTipString(_("Si coché, trace le lieu de la Fonction de Transfert ")+"H("+globdef.VAR_COMPLEXE+")")
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.cb)
         
-        sizerH.Add(self.cb, flag = wx.ALIGN_RIGHT | wx.ALL, border = 5)
+        sizerH.Add(self.cb, flag = wx.ALL, border = 5)
         
-        selFormat = SelecteurFormatLigne(self, 0, self.app.formats["H"], _(u"Modifier le format du tracé de cette FT"))
+        selFormat = SelecteurFormatLigne(self, 0, self.app.formats["H"], _("Modifier le format du tracé de cette FT"))
         self.selFormatH = selFormat
         sizerH.Add(selFormat, flag = wx.ALIGN_CENTER | wx.ALIGN_CENTER_VERTICAL | wx.LEFT, border = 5)
         
@@ -3322,12 +3323,12 @@ class SelecteurAffichCor(wx.Panel):
         sizerH2 = wx.BoxSizer(wx.HORIZONTAL)
 
         self.cbc = wx.CheckBox(self, -1, "C("+globdef.VAR_COMPLEXE+")", style = wx.ALIGN_RIGHT)
-        self.cbc.SetToolTipString(_(u"Si coché, trace le lieu de la Fonction de Transfert du correcteur ")+"C("+globdef.VAR_COMPLEXE+")")
+        self.cbc.SetToolTipString(_("Si coché, trace le lieu de la Fonction de Transfert du correcteur ")+"C("+globdef.VAR_COMPLEXE+")")
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.cbc)
         
-        sizerH2.Add(self.cbc, flag = wx.ALIGN_RIGHT | wx.ALL, border = 5)
+        sizerH2.Add(self.cbc, flag = wx.ALL, border = 5)
         
-        selFormat = SelecteurFormatLigne(self, 0, self.app.formats["C"], _(u"Modifier le format du tracé de cette FT"))
+        selFormat = SelecteurFormatLigne(self, 0, self.app.formats["C"], _("Modifier le format du tracé de cette FT"))
         self.selFormatC = selFormat
         sizerH2.Add(selFormat, flag = wx.ALIGN_CENTER | wx.ALIGN_CENTER_VERTICAL | wx.LEFT, border = 5)
         
@@ -3339,13 +3340,13 @@ class SelecteurAffichCor(wx.Panel):
         sizerH3 = wx.BoxSizer(wx.HORIZONTAL)
 
         self.cbo = wx.CheckBox(self, -1, "H("+globdef.VAR_COMPLEXE+") x C("+globdef.VAR_COMPLEXE+")", style = wx.ALIGN_RIGHT)
-        self.cbo.SetToolTipString(_(u"Si coché, trace le lieu de la Fonction de Transfert\n"
-                                    u" du système en Boucle Ouverte"))
+        self.cbo.SetToolTipString(_("Si coché, trace le lieu de la Fonction de Transfert\n"
+                                    " du système en Boucle Ouverte"))
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.cbo)
         
-        sizerH3.Add(self.cbo, flag = wx.ALIGN_RIGHT | wx.ALL, border = 5)
+        sizerH3.Add(self.cbo, flag = wx.ALL, border = 5)
         
-        selFormat = SelecteurFormatLigne(self, 0, self.app.formats["HC"], _(u"Modifier le format du tracé de cette FT"))
+        selFormat = SelecteurFormatLigne(self, 0, self.app.formats["HC"], _("Modifier le format du tracé de cette FT"))
         self.selFormatHC = selFormat
         sizerH3.Add(selFormat, flag = wx.ALIGN_CENTER | wx.ALIGN_CENTER_VERTICAL | wx.LEFT, border = 5)
         
@@ -3435,15 +3436,15 @@ class SelecteurAffichFT(wx.Panel):
         
         self.cb = wx.CheckBox(self, -1, "", style = wx.ALIGN_RIGHT)
         self.cb.SetValue(self.app.TracerH)
-        self.cb.SetToolTipString(_(u"Si coché, trace le lieu de la Fonction de Transfert ")+"H("+globdef.VAR_COMPLEXE+")")
+        self.cb.SetToolTipString(_("Si coché, trace le lieu de la Fonction de Transfert ")+"H("+globdef.VAR_COMPLEXE+")")
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.cb)
         
-        selFormat= SelecteurFormatLigne(self, 0, self.app.formats["H"], _(u"Modifier le format du tracé de cette FT"))
+        selFormat= SelecteurFormatLigne(self, 0, self.app.formats["H"], _("Modifier le format du tracé de cette FT"))
         self.selFormatH = selFormat
         
-        sizerH1.Add(self.bmp0, 1, flag = wx.ALIGN_RIGHT | wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
-        sizerH1.Add(self.cb, 0, flag = wx.ALIGN_RIGHT | wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
-        sizerH1.Add(selFormat, 0, flag = wx.ALIGN_CENTER | wx.ALIGN_CENTER_VERTICAL | wx.LEFT, border = 5)
+        sizerH1.Add(self.bmp0, 1, flag = wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
+        sizerH1.Add(self.cb, 0, flag = wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
+        sizerH1.Add(selFormat, 0, flag = wx.ALIGN_CENTER_VERTICAL | wx.LEFT, border = 5)
         
         #
         # La somme partielle
@@ -3454,21 +3455,21 @@ class SelecteurAffichFT(wx.Panel):
         
         self.cbs = wx.CheckBox(self, -1, "", style = wx.ALIGN_RIGHT)
         self.cbs.SetValue(self.app.additionner)
-        self.cbs.SetToolTipString(_(u"Si coché, trace le lieu de ce produit de Fonctions de Transfert"))
+        self.cbs.SetToolTipString(_("Si coché, trace le lieu de ce produit de Fonctions de Transfert"))
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBoxS, self.cbs)
         
-        selFormat = SelecteurFormatLigne(self, 0, self.app.formats["SomH"], _(u"Modifier le format du tracé de cette FT"))
+        selFormat = SelecteurFormatLigne(self, 0, self.app.formats["SomH"], _("Modifier le format du tracé de cette FT"))
         self.selFormatS = selFormat
         
-        sizerH2.Add(self.bmp, 1, flag = wx.ALIGN_RIGHT| wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
-        sizerH2.Add(self.cbs, 0, flag = wx.ALIGN_RIGHT| wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
+        sizerH2.Add(self.bmp, 1, flag = wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
+        sizerH2.Add(self.cbs, 0, flag = wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
         sizerH2.Add(selFormat, 0, flag = wx.ALIGN_CENTER| wx.ALIGN_CENTER_VERTICAL | wx.LEFT , border = 5)
         
         
         self.sizer = wx.BoxSizer(wx.VERTICAL)
         self.sizer.Add(sizerH1, flag = wx.ALIGN_RIGHT | wx.ALL, border = 5)
-        self.sizer.Add(wx.StaticLine(self, -1, style = wx.LI_HORIZONTAL), flag = wx.ALIGN_CENTER | wx.EXPAND)
-        self.sizer.Add(wx.StaticLine(self, -1, style = wx.LI_HORIZONTAL), flag = wx.ALIGN_CENTER | wx.EXPAND)
+        self.sizer.Add(wx.StaticLine(self, -1, style = wx.LI_HORIZONTAL), flag = wx.EXPAND)
+        self.sizer.Add(wx.StaticLine(self, -1, style = wx.LI_HORIZONTAL), flag = wx.EXPAND)
         self.sizer.Add(sizerH2, flag = wx.ALIGN_RIGHT | wx.ALL, border = 5)
         
         #
@@ -3746,16 +3747,16 @@ class AffichFT(wx.PyPanel):
         
         self.cbA = wx.CheckBox(self, 0, "")
         self.cbA.SetValue(lstAction[id])
-        self.cbA.SetToolTipString(_(u"Si coché, trace le lieu de cette sous Fonction de Transfert"\
-                                    u" de ")+"H("+globdef.VAR_COMPLEXE+")")
+        self.cbA.SetToolTipString(_("Si coché, trace le lieu de cette sous Fonction de Transfert"\
+                                    " de ")+"H("+globdef.VAR_COMPLEXE+")")
         
-        self.selFormat = SelecteurFormatLigne(self, id, format, _(u"Modifier le format du tracé de cette FT"))
+        self.selFormat = SelecteurFormatLigne(self, id, format, _("Modifier le format du tracé de cette FT"))
         
         #
         # Mise en place
         #
         sizer = wx.BoxSizer(wx.HORIZONTAL)
-        sizer.Add(self.ft, flag = wx.ALIGN_RIGHT | wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
+        sizer.Add(self.ft, flag = wx.ALIGN_CENTER_VERTICAL | wx.ALL, border = 5)
         sizer.Add(self.cbA, flag = wx.ALIGN_CENTER | wx.ALL, border = 5)
         sizer.Add(self.selFormat, flag = wx.ALIGN_CENTER | wx.ALL, border = 5)
         self.SetSizerAndFit(sizer)
@@ -3820,8 +3821,8 @@ class BarreOutils(aui.AuiToolBar):
                           'BRepons' : _(u'Afficher la réponse temporelle du système'),
                           'BMarges' : _(u'Afficher les marges de stabilité du système\n'\
                                         u'  Remarque :\n'\
-                                        u"  Cet outil n'est disponible que pour les systèmes bouclés\n"\
-                                        u"  et en mode d'édition du correcteur"),
+                                        "  Cet outil n'est disponible que pour les systèmes bouclés\n"\
+                                        "  et en mode d'édition du correcteur"),
     #                      'BFTBF'   : _('Bouton FTBF.png'),
                           'BOuvrir' : _(u'Ouvrir un fichier "système" (.syl)'),
                           'BEnreg'  : _(u'Enregistrer les paramêtres du système (fonctions de transfert, ...)\n'\
@@ -3833,11 +3834,11 @@ class BarreOutils(aui.AuiToolBar):
                                         u'des Fonctions de Transfert du système'),
                           'BOptio'  : _(u'Permet de régler les différents options de pySyLiC'),
                           'BTravx'  : _(u'Mettre à jour le tracé'),
-                          'BImpri'  : _(u"Afficher le panneau de gestion de l'impression"),
-                          'BPoles'  : _(u"Afficher les pôles de la FTBF dans le plan complexe")
+                          'BImpri'  : _("Afficher le panneau de gestion de l'impression"),
+                          'BPoles'  : _("Afficher les pôles de la FTBF dans le plan complexe")
                           }
         
-        self.lstLabel = {'BAbout'  : _(u"A propos de " + version.__appname__),
+        self.lstLabel = {'BAbout'  : _("A propos de " + version.__appname__),
                          'BRepons' : _(u'réponse temporelle du système'),
                          'BMarges' : _(u'Marges de stabilité du système'),
                          'BOuvrir' : _(u'Ouvrir un système'),
@@ -3846,13 +3847,13 @@ class BarreOutils(aui.AuiToolBar):
                          'BDecmp'  : _(u'Décomposition en éléments simples des FT'),
                          'BOptio'  : _(u'Réglage des options de pySyLiC'),
                          'BTravx'  : _(u'Mettre à jour le tracé'),
-                         'BImpri'  : _(u"Imprimer les tracés"),
-                         'BPoles'  : _(u"Pôles de la FT"),
+                         'BImpri'  : _("Imprimer les tracés"),
+                         'BPoles'  : _("Pôles de la FT"),
                          }
         
         self.menu = wx.Menu()
         id = 101
-        for i in [_(u"Imprimer"), _(u"Aperçu"), _(u"Mise en page"), _(u"Options")]:
+        for i in [_("Imprimer"), _("Aperç"), _("Mise en page"), _("Options")]:
             self.menu.Append(id, i)
             self.Bind(wx.EVT_MENU, self.OnMenu, id = id)
             id += 1
@@ -4084,7 +4085,7 @@ class BarreOutils(aui.AuiToolBar):
 #########################################################################################################
 class DialogInitProjet(wx.MessageDialog):
     def __init__(self, parent):
-        wx.MessageDialog.__init__(self, parent, _(u"Voulez-vous vraiment effacer le système en cours d'étude ?"),
+        wx.MessageDialog.__init__(self, parent, _("Voulez-vous vraiment effacer le système en cours d'étude ?"),
                                        _(u'Confirmation effacement'),
                                        wx.OK | wx.ICON_QUESTION  | wx.CANCEL
                                        #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
@@ -4111,57 +4112,57 @@ class WinMarge(wx.MiniFrame):
 #        self.FTNum = FTNum
 #        self.num = 0
         
-        wx.MiniFrame.__init__(self, parent, -1, _(u"Marges de stabilité"), pos, (300,200), style)
+        wx.MiniFrame.__init__(self, parent, -1, _("Marges de stabilité"), pos, (300,200), style)
         
         self.SetMinSize((100,100))
         self.SetBackgroundColour(wx.WHITE)
-        self.SetToolTip(wx.ToolTip(_(u"Marges de stabilité selon la règle du revers.")))
+        self.SetToolTip(wx.ToolTip(_("Marges de stabilité selon la règle du revers.")))
         self.SetAutoLayout(True)
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         
         #
-        boxP = wx.StaticBox(self, -1, _(u"Marge de phase"))
+        boxP = wx.StaticBox(self, -1, _("Marge de phase"))
         sP = wx.StaticBoxSizer(boxP, wx.VERTICAL)
         self.stOm = wx.StaticBitmap(self, -1, wx.NullBitmap)
-        sP.Add(self.stOm, flag = wx.ALIGN_CENTER_VERTICAL|wx.ALL,  border = 8)
+        sP.Add(self.stOm, flag = wx.ALL,  border = 8)
         
         self.stMp = wx.StaticBitmap(self, -1, wx.NullBitmap)
-        sP.Add(self.stMp, flag = wx.ALIGN_CENTER_VERTICAL|wx.ALL,  border = 8)
+        sP.Add(self.stMp, flag = wx.ALL,  border = 8)
         
-        sizer.Add(sP, flag = wx.ALIGN_CENTER_VERTICAL|wx.EXPAND|wx.ALL, border = 4)
+        sizer.Add(sP, flag = wx.EXPAND|wx.ALL, border = 4)
         
         #
-        boxG = wx.StaticBox(self, -1, _(u"Marge de gain"))
+        boxG = wx.StaticBox(self, -1, _("Marge de gain"))
         sG = wx.StaticBoxSizer(boxG, wx.VERTICAL)
         self.stOm180 = wx.StaticBitmap(self, -1, wx.NullBitmap)
-        sG.Add(self.stOm180, flag = wx.ALIGN_CENTER_VERTICAL|wx.ALL,  border = 8)
+        sG.Add(self.stOm180, flag = wx.ALL,  border = 8)
         
         self.stMg = wx.StaticBitmap(self, -1, wx.NullBitmap)
-        sG.Add(self.stMg, flag = wx.ALIGN_CENTER_VERTICAL|wx.ALL,  border = 8)
+        sG.Add(self.stMg, flag = wx.ALL,  border = 8)
         
-        sizer.Add(sG, flag = wx.ALIGN_CENTER_VERTICAL|wx.EXPAND|wx.ALL, border = 4)
+        sizer.Add(sG, flag = wx.EXPAND|wx.ALL, border = 4)
         
         self.SetSizerAndFit(sizer)
         
         self.Bind(wx.EVT_CLOSE, self.OnCloseWindow)
         
         #
-        boxS = wx.StaticBox(self, -1, _(u"Surtension"))
+        boxS = wx.StaticBox(self, -1, _("Surtension"))
         sS = wx.StaticBoxSizer(boxS, wx.VERTICAL)
         self.stOmS = wx.StaticBitmap(self, -1, wx.NullBitmap)
-        sS.Add(self.stOmS, flag = wx.ALIGN_CENTER_VERTICAL|wx.ALL,  border = 8)
+        sS.Add(self.stOmS, flag = wx.ALL,  border = 8)
         
-#        self.stMs = wx.StaticText(self, -1, u"")
+#        self.stMs = wx.StaticText(self, -1, "")
 #        sS.Add(self.stMs, flag = wx.ALIGN_CENTER_VERTICAL|wx.ALL,  border = 8)
         
         self.isoG = wx.StaticBitmap(self, -1, wx.NullBitmap)
-        sS.Add(self.isoG, flag = wx.ALIGN_CENTER_VERTICAL|wx.ALL,  border = 8)
+        sS.Add(self.isoG, flag = wx.ALL,  border = 8)
         
         panelbtn = wx.Panel(self, -1)
-        button = wx.Button(panelbtn, -1, _(u"Fermer"))
-        sizer.Add(sS, flag = wx.ALIGN_CENTER_VERTICAL|wx.EXPAND|wx.ALL, border = 4)
-        sizer.Add(panelbtn, flag = wx.EXPAND|wx.ALIGN_CENTER|wx.ALL, border = 4)
+        button = wx.Button(panelbtn, -1, _("Fermer"))
+        sizer.Add(sS, flag = wx.EXPAND|wx.ALL, border = 4)
+        sizer.Add(panelbtn, flag = wx.EXPAND|wx.ALL, border = 4)
         
         self.SetSizerAndFit(sizer)
         
@@ -4254,7 +4255,7 @@ class WinReponse(wx.MiniFrame, PrintHandler):
         self.setNum = setNum
 
         size = (414,550)
-        wx.MiniFrame.__init__(self, parent, -1, _(u"réponse Temporelle du Système"),
+        wx.MiniFrame.__init__(self, parent, -1, _("réponse Temporelle du Système"),
                               pos, size, style)
 
         self.SetAutoLayout(True)
@@ -4268,7 +4269,7 @@ class WinReponse(wx.MiniFrame, PrintHandler):
         #
         outils = ["BGrille", "", "BZoomA", "BZoomP", "BDepla", "BEchel", "", "BCurse", 'BImpri', "", "BExpor",'BParam']
         self.ZoneReponse = graph.ZoneGraphOutils(self, parent, 3, outils, tempo = True)
-        self.ZoneReponse.Add(graph.ZoneGraphReponse(self.ZoneReponse, self.ZoneReponse, _(u"réponse temporelle")))
+        self.ZoneReponse.Add(graph.ZoneGraphReponse(self.ZoneReponse, self.ZoneReponse, _("réponse temporelle")))
 
         #
         # Zone d'affichage de la FTBO
@@ -4278,7 +4279,7 @@ class WinReponse(wx.MiniFrame, PrintHandler):
         sizer0 = wx.BoxSizer(wx.VERTICAL)
         sizer = wx.BoxSizer(wx.HORIZONTAL)
         
-#        st = wx.StaticText(self.pop, -1, u"FTBF("+globdef.VAR_COMPLEXE+") = ")
+#        st = wx.StaticText(self.pop, -1, "FTBF("+globdef.VAR_COMPLEXE+") = ")
 #        sizer.Add(st, flag = wx.ALIGN_CENTER_VERTICAL|wx.ALL, border = 5)
         
         self.BmpFTBF = ScrolledBitmap(self.pop, -1, wx.NullBitmap)
@@ -4289,15 +4290,15 @@ class WinReponse(wx.MiniFrame, PrintHandler):
         self.cb2.SetValue(False)
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.cb1)
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.cb2)
-        sizer.Add(self.cb1, 0, flag = wx.EXPAND|wx.ALIGN_CENTER_VERTICAL)
+        sizer.Add(self.cb1, 0, flag = wx.EXPAND)
         sizer.Add(self.BmpFTBF, 1, flag = wx.EXPAND|wx.ALL, border = 5)
-        sizer.Add(self.cb2, 0, flag = wx.EXPAND|wx.ALIGN_CENTER_VERTICAL)
+        sizer.Add(self.cb2, 0, flag = wx.EXPAND)
         sizer.Add(self.BmpFTBFnc, 1, flag = wx.EXPAND|wx.ALL, border = 5)
         
         self.pop.SetSizerAndFit(sizer)
        
         panelbtn = wx.Panel(self, -1)
-        button = wx.Button(panelbtn, -1, _(u"Fermer"))
+        button = wx.Button(panelbtn, -1, _("Fermer"))
         self.panelbtn = panelbtn
         
         #
@@ -4306,7 +4307,7 @@ class WinReponse(wx.MiniFrame, PrintHandler):
         sizer0.Add(self.pop, 0, flag = wx.EXPAND)
         sizer0.Add(self.ZoneReponse,1, flag = wx.EXPAND)
         sizer0.Add(self.tb, flag = wx.EXPAND)
-        sizer0.Add(panelbtn, flag = wx.EXPAND|wx.ALIGN_CENTER)
+        sizer0.Add(panelbtn, flag = wx.EXPAND)
         self.SetSizer(sizer0)
         self.sizer = sizer0
         
@@ -4654,10 +4655,10 @@ class TBReponse(wx.Toolbook):
                             )
         self.parent = parent
         
-        listeSignaux = [_(u"Impulsion"), _(u"Echelon"), _(u"Rampe"),
-                        _(u"Série d'Impulsions"), 
-                        _(u"Carré"), _(u"Triangle"), _(u"Sinusoïdal"),
-                        _(u"Personnalisé")
+        listeSignaux = [_("Impulsion"), _("Echelon"), _("Rampe"),
+                        _("Série d'Impulsions"), 
+                        _("Carré"), _("Triangle"), _("Sinusoïdal"),
+                        _("Personnalisé")
                         ]
         
         listeBoutons = [Images.Bouton_Signal_Impuls,
@@ -4691,7 +4692,7 @@ class TBReponse(wx.Toolbook):
         for i,win in enumerate(listeZoneParam):
             self.AddPage(win, "", imageId=i)
             self.GetToolBar().SetToolShortHelp(i+1, listeSignaux[i])
-#            self.GetToolBar().SetToolLongHelp(i, u"Afficher la réponse temporelle du système soumis à un signal de type"+listeSignaux[i])
+#            self.GetToolBar().SetToolLongHelp(i, "Afficher la réponse temporelle du système soumis à un signal de type"+listeSignaux[i])
  
         self.Bind(wx.EVT_TOOLBOOK_PAGE_CHANGED, self.OnPageChanged)
 #        self.Bind(wx.EVT_TOOLBOOK_PAGE_CHANGING, self.OnPageChanging)
@@ -4721,9 +4722,9 @@ class ParamImpuls(wx.Panel):
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        box = wx.StaticBox(self, -1, _(u"Signal impulsion"))
+        box = wx.StaticBox(self, -1, _("Signal impulsion"))
         bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
-        box.SetHelpText(_(u"Paramètres de l'impulsion"))
+        box.SetHelpText(_("Paramètres de l'impulsion"))
         
         sizer.Add(bsizer, 1, wx.EXPAND|wx.ALL, 5)
         self.SetSizerAndFit(sizer)
@@ -4744,11 +4745,11 @@ class ParamEchelon(wx.Panel):
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        box = wx.StaticBox(self, -1, _(u"Signal échelon"))
+        box = wx.StaticBox(self, -1, _("Signal échelon"))
         bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
-        box.SetHelpText(_(u"Paramètres de l'échelon"))
+        box.SetHelpText(_("Paramètres de l'échelon"))
         
-        self.amplitude = Variable(_(u"Amplitude"), lstVal = [1.0], typ = VAR_REEL)
+        self.amplitude = Variable(_("Amplitude"), lstVal = [1.0], typ = VAR_REEL)
         var1 = VariableCtrl(self, self.amplitude, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_CENTRE|wx.ALL, 3)
         
@@ -4771,11 +4772,11 @@ class ParamRampe(wx.Panel):
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        box = wx.StaticBox(self, -1, _(u"Signal échelon"))
+        box = wx.StaticBox(self, -1, _("Signal échelon"))
         bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
-        box.SetHelpText(_(u"Paramètres de l'échelon"))
+        box.SetHelpText(_("Paramètres de l'échelon"))
         
-        self.pente = Variable(_(u"Pente"), lstVal = [1.0], typ = VAR_REEL)
+        self.pente = Variable(_("Pente"), lstVal = [1.0], typ = VAR_REEL)
         var1 = VariableCtrl(self, self.pente, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_CENTRE|wx.ALL, 3)
         
@@ -4798,14 +4799,14 @@ class ParamImpulsions(wx.Panel):
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        box = wx.StaticBox(self, -1, _(u"Signal série d'impulsions"))
+        box = wx.StaticBox(self, -1, _("Signal série d'impulsions"))
         bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
-        box.SetHelpText(_(u"Paramètres du signal série d'impulsions"))
+        box.SetHelpText(_("Paramètres du signal série d'impulsions"))
         
-#        label = wx.StaticText(self, -1, u"Indisponible pour l'instant ...")
+#        label = wx.StaticText(self, -1, "Indisponible pour l'instant ...")
 #        bsizer.Add(label, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
 
-        self.periode = Variable(_(u"Période (s)"), lstVal = [1.0], typ = VAR_REEL_POS)
+        self.periode = Variable(_("Période (s)"), lstVal = [1.0], typ = VAR_REEL_POS)
         var1 = VariableCtrl(self, self.periode, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
@@ -4828,20 +4829,20 @@ class ParamCarre(wx.Panel):
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        box = wx.StaticBox(self, -1, _(u"Signal carré"))
+        box = wx.StaticBox(self, -1, _("Signal carré"))
         bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
-        box.SetHelpText(_(u"Paramètres du signal carré"))
+        box.SetHelpText(_("Paramètres du signal carré"))
 #        sizer.Add(label, 0, wx.ALIGN_CENTRE|wx.ALL, 5)
         
-        self.amplitude = Variable(_(u"Amplitude"), lstVal = [1.0], typ = VAR_REEL)
+        self.amplitude = Variable(_("Amplitude"), lstVal = [1.0], typ = VAR_REEL)
         var1 = VariableCtrl(self, self.amplitude, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
-        self.periode = Variable(_(u"Période (s)"), lstVal = [1.0], typ = VAR_REEL_POS)
+        self.periode = Variable(_("Période (s)"), lstVal = [1.0], typ = VAR_REEL_POS)
         var1 = VariableCtrl(self, self.periode, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
-        self.decalage = Variable(_(u"Décalage"), lstVal = [0.0], typ = VAR_REEL, modeLog = False)
+        self.decalage = Variable(_("Décalage"), lstVal = [0.0], typ = VAR_REEL, modeLog = False)
         var1 = VariableCtrl(self, self.decalage, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
@@ -4863,20 +4864,20 @@ class ParamTriangle(wx.Panel):
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        box = wx.StaticBox(self, -1, _(u"Signal triangulaire"))
+        box = wx.StaticBox(self, -1, _("Signal triangulaire"))
         bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
-        box.SetHelpText(_(u"Paramètres du signal triangulaire"))
+        box.SetHelpText(_("Paramètres du signal triangulaire"))
 #        sizer.Add(label, 0, wx.ALIGN_CENTRE|wx.ALL, 5)
         
-        self.pente = Variable(_(u"Pente"), lstVal = [1.0], typ = VAR_REEL)
+        self.pente = Variable(_("Pente"), lstVal = [1.0], typ = VAR_REEL)
         var1 = VariableCtrl(self, self.pente, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
-        self.periode = Variable(_(u"Période (s)"), lstVal = [1.0], typ = VAR_REEL_POS)
+        self.periode = Variable(_("Période (s)"), lstVal = [1.0], typ = VAR_REEL_POS)
         var1 = VariableCtrl(self, self.periode, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
-        self.decalage = Variable(_(u"Décalage"), lstVal = [0.0], typ = VAR_REEL, modeLog = False)
+        self.decalage = Variable(_("Décalage"), lstVal = [0.0], typ = VAR_REEL, modeLog = False)
         var1 = VariableCtrl(self, self.decalage, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
@@ -4898,25 +4899,25 @@ class ParamSinus(wx.Panel):
         self.parent = parent
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        box = wx.StaticBox(self, -1, _(u"Signal sinusoïdal"))
+        box = wx.StaticBox(self, -1, _("Signal sinusoïdal"))
         bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
-        box.SetHelpText(_(u"Paramètres du signal sinusoïdal"))
+        box.SetHelpText(_("Paramètres du signal sinusoïdal"))
 #        sizer.Add(label, 0, wx.ALIGN_CENTRE|wx.ALL, 5)
         
-        self.amplitude = Variable(_(u"Amplitude"), lstVal = [1.0], typ = VAR_REEL)
+        self.amplitude = Variable(_("Amplitude"), lstVal = [1.0], typ = VAR_REEL)
         var1 = VariableCtrl(self, self.amplitude, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
         
-        self.pulsation = Variable(_(u"Pulsation (rad/s)"), lstVal = [1.0], typ = VAR_REEL_POS)
+        self.pulsation = Variable(_("Pulsation (rad/s)"), lstVal = [1.0], typ = VAR_REEL_POS)
         
         radio1 = wx.RadioButton( self, -1, "", style = wx.RB_GROUP )
         var1 = VariableCtrl(self, self.pulsation, labelMPL = False)
         hs = wx.BoxSizer(wx.HORIZONTAL)
-        hs.Add(radio1, flag = wx.ALIGN_RIGHT|wx.EXPAND|wx.ALIGN_CENTER_VERTICAL)
+        hs.Add(radio1, flag = wx.EXPAND)
         hs.Add(var1, flag = wx.ALIGN_LEFT|wx.EXPAND)
         
-        radio2 = wx.RadioButton( self, -1, _(u"Synchroniser sur le curseur de la réponse harmonique" ))
+        radio2 = wx.RadioButton( self, -1, _("Synchroniser sur le curseur de la réponse harmonique" ))
 
         ss = wx.BoxSizer(wx.VERTICAL)
         ss.Add(hs, flag = wx.EXPAND)
@@ -4927,7 +4928,7 @@ class ParamSinus(wx.Panel):
         self.radioPuls = radio2
         self.OnSystemeChange()
         
-        self.decalage = Variable(_(u"Décalage"), lstVal = [0.0], typ = VAR_REEL, modeLog = False)
+        self.decalage = Variable(_("Décalage"), lstVal = [0.0], typ = VAR_REEL, modeLog = False)
         var1 = VariableCtrl(self, self.decalage, labelMPL = False)
         bsizer.Add(var1, 0, wx.ALIGN_RIGHT|wx.ALL, 3)
         
@@ -4951,11 +4952,11 @@ class ParamSinus(wx.Panel):
                  
     def OnSystemeChange(self):
         if self.parent.parent.parent.getTypeSysteme() == 0:
-            s = u"H"
+            s = "H"
         else:
-            s = _(u"du système en boucle fermée")
-        self.radioPuls.SetToolTipString(_(u"En choisissant cette option, la valeur de la pulsation sera la même\n" \
-                                         u"que celle du curseur de la fonction de transfert ")+s+".")
+            s = _("du système en boucle fermée")
+        self.radioPuls.SetToolTipString(_("En choisissant cette option, la valeur de la pulsation sera la même\n" \
+                                         "que celle du curseur de la fonction de transfert ")+s+".")
     
     
 ##########################################################################################################
@@ -4965,20 +4966,20 @@ class ParamPerso(wx.Panel):
         
         sizer = wx.BoxSizer(wx.VERTICAL)
         
-        box = wx.StaticBox(self, -1, _(u"Signal personnalisé"))
+        box = wx.StaticBox(self, -1, _("Signal personnalisé"))
         bsizer = wx.StaticBoxSizer(box, wx.VERTICAL)
-        box.SetHelpText(_(u"Paramètres du signal personnalisé"))
+        box.SetHelpText(_("Paramètres du signal personnalisé"))
         
         font1 = wx.Font(9, wx.DEFAULT, wx.NORMAL, wx.BOLD)
-        label0 = wx.StaticText(self, -1, _(u"Personnalisation de la consigne :" ))
-        label1 = wx.StaticText(self, -1, _(u"  Déplacer un point de contrôle :"))
-        label2 = wx.StaticText(self, -1, _(u"bouton gauche + déplacer" ))
-        label3 = wx.StaticText(self, -1, _(u"  Ajouter un point de contrôle :"))
-        label4 = wx.StaticText(self, -1, _(u"bouton droit sur un segment" ))
-        label5 = wx.StaticText(self, -1, _(u"  Supprimer un point de contrôle :"))
-        label6 = wx.StaticText(self, -1, _(u"bouton droit sur un point" ))
-        label7 = wx.StaticText(self, -1, _(u"  Modifier la pente du dernier segment :"))
-        label8 = wx.StaticText(self, -1, _(u"bouton gauche sur le segment + déplacer" ))
+        label0 = wx.StaticText(self, -1, _("Personnalisation de la consigne :" ))
+        label1 = wx.StaticText(self, -1, _("  Déplacer un point de contrôle :"))
+        label2 = wx.StaticText(self, -1, _("bouton gauche + déplacer" ))
+        label3 = wx.StaticText(self, -1, _("  Ajouter un point de contrôle :"))
+        label4 = wx.StaticText(self, -1, _("bouton droit sur un segment" ))
+        label5 = wx.StaticText(self, -1, _("  Supprimer un point de contrôle :"))
+        label6 = wx.StaticText(self, -1, _("bouton droit sur un point" ))
+        label7 = wx.StaticText(self, -1, _("  Modifier la pente du dernier segment :"))
+        label8 = wx.StaticText(self, -1, _("bouton gauche sur le segment + déplacer" ))
                                         
         label0.SetFont(wx.Font(10, wx.DEFAULT, wx.NORMAL, wx.NORMAL, underline = True))
         label1.SetFont(font1)
@@ -5038,10 +5039,10 @@ class WinPoles(wx.MiniFrame, PrintHandler):
         self.BmpFTBF = ScrolledBitmap(self, -1, wx.NullBitmap)
 
         self.zonePoles = graph.ZoneGraphOutils(self, parent, 4, ["BGrille", "", "BExpor", "BImpri", 'BParam'])
-        self.zonePoles.Add(graph.ZoneGraphPoles(self.zonePoles, self.zonePoles, u"Pôles"))
+        self.zonePoles.Add(graph.ZoneGraphPoles(self.zonePoles, self.zonePoles, "Pôles"))
         
         panelbtn = wx.Panel(self, -1)
-        button = wx.Button(panelbtn, -1, _(u"Fermer"))
+        button = wx.Button(panelbtn, -1, _("Fermer"))
         
         #
         # Mise en place
@@ -5049,7 +5050,7 @@ class WinPoles(wx.MiniFrame, PrintHandler):
         sizer0 = wx.BoxSizer(wx.VERTICAL)
         sizer0.Add(self.BmpFTBF, 0, flag = wx.EXPAND)
         sizer0.Add(self.zonePoles, 1, flag = wx.EXPAND)
-        sizer0.Add(panelbtn, flag = wx.EXPAND|wx.ALIGN_CENTER)
+        sizer0.Add(panelbtn, flag = wx.EXPAND)
         self.SetSizer(sizer0)
         self.sizer = sizer0
         
@@ -5110,9 +5111,9 @@ class WinPoles(wx.MiniFrame, PrintHandler):
     #########################################################################################################
     def miseAJourTitre(self, estFTBF = False):
         if estFTBF:
-            self.SetTitle(_(u"Pôles/Zéros de la FTBF"))
+            self.SetTitle(_("Pôles/Zéros de la FTBF"))
         else:
-            self.SetTitle(_(u"Pôles/Zéros de la Fonction de Transfert"))
+            self.SetTitle(_("Pôles/Zéros de la Fonction de Transfert"))
         
         
     #########################################################################################################
@@ -5164,21 +5165,21 @@ class WinDecompose(wx.MiniFrame):
         self.getNum = getNum
         
         size = (300,200)
-        wx.MiniFrame.__init__(self, parent, -1, _(u"Décomposition en éléments simples"), pos, size, style)
+        wx.MiniFrame.__init__(self, parent, -1, _("Décomposition en éléments simples"), pos, size, style)
         self.SetBackgroundColour(wx.WHITE)
         tb = self.CreateToolBar( wx.TB_HORIZONTAL | wx.NO_BORDER | wx.TB_FLAT )
         
         bmp = mathtext_to_wxbitmap(_(r"FTBF"))
         tb.SetToolBitmapSize(bmp.GetSize())
         tb.AddLabelTool(10, _("FTBF"), bmp, 
-                        shortHelp= _(u"Affiche la décomposition en éléments simples de la FTBF"), 
-                        longHelp = _(u"Affiche la décomposition en éléments simples de la FTBF"))
+                        shortHelp= _("Affiche la décomposition en éléments simples de la FTBF"), 
+                        longHelp = _("Affiche la décomposition en éléments simples de la FTBF"))
         self.Bind(wx.EVT_TOOL, self.OnToolClick, id=10)
         
         bmp = mathtext_to_wxbitmap(_(r"FTBO"))
         tb.AddLabelTool(11, _("FTBO"), bmp, 
-                        shortHelp = _(u"Affiche la décomposition en éléments simples de la FTBO"), 
-                        longHelp = _(u"Affiche la décomposition en éléments simples de la FTBO"))
+                        shortHelp = _("Affiche la décomposition en éléments simples de la FTBO"), 
+                        longHelp = _("Affiche la décomposition en éléments simples de la FTBO"))
         self.Bind(wx.EVT_TOOL, self.OnToolClick, id=11)
         
 #        self.SetMinSize(size)
@@ -5190,11 +5191,11 @@ class WinDecompose(wx.MiniFrame):
         self.zoneDecomp = wx.StaticBitmap(self, -1, wx.NullBitmap)
         
         panelbtn = wx.Panel(self, -1)
-        button = wx.Button(panelbtn, -1, _(u"Fermer"))
+        button = wx.Button(panelbtn, -1, _("Fermer"))
         
-        sizer0.Add(self.zoneFTBF, flag = wx.EXPAND|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_LEFT|wx.ALL, border = 5)
-        sizer0.Add(self.zoneDecomp, flag = wx.EXPAND|wx.ALIGN_CENTER_VERTICAL|wx.ALIGN_LEFT|wx.ALL, border = 5)
-        sizer0.Add(panelbtn, flag = wx.EXPAND|wx.ALIGN_CENTER|wx.ALL, border = 5)
+        sizer0.Add(self.zoneFTBF, flag = wx.EXPAND|wx.ALL, border = 5)
+        sizer0.Add(self.zoneDecomp, flag = wx.EXPAND|wx.ALL, border = 5)
+        sizer0.Add(panelbtn, flag = wx.EXPAND|wx.ALL, border = 5)
         self.SetSizer(sizer0)
         self.sizer = sizer0
         
@@ -5354,7 +5355,7 @@ class WinDecompose(wx.MiniFrame):
 #############################################################################################################
 class A_propos(wx.Dialog):
     def __init__(self, parent):
-        wx.Dialog.__init__(self, parent, -1, _(u"A propos de ")+version.__appname__)
+        wx.Dialog.__init__(self, parent, -1, _("A propos de ")+version.__appname__)
         
         self.app = parent
         
@@ -5384,12 +5385,12 @@ class A_propos(wx.Dialog):
         auteurs = wx.Panel(nb, -1)
         fgs1 = wx.FlexGridSizer(cols=2, vgap=4, hgap=4)
         
-        lstActeurs = ((_(u"Développement : "),(u"Cédrick FAURY",)),#,
-                      (_(u"Remerciements : "),(_(u"Marc BATTILANA\n    pour la définitions des IsoGains et IsoPhases,\n    ainsi que pour son soutien ..."),
-                                               _(u"Bruno CAUSSE\n    pour ses rapports de bug\n    et ses suggestions pertinentes ..."),
-                                               _(u"Vincent CRESPEL\n    pour son aide\n    lors de l'ajout du déphasage"),
-                                               _(u"Philippe TRENTY\n    remarquable chasseur de bugs"),
-                                               _(u"Et tous ceux qui m'ont encouragé !"))))#, 
+        lstActeurs = ((_("Développement : "),("Cédrick FAURY",)),#,
+                      (_("Remerciements : "),(_("Marc BATTILANA\n    pour la définitions des IsoGains et IsoPhases,\n    ainsi que pour son soutien ..."),
+                                               _("Bruno CAUSSE\n    pour ses rapports de bug\n    et ses suggestions pertinentes ..."),
+                                               _("Vincent CRESPEL\n    pour son aide\n    lors de l'ajout du déphasage"),
+                                               _("Philippe TRENTY\n    remarquable chasseur de bugs"),
+                                               _("Et tous ceux qui m'ont encouragé !"))))#, 
 
 
         
@@ -5416,9 +5417,9 @@ class A_propos(wx.Dialog):
             lictext = txt.read()
             txt.close()
         except:
-            lictext = _(u"Le fichier licence est introuvable !\n\n" \
-                        u"%s\n"
-                        u"Veuillez réinstaller pySyLiC !" %f)
+            lictext = _("Le fichier licence est introuvable !\n\n" \
+                        "%s\n"
+                        "Veuillez réinstaller pySyLiC !" %f)
             dlg = wx.MessageDialog(self, lictext,
                                _('Licence introuvable'),
                                wx.OK | wx.ICON_ERROR
@@ -5439,16 +5440,16 @@ class A_propos(wx.Dialog):
         #-------------
         descrip = wx.Panel(nb, -1)
         s = wx.BoxSizer(wx.VERTICAL)
-        s.Add(wx.TextCtrl(descrip, -1, wordwrap(_(u"pySyLiC (py pour python - Systèmes Linéaires Continus) \n"
-                                            u"permet d'analyser graphiquement les réponses harmoniques et temporelles de Systèmes Linéaires Continus et Invariants.\n\n"
-                                            u"Il propose :\n"
-                                            u" - un tracé des lieux de Bode, de Black et de Nyquist des Fonctions de Transfert caractéristiques du système (décomposition en 'sous fonctions' de transfert, tracé des asymptotes, ...)\n"
-                                            u" - d'utiliser des variables dans les définitions des FT : les tracés sont automatiquement modifiés\n"
-                                            u" - de placer un correcteur dans la chaine directe et d'observer ses effets sur la FTBO\n"
-                                            u" - de tracer les réponses temporelles et harmoniques du système en boucle fermée\n"
-                                            u"\n"
-                                            u"pySyLic relève de l'Automatique et s'adresse principalement aux élèves et aux professeurs travaillant sur cette discipline.\n"
-                                            u"Il a été conçu de telle sorte que son utilisation soit la plus intuitive possible."),
+        s.Add(wx.TextCtrl(descrip, -1, wordwrap(_("pySyLiC (py pour python - Systèmes Linéaires Continus) \n"
+                                            "permet d'analyser graphiquement les réponses harmoniques et temporelles de Systèmes Linéaires Continus et Invariants.\n\n"
+                                            "Il propose :\n"
+                                            " - un tracé des lieux de Bode, de Black et de Nyquist des Fonctions de Transfert caractéristiques du système (décomposition en 'sous fonctions' de transfert, tracé des asymptotes, ...)\n"
+                                            " - d'utiliser des variables dans les définitions des FT : les tracés sont automatiquement modifiés\n"
+                                            " - de placer un correcteur dans la chaine directe et d'observer ses effets sur la FTBO\n"
+                                            " - de tracer les réponses temporelles et harmoniques du système en boucle fermée\n"
+                                            "\n"
+                                            "pySyLic relève de l'Automatique et s'adresse principalement aux élèves et aux professeurs travaillant sur cette discipline.\n"
+                                            "Il a été conçu de telle sorte que son utilisation soit la plus intuitive possible."),
                                             500, wx.ClientDC(self)),
                         size = (400, -1),
                         style = wx.TE_READONLY|wx.TE_MULTILINE|wx.BORDER_NONE),
@@ -5459,11 +5460,11 @@ class A_propos(wx.Dialog):
         
         
         
-        nb.AddPage(descrip, _(u"Description"))
-        nb.AddPage(auteurs, _(u"Auteurs"))
-        nb.AddPage(licence, _(u"Licence"))
+        nb.AddPage(descrip, _("Description"))
+        nb.AddPage(auteurs, _("Auteurs"))
+        nb.AddPage(licence, _("Licence"))
         
-        sizer.Add(hl.HyperLinkCtrl(self, wx.ID_ANY, _(u"Informations et téléchargement : https://github.com/cedrick-f/pySyLiC"),
+        sizer.Add(wx.adv.HyperLinkCtrl(self, wx.ID_ANY, _("Informations et téléchargement : https://github.com/cedrick-f/pySyLiC"),
                                    URL="https://github.com/cedrick-f/pySyLiC"),  
                   flag = wx.ALIGN_RIGHT|wx.ALL, border = 5)
         sizer.Add(nb)
