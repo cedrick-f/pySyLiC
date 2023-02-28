@@ -57,7 +57,6 @@ import calcul
 #import fonctions
 import Options
 
-
 import graphmpl as graph
 
 from LineFormat import LineFormat, SelecteurFormatLigne, EVT_FORMAT_MODIFIED
@@ -634,7 +633,7 @@ class wxPySylic(wx.Frame, PrintHandler):
             if tous or self.lstTracerSsFT[i]:
                 lst.append(ft)
                 col.append(self.formats["H"+str(i)])
-                for d in pos.keys():
+                for d in pos:
                     pos[d].append(self.positionsExpr["H"+str(i)+"_"+d])
         return lst, col, pos
         
@@ -760,7 +759,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         if self.TracerH:
             lstFTNum.extend(self.FT_H.FTNum)
             lstCoul.extend([self.formats["H"]] * len(lstFTNum))
-            for d in lstPosE.keys():
+            for d in lstPosE:
                 lstPosE[d].extend([self.positionsExpr["H_"+d]] * len(lstFTNum))
             if self.getTypeSysteme() == 0:
                 self.zoneGraph.setEstFTBF(True)
@@ -769,13 +768,13 @@ class wxPySylic(wx.Frame, PrintHandler):
             lstFT, lstCol, lstPos = self.getListFTNum(tous = False)
             for i,ft in enumerate(lstFT):
                 lstCoul.append(lstCol[i])
-                for d in lstPosE.keys():
+                for d in lstPosE:
                     lstPosE[d].append(lstPos[d][i])
                 lstFTNum.append(ft)
             
             if self.additionner and len(lstFT) > 0:
                 lstCoul.append(self.formats["SomH"])
-                for d in lstPosE.keys():
+                for d in lstPosE:
                     lstPosE[d].append(self.positionsExpr["SomH_"+d])
                 lstFTNum.append(self.getProduitFTNum(lstFT))
         
@@ -799,7 +798,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         if self.CorTracerCH:
             somme = self.getFTBO()
             lstCoul.extend([self.formats["HC"]] * len(somme))
-            for d in lstPosE.keys():
+            for d in lstPosE:
                 lstPosE[d].extend([self.positionsExpr["HC_"+d]] * len(somme))
             lstFTNum.extend(somme)
             # On prévoi le tracé des isos pour HxC seulement
@@ -807,14 +806,14 @@ class wxPySylic(wx.Frame, PrintHandler):
         
         if self.CorTracerH:
             lstCoul.append(self.formats["H"])
-            for d in lstPosE.keys():
+            for d in lstPosE:
                 lstPosE[d].append(self.positionsExpr["H_"+d])
             self.FT_H.FTNum[0].nom = "H"
             lstFTNum.extend(self.FT_H.FTNum)
         
         if self.CorTracerC:
             lstCoul.extend([self.formats["C"]] * len(self.FT_C.FTNum))
-            for d in lstPosE.keys():
+            for d in lstPosE:
                 lstPosE[d].extend([self.positionsExpr["C_"+d]] * len(self.FT_C.FTNum))
 #            self.FT_C.FTNum.nom = "C"
             lstFTNum.extend(self.FT_C.FTNum)
@@ -845,7 +844,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         if self.tracerFTBO:
             somme = self.getFTBO()
             lstCoul.extend([self.formats["HC"]] * len(somme))
-            for d in lstPosE.keys():
+            for d in lstPosE:
                 lstPosE[d].extend([self.positionsExpr["HC_"+d]] * len(somme))
             lstFTNum.extend(somme)
             # On prévoi le tracé des isos pour la FTBO seulement
@@ -854,7 +853,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         if self.tracerFTBF:
             somme = self.getFTBF()
             lstCoul.extend([self.formats["FTBF"]] * len(somme))
-            for d in lstPosE.keys():
+            for d in lstPosE:
                 lstPosE[d].extend([self.positionsExpr["FTBF_"+d]] * len(somme))
             lstFTNum.extend(self.getFTBF())
             self.zoneGraph.setEstFTBF(True)
@@ -2459,7 +2458,7 @@ class VariablesPanel(wx.Panel):
         if globdef.TYPE_SELECTEUR_TF == 0:
             l = self.getListeTriee(variables)
         else:
-            l = variables.keys()
+            l = list(variables.keys())
         for nom in l:
 #        for nom, val in variables.items():
             val = variables[nom]
@@ -2494,10 +2493,10 @@ class VariablesPanel(wx.Panel):
             
         lstPoly = {}
         
-        for nom in variables.keys():
+        for nom in variables:
             if not nom in lst:
                 i = getId(nom)
-                if lstPoly.has_key(i):
+                if i in lstPoly:
                     lstPoly[i].append(nom)
                 else:
                     lstPoly[i] = [nom]

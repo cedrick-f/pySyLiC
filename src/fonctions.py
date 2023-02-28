@@ -2229,7 +2229,7 @@ class poly1:
         if self.id == -1:
             return ""
         else:
-            return self.id
+            return str(self.id)
     
     def __repr__(self):
         return "("+strSc(self.getPolyNum()[0][0])+"p+1)"
@@ -2301,7 +2301,7 @@ class poly2:
         if self.id == -1:
             return ""
         else:
-            return self.id
+            return str(self.id)
     
     def __repr__(self):
         p = self.getPolyNum()[0]

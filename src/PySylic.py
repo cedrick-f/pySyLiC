@@ -47,10 +47,7 @@ import version
     
 print(sys.getdefaultencoding())
 
-try:
-    from agw import advancedsplash as AdvancedSplash 
-except:    
-    import wx.lib.agw.advancedsplash as AdvancedSplash
+import wx.lib.agw.advancedsplash as AdvancedSplash
 
 if not "beta" in version.__version__ and sys.argv[0].endswith(".exe"): #sys.platform != "win32" or 
     import Error
@@ -98,7 +95,7 @@ class PySylicApp(wx.App):
         
         try:
             import getpass
-            self.auteur = unicode(getpass.getuser(),'cp1252')
+            self.auteur = getpass.getuser()
         except:
             self.auteur = ""
         

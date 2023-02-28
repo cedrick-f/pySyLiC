@@ -47,7 +47,7 @@ class LineFormat():
     def __init__(self, coul = wx.Colour(0,0,0), styl = "-", epais = 2, format = None):
         if isinstance(coul, wx.Colour):
             self.coul = coul
-        elif type(coul) == str or type(coul) == unicode:
+        elif type(coul) == str:
             self.coul = self.str2coul(coul)
         self.styl = styl
         self.epais = epais
@@ -155,14 +155,14 @@ class LineFormatSelector(wx.Dialog):
         <format> = liste : [couleur, style, épaisseur]
     """
     def __init__(self, parent, format):
-        wx.Dialog.__init__(self, parent, -1, _(u"Format de ligne"))
+        wx.Dialog.__init__(self, parent, -1, _("Format de ligne"))
         
         self.format = format
         
-        self.lineStyle = [_(u"ligne continue"), #solid line style
-                          _(u"pointillés"), #dashed line style
-                          _(u"mixte"), #dash-dot line style
-                          _(u"points"), #dotted line style
+        self.lineStyle = [_("ligne continue"), #solid line style
+                          _("pointillés"), #dashed line style
+                          _("mixte"), #dash-dot line style
+                          _("points"), #dotted line style
                           ]
         
         self.lineStyleMpl = ['-', '--', '-.', ':']
@@ -173,7 +173,7 @@ class LineFormatSelector(wx.Dialog):
         txtStyle = wx.StaticText(self, -1, _("Style de ligne :"))
         selStyle = PenStyleComboBox(self, choices=self.lineStyle, style=wx.CB_READONLY,
                                 pos=(20,40), size=(100, -1))
-        selStyle.SetToolTipString(_(u"Modifier le style de la ligne"))
+        selStyle.SetToolTipString(_("Modifier le style de la ligne"))
         selStyle.SetValue(self.lineStyle[self.lineStyleMpl.index(format.styl)])
         
         #
@@ -186,7 +186,7 @@ class LineFormatSelector(wx.Dialog):
         selWidth.SetFormat("%f")
         selWidth.SetDigits(2)
         
-        selWidth.SetToolTipString(_(u"Modifier l'épaisseur de la ligne"))
+        selWidth.SetToolTipString(_("Modifier l'épaisseur de la ligne"))
 #        selWidth.SetRange(1,6)
         selWidth.SetValue(format.epais)
         
@@ -195,7 +195,7 @@ class LineFormatSelector(wx.Dialog):
         #
         txtColor = wx.StaticText(self, -1, _("Couleur :"))
         selColor = wx.Button(self, -1, "", size = (100,22))
-        selColor.SetToolTipString(_(u"Modifier la couleur de la ligne"))
+        selColor.SetToolTipString(_("Modifier la couleur de la ligne"))
         selColor.SetBackgroundColour(format.coul)
         
         #

@@ -5047,7 +5047,7 @@ class ZoneGraphBlack(ZoneGraphBase):
             style = self.lstCoul[i].styl
             
             diag = self.contenu["diagB"][i]
-            p = len(self.pulsas) /2
+            p = len(self.pulsas)//2
             x0, y0 = diag.reponse[1][p], diag.reponse[2][p]
             x1, y1 = diag.reponse[1][p-1], diag.reponse[2][p-1]
             if (x0, y0) != (x1, y1):

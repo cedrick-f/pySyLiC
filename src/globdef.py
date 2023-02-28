@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2012 C�drick FAURY
+## Copyright (C) 2009-2012 Cédrick FAURY
 
 #    pySyLiC is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -80,8 +80,8 @@ if sys.platform == 'win32':
             
         except:
             import wx
-            dlg = wx.MessageDialog(None, u"L'installation de pySyLiC est incorrecte !\nVeuillez désinstaller pySequence puis le réinstaller." ,
-                                   u"Installation incorrecte",
+            dlg = wx.MessageDialog(None, "L'installation de pySyLiC est incorrecte !\nVeuillez désinstaller pySequence puis le réinstaller." ,
+                                   "Installation incorrecte",
                                    wx.OK | wx.ICON_WARNING
                                    #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
                                    )
@@ -138,37 +138,37 @@ def SetInternationalization():
         #locale.setlocale(locale.LC_ALL,'en')
         cur_lang.install()
     except IOError:
-        # Si la langue locale n'est pas support�e, on d�finit tout de m�me _()
-        # On le fait dans les __builtins__ pour que la fonction soit d�finie dans
-        # les modules import�s (c'est ce que fait gettext.install()).
-        print ("Langue", LANG, "non suport�e !")
+        # Si la langue locale n'est pas supportée, on définit tout de même _()
+        # On le fait dans les __builtins__ pour que la fonction soit définie dans
+        # les modules importés (c'est ce que fait gettext.install()).
+        print ("Langue", LANG, "non suportée !")
 
-listLang = {"fr" : u"Fran�ais",
-            "en" : u"English",
-            ""   : _(u"d�faut")}
+listLang = {"fr" : "Français",
+            "en" : "English",
+            ""   : _("défaut")}
 
 def GetInstalledLang():
 #    from babel import Locale, core
     langs = ["fr", ""]
 
-#    # Tester la localisation en vigueur sur ce syst�me
+#    # Tester la localisation en vigueur sur ce système
 #    lc, encoding = locale.getdefaultlocale()
 #    if (lc):
-#            # Si une localisation par d�faut existe,
+#            # Si une localisation par défaut existe,
 #            # la mettre en premier dans la liste
 #            langs += [lc]
 #    print langs
-#    # Maintenant, r�cup�rer la liste des langages du syst�me
+#    # Maintenant, récupérer la liste des langages du système
 #    language = os.environ.get('LANGUAGE', None)
 #    if (language):
-#            # language contient une cha�ne du style en_CA:en_US:en_GB:en
-#            # pour un system Linux, sur Windows c'est vide. Il faut d�couper
-#            # la cha�ne en une liste
+#            # language contient une chaîne du style en_CA:en_US:en_GB:en
+#            # pour un system Linux, sur Windows c'est vide. Il faut découper
+#            # la chaîne en une liste
 #            langs += language.split(":")
     
     langs += os.listdir(LOCALEDIR)
     
-    # Ajouter les traductions install�es
+    # Ajouter les traductions installées
     noms = {}
     for n in langs:
         l = n.split("_")[0]
@@ -195,7 +195,7 @@ print ("Langues installees :",INSTALLED_LANG)
 #    print locale.normalize(n)
 
 
-# Test des langues install�es
+# Test des langues installées
 #languages = []
 #for envar in ('LANGUAGE', 'LC_ALL', 'LC_MESSAGES', 'LANG'):
 #    print envar,
@@ -220,7 +220,7 @@ FONT_TYPE = 2
 
 ##########################################################################################################
 #
-# Constantes utilis�es en OPTIONS de pySyLiC
+# Constantes utilisées en OPTIONS de pySyLiC
 #
 ##########################################################################################################
 
@@ -272,7 +272,7 @@ def DefOptionsDefaut():
     #
     SELECTEUR_FT = 0
     DOSSIER_EXEMPLES = os.path.join(PATH,"Exemples")
-    VAR_COMPLEXE = u"p"   # Nom de la variable complexe
+    VAR_COMPLEXE = "p"   # Nom de la variable complexe
     MAJ_AUTO = True  # Mise à jour automatique des tracés
     NB_PERIODES_REP_TEMPO = 5   # Nombre de périodes affichées en cas d'echelle automatique
     TEMPS_REPONSE = 0.05    # % du temps de réponse calculé
