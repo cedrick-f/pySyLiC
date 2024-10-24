@@ -16,6 +16,8 @@ pySyLiC est disponible en français et en anglais.
 
 pySyLiC est un logiciel libre publié sous licence GNU GPL V3  et écrit en langage Python 
 
+<a href="https://www.buymeacoffee.com/cfaury" target="_blank"><img src="https://cdn.buymeacoffee.com/buttons/default-orange.png" alt="Buy Me A Coffee" height="41" width="174"></a>
+
 ##Téléchargements
 
 * Les dernières versions sont disponibles sur la [page de téléchargement](https://github.com/cedrick-f/pySyLiC/releases).
