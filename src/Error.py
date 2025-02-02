@@ -27,10 +27,10 @@ import wx
 def _exceptionhook(typ, value, traceb):
     """ On catch une exception """
     frame=traceb.tb_frame
-    print >>sys.stderr,"\n"
+    print("\n", file = sys.stderr)
     traceback.print_tb(traceb)
-    print >>sys.stderr,"\nType : ",typ,"\n"
-    print >>sys.stderr,"ValueError : ",value
+    print("\nType : ",typ,"\n", file = sys.stderr)
+    print("ValueError : ",value, file = sys.stderr)
     sys.exit()
 
 sys.excepthook = _exceptionhook
@@ -57,7 +57,7 @@ class RedirectErr:
             atexit.register(SendBugReport)
             # puis on ouvre le fichier qui contient les erreurs
             self.file_error=open(globdef.ERROR_FILE,'w')
-            print globdef.ERROR_FILE
+            print( globdef.ERROR_FILE)
             self.error_occured=True
         if self.file_error is not None:
             self.file_error.write(text)
@@ -119,8 +119,8 @@ def SendBugReport():
 #        # Sinon on ouvre son client de messagerie normal
 #        #
 #        except:
-        print "Envoi ...",to_send
-        print webbrowser.open("""mailto:%s?subject=%s&body=%s"""%(e_mail,subject,body))
+        print( "Envoi ...",to_send)
+        print( webbrowser.open("""mailto:%s?subject=%s&body=%s"""%(e_mail,subject,body)))
 
 
 if __name__=='__main__':

@@ -1,7 +1,7 @@
 
 ;This file is part of pySyLiC.
 ;
-; Copyright (C) 2009-2016 Cédrick FAURY
+; Copyright (C) 2009-2016 CÃ©drick FAURY
 ;
 ;pySyLiC is free software; you can redistribute it and/or modify
 ;it under the terms of the GNU General Public License as published by
@@ -26,15 +26,15 @@
 #define AppURL "https://gna.org/projects/pysylic"
 
 [Setup]
-;Informations générales sur l'application
+;Informations gÃ©nÃ©rales sur l'application
 AppName={#AppName}
 AppVerName={#AppName} {#AppVersion}
 AppVersion={#AppVersion}
-AppPublisher=Cédrick Faury
-AppCopyright=Copyright © 2009-2016 Cédrick Faury
+AppPublisher=CÃ©drick Faury
+AppCopyright=Copyright Â© 2009-2016 CÃ©drick Faury
 VersionInfoVersion = {#AppVersionInfo}
 
-;Répertoire de base contenant les fichiers
+;RÃ©pertoire de base contenant les fichiers
 SourceDir=D:\Developpement\PySyLiC\PySyLiC 0.31
 
 ;Repertoire d'installation
@@ -42,23 +42,23 @@ DefaultDirName={pf}\{#AppName}
 DefaultGroupName={#AppName}
 LicenseFile=LICENSE.txt
 
-;Paramètres de compression
+;ParamÃ¨tres de compression
 ;lzma ou zip
 Compression=lzma/max
 SolidCompression=yes
 
-;Par défaut, pas besoin d'être administrateur pour installer
+;Par dÃ©faut, pas besoin d'Ãªtre administrateur pour installer
 PrivilegesRequired=none
 
-;Nom du fichier généré et répertoire de destination
+;Nom du fichier gÃ©nÃ©rÃ© et rÃ©pertoire de destination
 OutputBaseFilename=setup_{#AppName}_{#AppVersion}_win32
 OutputDir=releases
 
 ;Dans le panneau de configuration de Windows2000/NT/XP, c'est l'icone de pyMotion.exe qui
-;apparaît à gauche du nom du fichier pour la désinstallation
+;apparaÃ®t Ã  gauche du nom du fichier pour la dÃ©sinstallation
 UninstallDisplayIcon={app}\icone.ico
 
-;Fenêtre en background
+;FenÃªtre en background
 WindowResizable=false
 WindowStartMaximized=true
 WindowShowCaption=true
@@ -82,13 +82,13 @@ BeveledLabel={#AppName} {#AppVersion} installation
 ;
 ; French
 ;
-fr.uninstall=Désinstaller
+fr.uninstall=DÃ©sinstaller
 fr.gpl_licence=Prendre connaissance du contrat de licence pour le logiciel
-fr.fdl_licence=Prendre connaissance du contrat de licence pour la documentation associée
-fr.CreateDesktopIcon=Créer un raccourci sur le bureau vers
-fr.AssocFileExtension=&Associer le programme PySyLic à l'extension .syl
-fr.CreateQuickLaunchIcon=Créer un icône dans la barre de lancement rapide
-fr.FileExtensionName=Système PySyLiC
+fr.fdl_licence=Prendre connaissance du contrat de licence pour la documentation associÃ©e
+fr.CreateDesktopIcon=CrÃ©er un raccourci sur le bureau vers
+fr.AssocFileExtension=&Associer le programme PySyLic Ã  l'extension .syl
+fr.CreateQuickLaunchIcon=CrÃ©er un icÃ´ne dans la barre de lancement rapide
+fr.FileExtensionName=SystÃ¨me PySyLiC
 fr.FileExtension=pySyLiC.system
 fr.InstallFor=Installer pour :
 fr.AllUsers=Tous les utilisateurs
@@ -134,10 +134,10 @@ Source: src\build\*.*; DestDir: {app}; Flags : ignoreversion recursesubdirs;
 ;Source: src\msvcr90.dll; DestDir: {app}\bin; Flags : ignoreversion;
 ;Source: src\*.manifest; DestDir: {app}\bin; Flags : ignoreversion;
 
-; peut-être utile avec Win2000 ???
+; peut-Ãªtre utile avec Win2000 ???
 ;Source: gdiplus.dll; DestDir: {app}\bin; Flags : ignoreversion;
 
-; des fichiers à mettre dans le dossier "Application data"
+; des fichiers Ã  mettre dans le dossier "Application data"
 ;Source: {src};  DestDir: {code:DefAppDataFolder}\Test\;
 
 [Tasks]
@@ -150,7 +150,7 @@ Name: local;  Description: {cm:JustMe}; GroupDescription: {cm:InstallFor}; Flags
 Name: {group}\{#AppName};Filename: {app}\bin\{#AppName}.exe; WorkingDir: {app}\bin; IconFileName: {app}\bin\{#AppName}.exe
 Name: {group}\{cm:uninstall} {#AppName}; Filename: {app}\unins000.exe;IconFileName: {app}\unins000.exe
 ;
-; On ajoute sur le Bureau l'icône PySyLic
+; On ajoute sur le Bureau l'icÃ´ne PySyLic
 ;
 Name: {code:DefDesktop}\{#AppName} {#AppVersion};   Filename: {app}\bin\{#AppName}.exe; WorkingDir: {app}\bin; MinVersion: 4,4; Tasks: desktopicon2; IconFileName: {app}\bin\{#AppName}.exe
 
@@ -169,7 +169,7 @@ Root: HKCR; Subkey: {cm:FileExtension}\DefaultIcon; ValueType: string; ValueData
 ; Pour stocker le style d'installation : "All users" ou "Current user"
 Root: HKLM; Subkey: Software\{#AppName}; ValueType: string; ValueName: DataFolder; ValueData: {code:DefAppDataFolder}\{#AppName} ; Flags: uninsdeletekey;
 
-; Pour stocker le dossier d'installation de pySyLiC (pour vérification si "install" ou "portable")
+; Pour stocker le dossier d'installation de pySyLiC (pour vÃ©rification si "install" ou "portable")
 ;Root: HKLM; Subkey: Software\{#AppName}; ValueType: string; ValueName: InstallFolder; ValueData: {app} ; Flags: uninsdeletekey;
 
 
@@ -200,7 +200,7 @@ begin
 end;
 
 
-{ Renvoie le dossier "Application Data" à utiliser }
+{ Renvoie le dossier "Application Data" Ã  utiliser }
 function DefAppDataFolder(Param: String): String;
 begin
   if IsTaskSelected('common') then

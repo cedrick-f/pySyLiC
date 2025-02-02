@@ -6319,7 +6319,7 @@ class ZoneGraphReponse(ZoneGraphBase):
                     self.getsubplot().draw_artist(self.tickS)
                     
                     if self.fctConsigne == calcul.sinus:
-                        self.tickE = YTick(self.subplot, 1.0, '', gridOn = True)
+                        self.tickE = YTick(self.subplot, 1.0, gridOn = True)
                         self.tickE.gridline.set_color(globdef.COUL_CONSIGNE)
                         self.tickE.gridline.set_linestyle('-')
                         self.tickE.label1.set_size(globdef.FONT_SIZE_GRAD)

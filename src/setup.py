@@ -4,20 +4,14 @@
 ##################################################################################################
 #
 #    Script pour générer un pack avec executable :
-#    c:\python27\python setup.py build
+#    python setup.py build
 #
 #    Liens utiles en cas de problème :
 #        http://stackoverflow.com/questions/32432887/cx-freeze-importerror-no-module-named-scipy (!! IMPORTANT !!)
 #
 ##################################################################################################
 
-import sys, os
-if hasattr(sys, 'setdefaultencoding'):
-    sys.setdefaultencoding('utf8')
-else:
-    reload(sys)  # Reload does the trick!
-    sys.setdefaultencoding('utf-8')
-print sys.getdefaultencoding()
+import sys, os, xlwt
 
 #from glob import glob
 from cx_Freeze import setup, Executable
@@ -59,14 +53,14 @@ includefiles = [#('D:/Developpement/Microsoft.VC90.CRT', "Microsoft.VC90.CRT"),
 
 # Dependencies are automatically detected, but it might need fine tuning.
 build_exe_options = {'build_exe': 'build/bin',
-                     "packages": ["os", 'pytz'],#, 'scipy'],
+                     "packages": ["os", 'pytz', 'xlwt'],#, 'scipy'],
                      "includes": ["encodings.ascii",
 #                                   "scipy",
                                 'scipy.special._ufuncs_cxx', 
                                 'scipy.integrate.vode', 
                                 "scipy.integrate.lsoda",
                                 "scipy.sparse.csgraph._validation",
-                                  "numpy.lib.format", ],
+                                  "numpy.lib.format", "traceback"],
                 
                      "optimize" : 0,
 #                     "path" : ["../packages/html5lib"],#, "../packages/xhtml2pdf",  "../packages/xhtml2pdf/w3c"],
@@ -76,13 +70,13 @@ build_exe_options = {'build_exe': 'build/bin',
                      "excludes": ["tkinter",
                                   '_gtkagg', '_tkagg', 'bsddb', 'curses', 'pywin.debugger',
                                   'pywin.debugger.dbgcon', 'pywin.dialogs', 'tcl', "tables",
-                                  'Tkconstants', 'pydoc', 'doctest', 'test', 'sqlite3',
+                                  'Tkconstants', 'doctest', 'test', 'sqlite3',
                                   "matplotlib.backends.backend_qt4agg", "matplotlib.backends.backend_qt4", "matplotlib.backends.backend_tkagg",
                                   "matplotlib.numerix",#"scipy.lib", 
                                   "PyQt4", "PyQt4.QtGui","PyQt4._qt",
                                   "PyQt5", "PyQt5.QtGui","PyQt5._qt",
-                                  'PIL','_ssl', '_hashlib',
-                                  'collections.abc',
+                                  '_ssl', '_hashlib'
+
                                   # Modules Matplotlib à enlever pour alléger : (à la main !!)
 
 #                                  'scipy.lib.lapack.flapack', 
@@ -93,10 +87,11 @@ build_exe_options = {'build_exe': 'build/bin',
 #                                  'scipy.linalg._flinalg',
                                   ],
                      "include_files": includefiles,
-                     'bin_excludes' : ['libgdk-win32-2.0-0.dll', 'libgobject-2.0-0.dll', 'tcl85.dll',
-                                              'tk85.dll', "UxTheme.dll", "mswsock.dll", "POWRPROF.dll",
-                                              "QtCore4.dll", "QtGui4.dll",
-                                               ]}
+                    #  'bin_excludes' : ['libgdk-win32-2.0-0.dll', 'libgobject-2.0-0.dll', 'tcl85.dll',
+                    #                           'tk85.dll', "UxTheme.dll", "mswsock.dll", "POWRPROF.dll",
+                    #                           "QtCore4.dll", "QtGui4.dll",
+                    #                            ]
+                    }
 
 
 # pour inclure sous Windows les dll system de Windows necessaires
@@ -113,14 +108,14 @@ if not "beta" in __version__:
 icon = "C:/Users/Cedrick/Documents/Developp/pySyLiC/Images/icone.ico"
 cible = Executable(
     script = "PySylic.py",
-    targetName="pySyLiC.exe",
+    target_name="pySyLiC.exe",
     base = base,
-    compress = True,
+    #compress = True,
     icon = os.path.join("", icon),
-    initScript = None,
-    copyDependentFiles = True,
-    appendScriptToExe = False,
-    appendScriptToLibrary = False
+    init_script = None,
+    #copyDependentFiles = True,
+    #appendScriptToExe = False,
+    #appendScriptToLibrary = False
     )
 
 
@@ -136,7 +131,7 @@ setup(  name = __appname__,
 #
 # Post-traitement
 #
-print 
+print ()
 A_enlever = ['scipy.lib.lapack.flapack.pyd', 
              'scipy.lib.blas.fblas.pyd', 
              'scipy.lib.lapack.clapack.pyd', 
@@ -145,11 +140,11 @@ A_enlever = ['scipy.lib.lapack.flapack.pyd',
              'scipy.linalg._flinalg.pyd',]
 for f in A_enlever:
     f = os.path.join("build", "bin", f)
-    print "Suppression de", f
+    print ("Suppression de", f)
     try:
         os.remove(f)
     except:
-        print "   pas trouvé"
+        print ("   pas trouvé")
 
 
 
