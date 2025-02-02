@@ -47,7 +47,7 @@ from matplotlib.ticker import Formatter
 #print matplotlib.get_configdir()
 
 from numpy import errstate, array, arange, meshgrid, pi, \
-                  absolute, cos, sin, log10, arctan2, exp
+                  absolute, cos, sin, log10, arctan2, exp, real, imag
 import scipy.interpolate
 
 from CedWidgets import chronometrer, strScCx, strSc, mathText, setToggled, \
@@ -3303,7 +3303,7 @@ class ZoneGraphBode(ZoneGraphBase):
                 minmaxD = ft.getRangeDecade()
                 mini.append(minmaxD[0])
                 maxi.append(minmaxD[1])
-            if lstFTNum == []:
+            if len(lstFTNum) == 0:
                 contenu = {"minmax" : [0.1,10.0]}
                 return contenu
             else:
@@ -3475,8 +3475,8 @@ class ZoneGraphBode(ZoneGraphBase):
         self.rangesAJour = rangeX is not None and rangeY1 is not None and rangeY2 is not None 
         self.rangesAJour = self.rangesAJour and \
                            (    (x1 == rangeX[0] and x2 == rangeX[1]) \
-                            and (rangeY1 == [] or (y11 == rangeY1[0] and y12 == rangeY1[1]))\
-                            and (rangeY2 == [] or (y21 == rangeY2[0] and y22 == rangeY2[1])))
+                            and (len(rangeY1) == 0 or (y11 == rangeY1[0] and y12 == rangeY1[1]))\
+                            and (len(rangeY2) == 0 or (y21 == rangeY2[0] and y22 == rangeY2[1])))
         
 
         self.subplot1.set_xlim(rangeX)
@@ -4768,7 +4768,7 @@ class ZoneGraphBlack(ZoneGraphBase):
         
         minmax = self.getRangeTotal(lstFTNum)
         
-        if rangeX == [] or rangeY == []:
+        if len(rangeX) == 0 or len(rangeY) == 0:
             pulsas = calcul.getPulsations(minmax)
         else:
             mini, maxi = [], []
@@ -4953,8 +4953,8 @@ class ZoneGraphBlack(ZoneGraphBase):
             y1, y2 = self.subplot.get_ylim()
             self.rangesAJour = rangeX is not None and rangeY is not None 
             self.rangesAJour = self.rangesAJour and \
-                               (    (rangeX == [] or (x1 == rangeX[0] and x2 == rangeX[1])) \
-                                and (rangeY == [] or (y1 == rangeY[0] and y2 == rangeY[1])))
+                               (    (len(rangeX) == 0 or (x1 == rangeX[0] and x2 == rangeX[1])) \
+                                and (len(rangeY) == 0 or (y1 == rangeY[0] and y2 == rangeY[1])))
     
             
             if rangeX != [] and rangeX is not None: # Est-ce encore utile ???
@@ -4976,7 +4976,7 @@ class ZoneGraphBlack(ZoneGraphBase):
         
         pulsas = self.getListePulsations(self.lstFTNum, self.subplot, raz)
         
-        if pulsas == []: return
+        if len(pulsas) == 0: return
         
         self.contenu = self.getDiagrammesEtMarges(self.lstFTNum, self.marges, pulsas)
 
@@ -5731,7 +5731,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
         
         minmax = self.getRangeTotal(lstFTNum)
         
-        if rangeX == [] or rangeY == []:
+        if len(rangeX) == 0 or len(rangeY) == 0:
             pulsas = calcul.getPulsations(minmax)
         else:
             mini, maxi = [], []
@@ -5919,8 +5919,8 @@ class ZoneGraphNyquist(ZoneGraphBase):
             y1, y2 = self.subplot.get_ylim()
             self.rangesAJour = rangeX is not None and rangeY is not None 
             self.rangesAJour = self.rangesAJour and \
-                               (    (rangeX == [] or (x1 == rangeX[0] and x2 == rangeX[1])) \
-                                and (rangeY == [] or (y1 == rangeY[0] and y2 == rangeY[1])))
+                               (    (len(rangeX) == 0 or (x1 == rangeX[0] and x2 == rangeX[1])) \
+                                and (len(rangeY) == 0 or (y1 == rangeY[0] and y2 == rangeY[1])))
             
             if rangeX != [] and rangeX is not None: # Est-ce encore utile ???
                 self.subplot.set_xlim(rangeX)
@@ -5940,7 +5940,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
 
         pulsas = self.getListePulsations(self.lstFTNum, self.subplot, raz)
 
-        if pulsas == []: return
+        if len(pulsas) == 0: return
         self.contenu = self.getDiagrammesEtMarges(self.lstFTNum, self.marges, pulsas)
         
         self.pulsas = pulsas

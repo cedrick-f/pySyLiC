@@ -1,7 +1,7 @@
 
 ;This file is part of pySyLiC.
 ;
-; Copyright (C) 2009-2016 Cédrick FAURY
+; Copyright (C) 2009-2025 Cédrick FAURY
 ;
 ;pySyLiC is free software; you can redistribute it and/or modify
 ;it under the terms of the GNU General Public License as published by
@@ -19,11 +19,11 @@
 
 [ISPP]
 #define AppName "pySyLiC"
-#define AppVersion "0.38"
-#define AppVersionInfo "0.38.0"
-#define AppVersionBase "0.38"
+#define AppVersion "1.0"
+#define AppVersionInfo "1.0.0"
+#define AppVersionBase "1.0"
 
-#define AppURL "https://gna.org/projects/pysylic"
+#define AppURL "https://github.com/cedrick-f/pySyLiC"
 
 [Setup]
 ;Informations générales sur l'application
@@ -31,11 +31,11 @@ AppName={#AppName}
 AppVerName={#AppName} {#AppVersion}
 AppVersion={#AppVersion}
 AppPublisher=Cédrick Faury
-AppCopyright=Copyright © 2009-2016 Cédrick Faury
+AppCopyright=Copyright © 2009-2025 Cédrick Faury
 VersionInfoVersion = {#AppVersionInfo}
 
 ;Répertoire de base contenant les fichiers
-SourceDir=D:\Developpement\PySyLiC\PySyLiC 0.31
+SourceDir=D:\Developpement\PySyLiC\PySyLiC 1.0
 
 ;Repertoire d'installation
 DefaultDirName={pf}\{#AppName}
