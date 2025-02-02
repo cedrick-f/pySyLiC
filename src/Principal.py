@@ -195,7 +195,7 @@ class wxPySylic(wx.Frame, PrintHandler):
             try :
                 options.ouvrir()
             except:
-                print ("Fichier d'options corrompus ou inexistant !! Initialisation ...")
+                print("Fichier d'options corrompus ou inexistant !! Initialisation ...")
                 options.defaut()
 
         
@@ -345,13 +345,13 @@ class wxPySylic(wx.Frame, PrintHandler):
         # Maintenant que tout est en place, on applique les options
         
         wx.CallAfter(self.AppliquerOptions, tracer = False)
-        if globdef.DEBUG: print ("Appliquer options : fini")
+        if globdef.DEBUG: print("Appliquer options : fini")
 #        self.OnFTModified(forcerMaJ = True)
         wx.CallAfter(self.OnFTModified, forcerMaJ = True)
-        if globdef.DEBUG: print ("Premier tracé : fini")
+        if globdef.DEBUG: print("Premier tracé : fini")
         
 
-        print ("Init pySyLiC : fini")
+        #print("Init pySyLiC : fini")
 #        wx.CallAfter(self.Thaw)
         
         
@@ -368,7 +368,7 @@ class wxPySylic(wx.Frame, PrintHandler):
         
     #########################################################################################################
     def OnBitmapChanged(self, event):
-        print ("OnBitmapChanged")
+        print("OnBitmapChanged")
         self.num = event.GetNum()
         
     #########################################################################################################
@@ -1449,11 +1449,11 @@ class wxPySylic(wx.Frame, PrintHandler):
 #                return sys.exc_info()[2]
         
         def AfficheErreur(Erreur):
-            mess = _(u'Impossible de lire le fichier')+' %s!\n\n' %nomFichier
+            mess = _('Impossible de lire le fichier')+' %s!\n\n' %nomFichier
 #            for m in traceback.format_tb(Erreur):
 #                mess += "\n" + m
             dlg = wx.MessageDialog(self, mess,
-                                   _(u'Erreur ouverture'),
+                                   _('Erreur ouverture'),
                                    wx.OK | wx.ICON_ERROR)
             dlg.ShowModal()
             dlg.Destroy()
@@ -1681,7 +1681,7 @@ class wxPySylic(wx.Frame, PrintHandler):
             s += _("'Non' pour enregistrer le système dans un autre fichier.")
             
             dlg = wx.MessageDialog(self, s,
-                                   _(u'Enregistrement'),
+                                   _('Enregistrement'),
                                      wx.ICON_INFORMATION | wx.YES_NO | wx.CANCEL
                                      )
             res = dlg.ShowModal()
@@ -1781,13 +1781,14 @@ class wxPySylic(wx.Frame, PrintHandler):
         
     #############################################################################
     def quitterPySyLiC(self, event = None):
-        if globdef.DEBUG: print ("Quitter...",)
+        if globdef.DEBUG: print("Quitter...",)
+        self.options.enregistrer()
         try:
             self.options.enregistrer()
         except IOError:
-            print ("   Permission d'enregistrer les options refusée...",)
+            print("   Permission d'enregistrer les options refusée...",)
         except:
-            print ("   Erreur enregistrement options...",)
+            print("   Erreur enregistrement options...",)
             
 #        event.Skip()
         if not self.fichierCourantModifie:
@@ -1814,7 +1815,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #            self.options.enregistrer()
 #        except:
 #            print "Erreur enregistrement options"
-        if globdef.DEBUG: print ("Ok")
+        if globdef.DEBUG: print("Ok")
         self.Destroy()
         sys.exit()
 
@@ -2116,7 +2117,7 @@ class NbGauche(wx.Panel):
         
     #########################################################################################################
     def OnPageChanged(self, event = None, page = 0):
-        print ("OnPageChanged")
+        print("OnPageChanged")
         if self.pasEventBook:
             return
         
@@ -2305,7 +2306,7 @@ class PageH(VerticalScrolledPanel):
                 else: 
                     # La FT n'a pas été changée : on restaure l'ancienne
                     if FT_H.getOrdre() == 0: 
-                        print ("La FT a été changée")
+                        print("La FT a été changée")
                         if self.FT_sauv == None:
                             self.setFT_H(self.getFT_H())
                         else:
@@ -2879,7 +2880,7 @@ class SelecteurCorrecteurPerso(wx.Panel):
         self.FT = FT_C
         self.FT.detDictVari(retard = False)
 #        print "variables correcteur",self.FT.t, ":",self.FT.variables
-#        FT_C.variables[u'a']
+#        FT_C.variables['a']
         self.FT.detLstFTNum()
 #        print "Selecteur Correcteur :",self.FT_C.lstFTNum 
         self.maitre = maitre
@@ -3804,37 +3805,37 @@ class BarreOutils(aui.AuiToolBar):
                       }
         self.SetToolBitmapSize(tsize)
 
-        self.lstToolTip = {'BAbout'  : _(u'Afficher des informations (Version, Licence, Auteurs)\n'\
-                                        u'à propos de pySyLiC'),
-                          'BRepons' : _(u'Afficher la réponse temporelle du système'),
-                          'BMarges' : _(u'Afficher les marges de stabilité du système\n'\
-                                        u'  Remarque :\n'\
+        self.lstToolTip = {'BAbout'  : _('Afficher des informations (Version, Licence, Auteurs)\n'\
+                                        'à propos de pySyLiC'),
+                          'BRepons' : _('Afficher la réponse temporelle du système'),
+                          'BMarges' : _('Afficher les marges de stabilité du système\n'\
+                                        '  Remarque :\n'\
                                         "  Cet outil n'est disponible que pour les systèmes bouclés\n"\
                                         "  et en mode d'édition du correcteur"),
     #                      'BFTBF'   : _('Bouton FTBF.png'),
-                          'BOuvrir' : _(u'Ouvrir un fichier "système" (.syl)'),
-                          'BEnreg'  : _(u'Enregistrer les paramêtres du système (fonctions de transfert, ...)\n'\
-                                        u'dans un fichier "système" (.syl)'),
-                          'BNouve'  : _(u'Créer un nouveau système\n'\
-                                        u'  ATTENTION :\n'\
-                                        u'  Le système courant sera ecrasé !'),
-                          'BDecmp'  : _(u'Afficher une décomposition en éléments simples\n'\
-                                        u'des Fonctions de Transfert du système'),
-                          'BOptio'  : _(u'Permet de régler les différents options de pySyLiC'),
-                          'BTravx'  : _(u'Mettre à jour le tracé'),
+                          'BOuvrir' : _('Ouvrir un fichier "système" (.syl)'),
+                          'BEnreg'  : _('Enregistrer les paramêtres du système (fonctions de transfert, ...)\n'\
+                                        'dans un fichier "système" (.syl)'),
+                          'BNouve'  : _('Créer un nouveau système\n'\
+                                        '  ATTENTION :\n'\
+                                        '  Le système courant sera ecrasé !'),
+                          'BDecmp'  : _('Afficher une décomposition en éléments simples\n'\
+                                        'des Fonctions de Transfert du système'),
+                          'BOptio'  : _('Permet de régler les différents options de pySyLiC'),
+                          'BTravx'  : _('Mettre à jour le tracé'),
                           'BImpri'  : _("Afficher le panneau de gestion de l'impression"),
                           'BPoles'  : _("Afficher les pôles de la FTBF dans le plan complexe")
                           }
         
         self.lstLabel = {'BAbout'  : _("A propos de " + version.__appname__),
-                         'BRepons' : _(u'réponse temporelle du système'),
-                         'BMarges' : _(u'Marges de stabilité du système'),
-                         'BOuvrir' : _(u'Ouvrir un système'),
-                         'BEnreg'  : _(u'Enregistrer le système'),
-                         'BNouve'  : _(u'Créer un nouveau système'),
-                         'BDecmp'  : _(u'Décomposition en éléments simples des FT'),
-                         'BOptio'  : _(u'Réglage des options de pySyLiC'),
-                         'BTravx'  : _(u'Mettre à jour le tracé'),
+                         'BRepons' : _('réponse temporelle du système'),
+                         'BMarges' : _('Marges de stabilité du système'),
+                         'BOuvrir' : _('Ouvrir un système'),
+                         'BEnreg'  : _('Enregistrer le système'),
+                         'BNouve'  : _('Créer un nouveau système'),
+                         'BDecmp'  : _('Décomposition en éléments simples des FT'),
+                         'BOptio'  : _('Réglage des options de pySyLiC'),
+                         'BTravx'  : _('Mettre à jour le tracé'),
                          'BImpri'  : _("Imprimer les tracés"),
                          'BPoles'  : _("Pôles de la FT"),
                          }
@@ -4074,7 +4075,7 @@ class BarreOutils(aui.AuiToolBar):
 class DialogInitProjet(wx.MessageDialog):
     def __init__(self, parent):
         wx.MessageDialog.__init__(self, parent, _("Voulez-vous vraiment effacer le système en cours d'étude ?"),
-                                       _(u'Confirmation effacement'),
+                                       _('Confirmation effacement'),
                                        wx.OK | wx.ICON_QUESTION  | wx.CANCEL
                                        #wx.YES_NO | wx.NO_DEFAULT | wx.CANCEL | wx.ICON_INFORMATION
                                        )

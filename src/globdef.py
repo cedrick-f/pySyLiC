@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 ##This file is part of PySylic
 #############################################################################
@@ -44,7 +44,6 @@ PATH = os.path.dirname(os.path.abspath(sys.argv[0]))
 PATH = os.path.split(PATH)[0]
 os.chdir(PATH)
 sys.path.append(PATH)
-print("Dossier de l'application :",PATH)
 
 # 
 # On récupère là le dossier "Application data" 
@@ -59,7 +58,7 @@ if sys.platform == 'win32':
         regkey = winreg.OpenKey( winreg.HKEY_CLASSES_ROOT, 'pySyLiC.system\DefaultIcon', 0, winreg.KEY_READ )
         (value,keytype) = winreg.QueryValueEx(regkey , '') 
         INSTALL_PATH = os.path.dirname(value)
-        print ("INSTALL_PATH", INSTALL_PATH)
+        print("INSTALL_PATH", INSTALL_PATH)
     except:
         INSTALL_PATH = None # Pas installé sur cet ordi
         
@@ -95,7 +94,7 @@ if sys.platform == 'win32':
             
     else: # C'est une version portable qui tourne
         APP_DATA_PATH = PATH
-        print ("Version portable !!")
+        print("Version portable !!")
         
 else:
     APP_DATA_PATH = PATH
@@ -109,16 +108,16 @@ else:
 # Permission refusée d'y enregistrer les options !!
 #APP_DATA_PATH = os.path.join(os.environ[u'appdata'], u'pySyLiC')
 
-print ("Dossier des donnees", APP_DATA_PATH)
+print("Dossier des données", APP_DATA_PATH)
 
 ERROR_FILE = os.path.join(APP_DATA_PATH, 'pySyLiC.exe' + '.log')
-print ("Fichier erreur :",ERROR_FILE)
+print("Fichier erreur :",ERROR_FILE)
 #
 # Pour internationalisation ...
 #
 import gettext, locale
 LOCALEDIR = os.path.join(PATH, "locale")
-print ("Dossier Locale", LOCALEDIR)
+print("Dossier Locale", LOCALEDIR)
 LANG = "" # "" = langage par defaut
 #print "  defaultlocale", locale.getdefaultlocale()[0][:2]
 
@@ -131,7 +130,7 @@ def SetInternationalization():
         gettext.install("pysylic", LOCALEDIR)
         return
     
-    print ("SetInternationalization", locale.normalize(LANG))
+    print("SetInternationalization", locale.normalize(LANG))
     try:
         cur_lang = gettext.translation("pysylic", localedir = LOCALEDIR, \
                                        languages=[LANG])
@@ -141,7 +140,7 @@ def SetInternationalization():
         # Si la langue locale n'est pas supportée, on définit tout de même _()
         # On le fait dans les __builtins__ pour que la fonction soit définie dans
         # les modules importés (c'est ce que fait gettext.install()).
-        print ("Langue", LANG, "non suportée !")
+        print("Langue", LANG, "non suportée !")
 
 listLang = {"fr" : "Français",
             "en" : "English",
@@ -183,7 +182,7 @@ def GetInstalledLang():
     return noms
 
 INSTALLED_LANG = GetInstalledLang()
-print ("Langues installees :",INSTALLED_LANG)
+print("Langues installées :",INSTALLED_LANG)
 
 #gettext.install("messages", globdef.LOCALEDIR)
 #

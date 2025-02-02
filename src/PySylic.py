@@ -29,29 +29,14 @@
 SHOW_SPLASH = True
 SPLASH_TIME = 5000
 
-
-
-#
-#
 import globdef
 import sys, os, os.path
 import wx
 import version
-
-
-# if hasattr(sys, 'setdefaultencoding'):
-#     sys.setdefaultencoding('utf8')
-# else:
-#     reload(sys)  # Reload does the trick!
-#     sys.setdefaultencoding('utf-8')
-    
-print(sys.getdefaultencoding())
-
 import wx.lib.agw.advancedsplash as AdvancedSplash
 
 if not "beta" in version.__version__ and sys.argv[0].endswith(".exe"): #sys.platform != "win32" or 
     import Error
-
 
 
 def pySyLiCRunning():
@@ -102,40 +87,17 @@ class PySylicApp(wx.App):
         #wx.SystemOptions.SetOptionInt("mac.window-plain-transition", 1)
         self.SetAppName(version.__appname__)
         
-        
-        
         NomFichier = None
         if len(sys.argv)>1: # un paramètre a été passé en argument
             argv = sys.argv
             if "debug" in argv:
                 globdef.DEBUG = True
                 argv.remove("debug")
-            if "nopsycho" in argv:
-                globdef.PSYCO = False
-                argv.remove("nopsycho")
             
             parametre = argv[1]
             # on verifie que le fichier passé en paramètre existe
             if os.path.isfile(parametre):
                 NomFichier = parametre
-        
-#        if globdef.PSYCO:
-#            from CedWidgets import chronometrer
-#            try:
-#                import psyco
-#                HAVE_PSYCO=True
-#            except ImportError:
-#                HAVE_PSYCO=False
-#            
-#            if HAVE_PSYCO:
-#                print "Psyco !!!!!"
-#                
-#                if globdef.DEBUG: 
-#                    PSYCO_LOG = os.path.join(globdef.APP_DATA_PATH, sys.argv[0]+'.log-psyco')
-#                    psyco.log(logfile=PSYCO_LOG)
-#                    psyco.profile()
-#
-#                print chronometrer(psyco.full)
         
         frame = Principal.wxPySylic(None, nomFichier = NomFichier)
         frame.Show()
@@ -169,31 +131,10 @@ if __name__ == "__main__":
 # On crée d'abord la variable d'environnement HOME qui peut être nécessaire à matplotlib
 #import user
 os.environ['HOME'] = globdef.APP_DATA_PATH
-#print("user.home", user.home)
 import Principal
-
 
     
 if __name__ == "__main__":
-    if globdef.PSYCO:
-        from CedWidgets import chronometrer
-        try:
-            import psyco
-            HAVE_PSYCO=True
-        except:
-            HAVE_PSYCO=False
-        
-        if HAVE_PSYCO:
-#            import psyco ; psyco.jit() 
-#            from psyco.classes import *
-            print("Psyco !!!")
-            
-            if globdef.DEBUG: 
-                PSYCO_LOG = os.path.join(globdef.APP_DATA_PATH, sys.argv[0]+'.log-psyco')
-                psyco.log(logfile=PSYCO_LOG)
-                psyco.profile()
-
-            psyco.full()
     App = PySylicApp(0)
     App.MainLoop()
     
