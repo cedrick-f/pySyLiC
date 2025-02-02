@@ -26,11 +26,12 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 import wx
+import  wx.lib.scrolledpanel as scrolled
 import scipy
 from numpy import poly1d, log10, sign
 
 import time
-import  wx.lib.scrolledpanel as scrolled
+
 
 
 
@@ -1421,23 +1422,31 @@ def listStr(st, sep = " "):
 
 #############################################################################################################
 def chronometrer(fct, *args, **kargs):
-    tps1 = time.clock()
+    tps1 = time.time()
     result = fct(*args, **kargs)
-    tps2 = time.clock()    
+    tps2 = time.time()    
     return tps2 - tps1, result
 
 #############################################################################################################
 ############################################################
-from io import BytesIO
 from matplotlib.figure import Figure
 import numpy as np
-def mathtext_to_wxbitmap(s, taille = 100, color =  None):
+from io import BytesIO
+def mathtext_to_wxbitmap(s, taille = 150, color =  None):
     # We draw the text at position (0, 0) but then rely on
     # ``facecolor="none"`` and ``bbox_inches="tight", pad_inches=0`` to get a
     # transparent mask that is then loaded into a wx.Bitmap.
+    #print("mathtext_to_wxbitmap")
+    if len(s) >0 and s[0] != "$":
+        s = r"$"+s+"$"
+    #print("   ", s)
     fig = Figure(facecolor="none")
-    text_color = (
-        np.array(wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOWTEXT)) / 255)
+    if color:
+        text_color = color.GetAsString(flags = wx.C2S_HTML_SYNTAX	)
+    else:
+        text_color = (
+            np.array(wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOWTEXT)) / 255)
+    
     fig.text(0, 0, s, fontsize=10, color=text_color)
     buf = BytesIO()
     fig.savefig(buf, format="png", dpi=taille, bbox_inches="tight", pad_inches=0)
@@ -1446,62 +1455,82 @@ def mathtext_to_wxbitmap(s, taille = 100, color =  None):
 
 
 
-# This is where the "magic" happens.
-from matplotlib.mathtext import MathTextParser
-#import matplotlib
-#mathtext_parser = MathTextParser("Bitmap") # "Bitmap" n'est plus accepté !!
-def mathtext_to_wxbitmap_old(s, taille = 100, color =  None):
-#    print s
-    global mathtext_parser
-    if s == "":
-        return wx.NullBitmap
-    
-    if s[0] != r"$":
-        s = mathText(s)
-#    print s
-#    s.encode('utf-8')
-#    print s
-    
-    
-#    color = matplotlib.rcParams['text.color']
-#    print color, 
-#    matplotlib.rcParams['text.color'] ='r'
-#    print matplotlib.rcParams['text.color']
-    ftimage = mathtext_parser.parse(s, taille)
-#    ftimage, depth = mathtext_parser.to_rgba(s, 'r')
-#    print ftimage
-#    matplotlib.rc('text', color=color)
-#    color = wx.Colour(255,0,0)
+# from io import BytesIO
+# from matplotlib.figure import Figure
+# import numpy as np
+# def mathtext_to_wxbitmap__(s, taille = 100, color =  None):
+#     print("mathtext_to_wxbitmap")
+#     print("   ", s)
+#     # We draw the text at position (0, 0) but then rely on
+#     # ``facecolor="none"`` and ``bbox_inches="tight", pad_inches=0`` to get a
+#     # transparent mask that is then loaded into a wx.Bitmap.
+#     fig = Figure(facecolor="none")
+#     text_color = (
+#         np.array(wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOWTEXT)) / 255)
+#     fig.text(0, 0, s, fontsize=10, color=text_color)
+#     buf = BytesIO()
+#     fig.savefig(buf, format="png", dpi=taille, bbox_inches="tight", pad_inches=0)
+#     s = buf.getvalue()
+#     return wx.Bitmap.NewFromPNGData(s, len(s))
 
-    if color != None:
-        if type(color) == str or type(color) == unicode :
-            color = wx.NamedColour(color)
-        
-        x = ftimage.as_array()
-        
-        # Create an RGBA array for the destination, w x h x 4
-        rgba = scipy.zeros((x.shape[0], x.shape[1], 4), dtype=scipy.uint8)
-        rgba[:,:,0:3] = color
 
-        # set the RGB components to the constant value passed in
-#        rgba[:,:,0] = x
-#        rgba[:,:,1] = 0
-#        rgba[:,:,2] = 0
-#        rgba[:,:,0:3] = x * scipy.array(255,0,0)
-        rgba[:,:,3] = x
-        # set the A component to the shape of the text
-#        rgba[:,:,3] = x
+
+# # This is where the "magic" happens.
+# from matplotlib.mathtext import MathTextParser
+# import matplotlib
+# mathtext_parser = MathTextParser("Bitmap") # "Bitmap" n'est plus accepté !!
+# def mathtext_to_wxbitmap(s, taille = 100, color =  None):
+# #    print s
+#     global mathtext_parser
+#     if s == "":
+#         return wx.NullBitmap
+    
+#     if s[0] != r"$":
+#         s = mathText(s)
+# #    print s
+# #    s.encode('utf-8')
+# #    print s
+    
+    
+# #    color = matplotlib.rcParams['text.color']
+# #    print color, 
+# #    matplotlib.rcParams['text.color'] ='r'
+# #    print matplotlib.rcParams['text.color']
+#     ftimage = mathtext_parser.parse(s, taille)
+# #    ftimage, depth = mathtext_parser.to_rgba(s, 'r')
+# #    print ftimage
+# #    matplotlib.rc('text', color=color)
+# #    color = wx.Colour(255,0,0)
+
+#     if color != None:
+#         if type(color) == str or type(color) == unicode :
+#             color = wx.NamedColour(color)
+        
+#         x = ftimage.as_array()
+        
+#         # Create an RGBA array for the destination, w x h x 4
+#         rgba = scipy.zeros((x.shape[0], x.shape[1], 4), dtype=scipy.uint8)
+#         rgba[:,:,0:3] = color
+
+#         # set the RGB components to the constant value passed in
+# #        rgba[:,:,0] = x
+# #        rgba[:,:,1] = 0
+# #        rgba[:,:,2] = 0
+# #        rgba[:,:,0:3] = x * scipy.array(255,0,0)
+#         rgba[:,:,3] = x
+#         # set the A component to the shape of the text
+# #        rgba[:,:,3] = x
        
-        bmp = wx.BitmapFromBufferRGBA(
-            ftimage.get_width(), ftimage.get_height(),
-            rgba.tostring())
+#         bmp = wx.BitmapFromBufferRGBA(
+#             ftimage.get_width(), ftimage.get_height(),
+#             rgba.tostring())
         
-    else:
-        bmp = wx.BitmapFromBufferRGBA(
-            ftimage.get_width(), ftimage.get_height(),
-            ftimage.as_rgba_str())
+#     else:
+#         bmp = wx.BitmapFromBufferRGBA(
+#             ftimage.get_width(), ftimage.get_height(),
+#             ftimage.as_rgba_str())
 
-    return bmp
+#     return bmp
     
 
 def tester_mathtext_to_wxbitmap(s):

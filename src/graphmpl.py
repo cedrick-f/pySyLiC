@@ -46,7 +46,8 @@ from matplotlib.ticker import Formatter
 #    matplotlib.set_configdir(os.path.join(globdef.INSTALL_PATH, 'bin', 'mpl-data'))
 #print matplotlib.get_configdir()
 
-from numpy import errstate, array, arange, meshgrid, pi, absolute, cos, sin, log10, arctan2
+from numpy import errstate, array, arange, meshgrid, pi, \
+                  absolute, cos, sin, log10, arctan2, exp
 import scipy.interpolate
 
 from CedWidgets import chronometrer, strScCx, strSc, mathText, setToggled, \
@@ -85,33 +86,6 @@ def AppliquerTypeFont():
         matplotlib.rcParams['mathtext.fallback_to_cm'] = True
         
 AppliquerTypeFont()
-
-#if globdef.FONT_TYPE == 0:
-#    matplotlib.rcParams['mathtext.default'] = 'regular'
-#    matplotlib.rcParams['mathtext.fontset'] = 'cm'
-#elif globdef.FONT_TYPE == 1:
-#    matplotlib.rcParams['mathtext.fontset'] = 'cm'
-#elif globdef.FONT_TYPE == 2:
-#    matplotlib.rcParams['mathtext.fontset'] = 'stix'
-#    
-#elif globdef.FONT_TYPE == 3: #mpl 1.0.0 : mauvais affichage des mathtext en svg
-#    matplotlib.rcParams['mathtext.fontset'] = 'stixsans'
-#    matplotlib.rcParams['mathtext.fallback_to_cm'] = True
-
-#matplotlib.rcParams['mathtext.fontset'] = 'cm'
-#matplotlib.rcParams['mathtext.fontset'] = 'stix'
-#matplotlib.rcParams['mathtext.fontset'] = 'stixsans' 
-
-#matplotlib.rcParams['font.family'] = 'serif' 
-
-#matplotlib.rcParams['font.latex.package'] = type1cm
-##matplotlib.rcParams['text.usetex'] = True
-#matplotlib.rcParams['text.tex.engine'] = 'latex'
-
-
-# Ou bien ça ... mais non !
-
-#matplotlib.rcParams['pdf.fonttype'] = 3
 
 
 if globdef.USE_AGG:
@@ -1144,7 +1118,7 @@ class ZoneGraphBase(wx.Panel):
         #
         # Les éléments de base pour MatPlotLib
         #
-        self.figure = Figure()
+        self.figure = Figure(figsize = (1,1))
         self.figure.subplots_adjust(left = 0.08, right = 0.98, top = 0.98, bottom = 0.08, hspace = 0.0)
         
         self.canvas = FigureCanvas(self, -1, self.figure)
@@ -1494,17 +1468,17 @@ class ZoneGraphBase(wx.Panel):
 #            print "OnSize", self.nom,
             self.canvas.SetSize(self.GetSize())
             return 
-            if self.isVisible():# and self.backgroundFig != None:
-#                print "...", self.IsDoubleBuffered()
-    #            wx.CallAfter(self.restoreBackground())
-    #            print "Resize", self.nom
-    #            print self.calculerMarges()
-    #            self.adapterPositions()
-    #            self.canvas.draw()
-    #            self.drawCanvas()
+#             if self.isVisible():# and self.backgroundFig != None:
+# #                print "...", self.IsDoubleBuffered()
+#     #            wx.CallAfter(self.restoreBackground())
+#     #            print "Resize", self.nom
+#     #            print self.calculerMarges()
+#     #            self.adapterPositions()
+#     #            self.canvas.draw()
+#     #            self.drawCanvas()
     
-                wx.CallAfter(self.drawCanvas)
-                return
+#                 wx.CallAfter(self.drawCanvas)
+#                 return
 #            print
             
             
@@ -2723,8 +2697,8 @@ class ZoneGraphBode(ZoneGraphBase):
                     #
                     # La valeur de la pulsation
                     #
-                    self.tickOmega1 = XTick(self.subplot1, 1.0, '', gridOn = True)
-                    self.tickOmega2 = XTick(self.subplot2, 1.0, '', gridOn = True)
+                    self.tickOmega1 = XTick(self.subplot1, 1.0, gridOn = True)
+                    self.tickOmega2 = XTick(self.subplot2, 1.0, gridOn = True)
                     for t in [self.tickOmega1, self.tickOmega2]:
                         t.gridline.set_color('black')
                         t.gridline.set_linestyle('-')
@@ -2738,8 +2712,8 @@ class ZoneGraphBode(ZoneGraphBase):
                     self.tickGain, self.tickPhas = [], []
                     for i in range(len(self.lstFTNum)):
                         coul = self.lstCoul[i].get_coul_str()
-                        tickGain = YTick(self.subplot1, 1.0, '', gridOn = True)
-                        tickPhas = YTick(self.subplot2, 1.0, '', gridOn = True)
+                        tickGain = YTick(self.subplot1, 1.0, gridOn = True)
+                        tickPhas = YTick(self.subplot2, 1.0, gridOn = True)
                         for t in [tickGain, tickPhas]:
                             t.gridline.set_color(coul)
                             t.gridline.set_linestyle('-')
@@ -3071,12 +3045,12 @@ class ZoneGraphBode(ZoneGraphBase):
             #
             # La valeur de la pulsation
             #
-            text = "\n"+fonctions.strSc(_xdata)
+            text = fonctions.strSc(_xdata)
             self.tickOmega1.update_position(_xdata)
-            self.tickOmega1.set_label(text)
+            self.tickOmega1.label1.set_text(text)
             self.tickOmega1.set_visible(True)
             self.tickOmega2.update_position(_xdata)
-            self.tickOmega2.set_label(text)
+            self.tickOmega2.label1.set_text(text)
             self.tickOmega2.set_visible(True)
             
             axe.draw_artist(self.tickOmega1)
@@ -3086,11 +3060,13 @@ class ZoneGraphBode(ZoneGraphBase):
                 _yG = ft.HdB(_xdata)
                 _yP = ft.Phi(_xdata)
                 self.tickGain[i].update_position(_yG)
-                self.tickGain[i].set_label(fonctions.strSc(_yG))
+                #self.tickGain[i].set_label(fonctions.strSc(_yG))
+                self.tickGain[i].label1.set_text(fonctions.strSc(_yG))
                 self.tickGain[i].set_visible(True)
                 
                 self.tickPhas[i].update_position(_yP)
-                self.tickPhas[i].set_label(fonctions.strSc(_yP))
+                #self.tickPhas[i].set_label(fonctions.strSc(_yP))
+                self.tickPhas[i].label1.set_text(fonctions.strSc(_yG))
                 self.tickPhas[i].set_visible(True)
                 
                 self.subplot1.draw_artist(self.tickGain[i])
@@ -3906,7 +3882,7 @@ class ZoneGraphBlack(ZoneGraphBase):
                                                  color = coul, zorder = 2)
         self.limiteLambda = self.subplot.contour(P,G,iso, [2.3], colors = coul, linewidth = 0.5)
         self.labelLambda = self.subplot.clabel(self.limiteLambda, inline = 0, inline_spacing = 1, fmt = '%1.1f')
-        
+        #print('labelLambda', self.labelLambda)
         #
         # Définition des flèches sur les courbes
         #
@@ -3995,8 +3971,8 @@ class ZoneGraphBlack(ZoneGraphBase):
                     self.tickGain, self.tickPhas = [], []
                     for i in range(len(self.lstFTNum)):
                         coul = self.lstCoul[i].get_coul_str()
-                        tickGain = YTick(self.subplot, 1.0, '', gridOn = True)
-                        tickPhas = XTick(self.subplot, 1.0, '', gridOn = True)
+                        tickGain = YTick(self.subplot, 1.0, gridOn = True)
+                        tickPhas = XTick(self.subplot, 1.0, gridOn = True)
                         for t in [tickGain, tickPhas]:
                             t.gridline.set_color(coul)
                             t.gridline.set_linestyle('-')
@@ -4072,7 +4048,8 @@ class ZoneGraphBlack(ZoneGraphBase):
         # for i in self.limiteLambda.collections:
         #     i.set_color(globdef.COUL_PT_CRITIQUE)
         #     i.update_scalarmappable()
-        self.labelLambda[0].set_color(globdef.COUL_PT_CRITIQUE)
+        for l in self.labelLambda:
+            l.set_color(globdef.COUL_PT_CRITIQUE)
         
 #        self.drawCanvas()
         
@@ -4414,11 +4391,11 @@ class ZoneGraphBlack(ZoneGraphBase):
                 _yG = ft.HdB(Om)
                 _yP = ft.Phi(Om)
                 self.tickGain[i].update_position(_yG)
-                self.tickGain[i].set_label(fonctions.strSc(_yG))
+                self.tickGain[i].label1.set_text(fonctions.strSc(_yG))
                 self.tickGain[i].set_visible(True)
                 
                 self.tickPhas[i].update_position(_yP)
-                self.tickPhas[i].set_label(fonctions.strSc(_yP))
+                self.tickPhas[i].label1.set_text(fonctions.strSc(_yP))
                 self.tickPhas[i].set_visible(True)
                 
                 self.subplot.draw_artist(self.tickGain[i])
@@ -5371,8 +5348,8 @@ class ZoneGraphNyquist(ZoneGraphBase):
                     self.tickGain, self.tickPhas = [], []
                     for i in range(len(self.lstFTNum)):
                         coul = self.lstCoul[i].get_coul_str()
-                        tickGain = YTick(self.subplot, 1.0, '', gridOn = True)
-                        tickPhas = XTick(self.subplot, 1.0, '', gridOn = True)
+                        tickGain = YTick(self.subplot, 1.0, gridOn = True)
+                        tickPhas = XTick(self.subplot, 1.0, gridOn = True)
                         for t in [tickGain, tickPhas]:
                             t.gridline.set_color(coul)
                             t.gridline.set_linestyle('-')
@@ -5635,11 +5612,11 @@ class ZoneGraphNyquist(ZoneGraphBase):
             for i, ft in enumerate(self.lstFTNum):
                 _x, _y = ft.H_real_imag(Om)
                 self.tickGain[i].update_position(_y)
-                self.tickGain[i].set_label(fonctions.strSc(_y))
+                self.tickGain[i].label1.set_text(fonctions.strSc(_y))
                 self.tickGain[i].set_visible(True)
                 
                 self.tickPhas[i].update_position(_x)
-                self.tickPhas[i].set_label(fonctions.strSc(_x))
+                self.tickPhas[i].label1.set_text(fonctions.strSc(_x))
                 self.tickPhas[i].set_visible(True)
                 
                 self.subplot.draw_artist(self.tickGain[i])
@@ -6311,7 +6288,7 @@ class ZoneGraphReponse(ZoneGraphBase):
             self.curseur = etat
             
             if not etat:
-                self.tickS.set_label('')
+                self.tickS.label1.set_text('')
                 self.setCurseurOff() 
             else:
                 if self.valCurseurSurCote:
@@ -6319,7 +6296,7 @@ class ZoneGraphReponse(ZoneGraphBase):
                     #
                     # La valeur de t
                     #
-                    self.tickT = XTick(self.subplot, 1.0, '', gridOn = True)
+                    self.tickT = XTick(self.subplot, 1.0, gridOn = True)
                     self.tickT.gridline.set_color('black')
                     self.tickT.gridline.set_linestyle('-')
                     self.tickT.label1.set_size(globdef.FONT_SIZE_GRAD)
@@ -6329,7 +6306,7 @@ class ZoneGraphReponse(ZoneGraphBase):
                     #
                     # Les valeurs S
                     #
-                    self.tickS = YTick(self.subplot, 1.0, '', gridOn = True)
+                    self.tickS = YTick(self.subplot, 1.0, gridOn = True)
                     self.tickS.gridline.set_color(globdef.COUL_REPONSE)
                     self.tickS.gridline.set_linestyle('-')
                     self.tickS.label1.set_size(globdef.FONT_SIZE_GRAD)
@@ -6338,7 +6315,7 @@ class ZoneGraphReponse(ZoneGraphBase):
                     
                     self.listeArtistsCurseur = [self.tickT, self.tickS]
                     
-                    self.tickS.set_label('*'*(globdef.NB_CHIFFRES+6))
+                    self.tickS.label1.set_text('*'*(globdef.NB_CHIFFRES+6))
                     self.getsubplot().draw_artist(self.tickS)
                     
                     if self.fctConsigne == calcul.sinus:
@@ -6549,7 +6526,7 @@ class ZoneGraphReponse(ZoneGraphBase):
             #
             text = "\n"+fonctions.strSc(_xdata)
             self.tickT.update_position(_xdata)
-            self.tickT.set_label(text)
+            self.tickT.label1.set_text(text)
             self.tickT.set_visible(True)
             
             axe.draw_artist(self.tickT)
@@ -6571,7 +6548,7 @@ class ZoneGraphReponse(ZoneGraphBase):
                 
             if ok:
                 self.tickS.update_position(_y)
-                self.tickS.set_label(fonctions.strSc(_y))
+                self.tickS.label1.set_text(fonctions.strSc(_y))
                 self.tickS.set_visible(True)
                 
                 axe.draw_artist(self.tickS)
@@ -6582,7 +6559,7 @@ class ZoneGraphReponse(ZoneGraphBase):
             if self.fctConsigne == calcul.sinus:
                 _y = self.fctConsigne(_xdata, **self.param)
                 self.tickE.update_position(_y)
-                self.tickE.set_label(fonctions.strSc(_y))
+                self.tickE.label1.set_text(fonctions.strSc(_y))
                 self.tickE.set_visible(True)
                 
                 axe.draw_artist(self.tickE)
@@ -6973,7 +6950,7 @@ class ZoneGraphReponse(ZoneGraphBase):
                     
                     text = "\n"+fonctions.strSc(t)
                     tick.update_position(t)
-                    tick.set_label(text)
+                    tick.label1.set_text(text)
                     tick.set_visible(True)
                     
                     self.artistsPlus.append(tick)
@@ -7206,7 +7183,7 @@ class ZoneGraphAjustement(ZoneGraphBase):
             self.curseur = etat
             
             if not etat:
-                self.tickS.set_label('')
+                self.tickS.label1.set_text('')
                 self.setCurseurOff() 
             else:
                 if self.valCurseurSurCote:
@@ -7214,7 +7191,7 @@ class ZoneGraphAjustement(ZoneGraphBase):
                     #
                     # La valeur de t
                     #
-                    self.tickT = XTick(self.subplot, 1.0, '', gridOn = True)
+                    self.tickT = XTick(self.subplot, 1.0, gridOn = True)
                     self.tickT.gridline.set_color('black')
                     self.tickT.gridline.set_linestyle('-')
                     self.tickT.label1.set_size(globdef.FONT_SIZE_GRAD)
@@ -7224,7 +7201,7 @@ class ZoneGraphAjustement(ZoneGraphBase):
                     #
                     # Les valeurs S
                     #
-                    self.tickS = YTick(self.subplot, 1.0, '', gridOn = True)
+                    self.tickS = YTick(self.subplot, 1.0, gridOn = True)
                     self.tickS.gridline.set_color(globdef.COUL_REPONSE)
                     self.tickS.gridline.set_linestyle('-')
                     self.tickS.label1.set_size(globdef.FONT_SIZE_GRAD)
@@ -7233,7 +7210,7 @@ class ZoneGraphAjustement(ZoneGraphBase):
                     
                     self.listeArtistsCurseur = [self.tickT, self.tickS]
                     
-                    self.tickS.set_label('*'*(globdef.NB_CHIFFRES+6))
+                    self.tickS.label1.set_text('*'*(globdef.NB_CHIFFRES+6))
                     self.getsubplot().draw_artist(self.tickS)
                     
                         
@@ -7411,7 +7388,7 @@ class ZoneGraphAjustement(ZoneGraphBase):
             #
             text = "\n"+fonctions.strSc(_xdata)
             self.tickT.update_position(_xdata)
-            self.tickT.set_label(text)
+            self.tickT.label1.set_text(text)
             self.tickT.set_visible(True)
             
             axe.draw_artist(self.tickT)
@@ -7428,7 +7405,7 @@ class ZoneGraphAjustement(ZoneGraphBase):
             _y = f(_xdata)
             
             self.tickS.update_position(_y)
-            self.tickS.set_label(fonctions.strSc(_y))
+            self.tickS.label1.set_text(fonctions.strSc(_y))
             self.tickS.set_visible(True)
             
             axe.draw_artist(self.tickS)

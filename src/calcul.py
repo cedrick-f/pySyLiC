@@ -823,7 +823,7 @@ class FonctionTransfertNum:
                 Tp, Yout = scipy.signal.lsim(sys, U, T, interp = globdef.INTERPOLATION)
             else:
                 
-                Tp, Yout, xout = lsim(sys, U, T, atol = globdef.LSIM_TOLERANCE)
+                Tp, Yout, xout = lsim(sys, U, T)#, atol = globdef.LSIM_TOLERANCE)
     
             Tp, Yout = self.getReponseTempoRetard(Tp, Yout)
             return Tp, Yout

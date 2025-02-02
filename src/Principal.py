@@ -1957,7 +1957,7 @@ class NbGauche(wx.Panel):
         
         lstBmp = [mathtext_to_wxbitmap(r'H', 200),
                   mathtext_to_wxbitmap(r'C', 200),
-                  mathtext_to_wxbitmap(r'$\frac{S}{E}$', 200)]
+                  mathtext_to_wxbitmap(r'\frac{S}{E}', 200)]
         
         for i in lstBmp:
             self.imageList.Add(wx.BitmapFromImage(wx.ImageFromBitmap(i).Scale(size[0], size[1], wx.IMAGE_QUALITY_HIGH)))
@@ -2273,7 +2273,7 @@ class PageH(VerticalScrolledPanel):
         
     #########################################################################################################
     def getSelecteur(self):
-        """ Instancie pui renvoie un selecteur de FT
+        """ Instancie puis renvoie un selecteur de FT
             en fonction du type de FT <FT_H>
         """
         FT_H = self.getFT_H()
@@ -4280,7 +4280,7 @@ class WinReponse(wx.MiniFrame, PrintHandler):
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.cb1)
         self.Bind(wx.EVT_CHECKBOX, self.EvtCheckBox, self.cb2)
         sizer.Add(self.cb1, 0, flag = wx.EXPAND)
-        sizer.Add(self.BmpFTBF, 1, flag = wx.EXPAND|wx.ALL, border = 5)
+        sizer.Add(self.BmpFTBF, 1, flag = wx.ALIGN_LEFT | wx.ALIGN_CENTER_VERTICAL, border = 5)
         sizer.Add(self.cb2, 0, flag = wx.EXPAND)
         sizer.Add(self.BmpFTBFnc, 1, flag = wx.EXPAND|wx.ALL, border = 5)
         

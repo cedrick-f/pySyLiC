@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 ##This file is part of PySylic
 #############################################################################
@@ -2104,7 +2104,7 @@ class SelecteurFTFact(wx.Panel):
         # Mise en place
         #
         sizer = wx.BoxSizer(wx.HORIZONTAL)
-        sizer.Add(self.sb, 1, flag = wx.ALIGN_LEFT | wx.EXPAND)
+        sizer.Add(self.sb, 1, flag = wx.ALIGN_LEFT  | wx.ALIGN_CENTER_VERTICAL)
         sizer.Add(sizerCtrl, 0, wx.ALIGN_CENTER_VERTICAL|wx.ALL, 5 )
         self.SetSizer(sizer)
         self.sizer = sizer

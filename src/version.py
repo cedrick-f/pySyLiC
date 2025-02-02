@@ -29,7 +29,7 @@
 """
 version.py
 
-Copyright (C) 2015-2023
+Copyright (C) 2015-2025
 @author: Cedrick FAURY
 
 """

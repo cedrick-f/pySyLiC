@@ -100,14 +100,6 @@ else:
     APP_DATA_PATH = PATH
     PORTABLE = False #Notion inutile sur Linux ?
 
-#if PORTABLE:
-##    os.putenv('MPLCONFIGDIR', os.path.join(PATH, 'bin', 'mpl-data'))
-#    os.environ['MPLCONFIGDIR'] = os.path.join(PATH, 'bin', 'mpl-data')
-
-# Ce qui suit renvoie : C:\Users\Cedrick\AppData\Roaming\pySyLiC
-# Permission refusée d'y enregistrer les options !!
-#APP_DATA_PATH = os.path.join(os.environ[u'appdata'], u'pySyLiC')
-
 print("Dossier des données", APP_DATA_PATH)
 
 ERROR_FILE = os.path.join(APP_DATA_PATH, 'pySyLiC.exe' + '.log')
@@ -489,7 +481,7 @@ FONT_SIZE_LABEL_AXE = 10
 FONT_SIZE_LABEL = 11
 FONT_SIZE_CURSEUR = 9
 
-FONT_SIZE_FT_SELECT = 120
+FONT_SIZE_FT_SELECT = 180
 FONT_SIZE_FT_DECOMP = 140
 FONT_SIZE_SSFT = 100
 FONT_SIZE_VARIABLE = 100
