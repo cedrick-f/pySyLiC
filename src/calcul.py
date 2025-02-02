@@ -27,16 +27,17 @@
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
 
-from scipy.signal import lti, lsim2, step2, impulse2
-from scipy import poly1d, unwrap, angle, PINF, array, arange, \
-                  real, isnan, insert, append, delete, rad2deg, concatenate, \
-                  interpolate, logspace, linspace#, #\
+from scipy.signal import lti, lsim, step, impulse
+from scipy import interpolate#, #\
                   #pi, log10, ones, sin, zeros_like, nan, inf, argmin
 from scipy.optimize import fsolve, fmin#, fmin_powell
+from numpy import poly1d, angle, logspace, linspace, concatenate, \
+                  append, rad2deg, delete, insert, isnan, real, inf, \
+                  array, arange, unwrap, seterr, sqrt
 #import scipy.linalg as linalg
 import scipy
 #scipy.seterr(all = "raise")
-scipy.seterr(all = 'ignore')
+seterr(all = 'ignore')
 
 import globdef
 import wx
@@ -291,11 +292,11 @@ class FonctionTransfertNum:
                 if estReel(z): # Racines réelles
                     if z.real == 0.0:
                         mult = 1
-                    morceaux.append(scipy.poly1d([1.0,-z.real])*mult)
+                    morceaux.append(poly1d([1.0,-z.real])*mult)
                     mult = 1
                     n += 1
                 else:
-                    morceaux.append(scipy.poly1d([1.0,-2*z.real, z.real**2+z.imag**2])*mult)
+                    morceaux.append(poly1d([1.0,-2*z.real, z.real**2+z.imag**2])*mult)
                     mult = 1
                     n += 2
             return morceaux
@@ -325,7 +326,7 @@ class FonctionTransfertNum:
         for m in numerateur:
             if m.c[-1:][0] == 0.0:
                 N = m
-                D = scipy.poly1d(1.0)
+                D = poly1d(1.0)
             else:
                 N = m/m.c[-1:][0]
                 D = poly1d(1.0)#(1/m.c[-1:][0])
@@ -335,10 +336,10 @@ class FonctionTransfertNum:
 #            print "Denom :", m
             if m.c[-1:][0] == 0.0:
                 D = m
-                N = scipy.poly1d(1.0)
+                N = poly1d(1.0)
             else:
                 D = m/m.c[-1:][0]
-                N = scipy.poly1d(1.0)#1/m.c[-1:][0])
+                N = poly1d(1.0)#1/m.c[-1:][0])
             lstFT.append(FonctionTransfertNum(N,D))
             
 #        lstFT[0].polyN = lstFT[0].polyN*[self.polyN.c[0]/self.polyD.c[0]]
@@ -403,7 +404,7 @@ class FonctionTransfertNum:
             
             O2 = polyCar.c[2]/polyCar.c[0]
             S = sign(O2)
-            Om = scipy.sqrt(abs(O2))
+            Om = sqrt(abs(O2))
             Z = Om*(polyCar.c[1]/polyCar.c[2])/2
             
             return K,Om,Z,S
@@ -617,7 +618,7 @@ class FonctionTransfertNum:
         if sys == None:
             return None, None
         else:
-            res = impulse2(sys, T = _T, N = N)#, full_output = True)
+            res = impulse(sys, T = _T, N = N)#, full_output = True)
             Tp, yout = res[0], res[1]
             Tp, yout = self.getReponseTempoRetard(Tp, yout)
             return Tp, yout
@@ -643,7 +644,7 @@ class FonctionTransfertNum:
         if sys == None:
             return None, None, None
         else:
-            Tp, yout = step2(sys, T = _T, N = N)
+            Tp, yout = step(sys, T = _T, N = N)
             Tp, yout = self.getReponseTempoRetard(Tp, yout*amplitude)
             return Tp, yout, self.gainStat
         
@@ -712,7 +713,7 @@ class FonctionTransfertNum:
 
                 Tref = arange(0, t1-t0, periode/ppp)[0:len(R)-c*ppp]
                 
-                h = impulse2(sys, T = Tref)[1]
+                h = impulse(sys, T = Tref)[1]
                 z = [0.0] * c * ppp
                 
                 h  = array(z+h.tolist())
@@ -822,7 +823,7 @@ class FonctionTransfertNum:
                 Tp, Yout = scipy.signal.lsim(sys, U, T, interp = globdef.INTERPOLATION)
             else:
                 
-                Tp, Yout, xout = lsim2(sys, U, T, atol = globdef.LSIM_TOLERANCE)
+                Tp, Yout, xout = lsim(sys, U, T, atol = globdef.LSIM_TOLERANCE)
     
             Tp, Yout = self.getReponseTempoRetard(Tp, Yout)
             return Tp, Yout
@@ -1660,7 +1661,7 @@ class FonctionTransfertNum:
         i = len(self.reponse0[0]) - 2
         continuer = True
 
-        s = scipy.sign(self.reponse0[axe][i+1] - v)
+        s = sign(self.reponse0[axe][i+1] - v)
 
         while continuer: 
             Om = self.reponse0[0][i]
@@ -1776,7 +1777,7 @@ class FonctionTransfertNum:
 if HAVE_PSYCO:
     print ("Psyco !!!!!")
     psyco.bind(FonctionTransfertNum.getReponse)
-    psyco.bind(lsim2)
+    psyco.bind(lsim)
     
 #########################################################################################################
 class Marges():
@@ -2158,7 +2159,7 @@ def decade(n):
     if l == 0.0:
         s = 0
     else:
-        s = (scipy.sign(l)-1)/2
+        s = (sign(l)-1)/2
     return int(l) + s
 
 
@@ -2233,7 +2234,7 @@ def getPulsations(rng = None):
 ##########################################################################################################
 def impulsion(t):
     if t == 0:
-        return PINF
+        return inf
     else:
         return 0
 

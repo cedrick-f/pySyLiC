@@ -30,6 +30,7 @@
 #import  wx.lib.fancytext as fancytext
 #import  wx.lib.scrolledpanel as scrolled
 from CedWidgets import *
+from numpy import poly1d, imag, real
 #import scipy
 #import wx
 #from scipy import poly1d, float64 
@@ -1300,48 +1301,48 @@ class FonctionTransfertCorrec:
         if self.t == "P":
 #            print self.K
             for K in self.K:
-                polyNumer.append(scipy.poly1d([K]))
-                polyDenom.append(scipy.poly1d([1.0]))
+                polyNumer.append(poly1d([K]))
+                polyDenom.append(poly1d([1.0]))
         elif self.t == "PI":
             for K in self.K:
                 for T in self.T:
                     for a in self.a:
-                        polyNumer.append([K] * scipy.poly1d([T, 1.0]))
-                        polyDenom.append(scipy.poly1d([T * a, 1.0]))
+                        polyNumer.append([K] * poly1d([T, 1.0]))
+                        polyDenom.append(poly1d([T * a, 1.0]))
         elif self.t == "PI2":
             for K in self.K:
                 for T in self.T:
-                    polyNumer.append([K] * scipy.poly1d([T, 1.0]))
-                    polyDenom.append(scipy.poly1d([T, 0.0]))
+                    polyNumer.append([K] * poly1d([T, 1.0]))
+                    polyDenom.append(poly1d([T, 0.0]))
         elif self.t == "PD":
             for K in self.K:
                 for T in self.T:
                     for a in self.a:
-                        polyNumer.append([K] * scipy.poly1d([T * a, 1.0]))
-                        polyDenom.append(scipy.poly1d([T, 1.0]))
+                        polyNumer.append([K] * poly1d([T * a, 1.0]))
+                        polyDenom.append(poly1d([T, 1.0]))
         elif self.t == "PD2":
             for K in self.K:
                 for T in self.T:
-                    polyNumer.append([K] * scipy.poly1d([T, 1.0]))
-                    polyDenom.append(scipy.poly1d([1.0]))
+                    polyNumer.append([K] * poly1d([T, 1.0]))
+                    polyDenom.append(poly1d([1.0]))
         return polyNumer, polyDenom
 
 #    def getPolyND2(self):
 #        if self.t == "P":
-#            polyNumer = scipy.poly1d([self.K])
-#            polyDenom = scipy.poly1d([1.0])
+#            polyNumer = poly1d([self.K])
+#            polyDenom = poly1d([1.0])
 #        elif self.t == "PI":
-#            polyNumer = [self.K] * scipy.poly1d([self.T, 1.0])
-#            polyDenom = scipy.poly1d([self.T * self.a, 1.0])
+#            polyNumer = [self.K] * poly1d([self.T, 1.0])
+#            polyDenom = poly1d([self.T * self.a, 1.0])
 #        elif self.t == "PI2":
-#            polyNumer = [self.K] * scipy.poly1d([self.T, 1.0])
-#            polyDenom = scipy.poly1d([self.T, 0.0])
+#            polyNumer = [self.K] * poly1d([self.T, 1.0])
+#            polyDenom = poly1d([self.T, 0.0])
 #        elif self.t == "PD":
-#            polyNumer = [self.K] * scipy.poly1d([self.T * self.a, 1.0])
-#            polyDenom = scipy.poly1d([self.T, 1.0])
+#            polyNumer = [self.K] * poly1d([self.T * self.a, 1.0])
+#            polyDenom = poly1d([self.T, 1.0])
 #        elif self.t == "PD2":
-#            polyNumer = [self.K] * scipy.poly1d([self.T, 1.0])
-#            polyDenom = scipy.poly1d([1.0])
+#            polyNumer = [self.K] * poly1d([self.T, 1.0])
+#            polyDenom = poly1d([1.0])
 #        return polyNumer, polyDenom
         
     def detFTNum(self):
@@ -1658,7 +1659,7 @@ class FonctionTransfertFact:
             lst = []
             for P1 in lst1:
                 for p2 in lst2:
-                    P2 = scipy.poly1d(p2)
+                    P2 = poly1d(p2)
                     lst.append(P1*P2)
             return lst
         
@@ -1670,7 +1671,7 @@ class FonctionTransfertFact:
             
             lstP = []
             for p1 in lst:
-                P1 = scipy.poly1d(p1)
+                P1 = poly1d(p1)
                 lstP.append(P1)
                 
             i = 1
@@ -1687,12 +1688,12 @@ class FonctionTransfertFact:
                 c = int(abs(classe)+1)*[0.0]
                 if classe >=0:
                     c[0] = 1.0
-                    polyNum0 = scipy.poly1d([K])
-                    polyDen0 = scipy.poly1d(c)
+                    polyNum0 = poly1d([K])
+                    polyDen0 = poly1d(c)
                 else:
                     c[0] = K
-                    polyNum0 = scipy.poly1d(c)
-                    polyDen0 = scipy.poly1d([1.0])
+                    polyNum0 = poly1d(c)
+                    polyDen0 = poly1d([1.0])
                  
                 for polyN in getLstPoly(lstPolyN):
                     for polyD in getLstPoly(lstPolyD):
@@ -1706,9 +1707,9 @@ class FonctionTransfertFact:
 #                    else:
 #                        lstPN = polyN.getPolyNum()
 #                        
-#                    polyNumer = scipy.poly1d([1.0])
+#                    polyNumer = poly1d([1.0])
 #                    for polyNNum in lstPN:
-#                        polyNumer = polyNumer * scipy.poly1d(polyNNum)
+#                        polyNumer = polyNumer * poly1d(polyNNum)
 #                    
 #                        for polyD in lstPolyD:
 #                            if polyD == None:
@@ -1716,9 +1717,9 @@ class FonctionTransfertFact:
 #                            else:
 #                                lstPD = polyD.getPolyNum()
 #                                
-#                            polyDenom = scipy.poly1d([1.0])
+#                            polyDenom = poly1d([1.0])
 #                            for polyDNum in lstPD:
-#                                polyDenom = polyDenom * scipy.poly1d(polyDNum)
+#                                polyDenom = polyDenom * poly1d(polyDNum)
 #            
 #                                pN = polyNum0*polyNumer
 #                                pD = polyDen0*polyDenom
@@ -1770,7 +1771,7 @@ class FonctionTransfertFact:
         
 #        def getPolyNum(lstPoly):
 #            for poly in lstPoly:
-#                p = p*scipy.poly1d(poly.getPolyNum()[0])
+#                p = p*poly1d(poly.getPolyNum()[0])
 #            return p
         
         
@@ -1860,9 +1861,9 @@ class FonctionTransfertFact:
 
     def developper(self):
         def getPolyDev(lstPoly):
-            pn = scipy.poly1d([1.0])
+            pn = poly1d([1.0])
             for p in lstPoly:
-                pn = pn * scipy.poly1d(p.getPolyNum()[0])
+                pn = pn * poly1d(p.getPolyNum()[0])
             return pn
                 
         polyN = getPolyDev(self.lstPolyN) * [self.K[0]]
@@ -1872,9 +1873,9 @@ class FonctionTransfertFact:
         c = int(abs(self.classe[0])+1)*[0.0]
         c[0] = 1.0
         if self.classe[0] > 0:
-            polyD = polyD * scipy.poly1d(c)
+            polyD = polyD * poly1d(c)
         else:
-            polyN = polyN * scipy.poly1d(c)
+            polyN = polyN * poly1d(c)
 #        print "..."
 #        print polyN
 #        print "  ", polyD
@@ -2352,9 +2353,9 @@ class poly2:
         p = self.getPolyNum()[0]
         
         # Recherche des racines
-        pn = scipy.poly1d(p)
-        if abs(scipy.imag(pn.r[0])) < globdef.EPSILON: # Racines réelles
-            return [[-1.0/scipy.real(pn.r[0]), 1.0] , [-1.0/scipy.real(pn.r[1]), 1.0]]
+        pn = poly1d(p)
+        if abs(imag(pn.r[0])) < globdef.EPSILON: # Racines réelles
+            return [[-1.0/real(pn.r[0]), 1.0] , [-1.0/real(pn.r[1]), 1.0]]
         else:
             return [p]
 

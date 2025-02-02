@@ -3335,8 +3335,7 @@ class ZoneGraphBode(ZoneGraphBase):
                 minmax = ft.getRange(minmaxD)
                 pulsas = calcul.getPulsationsD(minmaxD)
         else:
-#            print "rangeX", rangeX
-            if rangeX == [] or rangeX is None:
+            if len(rangeX) == 0 or rangeX is None:
                 rangeX = self.subplot1.get_xlim()
             pulsas = calcul.getPulsations(rangeX)
             minmax = rangeX
@@ -4050,11 +4049,16 @@ class ZoneGraphBlack(ZoneGraphBase):
         self.isoPhases.set_linewidth(globdef.FORM_ISOPHASE.epais)
         self.isoPhases.update_scalarmappable()
         
-        for i in self.isoGains.collections:
-            i.set_color(globdef.FORM_ISOGAIN.get_coul_str())
-            i.set_linestyle(globdef.FORM_ISOGAIN.styl)
-            i.set_linewidth(globdef.FORM_ISOGAIN.epais)
-            i.update_scalarmappable()
+        self.isoGains.set_color(globdef.FORM_ISOGAIN.get_coul_str())
+        self.isoGains.set_linestyle(globdef.FORM_ISOGAIN.styl)
+        self.isoGains.set_linewidth(globdef.FORM_ISOGAIN.epais)
+        self.isoGains.update_scalarmappable()
+
+        # for i in self.isoGains.levels:#.collections:
+        #     i.set_color(globdef.FORM_ISOGAIN.get_coul_str())
+        #     i.set_linestyle(globdef.FORM_ISOGAIN.styl)
+        #     i.set_linewidth(globdef.FORM_ISOGAIN.epais)
+        #     i.update_scalarmappable()
         
         globdef.COUL_LABEL_ISOPHASE = globdef.FORM_ISOPHASE.get_coul_str()
         globdef.COUL_LABEL_ISOGAIN = globdef.FORM_ISOGAIN.get_coul_str()
@@ -4062,9 +4066,12 @@ class ZoneGraphBlack(ZoneGraphBase):
         self.labelIsoGain.set_color(globdef.COUL_LABEL_ISOGAIN)
         
         self.ptCritique[0].set_mfc(globdef.COUL_PT_CRITIQUE)
-        for i in self.limiteLambda.collections:
-            i.set_color(globdef.COUL_PT_CRITIQUE)
-            i.update_scalarmappable()
+
+        self.limiteLambda.set_color(globdef.COUL_PT_CRITIQUE)
+        self.limiteLambda.update_scalarmappable()
+        # for i in self.limiteLambda.collections:
+        #     i.set_color(globdef.COUL_PT_CRITIQUE)
+        #     i.update_scalarmappable()
         self.labelLambda[0].set_color(globdef.COUL_PT_CRITIQUE)
         
 #        self.drawCanvas()
@@ -4728,14 +4735,15 @@ class ZoneGraphBlack(ZoneGraphBase):
         # Répartition des isoGains
         #
         d = 1
-        for i in self.isoGains.collections: 
+        s=[]
+        for _ in self.isoGains.get_paths():#collections: 
             if d >= self.densite:
-                s = True
+                s += [True]
                 d = 1
             else:
-                s = False
+                s += [False]
                 d += 1
-            i.set_visible(s * etat)
+        self.isoGains.set_visible(s)
             
         #
         # Répartition des isoPhases

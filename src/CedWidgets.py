@@ -27,6 +27,7 @@
 
 import wx
 import scipy
+from numpy import poly1d, log10, sign
 
 import time
 import  wx.lib.scrolledpanel as scrolled
@@ -705,7 +706,7 @@ class VariableCtrl(wx.Panel):
     def marquerValid(self, etat):
         if etat:
             self.text.SetBackgroundColour(
-                 wx.SystemSettings_GetColour(wx.SYS_COLOUR_WINDOW))
+                 wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOW))
             
         else:
             self.text.SetBackgroundColour("pink")
@@ -1302,11 +1303,11 @@ def decade(n):
     """
 #    print "decade",n,
     with errstate(invalid='ignore'): 
-        l = scipy.log10(abs(n))
+        l = log10(abs(n))
         if l == 0.0:
             s = 0
         else:
-            s = (scipy.sign(l)-1)/2
+            s = (sign(l)-1)/2
 #        print int(l) + s
         return int(l) + s
 
@@ -1528,7 +1529,7 @@ def getMathTextPoly(p, varComplexe = "p"):
     """
     if type(p) == list:
         return getMathTextList(p, varComplexe)
-    elif type(p) == scipy.poly1d:
+    elif type(p) == poly1d:
         return getMathTextArray(p, varComplexe)
     
     

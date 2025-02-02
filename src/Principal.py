@@ -1921,18 +1921,6 @@ class SchemaBloc(wx.Panel):
         self.Fit()
 #        print "  -->", self.GetSize()
         self.SetMinSize(self.GetSize())
-#        if self.GetClientSize() <> self.schema.GetSize():
-            
-#            self.SetMinSize(self.schema.GetSize())
-#            self.SetMaxSize(self.schema.GetSize())
-#            if self.pane != None:
-#                self.pane.BestSize((20, self.GetSize()[1]))
-#                self.pane.MaxSize((20, self.GetSize()[1]))
-#                self.pane.MinSize((20, self.GetSize()[1]))
-                
-#        self.SetSize()
-#        self.FitInside()
-#        self.Refresh()
        
        
     def SetImg(self):
@@ -1942,7 +1930,8 @@ class SchemaBloc(wx.Panel):
     def GetBmp(self):
         l, h = self.GetClientSize()
         if l > 1:
-            return wx.BitmapFromImage(self.img.Scale(l-2, l*self.HsL, wx.IMAGE_QUALITY_HIGH))
+            return wx.BitmapFromImage(self.img.Scale(l-2, int(l*self.HsL), 
+                                                     wx.IMAGE_QUALITY_HIGH))
         else:
             return wx.BitmapFromImage(self.img)
 
