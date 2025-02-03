@@ -2176,7 +2176,7 @@ class ZoneGraphBase(wx.Panel):
             self.getsubplot().draw_artist(a)
         
         
-        if self.artistsPlus != [] or self.lstArtists != []:
+        if len(self.artistsPlus) > 0 or len(self.lstArtists) > 0:
 #            print "blit"
             self.canvas.blit()
             
@@ -3495,9 +3495,9 @@ class ZoneGraphBode(ZoneGraphBase):
 #        print rangeY1, rangeY2
 #        self.subplot1.set_ylim(rangeY1)
 #        self.subplot2.set_ylim(rangeY2)
-        if rangeY1 != [] and rangeY1 != None:
+        if rangeY1 is not None and len(rangeY1) > 0:
             self.subplot1.set_ylim(rangeY1)
-        if rangeY2 != [] and rangeY2 != None:
+        if rangeY2 is not None and len(rangeY2) > 0:
             self.subplot2.set_ylim(rangeY2)    
         
         
@@ -4976,7 +4976,7 @@ class ZoneGraphBlack(ZoneGraphBase):
                                 and (len(rangeY) == 0 or (y1 == rangeY[0] and y2 == rangeY[1])))
     
             
-            if rangeX != [] and rangeX is not None: # Est-ce encore utile ???
+            if rangeX is not None and len(rangeX) > 0: # Est-ce encore utile ???
                 self.subplot.set_xlim(rangeX)
                 self.subplot.set_ylim(rangeY)
         
@@ -5921,7 +5921,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
             # Prise en compte des poles
             if self.tracerPoles and self.polesAffichables \
                and (self.lstPoles != None or self.lstZeros != None) \
-               and (self.lstPoles + self.lstZeros != []):
+               and len(self.lstPoles + self.lstZeros) > 0:
                 minXp, maxXp, minYp, maxYp = self.getMinMaxPoles()
                 minX = min(minX, minXp)
                 minY = min(minY, minYp)
@@ -5942,7 +5942,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
                                (    (len(rangeX) == 0 or (x1 == rangeX[0] and x2 == rangeX[1])) \
                                 and (len(rangeY) == 0 or (y1 == rangeY[0] and y2 == rangeY[1])))
             
-            if rangeX != [] and rangeX is not None: # Est-ce encore utile ???
+            if rangeX is not None and len(rangeX) > 0: # Est-ce encore utile ???
                 self.subplot.set_xlim(rangeX)
                 self.subplot.set_ylim(rangeY)
         
@@ -6686,14 +6686,14 @@ class ZoneGraphReponse(ZoneGraphBase):
             self.subplot.set_autoscale_on(True)
         else:
             self.subplot.set_autoscale_on(False)
-            if rangeX != []:
+            if len(rangeX) > 0:
                 self.subplot.set_xlim(rangeX)
                 self.subplot.set_ylim(rangeY)
 
         if self.zoomAuto:
             T = None
         else:
-            if rangeX != []:
+            if len(rangeX) > 0:
                 T = rangeX
             else:
                 T = self.subplot.get_xlim()
@@ -7512,14 +7512,14 @@ class ZoneGraphAjustement(ZoneGraphBase):
             self.subplot.set_autoscale_on(True)
         else:
             self.subplot.set_autoscale_on(False)
-            if rangeX != []:
+            if len(rangeX) > 0:
                 self.subplot.set_xlim(rangeX)
                 self.subplot.set_ylim(rangeY)
 
         if self.zoomAuto:
             T = None
         else:
-            if rangeX != []:
+            if len(rangeX) > 0:
                 T = rangeX
             else:
                 T = self.subplot.get_xlim()
