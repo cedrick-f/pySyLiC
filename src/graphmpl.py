@@ -47,7 +47,8 @@ from matplotlib.ticker import Formatter
 #print matplotlib.get_configdir()
 
 from numpy import errstate, array, arange, meshgrid, pi, \
-                  absolute, cos, sin, log10, arctan2, exp, real, imag
+                  absolute, cos, sin, log10, arctan2, exp, real, imag, vstack
+#from scipy.sparse import vstack
 import scipy.interpolate
 
 from CedWidgets import chronometrer, strScCx, strSc, mathText, setToggled, \
@@ -1821,8 +1822,9 @@ class ZoneGraphBase(wx.Panel):
         
         # Effacement isoGain 
         if hasattr(self, "isoGainsCurseur"):
-            for i in self.isoGainsCurseur.collections: 
-                i.remove()
+            self.isoGainsCurseur.remove()
+            # for i in self.isoGainsCurseur.collections: 
+            #     i.remove()
             delattr(self, "isoGainsCurseur")
             
         if hasattr(self, "labelIsoGCurs"):
@@ -2244,6 +2246,7 @@ class ZoneGraphBase(wx.Panel):
         _xa, _ya = _x0+l*cosb + h*sinb, _y0+l*sinb - h*cosb
         _xb, _yb = _x0+l*cosb - h*sinb, _y0+l*sinb + h*cosb
         
+
         _xy = vstack(([_x0, _y0], [_xa, _ya], [_xb, _yb], [_x0, _y0]))
         
         xy = ax.transData.inverted().transform(_xy)
@@ -4030,7 +4033,7 @@ class ZoneGraphBlack(ZoneGraphBase):
         self.isoGains.set_linewidth(globdef.FORM_ISOGAIN.epais)
         self.isoGains.update_scalarmappable()
 
-        # for i in self.isoGains.levels:#.collections:
+        # for i in self.isoGains.collections:
         #     i.set_color(globdef.FORM_ISOGAIN.get_coul_str())
         #     i.set_linestyle(globdef.FORM_ISOGAIN.styl)
         #     i.set_linewidth(globdef.FORM_ISOGAIN.epais)
@@ -4108,6 +4111,11 @@ class ZoneGraphBlack(ZoneGraphBase):
         
         
     def Detection(self, event):
+        """
+        """
+        #print("Detection", event)
+        x, y = event.x, event.y
+        #print(x, y)
         detect = {"FT": None,
                   "EX": None,
                   "IP": None,
@@ -4148,24 +4156,28 @@ class ZoneGraphBlack(ZoneGraphBase):
                 detect["MA"] = 'g'
             elif self.margePhase[0].contains(event)[0]:
                 detect["MA"] = 'p'
-            elif hasattr(self, "isoGainsMarge") and self.isoGainsMarge.collections[0].contains(event)[0]: 
+            elif hasattr(self, "isoGainsMarge") and self.isoGainsMarge.contains(event)[0]: 
                 detect["MA"] = 's'
             if detect["MA"] != None: return detect
         
         
         # Détection des IsosGains
-        continuer = True
-        i = 0
-        while continuer:
-            if i >= len(self.isoGains.collections):
-                continuer = False
-            else:
-                self.isoGains.collections[i]._picker = True
-                if self.isoGains.collections[i].contains(event)[0]:
-                    continuer = False
-                    detect["IG"] = i
-            #print self.isoGains.collections[i]._picker
-            i += 1
+        #print(self.isoGains.find_nearest_contour(x, y))
+        c, d = self.isoGains.contains(event)
+        if c:
+            detect["IG"] = d['ind'][0]
+        # continuer = True
+        # i = 0
+        # while continuer:
+        #     if i >= len(self.isoGains.collections):
+        #         continuer = False
+        #     else:
+        #         self.isoGains.collections[i]._picker = True
+        #         if self.isoGains.collections[i].contains(event)[0]:
+        #             continuer = False
+        #             detect["IG"] = i
+        #     #print self.isoGains.collections[i]._picker
+        #     i += 1
         if detect["IG"] != None: return detect
     
 
@@ -4180,8 +4192,11 @@ class ZoneGraphBlack(ZoneGraphBase):
         # Détection du point critique
         self.ptCritique[0]._picker = True
         a, numIso = self.ptCritique[0].contains(event)
-        self.limiteLambda.collections[0]._picker = True
-        b, numiso = self.limiteLambda.collections[0].contains(event)
+        
+        # self.limiteLambda.collections[0]._picker = True
+        self.limiteLambda._picker = True
+        # b, numiso = self.limiteLambda.collections[0].contains(event)
+        b, numiso = self.limiteLambda.contains(event)
         if a:
             detect["PC"] = 1
         elif b:
@@ -4362,8 +4377,9 @@ class ZoneGraphBlack(ZoneGraphBase):
           
         # Effacement des anciens isoGains
         if hasattr(self, "isoGainsCurseur"):
-            for i in self.isoGainsCurseur.collections: 
-                i.remove()
+            self.isoGainsCurseur.remove()
+            # for i in self.isoGainsCurseur.collections: 
+            #     i.remove()
                 
         if hasattr(self, "labelIsoGCurs"):
             for i in self.labelIsoGCurs: 
@@ -4379,9 +4395,12 @@ class ZoneGraphBlack(ZoneGraphBase):
             self.labelIsoGCurs = self.subplot.clabel(self.isoGainsCurseur, 
                                                      fontsize = globdef.FONT_SIZE_CURSEUR)
             
-            for i in self.isoGainsCurseur.collections + self.labelIsoGCurs: 
+            
+            # for i in self.isoGainsCurseur.collections + self.labelIsoGCurs: 
+            #     axe.draw_artist(i)
+            for i in self.labelIsoGCurs: 
                 axe.draw_artist(i)
-                
+            self.isoGainsCurseur.draw()
                 
         if self.valCurseurSurCote:
             #
@@ -5150,8 +5169,9 @@ class ZoneGraphBlack(ZoneGraphBase):
         setp(self.margeGain, visible = False)
         # Effacement des anciens isoGainsMarge
         if hasattr(self, "isoGainsMarge"):
-            for i in self.isoGainsMarge.collections: 
-                i.remove()
+            self.isoGainsMarge.remove()
+            # for i in self.isoGainsMarge.collections: 
+            #     i.remove()
             delattr(self, "isoGainsMarge")
 
     
@@ -5989,7 +6009,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
             style = self.lstCoul[i].styl
             
             diag = self.contenu["diagB"][i]
-            p = len(self.pulsas) /2
+            p = len(self.pulsas) // 2
             x0, y0 = diag.reponse[1][p], diag.reponse[2][p]
             x1, y1 = diag.reponse[1][p-1], diag.reponse[2][p-1]
             if (x0, y0) != (x1, y1):
