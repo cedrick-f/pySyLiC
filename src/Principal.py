@@ -1315,7 +1315,7 @@ class wxPySylic(wx.Frame, PrintHandler):
                                 defaultDir = self.DossierSauvegarde, 
                                 defaultFile = "",
                                 wildcard = mesFormats,
-                                style=wx.OPEN | wx.MULTIPLE | wx.CHANGE_DIR
+                                style=wx.FD_OPEN | wx.FD_MULTIPLE | wx.FD_CHANGE_DIR
                                 )
                 
             # Show the dialog and retrieve the user response. If it is the OK response, 
@@ -1661,7 +1661,7 @@ class wxPySylic(wx.Frame, PrintHandler):
                      "Tous les fichiers|*.*'")
         dlg = wx.FileDialog(
             self, message=_("Enregistrer le système sous ..."), defaultDir=self.DossierSauvegarde , 
-            defaultFile="", wildcard=mesFormats, style=wx.SAVE|wx.OVERWRITE_PROMPT|wx.CHANGE_DIR
+            defaultFile="", wildcard=mesFormats, style=wx.FD_SAVE|wx.FD_OVERWRITE_PROMPT|wx.CHANGE_DIR
             )
         dlg.SetFilterIndex(0)
         if dlg.ShowModal() == wx.ID_OK:
