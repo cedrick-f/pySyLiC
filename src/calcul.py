@@ -1553,7 +1553,7 @@ class FonctionTransfertNum:
                 x, y = reponse[1][i], reponse[2][i]
                 return (xc-x)**2 + (yc-y)**2
             else:
-                return None
+                return -inf
         
         iOm = int(round(fmin(fct, len(reponse[0])/2, disp = 0)))
         
