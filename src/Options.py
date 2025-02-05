@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 ##This file is part of PySyLic
 #############################################################################
@@ -41,6 +41,12 @@ import Images
 ##############################################################################
 #      Options     #
 ##############################################################################
+class OptionsEncoder(json.JSONEncoder):
+        def default(self, o):
+            if hasattr(o, 'toJSON'):
+                return o.toJSON()
+            return o.__dict__
+
 class Options:
     """ Définit les options de PySyLic """
     def __init__(self, options = None):
@@ -99,7 +105,12 @@ class Options:
     def enregistrer(self):
         """" Enregistre les options dans un fichier
         """
-        config = json.dumps(self.typesOptions, default=lambda o: o.__dict__, sort_keys=True, indent=4)
+        config = json.dumps(self.typesOptions, 
+                            #default=lambda o: o.toJSON, 
+                            cls = OptionsEncoder,
+                            sort_keys=True, 
+                            indent=4, 
+                            ensure_ascii=False)
         with open(self.fichierOpt,'w', encoding="utf-8") as f:
             f.write(config)
         return
@@ -107,15 +118,15 @@ class Options:
 
 
 
-        config = configparser.ConfigParser()
+        # config = configparser.ConfigParser()
 
-        for titre, dicopt in self.typesOptions.items():
-            config.add_section(titre)
-            for opt in dicopt.items():
-                if isinstance(opt[1], LineFormat):
-                    opt[1].writeConfig(config, titre, opt[0])
-                else:
-                    config.set(titre, opt[0], str(opt[1]))
+        # for titre, dicopt in self.typesOptions.items():
+        #     config.add_section(titre)
+        #     for opt in dicopt.items():
+        #         if isinstance(opt[1], LineFormat):
+        #             opt[1].writeConfig(config, titre, opt[0])
+        #         else:
+        #             config.set(titre, opt[0], str(opt[1]))
             
             
 #        config.add_section('Options generales')
@@ -131,7 +142,7 @@ class Options:
 #        config.add_section('Dossiers')
 #        config.set('Dossiers', 'repcourant', self.repertoireCourant.get())
         
-        config.write(open(self.fichierOpt,'w'))
+        # config.write(open(self.fichierOpt,'w'))
 
 
 
@@ -139,47 +150,52 @@ class Options:
     def ouvrir(self):
         """ Ouvre un fichier d'options 
         """
+        print("ouverture :",self.fichierOpt)
         with open(self.fichierOpt,'r', encoding="utf-8") as f:
             config = f.read()
-        typesOptions = json.loads(config)
+        self.typesOptions = json.loads(config)
+
+        self.typesOptions["Formats de ligne"]["FORM_GRILLE"] = LineFormat(**self.typesOptions["Formats de ligne"]["FORM_GRILLE"])
+        self.typesOptions["Formats de ligne"]["FORM_ISOGAIN"] = LineFormat(**self.typesOptions["Formats de ligne"]["FORM_ISOGAIN"])
+        self.typesOptions["Formats de ligne"]["FORM_ISOPHASE"] = LineFormat(**self.typesOptions["Formats de ligne"]["FORM_ISOPHASE"])
         return
 
 
 
 
-        config = configparser.ConfigParser()
-        config.read(self.fichierOpt)
-        print("ouverture :",self.fichierOpt)
-        for titre in self.typesOptions:
-            titreUtf = titre.encode('utf-8')
-            for titreopt in self.typesOptions[titre]:
-                opt = self.typesOptions[titre][titreopt] 
+        # config = configparser.ConfigParser()
+        # config.read(self.fichierOpt)
+        # print("ouverture :",self.fichierOpt)
+        # for titre in self.typesOptions:
+        #     titreUtf = titre.encode('utf-8')
+        #     for titreopt in self.typesOptions[titre]:
+        #         opt = self.typesOptions[titre][titreopt] 
                 
-                if type(opt) == int:
-                    opt = config.getint(titreUtf, titreopt)
-                elif type(opt) == float:
-                    opt = config.getfloat(titreUtf, titreopt)
-                elif type(opt) == bool:
-                    opt = config.getboolean(titreUtf, titreopt)
-                elif type(opt) == str or type(opt) == unicode:
-                    opt = config.get(titreUtf, titreopt)
-                elif isinstance(opt, wx._gdi.Colour):
-                    v = eval(config.get(titreUtf, titreopt))
-                    opt = wx.Colour(v[0], v[1], v[2], v[3])
-                elif isinstance(opt, LineFormat):
-                    opt.readConfig(config, titreUtf, titreopt)
+        #         if type(opt) == int:
+        #             opt = config.getint(titreUtf, titreopt)
+        #         elif type(opt) == float:
+        #             opt = config.getfloat(titreUtf, titreopt)
+        #         elif type(opt) == bool:
+        #             opt = config.getboolean(titreUtf, titreopt)
+        #         elif type(opt) == str or type(opt) == unicode:
+        #             opt = config.get(titreUtf, titreopt)
+        #         elif isinstance(opt, wx._gdi.Colour):
+        #             v = eval(config.get(titreUtf, titreopt))
+        #             opt = wx.Colour(v[0], v[1], v[2], v[3])
+        #         elif isinstance(opt, LineFormat):
+        #             opt.readConfig(config, titreUtf, titreopt)
                     
                 
-                # pour un passage correct de la version 2.5 à 2.6
-                try:
-                    v = eval(opt)
-                    if type(v) == tuple:
-                        opt = wx.Colour(v[0], v[1], v[2]).GetAsString(wx.C2S_HTML_SYNTAX)
+        #         # pour un passage correct de la version 2.5 à 2.6
+        #         try:
+        #             v = eval(opt)
+        #             if type(v) == tuple:
+        #                 opt = wx.Colour(v[0], v[1], v[2]).GetAsString(wx.C2S_HTML_SYNTAX)
 
-                except:
-                    pass
+        #         except:
+        #             pass
                 
-                self.typesOptions[titre][titreopt] = opt
+        #         self.typesOptions[titre][titreopt] = opt
                 
                 
         
@@ -319,7 +335,7 @@ class FenOptions(wx.Dialog):
         self.Bind(wx.EVT_BUTTON, self.OnClick, btn)
         bsizer = wx.BoxSizer(wx.HORIZONTAL)
         bsizer.Add(btn)
-        bsizer.Add(btnsizer, flag = wx.EXPAND|wx.ALIGN_RIGHT)
+        bsizer.Add(btnsizer, flag = wx.EXPAND)
         
         sizer.Add(bsizer, flag = wx.EXPAND)#|wx.ALL)
         self.SetMinSize((400,-1))
@@ -629,20 +645,12 @@ class pnlCalcul(wx.Panel):
 #######################################################################################################
 class pnlAffichage(wx.Panel):
     def __init__(self, parent, optAffichage):
-        
         wx.Panel.__init__(self, parent, -1)
-        
         self.opt = optAffichage
-        
-        
-        
         self.CreatePanel()
         
-        
-       
-       
+
     def CreatePanel(self):
-        
         self.ns = wx.BoxSizer(wx.VERTICAL)
         # 
         # Performances
@@ -743,15 +751,9 @@ class pnlAffichage(wx.Panel):
 #############################################################################################################
 class pnlImpression(wx.Panel):
     def __init__(self, parent, opt):
-        
         wx.Panel.__init__(self, parent, -1)
-        
         self.opt = opt
-        
-        
-        
         self.CreatePanel()
-        
         
         
     def CreatePanel(self):

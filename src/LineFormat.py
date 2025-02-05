@@ -26,7 +26,7 @@
 #    along with pySylic; if not, write to the Free Software
 #    Foundation, Inc., 51 Franklin St, Fifth Floor, Boston, MA  02110-1301  USA
 
-import wx
+import wx, json
 import xml.etree.ElementTree as ET
 
 
@@ -51,41 +51,49 @@ class LineFormat():
             self.coul = self.str2coul(coul)
         self.styl = styl
         self.epais = epais
-        
-        
+    
+
     ###############################################################################################
-    def __repr__(self):
-        print (self.coul)
-        print (self.epais)
-        print (self.styl)
-        return ""
+    def toJSON(self):
+        d = self.__dict__
+        d['coul'] = self.get_coul_str()
+        return d
+
+
+    # ###############################################################################################
+    # def __repr__(self):
+    #     print (self.coul)
+    #     print (self.epais)
+    #     print (self.styl)
+    #     return ""
     
     
     ###############################################################################################
     def get_coul_str(self):
         return self.coul.GetAsString(wx.C2S_HTML_SYNTAX)
     
+
     ###############################################################################################
     def str2coul(self, str):
         return wx.NamedColour(str)
 
-    ###############################################################################################
-    def getBranche(self, nom):
-        root = ET.Element(nom)
-        root.set("couleur", self.get_coul_str())
-        root.set("style", self.styl)
-        root.set("epaisseur", str(self.epais))
-        return root
+    # ###############################################################################################
+    # def getBranche(self, nom):
+    #     root = ET.Element(nom)
+    #     root.set("couleur", self.get_coul_str())
+    #     root.set("style", self.styl)
+    #     root.set("epaisseur", str(self.epais))
+    #     return root
         
-    ###############################################################################################
-    def ouvrir(self, nom, brancheFormat):
-        branche = brancheFormat.find(nom)
-        if branche != None:
-            self.coul = self.str2coul(branche.get("couleur"))
-            self.styl = branche.get("style")
-            self.epais = eval(branche.get("epaisseur"))
-            return True
-        return False
+    # ###############################################################################################
+    # def ouvrir(self, nom, brancheFormat):
+    #     branche = brancheFormat.find(nom)
+    #     if branche != None:
+    #         self.coul = self.str2coul(branche.get("couleur"))
+    #         self.styl = branche.get("style")
+    #         self.epais = eval(branche.get("epaisseur"))
+    #         return True
+    #     return False
         
     ###############################################################################################
     def copie(self, format):
@@ -93,25 +101,25 @@ class LineFormat():
         self.styl = format.styl
         self.epais = format.epais
         
-    ###############################################################################################
-    def writeConfig(self, config, titre, nom):
-        config.set(titre, "coul"+nom, self.get_coul_str())
-        config.set(titre, "epais"+nom, self.epais)
-        config.set(titre, "styl"+nom, self.styl)
-        return
+    # ###############################################################################################
+    # def writeConfig(self, config, titre, nom):
+    #     config.set(titre, "coul"+nom, self.get_coul_str())
+    #     config.set(titre, "epais"+nom, self.epais)
+    #     config.set(titre, "styl"+nom, self.styl)
+    #     return
     
-    ###############################################################################################
-    def readConfig(self, config, titre, nom):
-#        print "readConfig", 
-        coul = config.get(titre, "coul"+nom)    
-#        print coul
-#        v = eval(coul)
-#        self.coul = wx.Colour(v[0], v[1], v[2], v[3]) 
-        self.coul = self.str2coul(coul)
-        self.epais = config.getfloat(titre, "epais"+nom)
-        self.styl = config.get(titre, "styl"+nom)
-#        print self
-        return
+#     ###############################################################################################
+#     def readConfig(self, config, titre, nom):
+# #        print "readConfig", 
+#         coul = config.get(titre, "coul"+nom)    
+# #        print coul
+# #        v = eval(coul)
+# #        self.coul = wx.Colour(v[0], v[1], v[2], v[3]) 
+#         self.coul = self.str2coul(coul)
+#         self.epais = config.getfloat(titre, "epais"+nom)
+#         self.styl = config.get(titre, "styl"+nom)
+# #        print self
+#         return
     
 ##########################################################################################################
 # Modification de la FT ...

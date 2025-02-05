@@ -1782,7 +1782,7 @@ class wxPySylic(wx.Frame, PrintHandler):
     #############################################################################
     def quitterPySyLiC(self, event = None):
         if globdef.DEBUG: print("Quitter...",)
-        self.options.enregistrer()
+        #self.options.enregistrer()
         try:
             self.options.enregistrer()
         except IOError:

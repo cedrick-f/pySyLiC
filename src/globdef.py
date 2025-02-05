@@ -291,17 +291,17 @@ def DefOptionsDefaut():
     #
     # Options de couleurs
     #
-    COUL_MARGE_GAIN_OK = wx.Colour(10,200,10).GetAsString(wx.C2S_HTML_SYNTAX)
-    COUL_MARGE_GAIN_NO = wx.Colour(200,10,10).GetAsString(wx.C2S_HTML_SYNTAX)
+    COUL_MARGE_GAIN_OK = "#0AC80A"
+    COUL_MARGE_GAIN_NO = "#C80A0A"
     FORM_GRILLE = LineFormat(coul = wx.Colour(130,130,130), styl = ":", epais = 0.5)
     FORM_ISOGAIN = LineFormat(coul = wx.Colour(230,230,250), epais = 0.5)
     FORM_ISOPHASE = LineFormat(coul = wx.Colour(200,250,200), epais = 0.5)
-    COUL_PT_CRITIQUE = wx.Colour(250,100,100).GetAsString(wx.C2S_HTML_SYNTAX)
-    COUL_LAMBDA = wx.Colour(10,180,10).GetAsString(wx.C2S_HTML_SYNTAX)
-    COUL_POLES = wx.Colour(10,10,150).GetAsString(wx.C2S_HTML_SYNTAX)
-    COUL_CONSIGNE = wx.Colour(10,10,150).GetAsString(wx.C2S_HTML_SYNTAX)
-    COUL_REPONSE = wx.Colour(250,10,10).GetAsString(wx.C2S_HTML_SYNTAX)
-    COUL_REPONSENC = wx.Colour(10,240,10).GetAsString(wx.C2S_HTML_SYNTAX)
+    COUL_PT_CRITIQUE = "#FA6464"
+    #COUL_LAMBDA = wx.Colour(10,180,10).GetAsString(wx.C2S_HTML_SYNTAX)
+    COUL_POLES = "#0A0A96"
+    COUL_CONSIGNE = "#0A0A96"
+    COUL_REPONSE = "#FA0A0A"
+    COUL_REPONSENC = "#0AF00A"
 
 DefOptionsDefaut() 
 
