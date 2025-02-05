@@ -87,6 +87,7 @@ class PySylicApp(wx.App):
         #wx.SystemOptions.SetOptionInt("mac.window-plain-transition", 1)
         self.SetAppName(version.__appname__)
         
+
         NomFichier = None
         if len(sys.argv)>1: # un paramètre a été passé en argument
             argv = sys.argv

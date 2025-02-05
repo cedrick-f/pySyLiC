@@ -3835,16 +3835,19 @@ class ZoneGraphBlack(ZoneGraphBase):
         #
         self.nappeIsoGains = getIsoGains()
         G,P,iso = self.nappeIsoGains
+        #G, P, iso = G[1:-5], P[1:-5], iso[1:-5]
         matplotlib.rcParams['contour.negative_linestyle'] = 'solid'
         
-        self.isoGains = self.subplot.contour(P,G,iso, listeIsoGains ,  
+        self.isoGains = self.subplot.contour(P, G, iso, listeIsoGains ,  
                                                colors = globdef.FORM_ISOGAIN.get_coul_str(), 
                                                ls = globdef.FORM_ISOGAIN.styl,
-                                               linewidth = globdef.FORM_ISOGAIN.epais, zorder = 1)#,
-#                                               visible = False)
+                                               linewidth = globdef.FORM_ISOGAIN.epais, 
+                                               zorder = 1
+                                               )
        
         self.labelIsoGain = self.subplot.text(1, 0, "", visible = False, 
-                                              color = globdef.COUL_LABEL_ISOGAIN, zorder = 2)
+                                              color = globdef.COUL_LABEL_ISOGAIN, 
+                                              zorder = 2)
         
         #
         # Définition des isophases
@@ -3880,12 +3883,20 @@ class ZoneGraphBlack(ZoneGraphBase):
         # Définition du point critique et limite de stabilité
         #
         coul = globdef.COUL_PT_CRITIQUE
+        print("coul", coul)
         self.ptCritique = self.subplot.plot([-180], [0], marker = 'o', mfc = coul)
         self.labelptCritique = self.subplot.text(1, 0, "", visible = False, 
-                                                 color = coul, zorder = 2)
-        self.limiteLambda = self.subplot.contour(P,G,iso, [2.3], colors = coul, linewidth = 0.5)
-        self.labelLambda = self.subplot.clabel(self.limiteLambda, inline = 0, inline_spacing = 1, fmt = '%1.1f')
+                                                 color = coul, zorder = 3)
+        self.limiteLambda = self.subplot.contour(P,G,iso, [2.3], 
+                                                 linewidth = 0.5, 
+                                                 colors = [coul])
+        self.labelLambda = self.subplot.clabel(self.limiteLambda, 
+                                               inline = 0, 
+                                               inline_spacing = 1, 
+                                               fmt = '%1.1f')
+        
         #print('labelLambda', self.labelLambda)
+
         #
         # Définition des flèches sur les courbes
         #
@@ -4028,7 +4039,7 @@ class ZoneGraphBlack(ZoneGraphBase):
         self.isoPhases.set_linewidth(globdef.FORM_ISOPHASE.epais)
         self.isoPhases.update_scalarmappable()
         
-        self.isoGains.set_color(globdef.FORM_ISOGAIN.get_coul_str())
+        self.isoGains.set_edgecolor(globdef.FORM_ISOGAIN.get_coul_str())
         self.isoGains.set_linestyle(globdef.FORM_ISOGAIN.styl)
         self.isoGains.set_linewidth(globdef.FORM_ISOGAIN.epais)
         self.isoGains.update_scalarmappable()
@@ -4046,7 +4057,7 @@ class ZoneGraphBlack(ZoneGraphBase):
         
         self.ptCritique[0].set_mfc(globdef.COUL_PT_CRITIQUE)
 
-        self.limiteLambda.set_color(globdef.COUL_PT_CRITIQUE)
+        self.limiteLambda.set_edgecolor(globdef.COUL_PT_CRITIQUE)
         self.limiteLambda.update_scalarmappable()
         # for i in self.limiteLambda.collections:
         #     i.set_color(globdef.COUL_PT_CRITIQUE)
@@ -4111,11 +4122,13 @@ class ZoneGraphBlack(ZoneGraphBase):
         
         
     def Detection(self, event):
-        """
+        """ Retourne sous forme de dict
+            l'élément graphique
+            à proximité du curseur
         """
         #print("Detection", event)
         x, y = event.x, event.y
-        #print(x, y)
+
         detect = {"FT": None,
                   "EX": None,
                   "IP": None,
@@ -4133,10 +4146,9 @@ class ZoneGraphBlack(ZoneGraphBase):
                 continuer = False
                 detect["FT"] = i
             i += 1
-        if detect["FT"] != None: return detect
+        if detect["FT"] is not None: return detect
     
         
-    
         # Détection des expressions
         continuer = True
         i = 0
@@ -4147,7 +4159,7 @@ class ZoneGraphBlack(ZoneGraphBase):
                 continuer = False
                 detect["EX"] = i
             i += 1
-        if detect["EX"] != None: return detect
+        if detect["EX"] is not None: return detect
     
         
         # Détection des marges
@@ -4158,11 +4170,22 @@ class ZoneGraphBlack(ZoneGraphBase):
                 detect["MA"] = 'p'
             elif hasattr(self, "isoGainsMarge") and self.isoGainsMarge.contains(event)[0]: 
                 detect["MA"] = 's'
-            if detect["MA"] != None: return detect
+            if detect["MA"] is not None: return detect
         
-        
+
+        # Détection du point critique
+        self.ptCritique[0]._picker = True
+        a, _ = self.ptCritique[0].contains(event)
+        self.limiteLambda._picker = True
+        b, _ = self.limiteLambda.contains(event)
+        if a:
+            detect["PC"] = 1
+        elif b:
+            detect["PC"] = 2
+        if detect["PC"] is not None: return detect
+
+
         # Détection des IsosGains
-        #print(self.isoGains.find_nearest_contour(x, y))
         c, d = self.isoGains.contains(event)
         if c:
             detect["IG"] = d['ind'][0]
@@ -4178,7 +4201,7 @@ class ZoneGraphBlack(ZoneGraphBase):
         #             detect["IG"] = i
         #     #print self.isoGains.collections[i]._picker
         #     i += 1
-        if detect["IG"] != None: return detect
+        if detect["IG"] is not None: return detect
     
 
         # Détection des IsosPhases
@@ -4186,33 +4209,18 @@ class ZoneGraphBlack(ZoneGraphBase):
         a, numIso = self.isoPhases.contains(event)
         if a:
             detect["IP"] = numIso['ind'][0]
-        if detect["IP"] != None: return detect    
-        
-    
-        # Détection du point critique
-        self.ptCritique[0]._picker = True
-        a, numIso = self.ptCritique[0].contains(event)
-        
-        # self.limiteLambda.collections[0]._picker = True
-        self.limiteLambda._picker = True
-        # b, numiso = self.limiteLambda.collections[0].contains(event)
-        b, numiso = self.limiteLambda.contains(event)
-        if a:
-            detect["PC"] = 1
-        elif b:
-            detect["PC"] = 2
-        if detect["PC"] != None: return detect
-        
+        if detect["IP"] is not None: return detect    
         
         return detect
-            
+    
+
     ######################################################################################################
     def OnMoveDefaut(self, _xdata, _ydata, axe, event = None):
         if self.mouseInfo != None:
             self.moveExpression(event)
 
         else:
-            if _xdata == None or _ydata == None:
+            if _xdata is None or _ydata is None:
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_DEFAUT))
                 self.effacerLabels()
                 return
@@ -4221,12 +4229,12 @@ class ZoneGraphBlack(ZoneGraphBase):
                 detect = self.Detection(event)
             
             # Affichage ...
-            if detect["EX"] != None:
+            if detect["EX"] is not None:
                 self.effacerLabels()
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_MAIN))
                 self.context = "E"+str(detect["EX"])
                 
-            elif detect["FT"] != None:
+            elif detect["FT"] is not None:
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
                 coul = self.lstCoul[detect["FT"]].get_coul_str()
                 setp(self.labelFT, text = r"$"+self.lstFTNum[detect["FT"]].nom + " $",
@@ -4234,32 +4242,32 @@ class ZoneGraphBlack(ZoneGraphBase):
                 self.draw_artists([self.labelFT])
                 self.context = "F"+str(detect["FT"])
 
-            elif detect["IG"] != None:
+            elif detect["IG"] is not None:
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
                 setp(self.labelIsoGain, text = " " + str(listeIsoGains[detect["IG"]]) + " dB",
                      x = _xdata, y = _ydata, visible = True)
                 self.draw_artists([self.labelIsoGain])
                 self.context = "G"+str(detect["IG"])
 
-            elif detect["IP"] != None:
+            elif detect["IP"] is not None:
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
                 setp(self.labelIsoPhase, text = " " + str(self.listeIsoPhasesVisibles[detect["IP"]]) + " °",
                      x = _xdata, y = _ydata, visible = True)
                 self.draw_artists([self.labelIsoPhase])
                 self.context = "P"+str(detect["IP"])
                 
-            elif detect["PC"] != None:
+            elif detect["PC"] is not None:
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
                 if detect["PC"] == 1:
                     text = _("Point critique")
                 else:
-                    text = r"$"+_(u'Limite')+ r"\/\lambda$"
+                    text = _(u'Limite')+r"$\/\lambda$"
                 setp(self.labelptCritique, text = text,
                      x = _xdata, y = _ydata, visible = True)
                 self.draw_artists([self.labelptCritique])
                 self.context = "C"
 
-            elif detect["MA"] != None:
+            elif detect["MA"] is not None:
                 marges = self.contenu["marges"]
 #                print marges
                 self.canvas.SetCursor(wx.StockCursor(globdef.CURSEUR_ISO))
@@ -4280,7 +4288,7 @@ class ZoneGraphBlack(ZoneGraphBase):
                      color = coul)
                 
 #                self.artists_visibles.append(labelFT, axe)
-                self.draw_artists([self.labelFT], axe)
+                self.draw_artists([self.labelFT, axe])
                 self.context = "M"+str(detect["MA"])
                 
             else:
@@ -4739,7 +4747,7 @@ class ZoneGraphBlack(ZoneGraphBase):
             else:
                 s += [False]
                 d += 1
-        self.isoGains.set_visible(s)
+        self.isoGains.set_visible(s * etat)
             
         #
         # Répartition des isoPhases
@@ -5279,7 +5287,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
         #
         self.ptCritique = self.subplot.plot([-1], [0], marker = 'o', mfc = globdef.COUL_PT_CRITIQUE)
         self.labelptCritique = self.subplot.text(1, 0, "", visible = False, 
-                                                 color = globdef.COUL_PT_CRITIQUE, zorder = 2)
+                                                 color = globdef.COUL_PT_CRITIQUE, zorder = 3)
         
         #
         # Définition des flèches sur les courbes
@@ -5433,9 +5441,10 @@ class ZoneGraphNyquist(ZoneGraphBase):
         setp(self.labelptCritique, x = 0, y = 0, text = "", visible = False)
         setp(self.label, visible = False)
         
-        self.subplot.draw_artist(self.labelFT)
-        self.subplot.draw_artist(self.label)
-        self.subplot.draw_artist(self.labelptCritique)
+        # self.subplot.draw_artist(self.labelFT)
+        # self.subplot.draw_artist(self.label)
+        # self.subplot.draw_artist(self.labelptCritique)
+        self.subplot.draw_artists([self.labelFT, self.label, self.labelptCritique])
 #        self.drawArtists([self.labelFT], self.figure)
 #        self.drawArtists([self.labelptCritique], self.figure)
           
