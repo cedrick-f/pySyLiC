@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: utf-8 -*-
 
 ##This file is part of pySylic
 #############################################################################
@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2010 Cédrick FAURY
+## Copyright (C) 2009-2025 Cédrick FAURY
 
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -60,12 +60,9 @@ class LineFormat():
         return d
 
 
-    # ###############################################################################################
-    # def __repr__(self):
-    #     print (self.coul)
-    #     print (self.epais)
-    #     print (self.styl)
-    #     return ""
+    ###############################################################################################
+    def __repr__(self):
+        return f"{self.coul}-{self.epais}-{self.styl}"
     
     
     ###############################################################################################
@@ -190,7 +187,9 @@ class LineFormatSelector(wx.Dialog):
         txtWidth = wx.StaticText(self, -1, _("Epaisseur :"))
 #        selWidth = wx.SpinCtrl(self, -1, "", size=(100, -1))
         selWidth = FS.FloatSpin(self, -1, min_val=0.01, max_val=10.0,
-                                       increment=0.1, value=1.0, agwStyle=FS.FS_LEFT)
+                                       increment=0.1, value=1.0, 
+                                       size = (80, -1),
+                                       agwStyle=FS.FS_LEFT)
         selWidth.SetFormat("%f")
         selWidth.SetDigits(2)
         
@@ -267,7 +266,7 @@ class LineFormatSelector(wx.Dialog):
             
         # Once the dialog is destroyed, Mr. wx.ColourData is no longer your
         # friend. Don't use it again!
-        dlg.Destroy()
+        #dlg.Destroy()
         return
     
     ###############################################################################################
@@ -309,15 +308,23 @@ class PenStyleComboBox(wx.adv.OwnerDrawnComboBox):
 
         if flags & wx.adv.ODCB_PAINTING_CONTROL:
             # for painting the control itself
-            dc.DrawLine( r.x+5, r.y+r.height/2, r.x+r.width - 5, r.y+r.height/2 )
+            dc.DrawLine( r.x+5, 
+                        int(r.y+r.height/2), 
+                        r.x+r.width - 5, 
+                        int(r.y+r.height/2)
+                        )
 
         else:
             # for painting the items in the popup
             dc.DrawText(self.GetString( item ),
                         r.x + 3,
-                        (r.y + 0) + ( (r.height/2) - dc.GetCharHeight() )/2
+                        int((r.y + 0) + ( (r.height/2) - dc.GetCharHeight() )/2)
                         )
-            dc.DrawLine( r.x+5, r.y+((r.height/4)*3)+1, r.x+r.width - 5, r.y+((r.height/4)*3)+1 )
+            dc.DrawLine( r.x+5, 
+                         int(r.y+((r.height/4)*3)+1), 
+                         r.x+r.width - 5, 
+                         int(r.y+((r.height/4)*3)+1)
+                         )
 
            
     # Overridden from OwnerDrawnComboBox, called for drawing the
@@ -334,7 +341,7 @@ class PenStyleComboBox(wx.adv.OwnerDrawnComboBox):
         bgCol = wx.Colour(240,240,250)
         dc.SetBrush(wx.Brush(bgCol))
         dc.SetPen(wx.Pen(bgCol))
-        dc.DrawRectangleRect(rect);
+        dc.DrawRectangleRect(rect)
 
 
 
@@ -391,7 +398,7 @@ class SelecteurFormatLigne(wx.Panel):
             evt.SetFormat(self.format)
             self.GetEventHandler().ProcessEvent(evt)
             
-        dlg.Destroy()
+        #dlg.Destroy()
         return
     
     

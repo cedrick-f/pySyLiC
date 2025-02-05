@@ -191,18 +191,18 @@ class wxPySylic(wx.Frame, PrintHandler):
         #############################################################################################
         options = Options.Options()
         if options.fichierExiste():
-#            options.ouvrir()
-            try :
-                options.ouvrir()
-            except:
-                print("Fichier d'options corrompus ou inexistant !! Initialisation ...")
-                options.defaut()
+           options.ouvrir()
+            # try :
+            #     options.ouvrir()
+            # except:
+            #     print("Fichier d'options corrompus ou inexistant !! Initialisation ...")
+            #     options.defaut()
 
         
         # On applique les options ...
         self.DefinirOptions(options)
         # Option à n'appliquer qu'au démarrage de pySyLiC
-        globdef.NBR_MAXI_PLOT = options.optGenerales["NBR_MAXI_PLOT"]
+        globdef.NBR_MAXI_PLOT = options.typesOptions['Général']["NBR_MAXI_PLOT"]
         
         
         #############################################################################################
@@ -368,7 +368,6 @@ class wxPySylic(wx.Frame, PrintHandler):
         
     #########################################################################################################
     def OnBitmapChanged(self, event):
-        print("OnBitmapChanged")
         self.num = event.GetNum()
         
     #########################################################################################################
@@ -990,7 +989,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #            self.analyse.lancerAnalyse(self.mtgComplet, self.zMont)
 #            self.nbGauche.tbAnalys = Analyse.TBAnalyse(self.nbGauche, self.mtgComplet, self.zMont, self.analyse, self.nbCdCF)
 #        
-#        if self.options.optImpression["DemanderImpr"]:
+#        if self.options.typesOptions['Impression']["DemanderImpr"]:
 #            optionImpr = self.optionsImprProv.copy()
 #            dlg = Options.FenOptionsImpression(self, optionImpr)
 #            dlg.CenterOnScreen()
@@ -1004,7 +1003,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #            optImpr = self.optionsImprProv
 #        else:
 #            afficherRapport = True
-#            optImpr = self.options.optImpression
+#            optImpr = self.options.typesOptions['Impression']
 #        
 #        # Frame contenant le rapport   
 #        if afficherRapport:   
@@ -1090,7 +1089,7 @@ class wxPySylic(wx.Frame, PrintHandler):
 #            dlg.Destroy()
 ###    webbrowser.open(lienAide[clef])
 ###    print "Affichage de l'aide :",lienAide[clef]
-#        if self.options.optGenerales["TypeAide"] == 0 and sys.platform == 'win32':
+#        if self.options.typesOptions['Général']["TypeAide"] == 0 and sys.platform == 'win32':
 #            if os.path.isfile(fichierAideChm):
 #                os.startfile(fichierAideChm)
 #            else:
@@ -1115,75 +1114,77 @@ class wxPySylic(wx.Frame, PrintHandler):
 
     def DefinirOptions(self, options):
         self.options = options.copie()
+
         #
         # Options Générales
         #
             # Dossier d'enregistrement
-        self.DossierSauvegarde = self.options.optGenerales["RepCourant"]
+        self.DossierSauvegarde = self.options.typesOptions['Général']["RepCourant"]
             
             # Variable complexe
-        globdef.VAR_COMPLEXE = self.options.optGenerales["VAR_COMPLEXE"]
+        globdef.VAR_COMPLEXE = self.options.typesOptions['Général']["VAR_COMPLEXE"]
         
             # Temps de réponse
-        globdef.TEMPS_REPONSE = self.options.optCalcul["TEMPS_REPONSE"]
+        globdef.TEMPS_REPONSE = self.options.typesOptions['Calcul']["TEMPS_REPONSE"]
         
             # Antialiasing
-        globdef.ANTIALIASED = self.options.optAffichage["ANTIALIASED"]
+        globdef.ANTIALIASED = self.options.typesOptions['Affichage']["ANTIALIASED"]
         
             # Mise à Jour Auto
-        globdef.MAJ_AUTO = self.options.optGenerales["MAJ_AUTO"]
+        globdef.MAJ_AUTO = self.options.typesOptions['Général']["MAJ_AUTO"]
         
             # Nombre de périodes affichées en cas d'echelle automatique
-        globdef.NB_PERIODES_REP_TEMPO = self.options.optCalcul["NB_PERIODES_REP_TEMPO"]
+        globdef.NB_PERIODES_REP_TEMPO = self.options.typesOptions['Calcul']["NB_PERIODES_REP_TEMPO"]
   
-        globdef.TRACER_FLECHE = self.options.optAffichage["TRACER_FLECHE"]
+        globdef.TRACER_FLECHE = self.options.typesOptions['Affichage']["TRACER_FLECHE"]
         
         
         
-#        globdef.NBR_MAXI_PLOT = options.optGenerales["NBR_MAXI_PLOT"]
-        globdef.TYPE_SELECTEUR_TF = options.optGenerales["TypeSelecteur"]
-        globdef.NBR_PTS_REPONSE = options.optCalcul["NBR_PTS_REPONSE"]
+#        globdef.NBR_MAXI_PLOT = options.typesOptions['Général']["NBR_MAXI_PLOT"]
+        globdef.TYPE_SELECTEUR_TF = options.typesOptions['Général']["TypeSelecteur"]
+        globdef.NBR_PTS_REPONSE = options.typesOptions['Calcul']["NBR_PTS_REPONSE"]
 #        print "NBR_PTS_REPONSE", globdef.NBR_PTS_REPONSE
 
         #
         # Couleurs
         #
         
-        globdef.COUL_MARGE_GAIN_OK = options.optCouleurs["COUL_MARGE_OK"]
-        globdef.COUL_MARGE_GAIN_NO = options.optCouleurs["COUL_MARGE_NO"]
-        globdef.FORM_GRILLE = options.optCouleurs["FORM_GRILLE"]
-        globdef.FORM_ISOGAIN = options.optCouleurs["FORM_ISOGAIN"]
-        globdef.FORM_ISOPHASE = options.optCouleurs["FORM_ISOPHASE" ]
-#        globdef.COUL_LAMBDA = options.optCouleurs["COUL_LAMBDA"]
-        globdef.COUL_POLES = options.optCouleurs["COUL_POLES"]
-        globdef.COUL_PT_CRITIQUE = options.optCouleurs["COUL_PT_CRITIQUE" ]
+        globdef.COUL_MARGE_GAIN_OK = options.typesOptions['Formats de ligne']["COUL_MARGE_OK"]
+        globdef.COUL_MARGE_GAIN_NO = options.typesOptions['Formats de ligne']["COUL_MARGE_NO"]
+        globdef.FORM_GRILLE = options.typesOptions['Formats de ligne']["FORM_GRILLE"]
+        globdef.FORM_ISOGAIN = options.typesOptions['Formats de ligne']["FORM_ISOGAIN"]
+        globdef.FORM_ISOPHASE = options.typesOptions['Formats de ligne']["FORM_ISOPHASE" ]
+#        globdef.COUL_LAMBDA = options.typesOptions['Formats de ligne']["COUL_LAMBDA"]
+        globdef.COUL_POLES = options.typesOptions['Formats de ligne']["COUL_POLES"]
+        globdef.COUL_PT_CRITIQUE = options.typesOptions['Formats de ligne']["COUL_PT_CRITIQUE" ]
 
         #
         # Impression
         #
-        globdef.PRINT_PROPORTION = options.optImpression["PRINT_PROPORTION"]
+        globdef.PRINT_PROPORTION = options.typesOptions['Impression']["PRINT_PROPORTION"]
         
-        globdef.IMPRIMER_NOM = options.optImpression["IMPRIMER_NOM"]
-        globdef.POSITION_NOM = options.optImpression["POSITION_NOM"]
-        globdef.TEXTE_NOM = options.optImpression["TEXTE_NOM"]
-#        globdef.IMPRIMER_TEXTE = options.optImpression["IMPRIMER_TEXTE"]
-        globdef.IMPRIMER_TITRE = options.optImpression["IMPRIMER_TITRE"]
-        globdef.POSITION_TITRE = options.optImpression["POSITION_TITRE"]
-        globdef.TEXTE_TITRE = options.optImpression["TEXTE_TITRE"]
+        globdef.IMPRIMER_NOM = options.typesOptions['Impression']["IMPRIMER_NOM"]
+        globdef.POSITION_NOM = options.typesOptions['Impression']["POSITION_NOM"]
+        globdef.TEXTE_NOM = options.typesOptions['Impression']["TEXTE_NOM"]
+#        globdef.IMPRIMER_TEXTE = options.typesOptions['Impression']["IMPRIMER_TEXTE"]
+        globdef.IMPRIMER_TITRE = options.typesOptions['Impression']["IMPRIMER_TITRE"]
+        globdef.POSITION_TITRE = options.typesOptions['Impression']["POSITION_TITRE"]
+        globdef.TEXTE_TITRE = options.typesOptions['Impression']["TEXTE_TITRE"]
         
-        globdef.MAX_PRINTER_DPI = options.optImpression["MAX_PRINTER_DPI"]
+        globdef.MAX_PRINTER_DPI = options.typesOptions['Impression']["MAX_PRINTER_DPI"]
         
         #
         # Affichage
         #
-        globdef.FONT_TYPE = options.optAffichage["FONT_TYPE"]
+        globdef.FONT_TYPE = options.typesOptions['Affichage']["FONT_TYPE"]
         
-        self.change_langue = globdef.LANG != options.optGenerales["LANG"]
-        globdef.LANG = options.optGenerales["LANG"]
+        self.change_langue = globdef.LANG != options.typesOptions['Général']["LANG"]
+        globdef.LANG = options.typesOptions['Général']["LANG"]
         
-        globdef.DEPHASAGE = options.optGenerales["DEPHASAGE"]
+        globdef.DEPHASAGE = options.typesOptions['Général']["DEPHASAGE"]
         
-        globdef.NBR_MAXI_PLOT = options.optGenerales["NBR_MAXI_PLOT"]
+        globdef.NBR_MAXI_PLOT = options.typesOptions['Général']["NBR_MAXI_PLOT"]
+
         
         
     #########################################################################################################
@@ -1592,7 +1593,7 @@ class wxPySylic(wx.Frame, PrintHandler):
             
         if sel != globdef.TYPE_SELECTEUR_TF:
             globdef.TYPE_SELECTEUR_TF = sel
-            self.options.optGenerales["TypeSelecteur"] = sel
+            self.options.typesOptions['Général']["TypeSelecteur"] = sel
             self.AppliquerOptions()
         
         #
@@ -2117,7 +2118,6 @@ class NbGauche(wx.Panel):
         
     #########################################################################################################
     def OnPageChanged(self, event = None, page = 0):
-        print("OnPageChanged")
         if self.pasEventBook:
             return
         
@@ -2306,7 +2306,6 @@ class PageH(VerticalScrolledPanel):
                 else: 
                     # La FT n'a pas été changée : on restaure l'ancienne
                     if FT_H.getOrdre() == 0: 
-                        print("La FT a été changée")
                         if self.FT_sauv == None:
                             self.setFT_H(self.getFT_H())
                         else:

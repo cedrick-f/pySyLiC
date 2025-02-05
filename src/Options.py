@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2009-2012 Cédrick FAURY
+## Copyright (C) 2009-2025 Cédrick FAURY
 
 #    pySyLiC is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -54,32 +54,34 @@ class Options:
         # Toutes les options ...
         # Avec leurs valeurs par défaut.
         #
-        self.optAffichage = {}
-        self.optCouleurs = {}
-        self.optGenerales = {}
-        self.optImpression = {}
-        self.optCalcul = {}
+        # self.optAffichage = {}
+        # self.optCouleurs = {}
+        # self.optGenerales = {}
+        # self.optImpression = {}
+        # self.optCalcul = {}
         
-        if options == None:
-            self.defaut()
+        
           
 #        self.listeOptions = ["Général", "Affichage", "Couleurs", "Impression"] 
          
-        self.typesOptions = {"Général" : self.optGenerales,
-                             "Affichage" : self.optAffichage,
-                             "Calcul" : self.optCalcul,
-                             "Formats de ligne" : self.optCouleurs,
-                             "Impression" : self.optImpression,
+        self.typesOptions = {"Général" : {},
+                             "Affichage" : {},
+                             "Calcul" : {},
+                             "Formats de ligne" : {},
+                             "Impression" : {},
                              }
         
-        
+        if options == None:
+            self.defaut()
+
+
         # Le fichier où seront sauvées les options
         self.fichierOpt = os.path.join(globdef.APP_DATA_PATH, "PySyLiC.cfg")
 
     #########################################################################################################
     def __repr__(self):
         t = "Options :\n"
-        for o in self.optGenerales.items() + self.optAffichage.items() + self.optImpression.items() + self.optCouleurs.items():
+        for o in self.typesOptions['Général'].items() + self.typesOptions['Affichage'].items() + self.typesOptions['Impression'].items() + self.typesOptions['Formats de ligne'].items():
             if type(o[1]) == int or type(o[1]) == float:
                 tt = str(o[1])
             elif type(o[1]) == bool:
@@ -155,9 +157,10 @@ class Options:
             config = f.read()
         self.typesOptions = json.loads(config)
 
-        self.typesOptions["Formats de ligne"]["FORM_GRILLE"] = LineFormat(**self.typesOptions["Formats de ligne"]["FORM_GRILLE"])
-        self.typesOptions["Formats de ligne"]["FORM_ISOGAIN"] = LineFormat(**self.typesOptions["Formats de ligne"]["FORM_ISOGAIN"])
-        self.typesOptions["Formats de ligne"]["FORM_ISOPHASE"] = LineFormat(**self.typesOptions["Formats de ligne"]["FORM_ISOPHASE"])
+        self.typesOptions['Formats de ligne']["FORM_GRILLE"] = LineFormat(**self.typesOptions['Formats de ligne']["FORM_GRILLE"])
+        self.typesOptions['Formats de ligne']["FORM_ISOGAIN"] = LineFormat(**self.typesOptions['Formats de ligne']["FORM_ISOGAIN"])
+        self.typesOptions['Formats de ligne']["FORM_ISOPHASE"] = LineFormat(**self.typesOptions['Formats de ligne']["FORM_ISOPHASE"])
+
         return
 
 
@@ -218,49 +221,48 @@ class Options:
         
     ############################################################################
     def defaut(self):
-        print("Options par defaut")
         globdef.DefOptionsDefaut()
         
-        self.optGenerales["TypeSelecteur"] = globdef.SELECTEUR_FT
-        self.optGenerales["RepCourant"] = globdef.DOSSIER_EXEMPLES
-        self.optGenerales["VAR_COMPLEXE"] = globdef.VAR_COMPLEXE
-        self.optGenerales["MAJ_AUTO"] = globdef.MAJ_AUTO
-        self.optGenerales["DEPHASAGE"] = globdef.DEPHASAGE
-        self.optGenerales["NBR_MAXI_PLOT"] = globdef.NBR_MAXI_PLOT
-        self.optGenerales["LANG"] = globdef.LANG
+        self.typesOptions['Général']["TypeSelecteur"] = globdef.SELECTEUR_FT
+        self.typesOptions['Général']["RepCourant"] = globdef.DOSSIER_EXEMPLES
+        self.typesOptions['Général']["VAR_COMPLEXE"] = globdef.VAR_COMPLEXE
+        self.typesOptions['Général']["MAJ_AUTO"] = globdef.MAJ_AUTO
+        self.typesOptions['Général']["DEPHASAGE"] = globdef.DEPHASAGE
+        self.typesOptions['Général']["NBR_MAXI_PLOT"] = globdef.NBR_MAXI_PLOT
+        self.typesOptions['Général']["LANG"] = globdef.LANG
         
-        self.optAffichage["ANTIALIASED"] = globdef.ANTIALIASED
-        self.optAffichage["TRACER_FLECHE"] = globdef.TRACER_FLECHE   
-        self.optAffichage["FONT_TYPE"] = globdef.FONT_TYPE     
+        self.typesOptions['Affichage']["ANTIALIASED"] = globdef.ANTIALIASED
+        self.typesOptions['Affichage']["TRACER_FLECHE"] = globdef.TRACER_FLECHE   
+        self.typesOptions['Affichage']["FONT_TYPE"] = globdef.FONT_TYPE     
         
-        self.optCalcul["NB_PERIODES_REP_TEMPO"] = globdef.NB_PERIODES_REP_TEMPO
-        self.optCalcul["TEMPS_REPONSE"] = globdef.TEMPS_REPONSE
-        self.optCalcul["NBR_PTS_REPONSE"] = globdef.NBR_PTS_REPONSE
+        self.typesOptions['Calcul']["NB_PERIODES_REP_TEMPO"] = globdef.NB_PERIODES_REP_TEMPO
+        self.typesOptions['Calcul']["TEMPS_REPONSE"] = globdef.TEMPS_REPONSE
+        self.typesOptions['Calcul']["NBR_PTS_REPONSE"] = globdef.NBR_PTS_REPONSE
         
-        self.optCouleurs["COUL_MARGE_OK"] = globdef.COUL_MARGE_GAIN_OK
-        self.optCouleurs["COUL_MARGE_NO"] = globdef.COUL_MARGE_GAIN_NO
+        self.typesOptions['Formats de ligne']["COUL_MARGE_OK"] = globdef.COUL_MARGE_GAIN_OK
+        self.typesOptions['Formats de ligne']["COUL_MARGE_NO"] = globdef.COUL_MARGE_GAIN_NO
 #        print globdef.FORM_GRILLE
-        self.optCouleurs["FORM_GRILLE"] = globdef.FORM_GRILLE
-        self.optCouleurs["FORM_ISOGAIN"] = globdef.FORM_ISOGAIN
-        self.optCouleurs["FORM_ISOPHASE"] = globdef.FORM_ISOPHASE
-#        self.optCouleurs["COUL_LAMBDA"] = globdef.COUL_LAMBDA
-        self.optCouleurs["COUL_POLES"] = globdef.COUL_POLES
-        self.optCouleurs["COUL_PT_CRITIQUE"] = globdef.COUL_PT_CRITIQUE
-        self.optCouleurs["COUL_CONSIGNE"] = globdef.COUL_CONSIGNE
-        self.optCouleurs["COUL_REPONSE"] = globdef.COUL_REPONSE
-        self.optCouleurs["COUL_REPONSENC"] = globdef.COUL_REPONSENC                    
+        self.typesOptions['Formats de ligne']["FORM_GRILLE"] = globdef.FORM_GRILLE
+        self.typesOptions['Formats de ligne']["FORM_ISOGAIN"] = globdef.FORM_ISOGAIN
+        self.typesOptions['Formats de ligne']["FORM_ISOPHASE"] = globdef.FORM_ISOPHASE
+#        self.typesOptions['Formats de ligne']["COUL_LAMBDA"] = globdef.COUL_LAMBDA
+        self.typesOptions['Formats de ligne']["COUL_POLES"] = globdef.COUL_POLES
+        self.typesOptions['Formats de ligne']["COUL_PT_CRITIQUE"] = globdef.COUL_PT_CRITIQUE
+        self.typesOptions['Formats de ligne']["COUL_CONSIGNE"] = globdef.COUL_CONSIGNE
+        self.typesOptions['Formats de ligne']["COUL_REPONSE"] = globdef.COUL_REPONSE
+        self.typesOptions['Formats de ligne']["COUL_REPONSENC"] = globdef.COUL_REPONSENC                    
  
         
                             
         
-        self.optImpression["PRINT_PROPORTION"] = globdef.PRINT_PROPORTION
-        self.optImpression["IMPRIMER_NOM"] = globdef.IMPRIMER_NOM
-        self.optImpression["POSITION_NOM"] = globdef.POSITION_NOM
-        self.optImpression["TEXTE_NOM"] = globdef.TEXTE_NOM
-        self.optImpression["IMPRIMER_TITRE"] = globdef.IMPRIMER_TITRE
-        self.optImpression["POSITION_TITRE"] = globdef.POSITION_TITRE
-        self.optImpression["TEXTE_TITRE"] = globdef.TEXTE_TITRE
-        self.optImpression["MAX_PRINTER_DPI"] = globdef.MAX_PRINTER_DPI
+        self.typesOptions['Impression']["PRINT_PROPORTION"] = globdef.PRINT_PROPORTION
+        self.typesOptions['Impression']["IMPRIMER_NOM"] = globdef.IMPRIMER_NOM
+        self.typesOptions['Impression']["POSITION_NOM"] = globdef.POSITION_NOM
+        self.typesOptions['Impression']["TEXTE_NOM"] = globdef.TEXTE_NOM
+        self.typesOptions['Impression']["IMPRIMER_TITRE"] = globdef.IMPRIMER_TITRE
+        self.typesOptions['Impression']["POSITION_TITRE"] = globdef.POSITION_TITRE
+        self.typesOptions['Impression']["TEXTE_TITRE"] = globdef.TEXTE_TITRE
+        self.typesOptions['Impression']["MAX_PRINTER_DPI"] = globdef.MAX_PRINTER_DPI
                               
                               
                               
@@ -296,11 +298,11 @@ class FenOptions(wx.Dialog):
         # Le book ...
         #
         nb = wx.Notebook(self, -1)
-        nb.AddPage(pnlGenerales(nb, options.optGenerales), _("Général"))
-        nb.AddPage(pnlAffichage(nb, options.optAffichage), _("Affichage"))
-        nb.AddPage(pnlCalcul(nb, options.optCalcul), _("Calcul"))
-        nb.AddPage(pnlImpression(nb, options.optImpression), _("Impression"))
-        nb.AddPage(pnlCouleurs(nb, options.optCouleurs), _("Formats de ligne"))
+        nb.AddPage(pnlGenerales(nb, options.typesOptions['Général']), _("Général"))
+        nb.AddPage(pnlAffichage(nb, options.typesOptions['Affichage']), _("Affichage"))
+        nb.AddPage(pnlCalcul(nb, options.typesOptions['Calcul']), _("Calcul"))
+        nb.AddPage(pnlImpression(nb, options.typesOptions['Impression']), _("Impression"))
+        nb.AddPage(pnlCouleurs(nb, options.typesOptions['Formats de ligne']), _("Formats de ligne"))
         nb.SetMinSize((400,-1))
         sizer.Add(nb, flag = wx.EXPAND)#|wx.ALL)
         self.nb = nb
