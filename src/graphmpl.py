@@ -8185,9 +8185,11 @@ def removeArtist(a, ax = None):
     if ax == None:
 #        ax = a.get_axes()
         ax = a.axes
-    if isinstance(a, matplotlib.lines.Line2D):
+    if False:#isinstance(a, matplotlib.lines.Line2D):
         if a in ax.lines:
-            ax.lines.remove(a)
+            #ax.lines.remove(a)
+            for l in ax.lines:
+                l.remove()
     else:
         try:
             a.remove()
