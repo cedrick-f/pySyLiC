@@ -28,7 +28,7 @@
 import wx
 import  wx.lib.scrolledpanel as scrolled
 import scipy
-from numpy import poly1d, log10, sign, float16, round
+from numpy import poly1d, log10, sign, float16, round, imag, real
 
 import time
 
@@ -1394,10 +1394,10 @@ def strScCx(v, nbChiffres = NB_CHIFFRES, lettre = "j"):
         sous forme complexe
     """
     with errstate(invalid='ignore'): 
-        if scipy.imag(v) == 0.0:
+        if imag(v) == 0.0:
             return strSc(v, nbChiffres)
-        s = strSc(scipy.real(v), nbChiffres)
-        i = scipy.imag(v)
+        s = strSc(real(v), nbChiffres)
+        i = imag(v)
         if i > 0.0:
             s += "+"
         
