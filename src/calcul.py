@@ -33,7 +33,7 @@ from scipy import interpolate#, #\
 from scipy.optimize import fsolve, fmin#, fmin_powell
 from numpy import poly1d, angle, logspace, linspace, concatenate, \
                   append, rad2deg, delete, insert, isnan, real, inf, \
-                  array, arange, unwrap, seterr, sqrt
+                  array, arange, unwrap, seterr, sqrt, round
 #import scipy.linalg as linalg
 import scipy
 #scipy.seterr(all = "raise")
@@ -228,12 +228,6 @@ class FonctionTransfertNum:
         c = abs(array(self.getZeros()+ self.getPoles()))
         c.sort()
         return c
-#        with errstate(invalid='ignore'): 
-#            c = []
-#            for i in self.getZeros()+ self.getPoles():
-#                c.append(abs(i))
-#            c.sort()
-#            return array(c)
     
     
     #######################################################################################
@@ -1168,10 +1162,10 @@ class FonctionTransfertNum:
                
             def phi(Om):
                 return self.Phi(Om) - p
-            e = scipy.geterr()
-            scipy.seterr(all = 'ignore')
+            e = scipy.special.geterr()
+            scipy.special.seterr(all = 'ignore')
             Om = fsolve(phi, Om0)
-            scipy.seterr(**e)
+            scipy.special.seterr(**e)
 
             return Om
     
@@ -1190,7 +1184,7 @@ class FonctionTransfertNum:
         with errstate(invalid='ignore'): 
             if Om <= 0:
                 h = None
-#                print Om, "!"
+                # print (Om, "!")
             else:
                 h = 20 * log10(abs(self.polyN(1j*Om)/self.polyD(1j*Om)))
             return h
@@ -1247,10 +1241,14 @@ class FonctionTransfertNum:
             if m is not None:
                 return -m
         
-        
+        # print(Om0, Om1)
+        # print(FTBF.derivH(Om0) , FTBF.derivH(Om1))
         if Om1 > Om0 and FTBF.derivH(Om0) * FTBF.derivH(Om1) < 0.0:
-            Om = fmin(maximum, Om1, maxfun=5000, maxiter=5000, disp = 0)[0]
-            return Om, self.HdB(Om), self.Phi180(Om), FTBF.HdB(Om), FTBF.Phi180(Om)
+            try:
+                Om = fmin(maximum, Om1, maxfun=5000, maxiter=5000, disp = False)[0]
+                return Om, self.HdB(Om), self.Phi180(Om), FTBF.HdB(Om), FTBF.Phi180(Om)
+            except:
+                return None, None, None, None, None
         else:
 #            print "Pas Trouvé !"
             return None, None, None, None, None
@@ -1314,10 +1312,10 @@ class FonctionTransfertNum:
             if i < 0:
                 continuer = False
             else:
-                e = scipy.geterr()
-                scipy.seterr(all = 'ignore')
+                e = scipy.special.geterr()
+                scipy.special.seterr(all = 'ignore')
                 O, ii, r, m = fsolve(self.HdB_logOm, c[i], full_output = 1)
-                scipy.seterr(**e)
+                scipy.special.seterr(**e)
                 Om = 10**O[0]
 #                print "    ", Om, r
                 if r == 1 and Om/c[i] > precision :
@@ -1376,10 +1374,10 @@ class FonctionTransfertNum:
         
         for cass in self.cassures:
             if cass > 0:
-                e = scipy.geterr()
-                scipy.seterr(all = 'ignore')
+                e = scipy.special.geterr()
+                scipy.special.seterr(all = 'ignore')
                 logO, ii, r, m = fsolve(P, log10(cass), full_output = 1)
-                scipy.seterr(**e)
+                scipy.special.seterr(**e)
                 if r == 1:
                     Om.append(10**(logO[0]))
             
@@ -1454,6 +1452,8 @@ class FonctionTransfertNum:
 #        if Om != None and self.Phi(Om+Om/10) >= -180:
 #            Om = None
 #        print "Om =", Om
+        if Om is None:
+            return None, None
         return Om, self.HdB(Om)
     
 
@@ -1641,11 +1641,11 @@ class FonctionTransfertNum:
         
 #        print "min-maxOm", minOm, maxOm
         
-        
-        
-            
         rangeOm = [minOm, maxOm]
-        rangeOm.sort()
+        try:
+            rangeOm.sort()
+        except:
+            pass
         
         return rangeOm
     
@@ -1815,42 +1815,42 @@ class Marges():
         if self.Om0 == None:
             t = r"\infty"
         else:
-            t = str(roundN(self.getMargeP(), self.nbChiffres)[0])+" deg"
-        return r"$M_p = " + t+"$"
+            t = roundN_str(self.getMargeP(), self.nbChiffres)+r"\;\text{deg}"
+        return r"$M_p = " + t+r"$"
         
     def getMathTexteOm0(self):
         if self.Om0 == None:
             t = "--"
         else:
-            t = str(roundN(self.Om0, self.nbChiffres)[0])+" rad/s"
-        return r"$\omega_{0dB} = "+ t+"$"
+            t = roundN_str(self.Om0, self.nbChiffres)+r"\;\text{rad/s}"
+        return r"$\omega_{0dB} = "+ t+r"$"
         
     def getMathTexteMg(self):
         if self.Om180 == None:
             t = r"\infty"
         else:
-            t = str(roundN(self.getMargeG(), self.nbChiffres)[0])+" dB"
+            t = roundN_str(self.getMargeG(), self.nbChiffres)+r"\;\text{dB}"
         return r"$M_g = " + t+"$"
         
     def getMathTexteOm180(self):
         if self.Om180 == None:
             t = "--"
         else:
-            t = str(roundN(self.Om180, self.nbChiffres)[0])+" rad/s"
+            t = roundN_str(self.Om180, self.nbChiffres)+r"\;\text{rad/s}"
         return r"$\omega_{-180^\circ} = "+ t +"$"
     
     def getMathTexteQ(self):
         if self.OmS == None:
             t = "--"
         else:
-            t = str(roundN(self.HdBF, self.nbChiffres)[0])+" dB"
+            t = roundN_str(self.HdBF, self.nbChiffres)+r"\;\text{dB}"
         return r"$Q = "+t+"$"
     
     def getMathTexteOmS(self):
         if self.OmS == None:
             t = "--"
         else:
-            t = str(roundN(self.OmS, self.nbChiffres)[0])+" rad/s"
+            t = roundN_str(self.OmS, self.nbChiffres)+r"\;\text{rad/s}"
         return r"$\omega_s = " + t+"$"
 
     def getCoulG(self):

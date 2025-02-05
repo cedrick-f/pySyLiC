@@ -46,7 +46,7 @@ from matplotlib.ticker import Formatter
 #    matplotlib.set_configdir(os.path.join(globdef.INSTALL_PATH, 'bin', 'mpl-data'))
 #print matplotlib.get_configdir()
 
-from numpy import errstate, array, arange, meshgrid, pi, \
+from numpy import errstate, array, arange, meshgrid, pi, float64, \
                   absolute, cos, sin, log10, arctan2, exp, real, imag, vstack
 #from scipy.sparse import vstack
 import scipy.interpolate
@@ -3082,7 +3082,7 @@ class ZoneGraphBode(ZoneGraphBase):
                 txtcurs = self.txtCurs1
             elif axe == self.subplot2:
                 txtcurs = self.txtCurs2
-            text = r"$\omega="+fonctions.strSc(_xdata)+r" rad/s$"+"\n"
+            text = r"$\omega="+fonctions.strSc(_xdata)+r"\;\mathbb{rad/s}$"+"\n"
             setp(txtcurs, position = (_xdata, _ydata),
                  text = text, visible = True)
             axe.draw_artist(txtcurs)
@@ -4385,7 +4385,9 @@ class ZoneGraphBlack(ZoneGraphBase):
           
         # Effacement des anciens isoGains
         if hasattr(self, "isoGainsCurseur"):
-            self.isoGainsCurseur.remove()
+            for i in self.isoGainsCurseur:
+                i.remove()
+            #self.isoGainsCurseur.remove()
             # for i in self.isoGainsCurseur.collections: 
             #     i.remove()
                 
@@ -4461,7 +4463,7 @@ class ZoneGraphBlack(ZoneGraphBase):
             
         # Affichage de Omega sur le curseur
         setp(self.txtCurs, position = (_xdata, _ydata),
-             text = r"$\omega="+fonctions.strSc(Om)+r" rad/s$"+"\n", visible = True)
+             text = r"$\omega="+fonctions.strSc(Om)+r"\;\mathbb{rad/s}$"+"\n", visible = True)
         axe.draw_artist(self.txtCurs)
         
         if self.valCurseurSurCote:
@@ -5441,10 +5443,9 @@ class ZoneGraphNyquist(ZoneGraphBase):
         setp(self.labelptCritique, x = 0, y = 0, text = "", visible = False)
         setp(self.label, visible = False)
         
-        # self.subplot.draw_artist(self.labelFT)
-        # self.subplot.draw_artist(self.label)
-        # self.subplot.draw_artist(self.labelptCritique)
-        self.subplot.draw_artists([self.labelFT, self.label, self.labelptCritique])
+        self.subplot.draw_artist(self.labelFT)
+        self.subplot.draw_artist(self.label)
+        self.subplot.draw_artist(self.labelptCritique)
 #        self.drawArtists([self.labelFT], self.figure)
 #        self.drawArtists([self.labelptCritique], self.figure)
           
@@ -5683,7 +5684,7 @@ class ZoneGraphNyquist(ZoneGraphBase):
             
         # Affichage de Omega sur le curseur
         setp(self.txtCurs, position = (_xdata, _ydata),
-             text = r"$\omega="+fonctions.strSc(Om)+r" rad/s$"+"\n", visible = True)
+             text = r"$\omega="+fonctions.strSc(Om)+r"\;\mathbb{rad/s}$"+"\n", visible = True)
         axe.draw_artist(self.txtCurs)
         
         if self.valCurseurSurCote:

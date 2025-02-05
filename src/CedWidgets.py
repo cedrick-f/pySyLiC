@@ -28,7 +28,7 @@
 import wx
 import  wx.lib.scrolledpanel as scrolled
 import scipy
-from numpy import poly1d, log10, sign
+from numpy import poly1d, log10, sign, float16
 
 import time
 
@@ -1354,17 +1354,22 @@ def estReel(n, precision = EPSILON):
 
 ##########################################################################################################
 def roundN(v, nc = NB_CHIFFRES):
-    """ Arrondi à <nc> chiffres significatifs
+    """ Arrondi <v> à <nc> chiffres significatifs
     """
     # Passage en NB_CHIFFRES chiffres significatifs
 #    print "Pas arrondi :", v
+    v = float16(v)
     if v == 0.0: return 0.0, 1
     dec = decade(v)
     mult = 10**dec
 
-    vv = round(float(v)/mult, nc-1)*mult
+    vv = round(v/mult, nc-1)*mult
 #    print "    arrondi :", vv
     return vv, dec
+
+##########################################################################################################
+def roundN_str(v, nc = NB_CHIFFRES):
+    return str(roundN(v, nc)[0])
 
 #############################################################################################################
 def form(x, nc = NB_CHIFFRES):
@@ -1442,7 +1447,10 @@ def mathtext_to_wxbitmap(s, taille = 150, color =  None):
     #print("   ", s)
     fig = Figure(facecolor="none")
     if color:
-        text_color = color.GetAsString(flags = wx.C2S_HTML_SYNTAX	)
+        if isinstance(color, wx.Colour):
+            text_color = color.GetAsString(flags = wx.C2S_HTML_SYNTAX)
+        else:
+            text_color = color
     else:
         text_color = (
             np.array(wx.SystemSettings.GetColour(wx.SYS_COLOUR_WINDOWTEXT)) / 255)
@@ -1593,7 +1601,7 @@ def getMathTextList(p, varComplexe = "p"):
         
         if c != 0.0:
             if c != 1.0  or o == i or o == 0:
-                if type(c) == str or type(c) == unicode:
+                if type(c) == str:
                     if c in GREEK:
                         c = r""+"\\"+c
                     s += c+' '
