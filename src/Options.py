@@ -385,7 +385,8 @@ class pnlGenerales(wx.Panel):
         sb1 = wx.StaticBox(self, -1, _("Dossier de sauvegarde par défaut"), size = (200,-1))
         sbs1 = wx.StaticBoxSizer(sb1,wx.VERTICAL)
         fs = DirSelectorCombo(self, -1)
-        fs.SetValueWithEvent(self.opt["RepCourant"])
+        # fs.SetValueWithEvent(self.opt["RepCourant"])
+        fs.SetValue(self.opt["RepCourant"])
         fs.SetToolTip(wx.ToolTip(_("Permet de selectionner le dossier\n" \
                                    "dans lequel seront sauvegardés les fichiers *.syl\n"\
                                    "après le lancement de pySyLic.\n"\
@@ -1052,8 +1053,8 @@ class pnlCouleurs(wx.Panel):
             selColor.SetToolTipString(_("Modifier la couleur de l'élément") + " :\n" + nomCouleurs[k])
             selColor.SetBackgroundColour(self.opt[k])
             
-            sizerH.Add(txtColor, flag = wx.ALIGN_RIGHT|wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
-            sizerH.Add(selColor, flag = wx.ALIGN_LEFT|wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
+            sizerH.Add(txtColor, flag = wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
+            sizerH.Add(selColor, flag = wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
             self.sizer.Add(sizerH, flag = wx.ALIGN_RIGHT|wx.ALL)
             
             self.lstButton[k] = selColor
@@ -1066,8 +1067,8 @@ class pnlCouleurs(wx.Panel):
                                             _("Modifier le format de ligne de l'élément") + " :\n" + nomFormatLigne[k],
                                             size = (80,22))
             
-            sizerH.Add(txtColor, flag = wx.ALIGN_RIGHT|wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
-            sizerH.Add(selColor, flag = wx.ALIGN_LEFT|wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
+            sizerH.Add(txtColor, flag = wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
+            sizerH.Add(selColor, flag = wx.ALL|wx.ALIGN_CENTER_VERTICAL, border = 5)
             self.sizer.Add(sizerH, flag = wx.ALIGN_RIGHT|wx.ALL)
             
             self.lstButton[k] = selColor

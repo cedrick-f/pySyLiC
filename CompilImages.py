@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-# -*- coding: ISO-8859-1 -*-
+# -*- coding: utf-8 -*-
 
-##This file is part of PyVot
+##This file is part of PySylic
 #############################################################################
 #############################################################################
 ##                                                                         ##
@@ -10,7 +10,7 @@
 #############################################################################
 #############################################################################
 
-## Copyright (C) 2006-2008 Cédrick FAURY
+## Copyright (C) 2006-2008 CÃ©drick FAURY
 
 #    This program is free software; you can redistribute it and/or modify
 #    it under the terms of the GNU General Public License as published by
@@ -28,7 +28,7 @@
 
 # Programme de compilation des images .png en un unique fichier icones.py
 #
-# !!!  Effacer toutes les lignes de icones.py après la remarque :
+# !!!  Effacer toutes les lignes de Images.py aprÃ¨s la remarque :
 #          " Supprimer tout ce qui suit avant compilation "
 #
 
@@ -47,20 +47,20 @@ fichIcone = "src/Images.py"
 #Images
 listFich = os.listdir(dosImages)
 listFich = glob.glob(os.path.join(dosImages, "*.*"))
-print listFich
+print(listFich)
 # Fichiers Icone & Logo #############################################################################
 
 
 FichiersImages = {}
 for f in listFich:
-    print os.path.splitext(f)[1]
-    print os.path.basename(f)
+    print(os.path.splitext(f)[1])
+    print(os.path.basename(f))
     
     if os.path.isfile(f) and os.path.splitext(f)[1] in ['.jpg', '.png', '.ico']:
         nom = os.path.splitext(os.path.basename(f))[0]
         FichiersImages[nom] = f
         
-print FichiersImages
+print(FichiersImages)
 #####################################################################################################
 # Compilation de tout ca ..........
 

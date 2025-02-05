@@ -3827,7 +3827,7 @@ class BarreOutils(aui.AuiToolBar):
                           'BPoles'  : _("Afficher les pôles de la FTBF dans le plan complexe")
                           }
         
-        self.lstLabel = {'BAbout'  : _("A propos de " + version.__appname__),
+        self.lstLabel = {'BAbout'  : _("À propos de " + version.__appname__),
                          'BRepons' : _('réponse temporelle du système'),
                          'BMarges' : _('Marges de stabilité du système'),
                          'BOuvrir' : _('Ouvrir un système'),
