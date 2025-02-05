@@ -366,7 +366,7 @@ class pnlGenerales(wx.Panel):
         sb0 = wx.StaticBox(self, -1, _("Langage"), size = (200,-1))
         sbs0 = wx.StaticBoxSizer(sb0,wx.VERTICAL)
         
-        self.nom_langues = zip(*globdef.INSTALLED_LANG.items())
+        self.nom_langues = list(zip(*globdef.INSTALLED_LANG.items()))
 #        print self.nom_langues
         cb = wx.ComboBox(self, -1, globdef.INSTALLED_LANG[self.opt["LANG"]], size = (40, -1), 
                          choices = self.nom_langues[1],

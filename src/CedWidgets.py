@@ -28,7 +28,7 @@
 import wx
 import  wx.lib.scrolledpanel as scrolled
 import scipy
-from numpy import poly1d, log10, sign, float16
+from numpy import poly1d, log10, sign, float16, round
 
 import time
 
@@ -1358,8 +1358,8 @@ def roundN(v, nc = NB_CHIFFRES):
     """
     # Passage en NB_CHIFFRES chiffres significatifs
 #    print "Pas arrondi :", v
-    v = float16(v)
     if v == 0.0: return 0.0, 1
+    v = float16(v)
     dec = decade(v)
     mult = 10**dec
 
