@@ -191,12 +191,12 @@ class wxPySylic(wx.Frame, PrintHandler):
         #############################################################################################
         options = Options.Options()
         if options.fichierExiste():
-           options.ouvrir()
-            # try :
-            #     options.ouvrir()
-            # except:
-            #     print("Fichier d'options corrompus ou inexistant !! Initialisation ...")
-            #     options.defaut()
+           #options.ouvrir()
+            try :
+                options.ouvrir()
+            except:
+                print("Fichier d'options corrompus ou inexistant !! Initialisation ...")
+                options.defaut()
 
         
         # On applique les options ...

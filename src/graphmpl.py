@@ -46,7 +46,7 @@ from matplotlib.ticker import Formatter
 #    matplotlib.set_configdir(os.path.join(globdef.INSTALL_PATH, 'bin', 'mpl-data'))
 #print matplotlib.get_configdir()
 
-from numpy import errstate, array, arange, meshgrid, pi, float64, \
+from numpy import errstate, array, arange, meshgrid, pi, float64, inf, \
                   absolute, cos, sin, log10, arctan2, exp, real, imag, vstack
 #from scipy.sparse import vstack
 import scipy.interpolate
