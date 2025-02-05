@@ -255,7 +255,7 @@ class FonctionTransfertNum:
         """ Renvoie un intervalle, 
             "adapté" à la visualisation des cassures
         """
-        if rng == None:
+        if rng is None:
             rng = self.getRangeDecade()
         return [10**rng[0], 10**rng[1]]
     
@@ -544,7 +544,7 @@ class FonctionTransfertNum:
 #        if self.polyD.o == 0 and self.polyN.o == 0:
 #            return None
 #        
-#        if rangeT == None:
+#        if rangeT is None:
 #            N = NBR_PTS_REPONSE
 #            _T = None
 #        else:
@@ -597,7 +597,7 @@ class FonctionTransfertNum:
             gain = self.polyN.c[0]/self.polyD.c[0]
             return None, gain, rangeT
         
-        if rangeT == None: # Intervalle des temps "Automatique"
+        if rangeT is None: # Intervalle des temps "Automatique"
             N = globdef.NBR_PTS_REPONSE
             if self.estStable():
                 _T = None
@@ -609,7 +609,7 @@ class FonctionTransfertNum:
             N = None
         
         sys = self.getSystem()
-        if sys == None:
+        if sys is None:
             return None, None
         else:
             res = impulse(sys, T = _T, N = N)#, full_output = True)
@@ -623,7 +623,7 @@ class FonctionTransfertNum:
             gain = self.polyN.c[0]/self.polyD.c[0]
             return None, gain, rangeT
         
-        if rangeT == None:
+        if rangeT is None:
             N = globdef.NBR_PTS_REPONSE
             if self.estStable():
                 _T = None
@@ -635,7 +635,7 @@ class FonctionTransfertNum:
             N = None
             
         sys = self.getSystem()
-        if sys == None:
+        if sys is None:
             return None, None, None
         else:
             Tp, yout = step(sys, T = _T, N = N)
@@ -650,9 +650,9 @@ class FonctionTransfertNum:
             gain = self.polyN.c[0]/self.polyD.c[0]
             return None, gain, rangeT
                 
-        if rangeT == None:
+        if rangeT is None:
             sys = self.getSystem()
-            if sys == None:
+            if sys is None:
                 return None, None
             _T = self.getAutoRange(globdef.NBR_PTS_REPONSE)
 
@@ -666,11 +666,11 @@ class FonctionTransfertNum:
 
     ######################################################################################################
     def getReponseSerieImpulsions(self, periode, rangeT = None):
-        if rangeT == None:
+        if rangeT is None:
             rangeT = [0.0, globdef.NB_PERIODES_REP_TEMPO*periode] 
         
         sys = self.getSystem()
-        if sys == None:
+        if sys is None:
             return None, None
         
         np = (rangeT[1]-rangeT[0]) // periode # nombre de périodes entières dans rangeT
@@ -732,7 +732,7 @@ class FonctionTransfertNum:
     ######################################################################################################
     def getReponseCarre(self, amplitude, periode, decalage, rangeT = None):
 #        print "getReponseCarre", rangeT
-        if rangeT == None:
+        if rangeT is None:
             rangeT = [0.0, globdef.NB_PERIODES_REP_TEMPO*periode]
             
         if self.polyD.o == 0 and self.polyN.o == 0:
@@ -750,7 +750,7 @@ class FonctionTransfertNum:
     ######################################################################################################
     def getReponseTriangle(self, pente, periode, decalage, rangeT = None):
 #        print "getReponseTriangle", rangeT
-        if rangeT == None:
+        if rangeT is None:
             rangeT = [0.0, globdef.NB_PERIODES_REP_TEMPO*periode]
         
         if self.polyD.o == 0 and self.polyN.o == 0:
@@ -774,10 +774,10 @@ class FonctionTransfertNum:
     ######################################################################################################
     def getReponseSinus(self, amplitude, pulsation, decalage, rangeT = None, nbPts = None):
 #        print "getReponseSinus", rangeT
-        if nbPts == None:
+        if nbPts is None:
             nbPts = globdef.NBR_PTS_REPONSE
       
-        if rangeT == None:
+        if rangeT is None:
             rangeT = [0.0, globdef.NB_PERIODES_REP_TEMPO*2*pi/pulsation]
             
         if self.polyD.o == 0 and self.polyN.o == 0:
@@ -810,7 +810,7 @@ class FonctionTransfertNum:
                 return None, gain, None
             
             sys = self.getSystem()
-            if sys == None:
+            if sys is None:
                 return None, None
             
             if globdef.LSIM_SOLVER == 0: # à éviter ...
@@ -885,7 +885,7 @@ class FonctionTransfertNum:
             <coef> > 1 pour affiner encore le lissage (utile pour Nyquist)
         """
         with errstate(invalid='ignore'): 
-            if reponsePhi == None:
+            if reponsePhi is None:
                 reponsePhi = self.getReponseHarmoniquePhi(pulsas)
             
             w, Phi = reponsePhi
@@ -1326,7 +1326,7 @@ class FonctionTransfertNum:
         #
         # On vérifie que Om est bien une vraie racine (et pas sur une asymptote)
         #
-        if Om != None and (Om > 1000*max(self.cassures) or Om < min(self.cassures)/1000):
+        if Om is not None and (Om > 1000*max(self.cassures) or Om < min(self.cassures)/1000):
             Om = None
             
         return Om, self.Phi(Om)
@@ -1430,18 +1430,18 @@ class FonctionTransfertNum:
         #
         # On vérifie que Om est bien une vraie racine (et pas sur une asymptote)
         #
-        if Om != None and (Om > 1000*max(self.cassures) or Om < min(self.cassures)/1000):
+        if Om is not None and (Om > 1000*max(self.cassures) or Om < min(self.cassures)/1000):
             Om = None
             
         # Je ne sais plus pourquoi j'ai ajouté ça à partir de la 0.34
-#        if Om0 != None and Om != None and Om < Om0:
+#        if Om0 is not None and Om is not None and Om < Om0:
 #            Om = None
             
         # 
         # On détermine le sens
         #
 #        print self.Phi(Om*(1-0.001)), self.Phi(Om*(1+0.001))
-#        if Om != None:
+#        if Om is not None:
 #            if self.Phi(Om*(1-0.001)) < self.Phi(Om*(1+0.001)):
 #                sens = -1
 #            else:
@@ -1449,7 +1449,7 @@ class FonctionTransfertNum:
 #        else:
 #            sens = 0
             
-#        if Om != None and self.Phi(Om+Om/10) >= -180:
+#        if Om is not None and self.Phi(Om+Om/10) >= -180:
 #            Om = None
 #        print "Om =", Om
         if Om is None:
@@ -1610,12 +1610,12 @@ class FonctionTransfertNum:
                 continuer = False
             i += 1
         # Si déja dans le plan (zoom out...) il faut élargir !!    
-        if i == 1:# or minOm == None:
+        if i == 1:# or minOm is None:
             minOm = self.getRange()[0]
             
 #        print "minOm", minOm
         
-        if minOm == None: # aucun point de la réponse n'est dans le plan ...
+        if minOm is None: # aucun point de la réponse n'est dans le plan ...
             tr, i = self.traverse(ax, reponse)
             if tr:
 #                print "traverse!!"
@@ -1635,7 +1635,7 @@ class FonctionTransfertNum:
                     maxOm = reponse[0][min(len(reponse[0])-1, j+1)]
                     continuer = False
                 j += -1
-            if j == len(reponse[0])-2:# or maxOm == None:
+            if j == len(reponse[0])-2:# or maxOm is None:
                 
                 maxOm = self.getRange()[1]
         
@@ -1754,7 +1754,7 @@ class FonctionTransfertNum:
     
     #########################################################################################################
     def getBitmap(self, nom = None, taille = 100, color = wx.BLACK):
-        if nom == None:
+        if nom is None:
             n = self.nom+"("+globdef.VAR_COMPLEXE+")="
         elif nom == "":
             n = ""
@@ -1765,7 +1765,7 @@ class FonctionTransfertNum:
     
     #########################################################################################################
     def getMathTextNom(self, nom = None):
-        if nom == None:
+        if nom is None:
             s = self.nom+'('+globdef.VAR_COMPLEXE+') = '
         else:
             s = nom
@@ -1804,69 +1804,69 @@ class Marges():
         return t
     
     def getMargeG(self):
-        if self.HdB180 != None:
+        if self.HdB180 is not None:
             return -self.HdB180*self.sens180
     
     def getMargeP(self):
-        if self.Phi0 != None:
+        if self.Phi0 is not None:
             return self.Phi0 + 180
     
     def getMathTexteMp(self):
-        if self.Om0 == None:
+        if self.Om0 is None:
             t = r"\infty"
         else:
             t = roundN_str(self.getMargeP(), self.nbChiffres)+r"\;\text{deg}"
         return r"$M_p = " + t+r"$"
         
     def getMathTexteOm0(self):
-        if self.Om0 == None:
+        if self.Om0 is None:
             t = "--"
         else:
             t = roundN_str(self.Om0, self.nbChiffres)+r"\;\text{rad/s}"
         return r"$\omega_{0dB} = "+ t+r"$"
         
     def getMathTexteMg(self):
-        if self.Om180 == None:
+        if self.Om180 is None:
             t = r"\infty"
         else:
             t = roundN_str(self.getMargeG(), self.nbChiffres)+r"\;\text{dB}"
         return r"$M_g = " + t+"$"
         
     def getMathTexteOm180(self):
-        if self.Om180 == None:
+        if self.Om180 is None:
             t = "--"
         else:
             t = roundN_str(self.Om180, self.nbChiffres)+r"\;\text{rad/s}"
         return r"$\omega_{-180^\circ} = "+ t +"$"
     
     def getMathTexteQ(self):
-        if self.OmS == None:
+        if self.OmS is None:
             t = "--"
         else:
             t = roundN_str(self.HdBF, self.nbChiffres)+r"\;\text{dB}"
         return r"$Q = "+t+"$"
     
     def getMathTexteOmS(self):
-        if self.OmS == None:
+        if self.OmS is None:
             t = "--"
         else:
             t = roundN_str(self.OmS, self.nbChiffres)+r"\;\text{rad/s}"
         return r"$\omega_s = " + t+"$"
 
     def getCoulG(self):
-        if self.Om180 != None and self.getMargeG() < 0:
+        if self.Om180 is not None and self.getMargeG() < 0:
             return globdef.COUL_MARGE_GAIN_NO
         else:
             return globdef.COUL_MARGE_GAIN_OK
     
     def getCoulP(self):
-        if self.Om0 != None and self.getMargeP() < 0:
+        if self.Om0 is not None and self.getMargeP() < 0:
             return globdef.COUL_MARGE_GAIN_NO
         else:
             return globdef.COUL_MARGE_GAIN_OK
         
     def getCoulQ(self):
-        if self.OmS != None and (self.getMargeP() < 0 and self.getMargeP() != None) or (self.getMargeG() < 0 and self.getMargeG() != None):
+        if self.OmS is not None and (self.getMargeP() < 0 and self.getMargeP() is not None) or (self.getMargeG() < 0 and self.getMargeG() is not None):
             return  globdef.COUL_MARGE_GAIN_NO
         else:
             return  globdef.COUL_MARGE_GAIN_OK
@@ -1914,7 +1914,7 @@ class DiagAsympGain(DiagAsympBase):
         return lstO
 
     def __add__(self, diag):
-        if diag == None: 
+        if diag is None: 
             return self
         
         lstO = []
@@ -1999,7 +1999,7 @@ class DiagAsympPhase(DiagAsympBase):
         return ""
     
     def __add__(self, diag):
-        if diag == None: return self
+        if diag is None: return self
         
         lstO = []
         for a in self.Asymp+diag.Asymp:
@@ -2097,7 +2097,7 @@ class DiagBode():
     def getMinMax(self):
         return min(self.reponse[1]), max(self.reponse[1]) 
 #    def __add__(self, diag):
-#        if diag == None: return self
+#        if diag is None: return self
 #        polyN = self.FT.polyN * diag.FT.polyN
 #        polyD = self.FT.polyD * diag.FT.polyD
 #        newFT = FonctionTransfertNum(polyN, polyD)
@@ -2125,7 +2125,7 @@ class DiagBode():
 #        return min(self.reponse[1]), max(self.reponse[1])  
 #    
 ##    def __add__(self, diag):
-##        if diag == None: return self
+##        if diag is None: return self
 ##        polyN = self.FT.polyN * diag.FT.polyN
 ##        polyD = self.FT.polyD * diag.FT.polyD
 ##        newFT = FonctionTransfertNum(polyN, polyD)
@@ -2197,7 +2197,7 @@ def getPulsationsD(rng = None):
     """ Renvoie une liste des pulsations à calculer
         dans l'intervalle rng (en decade)
     """
-#    if rng == None:
+#    if rng is None:
 #        rng = self.getRangeDecade()
     return logspace(rng[0], rng[1], num = globdef.NBR_PTS_COURBES)
 #    with errstate(invalid='ignore'): 

@@ -5453,8 +5453,9 @@ class A_propos(wx.Dialog):
         nb.AddPage(auteurs, _("Auteurs"))
         nb.AddPage(licence, _("Licence"))
         
-        sizer.Add(wx.adv.HyperlinkCtrl(self, wx.ID_ANY, _("Informations et téléchargement : https://github.com/cedrick-f/pySyLiC"),
-                                   URL="https://github.com/cedrick-f/pySyLiC"),  
+        sizer.Add(wx.adv.HyperlinkCtrl(self, #wx.ID_ANY, 
+                                        label = _("Informations et téléchargement : https://github.com/cedrick-f/pySyLiC"),
+                                        URL="https://github.com/cedrick-f/pySyLiC"),  
                   flag = wx.ALIGN_RIGHT|wx.ALL, border = 5)
         sizer.Add(nb)
         
