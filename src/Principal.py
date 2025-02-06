@@ -1661,7 +1661,7 @@ class wxPySylic(wx.Frame, PrintHandler):
                      "Tous les fichiers|*.*'")
         dlg = wx.FileDialog(
             self, message=_("Enregistrer le système sous ..."), defaultDir=self.DossierSauvegarde , 
-            defaultFile="", wildcard=mesFormats, style=wx.FD_SAVE|wx.FD_OVERWRITE_PROMPT|wx.CHANGE_DIR
+            defaultFile="", wildcard=mesFormats, style=wx.FD_SAVE|wx.FD_OVERWRITE_PROMPT|wx.FD_CHANGE_DIR
             )
         dlg.SetFilterIndex(0)
         if dlg.ShowModal() == wx.ID_OK:
@@ -1700,7 +1700,8 @@ class wxPySylic(wx.Frame, PrintHandler):
     def enregistrer(self, nomFichier):
         self.Freeze()
         wx.BeginBusyCursor(wx.HOURGLASS_CURSOR)
-        fichier = file(nomFichier, 'w')
+
+        #fichier = file(nomFichier, 'w')
         
         # Création de la racine
         systeme = ET.Element("Systeme")
@@ -1719,8 +1720,13 @@ class wxPySylic(wx.Frame, PrintHandler):
         systeme.append(self.getBranchePosExpr())
         
         indent(systeme)
-        ET.ElementTree(systeme).write(fichier)
-        fichier.close()
+
+        # with open(nomFichier, 'w', encoding="utf-8") as f:
+        #     ET.ElementTree(systeme).write(f)
+
+        ET.ElementTree(systeme).write(nomFichier)
+        
+        #fichier.close()
         self.definirNomFichierCourant(nomFichier)
         wx.EndBusyCursor()
         self.Thaw()

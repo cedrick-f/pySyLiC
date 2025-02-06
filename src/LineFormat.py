@@ -74,23 +74,23 @@ class LineFormat():
     def str2coul(self, str):
         return wx.NamedColour(str)
 
-    # ###############################################################################################
-    # def getBranche(self, nom):
-    #     root = ET.Element(nom)
-    #     root.set("couleur", self.get_coul_str())
-    #     root.set("style", self.styl)
-    #     root.set("epaisseur", str(self.epais))
-    #     return root
+    ###############################################################################################
+    def getBranche(self, nom):
+        root = ET.Element(nom)
+        root.set("couleur", self.get_coul_str())
+        root.set("style", self.styl)
+        root.set("epaisseur", str(self.epais))
+        return root
         
-    # ###############################################################################################
-    # def ouvrir(self, nom, brancheFormat):
-    #     branche = brancheFormat.find(nom)
-    #     if branche != None:
-    #         self.coul = self.str2coul(branche.get("couleur"))
-    #         self.styl = branche.get("style")
-    #         self.epais = eval(branche.get("epaisseur"))
-    #         return True
-    #     return False
+    ###############################################################################################
+    def ouvrir(self, nom, brancheFormat):
+        branche = brancheFormat.find(nom)
+        if branche != None:
+            self.coul = self.str2coul(branche.get("couleur"))
+            self.styl = branche.get("style")
+            self.epais = eval(branche.get("epaisseur"))
+            return True
+        return False
         
     ###############################################################################################
     def copie(self, format):
@@ -341,7 +341,8 @@ class PenStyleComboBox(wx.adv.OwnerDrawnComboBox):
         bgCol = wx.Colour(240,240,250)
         dc.SetBrush(wx.Brush(bgCol))
         dc.SetPen(wx.Pen(bgCol))
-        dc.DrawRectangleRect(rect)
+        #dc.DrawRectangleRect(rect)
+        dc.DrawRectangle(*rect)
 
 
 
